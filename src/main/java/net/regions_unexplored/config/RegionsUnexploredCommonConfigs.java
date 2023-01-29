@@ -95,13 +95,13 @@ public class RegionsUnexploredCommonConfigs {
         BUILDER.comment("Config for Regions Unexplored!");
         BUILDER.push("region_weights");
         REGION_NORTHERN_LIKE_WEIGHT = BUILDER.comment("Sets Terrablender region weight for Northern Like region.")
-                .defineInRange("northern_like_region_weight", 15, 0, 100000);
+                .defineInRange("northern_like_region_weight", 11, 0, 100000);
 
         REGION_TEMPERATE_LIKE_WEIGHT = BUILDER.comment("Sets Terrablender region weight for Temperate Like region.")
-                .defineInRange("temperate_like_region_weight", 15, 0, 100000);
+                .defineInRange("temperate_like_region_weight", 11, 0, 100000);
 
         REGION_OVERSEAS_LIKE_WEIGHT = BUILDER.comment("Sets Terrablender region weight for Overseas Like region.")
-                .defineInRange("overseas_like_region_weight", 15, 0, 100000);
+                .defineInRange("overseas_like_region_weight", 10, 0, 100000);
         
         REGION_RARE_WEIGHT = BUILDER.comment("Sets Terrablender region weight for rare region.")
                 .defineInRange("rare_region_weight", 1, 0, 100000);
