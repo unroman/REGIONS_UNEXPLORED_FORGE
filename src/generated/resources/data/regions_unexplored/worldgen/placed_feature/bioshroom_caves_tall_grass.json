@@ -1,0 +1,12 @@
+{
+  "feature": "minecraft:patch_tall_grass",
+  "placement": [
+    {
+      "type": "minecraft:count_on_every_layer",
+      "count": 15
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

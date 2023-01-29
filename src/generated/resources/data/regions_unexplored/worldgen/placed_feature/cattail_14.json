@@ -1,0 +1,30 @@
+{
+  "feature": "regions_unexplored:cattails",
+  "placement": [
+    {
+      "type": "minecraft:noise_threshold_count",
+      "above_noise": 14,
+      "below_noise": 5,
+      "noise_level": -0.8
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "absolute": 61
+        },
+        "min_inclusive": {
+          "absolute": 60
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

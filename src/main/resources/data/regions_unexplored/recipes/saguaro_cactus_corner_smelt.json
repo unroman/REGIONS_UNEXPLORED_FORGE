@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredient": {
+    "item": "regions_unexplored:saguaro_cactus_corner"
+  },
+  "result": "minecraft:green_dye"
+}

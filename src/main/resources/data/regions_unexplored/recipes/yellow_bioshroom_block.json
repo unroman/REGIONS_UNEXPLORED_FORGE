@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "01",
+    "23"
+  ],
+  "key": {
+    "0": {
+      "item": "regions_unexplored:yellow_bioshroom"
+    },
+    "1": {
+      "item": "regions_unexplored:yellow_bioshroom"
+    },
+    "2": {
+      "item": "regions_unexplored:yellow_bioshroom"
+    },
+    "3": {
+      "item": "regions_unexplored:yellow_bioshroom"
+    }
+  },
+  "result": {
+    "item": "regions_unexplored:yellow_bioshroom_block",
+    "count": 1
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "feature": "regions_unexplored:giant_blue_bioshroom_deepslate",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "regions_unexplored:deepslate_viridescent_nylium",
+        "offset": [
+          0,
+          -1,
+          0
+        ]
+      }
+    }
+  ]
+}

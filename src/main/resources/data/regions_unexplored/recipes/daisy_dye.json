@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0"
+  ],
+  "key": {
+    "0": {
+      "item": "regions_unexplored:daisy"
+    }
+  },
+  "result": {
+    "item": "minecraft:light_gray_dye",
+    "count": 1
+  }
+}

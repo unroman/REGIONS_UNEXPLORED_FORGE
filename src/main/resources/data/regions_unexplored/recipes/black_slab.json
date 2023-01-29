@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012"
+  ],
+  "key": {
+    "0": {
+      "item": "regions_unexplored:black_painted_planks"
+    },
+    "1": {
+      "item": "regions_unexplored:black_painted_planks"
+    },
+    "2": {
+      "item": "regions_unexplored:black_painted_planks"
+    }
+  },
+  "result": {
+    "item": "regions_unexplored:black_painted_slab",
+    "count": 6
+  }
+}

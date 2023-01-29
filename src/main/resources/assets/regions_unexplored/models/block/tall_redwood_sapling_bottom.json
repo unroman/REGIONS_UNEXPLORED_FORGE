@@ -1,0 +1,10 @@
+{
+  "parent": "regions_unexplored:block/three_block_sapling_bottom",
+  "textures": {
+    "all": "regions_unexplored:block/tall_redwood_sapling_top_leaves",
+    "particle": "regions_unexplored:block/tall_redwood_sapling_top_leaves",
+    "0": "regions_unexplored:block/tall_redwood_sapling_bottom",
+    "1": "regions_unexplored:block/tall_redwood_sapling_bottom_leaves"
+  },
+  "render_type": "cutout"
+}

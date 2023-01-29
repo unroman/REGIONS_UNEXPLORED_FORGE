@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "regions_unexplored:giant_blue_bioshroom_deepslate",
+    "features": [
+      {
+        "chance": 0.5,
+        "feature": "regions_unexplored:giant_green_bioshroom_deepslate"
+      }
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "type": "minecraft:block_column",
+  "config": {
+    "allowed_placement": {
+      "type": "minecraft:matching_blocks",
+      "blocks": "minecraft:air"
+    },
+    "direction": "down",
+    "layers": [
+      {
+        "height": {
+          "type": "minecraft:weighted_list",
+          "distribution": [
+            {
+              "data": {
+                "type": "minecraft:uniform",
+                "value": {
+                  "max_inclusive": 19,
+                  "min_inclusive": 0
+                }
+              },
+              "weight": 2
+            },
+            {
+              "data": {
+                "type": "minecraft:uniform",
+                "value": {
+                  "max_inclusive": 2,
+                  "min_inclusive": 0
+                }
+              },
+              "weight": 3
+            },
+            {
+              "data": {
+                "type": "minecraft:uniform",
+                "value": {
+                  "max_inclusive": 6,
+                  "min_inclusive": 0
+                }
+              },
+              "weight": 10
+            }
+          ]
+        },
+        "provider": {
+          "type": "minecraft:weighted_state_provider",
+          "entries": [
+            {
+              "data": {
+                "Name": "minecraft:azalea_leaves",
+                "Properties": {
+                  "distance": "7",
+                  "persistent": "true",
+                  "waterlogged": "false"
+                }
+              },
+              "weight": 4
+            },
+            {
+              "data": {
+                "Name": "minecraft:flowering_azalea_leaves",
+                "Properties": {
+                  "distance": "7",
+                  "persistent": "true",
+                  "waterlogged": "false"
+                }
+              },
+              "weight": 1
+            }
+          ]
+        }
+      },
+      {
+        "height": 1,
+        "provider": {
+          "type": "minecraft:weighted_state_provider",
+          "entries": [
+            {
+              "data": {
+                "Name": "minecraft:azalea_leaves",
+                "Properties": {
+                  "distance": "7",
+                  "persistent": "true",
+                  "waterlogged": "false"
+                }
+              },
+              "weight": 4
+            },
+            {
+              "data": {
+                "Name": "minecraft:flowering_azalea_leaves",
+                "Properties": {
+                  "distance": "7",
+                  "persistent": "true",
+                  "waterlogged": "false"
+                }
+              },
+              "weight": 1
+            }
+          ]
+        }
+      }
+    ],
+    "prioritize_tip": true
+  }
+}

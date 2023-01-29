@@ -1,0 +1,8 @@
+{
+  "feature": "regions_unexplored:spires",
+  "placement": [
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

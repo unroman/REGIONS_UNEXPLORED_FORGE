@@ -1,0 +1,36 @@
+modLoader="javafml"
+loaderVersion="[44,)"
+license="All rights reserved"
+
+[[mods]]
+modId="regions_unexplored"
+version="193.2.1"
+displayName="Regions Unexplored"
+displayURL="https://discord.gg/Ss8UHPqHPj"
+logoFile="ruthumb.png"
+credits="Terrablender:Adubbz"
+authors="UHQ_GAMES"
+description='''
+Regions Unexplored is a mod that aims to add new content to the overworld. Currently adds almost 70 new biomes!
+'''
+
+[[dependencies.regions_unexplored]]
+    modId="forge"
+    mandatory=true
+    versionRange="[44,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.regions_unexplored]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19.3,1.20)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.regions_unexplored]]
+    modId="terrablender"
+    mandatory=true
+    versionRange="[2.1.0.132,)"
+    ordering="NONE"
+    side="BOTH"

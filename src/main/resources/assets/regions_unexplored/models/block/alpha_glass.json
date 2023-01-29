@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "regions_unexplored:block/alpha_glass",
+    "up": "regions_unexplored:block/alpha_glass",
+    "north": "regions_unexplored:block/alpha_glass",
+    "east": "regions_unexplored:block/alpha_glass",
+    "south": "regions_unexplored:block/alpha_glass",
+    "west": "regions_unexplored:block/alpha_glass",
+    "particle": "regions_unexplored:block/alpha_glass"
+  },
+  "render_type": "cutout"
+}

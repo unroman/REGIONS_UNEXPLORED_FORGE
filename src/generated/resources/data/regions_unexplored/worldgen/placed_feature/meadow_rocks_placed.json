@@ -1,0 +1,8 @@
+{
+  "feature": "regions_unexplored:meadow_rocks",
+  "placement": [
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

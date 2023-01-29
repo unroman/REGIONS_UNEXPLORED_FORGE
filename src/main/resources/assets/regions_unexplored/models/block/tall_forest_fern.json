@@ -1,0 +1,11 @@
+{
+  "parent": "regions_unexplored:block/ru_large_fern",
+  "textures": {
+    "all": "regions_unexplored:block/forest_fern",
+    "particle": "regions_unexplored:block/forest_fern",
+    "1": "regions_unexplored:block/forest_fern",
+    "2": "regions_unexplored:block/seeded_tall_grass_top",
+    "3": "regions_unexplored:block/forest_fern_big"
+  },
+  "render_type": "cutout"
+}

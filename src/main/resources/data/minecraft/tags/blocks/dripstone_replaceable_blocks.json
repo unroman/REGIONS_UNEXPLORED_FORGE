@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:raw_redstone_block",
+    "regions_unexplored:marrowstone",
+    "minecraft:red_concrete",
+    "minecraft:netherrack"
+  ]
+}

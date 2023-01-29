@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:huge_fungus",
+  "config": {
+    "decor_state": {
+      "Name": "minecraft:shroomlight"
+    },
+    "hat_state": {
+      "Name": "regions_unexplored:green_bioshroom_block"
+    },
+    "planted": false,
+    "stem_state": {
+      "Name": "minecraft:mushroom_stem",
+      "Properties": {
+        "down": "true",
+        "east": "true",
+        "north": "true",
+        "south": "true",
+        "up": "true",
+        "west": "true"
+      }
+    },
+    "valid_base_block": {
+      "Name": "regions_unexplored:deepslate_viridescent_nylium"
+    }
+  }
+}

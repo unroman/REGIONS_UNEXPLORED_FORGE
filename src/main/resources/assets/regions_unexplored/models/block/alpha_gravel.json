@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "regions_unexplored:block/alpha_gravel",
+    "up": "regions_unexplored:block/alpha_gravel",
+    "north": "regions_unexplored:block/alpha_gravel",
+    "east": "regions_unexplored:block/alpha_gravel",
+    "south": "regions_unexplored:block/alpha_gravel",
+    "west": "regions_unexplored:block/alpha_gravel",
+    "particle": "regions_unexplored:block/alpha_gravel"
+  }
+}

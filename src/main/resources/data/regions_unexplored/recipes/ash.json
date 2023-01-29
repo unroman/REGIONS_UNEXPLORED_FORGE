@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:gunpowder"
+    },
+    "L": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#L#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "item": "regions_unexplored:ash"
+  }
+}

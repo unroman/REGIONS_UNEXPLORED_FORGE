@@ -1,0 +1,9 @@
+{
+  "parent": "regions_unexplored:block/tall_birch_saplings",
+  "textures": {
+    "all": "regions_unexplored:block/cobalt_earlight",
+    "particle": "regions_unexplored:block/cobalt_earlight",
+    "0": "regions_unexplored:block/cobalt_earlight"
+  },
+  "render_type": "cutout"
+}

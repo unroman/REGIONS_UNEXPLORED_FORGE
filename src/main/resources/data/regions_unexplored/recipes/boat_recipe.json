@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0 2",
+    "345"
+  ],
+  "key": {
+    "0": {
+      "tag": "regions_unexplored:planks"
+    },
+    "2": {
+      "tag": "regions_unexplored:planks"
+    },
+    "3": {
+      "tag": "regions_unexplored:planks"
+    },
+    "4": {
+      "tag": "regions_unexplored:planks"
+    },
+    "5": {
+      "tag": "regions_unexplored:planks"
+    }
+  },
+  "result": {
+    "item": "minecraft:oak_boat",
+    "count": 1
+  }
+}

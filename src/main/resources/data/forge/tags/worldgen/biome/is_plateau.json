@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:lush_hills",
+    "regions_unexplored:wooded_steppe",
+    "regions_unexplored:highland_fields"
+  ]
+}

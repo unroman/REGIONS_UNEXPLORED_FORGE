@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:disk",
+  "config": {
+    "half_height": 2,
+    "radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_inclusive": 5,
+        "min_inclusive": 2
+      }
+    },
+    "state_provider": {
+      "fallback": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:gravel"
+        }
+      },
+      "rules": []
+    },
+    "target": {
+      "type": "minecraft:matching_blocks",
+      "blocks": [
+        "regions_unexplored:forest_mud",
+        "regions_unexplored:forest_dirt",
+        "regions_unexplored:plains_dirt",
+        "regions_unexplored:forest_grass_block",
+        "regions_unexplored:plains_grass_block",
+        "minecraft:dirt",
+        "minecraft:grass_block"
+      ]
+    }
+  }
+}

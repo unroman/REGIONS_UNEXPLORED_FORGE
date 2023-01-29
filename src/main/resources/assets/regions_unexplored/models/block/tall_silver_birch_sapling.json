@@ -1,0 +1,9 @@
+{
+  "parent": "regions_unexplored:block/tall_birch_saplings",
+  "textures": {
+    "all": "regions_unexplored:block/tall_silver_birch_sapling",
+    "particle": "regions_unexplored:block/tall_silver_birch_sapling",
+    "0": "regions_unexplored:block/tall_silver_birch_sapling"
+  },
+  "render_type": "cutout"
+}

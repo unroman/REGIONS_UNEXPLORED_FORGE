@@ -1,0 +1,29 @@
+{
+  "feature": "regions_unexplored:patch_pink_bioshroom",
+  "placement": [
+    {
+      "type": "minecraft:noise_threshold_count",
+      "above_noise": 32,
+      "below_noise": 5,
+      "noise_level": -0.8
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "below_top": 0
+        },
+        "min_inclusive": {
+          "above_bottom": 0
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

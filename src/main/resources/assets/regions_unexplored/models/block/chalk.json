@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "regions_unexplored:block/chalk",
+    "up": "regions_unexplored:block/chalk",
+    "north": "regions_unexplored:block/chalk",
+    "east": "regions_unexplored:block/chalk",
+    "south": "regions_unexplored:block/chalk",
+    "west": "regions_unexplored:block/chalk",
+    "particle": "regions_unexplored:block/chalk"
+  }
+}

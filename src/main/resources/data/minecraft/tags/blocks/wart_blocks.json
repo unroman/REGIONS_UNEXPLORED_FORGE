@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:green_bioshroom_block",
+    "regions_unexplored:blue_bioshroom_block",
+    "regions_unexplored:pink_bioshroom_block",
+    "regions_unexplored:yellow_bioshroom_block"
+  ]
+}

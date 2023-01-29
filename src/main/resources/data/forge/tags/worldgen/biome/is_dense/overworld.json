@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:canadian_forest",
+    "regions_unexplored:bamboo_forest",
+    "regions_unexplored:baobab_savanna",
+    "regions_unexplored:autumnal_mixed_taiga",
+    "regions_unexplored:old_growth_rainforest",
+    "regions_unexplored:wooded_steppe",
+    "regions_unexplored:blackwood_forest",
+    "regions_unexplored:boreal_forest",
+    "regions_unexplored:pine_forest",
+    "regions_unexplored:golden_boreal_forest",
+    "regions_unexplored:old_growth_boreal_forest",
+    "regions_unexplored:roofed_eucalyptus_forest",
+    "regions_unexplored:smouldering_woodland",
+    "regions_unexplored:giant_bayou"
+  ]
+}

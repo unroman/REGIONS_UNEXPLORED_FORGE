@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "regions_unexplored:silver_birch_log_base"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "minecraft:birch_planks"
+  }
+}
