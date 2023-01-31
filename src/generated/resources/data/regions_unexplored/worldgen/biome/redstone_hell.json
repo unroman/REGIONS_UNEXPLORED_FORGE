@@ -57,9 +57,9 @@
     ],
     [],
     [
-      "regions_unexplored:pointed_redstone",
-      "regions_unexplored:large_pointed_redstone",
-      "regions_unexplored:pointed_redstone_cluster",
+      "regions_unexplored:pointed_redstone_nether",
+      "regions_unexplored:large_pointed_redstone_nether",
+      "regions_unexplored:pointed_redstone_cluster_nether",
       "regions_unexplored:redstone_bud_placed",
       "regions_unexplored:redstone_bulb_placed"
     ]

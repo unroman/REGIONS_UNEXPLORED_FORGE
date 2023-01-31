@@ -45,9 +45,9 @@ public class RuBiomeDefaultFeatures {
     }
 
     public static void netherPointedRedstone(BiomeGenerationSettings.Builder p_194721_) {
-        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuPlacements.POINTED_REDSTONE);
-        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuPlacements.LARGE_POINTED_REDSTONE);
-        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuPlacements.POINTED_REDSTONE_CLUSTER);
+        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuPlacements.POINTED_REDSTONE_NETHER);
+        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuPlacements.LARGE_POINTED_REDSTONE_NETHER);
+        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuPlacements.POINTED_REDSTONE_CLUSTER_NETHER);
         p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_REDSTONE_BUD);
         p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_REDSTONE_BULB);
     }

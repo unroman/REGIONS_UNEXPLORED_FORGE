@@ -62,6 +62,9 @@ public class RuPlacements {
     public static final ResourceKey<PlacedFeature>  POINTED_REDSTONE = RuPlacementUtils.createKey("pointed_redstone");
     public static final ResourceKey<PlacedFeature>  LARGE_POINTED_REDSTONE = RuPlacementUtils.createKey("large_pointed_redstone");
     public static final ResourceKey<PlacedFeature>  POINTED_REDSTONE_CLUSTER = RuPlacementUtils.createKey("pointed_redstone_cluster");
+    public static final ResourceKey<PlacedFeature>  POINTED_REDSTONE_NETHER = RuPlacementUtils.createKey("pointed_redstone_nether");
+    public static final ResourceKey<PlacedFeature>  LARGE_POINTED_REDSTONE_NETHER = RuPlacementUtils.createKey("large_pointed_redstone_nether");
+    public static final ResourceKey<PlacedFeature>  POINTED_REDSTONE_CLUSTER_NETHER = RuPlacementUtils.createKey("pointed_redstone_cluster_nether");
     public static final ResourceKey<PlacedFeature>  ORE_REDSTONE_LARGE = RuPlacementUtils.createKey("ore_redstone_large");
     //OTHER
     public static final ResourceKey<PlacedFeature>  MAGMA_PATCH = RuPlacementUtils.createKey("magma_patch");
@@ -100,6 +103,9 @@ public class RuPlacements {
         final Holder<ConfiguredFeature<?, ?>>  POINTED_REDSTONE = featureGetter.getOrThrow(RuFeatures.POINTED_REDSTONE);
         final Holder<ConfiguredFeature<?, ?>>  LARGE_POINTED_REDSTONE = featureGetter.getOrThrow(RuFeatures.LARGE_POINTED_REDSTONE);
         final Holder<ConfiguredFeature<?, ?>>  POINTED_REDSTONE_CLUSTER = featureGetter.getOrThrow(RuFeatures.POINTED_REDSTONE_CLUSTER);
+        final Holder<ConfiguredFeature<?, ?>>  POINTED_REDSTONE_NETHER = featureGetter.getOrThrow(RuFeatures.POINTED_REDSTONE_NETHER);
+        final Holder<ConfiguredFeature<?, ?>>  LARGE_POINTED_REDSTONE_NETHER = featureGetter.getOrThrow(RuFeatures.LARGE_POINTED_REDSTONE_NETHER);
+        final Holder<ConfiguredFeature<?, ?>>  POINTED_REDSTONE_CLUSTER_NETHER = featureGetter.getOrThrow(RuFeatures.POINTED_REDSTONE_CLUSTER_NETHER);
         final Holder<ConfiguredFeature<?, ?>>  ORE_REDSTONE_LARGE = featureGetter.getOrThrow(RuFeatures.ORE_REDSTONE_LARGE);
         //OTHER
         final Holder<ConfiguredFeature<?, ?>>  MAGMA_PATCH = featureGetter.getOrThrow(RuFeatures.MAGMA_DELTA);
@@ -137,6 +143,9 @@ public class RuPlacements {
         register(context, RuPlacements.POINTED_REDSTONE, POINTED_REDSTONE, CountPlacement.of(UniformInt.of(192, 256)), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, CountPlacement.of(UniformInt.of(1, 5)), RandomOffsetPlacement.of(ClampedNormalInt.of(0.0F, 3.0F, -10, 10), ClampedNormalInt.of(0.0F, 0.6F, -2, 2)), BiomeFilter.biome());
         register(context, RuPlacements.LARGE_POINTED_REDSTONE, LARGE_POINTED_REDSTONE, CountPlacement.of(UniformInt.of(10, 48)), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, BiomeFilter.biome());
         register(context, RuPlacements.POINTED_REDSTONE_CLUSTER, POINTED_REDSTONE_CLUSTER, CountPlacement.of(UniformInt.of(78, 126)), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, BiomeFilter.biome());
+        register(context, RuPlacements.POINTED_REDSTONE_NETHER, POINTED_REDSTONE_NETHER, CountPlacement.of(UniformInt.of(192, 256)), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, CountPlacement.of(UniformInt.of(1, 5)), RandomOffsetPlacement.of(ClampedNormalInt.of(0.0F, 3.0F, -10, 10), ClampedNormalInt.of(0.0F, 0.6F, -2, 2)), BiomeFilter.biome());
+        register(context, RuPlacements.LARGE_POINTED_REDSTONE_NETHER, LARGE_POINTED_REDSTONE_NETHER, CountPlacement.of(UniformInt.of(10, 48)), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, BiomeFilter.biome());
+        register(context, RuPlacements.POINTED_REDSTONE_CLUSTER_NETHER, POINTED_REDSTONE_CLUSTER_NETHER, CountPlacement.of(UniformInt.of(78, 126)), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, BiomeFilter.biome());
         register(context, RuPlacements.ORE_REDSTONE_LARGE, ORE_REDSTONE_LARGE, commonOrePlacement(16, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.absolute(112))));
         //OTHER
         register(context, RuPlacements.MAGMA_PATCH, MAGMA_PATCH, CountOnEveryLayerPlacement.of(40), BiomeFilter.biome());
