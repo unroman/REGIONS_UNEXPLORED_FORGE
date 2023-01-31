@@ -1,4 +1,4 @@
-package net.regions_unexplored.data.worldgen.features.feature;
+package net.regions_unexplored.data.worldgen.features.treefeature;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;

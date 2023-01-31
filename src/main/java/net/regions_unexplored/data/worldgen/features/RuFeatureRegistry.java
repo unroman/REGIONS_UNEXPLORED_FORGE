@@ -13,6 +13,9 @@ import net.regions_unexplored.RegionsUnexploredMod;
 import net.regions_unexplored.data.worldgen.features.feature.*;
 import net.regions_unexplored.data.worldgen.features.feature.LavaDeltaFeature;
 import net.regions_unexplored.data.worldgen.features.feature.redstonefeatures.*;
+import net.regions_unexplored.data.worldgen.features.treefeature.GiantSculkWillowFeature;
+import net.regions_unexplored.data.worldgen.features.treefeature.NetherWillowFeature;
+import net.regions_unexplored.data.worldgen.features.treefeature.SculkWillowFeature;
 import net.regions_unexplored.data.worldgen.structures.MeadowRock;
 import net.regions_unexplored.data.worldgen.structures.Spires;
 

@@ -1,10 +1,8 @@
-package net.regions_unexplored.data.worldgen.features.feature;
+package net.regions_unexplored.data.worldgen.features.treefeature;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.WorldGenLevel;
@@ -12,14 +10,11 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.blending.Blender;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.data.tags.RegionsUnexploredTags;
-import net.regions_unexplored.world.features.treedecorators.SaguaroCactusLimbs;
 
 import java.util.Random;
 
