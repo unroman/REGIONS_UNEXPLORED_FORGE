@@ -34,7 +34,7 @@ public class CactusSaplingBlock extends SaplingBlock {
 
     @Override
     public boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {
-        return state.is(BlockTags.SAND) || state.is(BlockTags.DIRT) || state.is(Blocks.FARMLAND);
+        return state.is(BlockTags.SAND) || state.is(BlockTags.DIRT) || state.is(Blocks.FARMLAND)|| state.is(RegionsUnexploredBlocks.SAGUARO_CACTUS.get())|| state.is(Blocks.CACTUS);
     }
 
     @Override
