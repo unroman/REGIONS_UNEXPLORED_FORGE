@@ -24,9 +24,7 @@ public class RuBoatRenderer extends BoatRenderer
     private final Map<RuBoat.ModelType, Pair<ResourceLocation, ListModel<Boat>>> boatResources;
 
     public RuBoatRenderer(EntityRendererProvider.Context context, boolean chest) {
-
         super(context, false);
-
         this.boatResources = Stream.of(RuBoat.ModelType.values()).collect(ImmutableMap.toImmutableMap((key) -> key, (model) ->
                 Pair.of(new ResourceLocation(RegionsUnexploredMod.MOD_ID, getTextureLocation(model, chest)), createBoatModel(context, model, chest))));
     }
