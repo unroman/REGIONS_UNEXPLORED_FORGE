@@ -7,6 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
@@ -41,6 +42,11 @@ public class BioshroomBlock extends BushBlock {
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         Vec3 vec3 = state.getOffset(getter, pos);
         return SHAPE.move(vec3.x, vec3.y, vec3.z);
+    }
+
+    @Override
+    public boolean canBeReplaced(BlockState state, BlockPlaceContext context) {
+        return false;
     }
 
     @Override

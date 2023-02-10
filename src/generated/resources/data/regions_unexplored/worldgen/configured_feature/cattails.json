@@ -10,7 +10,8 @@
             "state": {
               "Name": "regions_unexplored:cattail",
               "Properties": {
-                "half": "lower"
+                "half": "lower",
+                "waterlogged": "false"
               }
             }
           }

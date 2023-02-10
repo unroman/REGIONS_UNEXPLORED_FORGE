@@ -1,5 +1,5 @@
 {
-  "parent": "regions_unexplored:block/apple_oak_leaves",
+  "parent": "regions_unexplored:block/apple_oak_leaves_stage2",
   "display": {
     "thirdperson": {
       "rotation": [

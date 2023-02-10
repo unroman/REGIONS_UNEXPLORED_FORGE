@@ -26,13 +26,11 @@ public class RedstoneBulbBlock extends BushBlock {
         return SHAPE.move(vec3.x, vec3.y, vec3.z);
     }
 
-    @Override
-    public boolean isSignalSource(BlockState state) {
+    public boolean isSignalSource(BlockState p_55213_) {
         return true;
     }
 
-    @Override
-    public int getSignal(BlockState state, BlockGetter getter, BlockPos pos, Direction direction) {
+    public int getSignal(BlockState p_55208_, BlockGetter p_55209_, BlockPos p_55210_, Direction p_55211_) {
         return 13;
     }
 

@@ -11,6 +11,8 @@ public final class RegionsUnexploredTags {
    public static final TagKey<Block> SANDY_GRASS_CAN_SURVIVE_ON = create("sandy_grass_can_survive_on");
    public static final TagKey<Block> SCULK_PLANT_CAN_SURVIVE_ON = create("sculk_plant_can_survive_on");
    public static final TagKey<Block> STONE_GRASS_CAN_SURVIVE_ON = create("stone_grass_can_survive_on");
+   public static final TagKey<Block> CATTAIL_CAN_SURVIVE_ON = create("cattail_can_survive_on");
+   public static final TagKey<Block> BRANCHES_CAN_SURVIVE_ON = create("branches_can_survive_on");
    public static final TagKey<Block> REPLACEABLE_BLOCKS = create("replaceable_blocks");
    public static final TagKey<Block> SANDS = create("sands");
    public static final TagKey<Block> FLUIDS = create("fluids");

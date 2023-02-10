@@ -2,12 +2,17 @@ package net.regions_unexplored;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,8 +30,11 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
+import net.regions_unexplored.block.entity.RegionsUnexploredBlockEntities;
+import net.regions_unexplored.block.entity.RuWoodTypes;
 import net.regions_unexplored.data.worldgen.RuNetherSurfaceRuleData;
 import net.regions_unexplored.data.worldgen.RuSurfaceRuleData;
+import net.regions_unexplored.entity.RegionsUnexploredEntities;
 import net.regions_unexplored.init.PottedPlantCompat;
 import net.regions_unexplored.client.particle.RegionsUnexploredParticleTypes;
 import net.regions_unexplored.config.RegionsUnexploredCommonConfigs;
@@ -50,6 +58,7 @@ public class RegionsUnexploredMod {
     public static final DeferredRegister<PlacedFeature> PLACED_FEATURE_REGISTRY = DeferredRegister.create(Registries.PLACED_FEATURE, MOD_ID);
 
     public RegionsUnexploredMod() {
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerMainTab);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerNatureTab);
@@ -94,6 +103,8 @@ public class RegionsUnexploredMod {
         BIOME_REGISTRY.register(bus);
         CONFIGURED_FEATURE_REGISTRY.register(bus);
         PLACED_FEATURE_REGISTRY.register(bus);
+        RegionsUnexploredBlockEntities.BLOCK_ENTITIES.register(bus);
+        RegionsUnexploredEntities.ENTITIES.register(bus);
 
         RegionsUnexploredItems.register(bus);
         RegionsUnexploredBlocks.register(bus);
@@ -106,6 +117,25 @@ public class RegionsUnexploredMod {
         RuBiomeRegistry.setup();
     }
 
+    private void clientSetup(final FMLClientSetupEvent event) {
+        WoodType.register(RuWoodTypes.BAOBAB);
+        WoodType.register(RuWoodTypes.BLACKWOOD);
+        WoodType.register(RuWoodTypes.CHERRY);
+        WoodType.register(RuWoodTypes.CYPRESS);
+        WoodType.register(RuWoodTypes.DEAD);
+        WoodType.register(RuWoodTypes.EUCALYPTUS);
+        WoodType.register(RuWoodTypes.JOSHUA);
+        WoodType.register(RuWoodTypes.LARCH);
+        WoodType.register(RuWoodTypes.MAPLE);
+        WoodType.register(RuWoodTypes.MAUVE);
+        WoodType.register(RuWoodTypes.PALM);
+        WoodType.register(RuWoodTypes.PINE);
+        WoodType.register(RuWoodTypes.REDWOOD);
+        WoodType.register(RuWoodTypes.SCULKWOOD);
+        WoodType.register(RuWoodTypes.WILLOW);
+        BlockEntityRenderers.register(RegionsUnexploredBlockEntities.SIGN_BLOCK_ENTITIES.get(), SignRenderer::new);
+    }
+
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             RuBiomeRegistry.setupBiomePlacement();
@@ -113,6 +143,21 @@ public class RegionsUnexploredMod {
             SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.NETHER, RegionsUnexploredMod.MOD_ID, RuNetherSurfaceRuleData.makeRules());
             BlockFeatureCompat.setup();
             PottedPlantCompat.setup();
+            Sheets.addWoodType(RuWoodTypes.BAOBAB);
+            Sheets.addWoodType(RuWoodTypes.BLACKWOOD);
+            Sheets.addWoodType(RuWoodTypes.CHERRY);
+            Sheets.addWoodType(RuWoodTypes.CYPRESS);
+            Sheets.addWoodType(RuWoodTypes.DEAD);
+            Sheets.addWoodType(RuWoodTypes.EUCALYPTUS);
+            Sheets.addWoodType(RuWoodTypes.JOSHUA);
+            Sheets.addWoodType(RuWoodTypes.LARCH);
+            Sheets.addWoodType(RuWoodTypes.MAPLE);
+            Sheets.addWoodType(RuWoodTypes.MAUVE);
+            Sheets.addWoodType(RuWoodTypes.PALM);
+            Sheets.addWoodType(RuWoodTypes.PINE);
+            Sheets.addWoodType(RuWoodTypes.REDWOOD);
+            Sheets.addWoodType(RuWoodTypes.SCULKWOOD);
+            Sheets.addWoodType(RuWoodTypes.WILLOW);
         });
     }
 
@@ -121,11 +166,20 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.CHALK,
                 RegionsUnexploredBlocks.CHALK_STAIRS,
                 RegionsUnexploredBlocks.CHALK_SLAB,
+                RegionsUnexploredBlocks.POLISHED_CHALK,
+                RegionsUnexploredBlocks.POLISHED_CHALK_STAIRS,
+                RegionsUnexploredBlocks.POLISHED_CHALK_SLAB,
+                RegionsUnexploredBlocks.CHALK_BRICKS,
+                RegionsUnexploredBlocks.CHALK_BRICK_STAIRS,
+                RegionsUnexploredBlocks.CHALK_BRICK_SLAB,
+                RegionsUnexploredBlocks.CHALK_PILLAR,
                 RegionsUnexploredBlocks.PRISMAGLASS,
                 RegionsUnexploredBlocks.ALPHA_LOG,
                 RegionsUnexploredBlocks.ALPHA_PLANKS,
                 RegionsUnexploredBlocks.ALPHA_STAIRS,
                 RegionsUnexploredBlocks.ALPHA_SLAB,
+                RegionsUnexploredBlocks.BAMBOO_LOG,
+                RegionsUnexploredBlocks.STRIPPED_BAMBOO_LOG,
                 RegionsUnexploredBlocks.BAOBAB_LOG,
                 RegionsUnexploredBlocks.BAOBAB_WOOD,
                 RegionsUnexploredBlocks.STRIPPED_BAOBAB_LOG,
@@ -137,6 +191,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.BAOBAB_FENCE_GATE,
                 RegionsUnexploredBlocks.BAOBAB_DOOR,
                 RegionsUnexploredBlocks.BAOBAB_TRAPDOOR,
+                RegionsUnexploredBlocks.BAOBAB_SIGN,
                 RegionsUnexploredBlocks.BAOBAB_PRESSURE_PLATE,
                 RegionsUnexploredBlocks.BAOBAB_BUTTON,
                 RegionsUnexploredBlocks.BLACKWOOD_LOG,
@@ -150,6 +205,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.BLACKWOOD_FENCE_GATE,
                 RegionsUnexploredBlocks.BLACKWOOD_DOOR,
                 RegionsUnexploredBlocks.BLACKWOOD_TRAPDOOR,
+                RegionsUnexploredBlocks.BLACKWOOD_SIGN,
                 RegionsUnexploredBlocks.BLACKWOOD_PRESSURE_PLATE,
                 RegionsUnexploredBlocks.BLACKWOOD_BUTTON,
                 RegionsUnexploredBlocks.CHERRY_LOG,
@@ -163,6 +219,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.CHERRY_FENCE_GATE,
                 RegionsUnexploredBlocks.CHERRY_DOOR,
                 RegionsUnexploredBlocks.CHERRY_TRAPDOOR,
+                RegionsUnexploredBlocks.CHERRY_SIGN,
                 RegionsUnexploredBlocks.CHERRY_PRESSURE_PLATE,
                 RegionsUnexploredBlocks.CHERRY_BUTTON,
                 RegionsUnexploredBlocks.CYPRESS_LOG,
@@ -176,6 +233,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.CYPRESS_FENCE_GATE,
                 RegionsUnexploredBlocks.CYPRESS_DOOR,
                 RegionsUnexploredBlocks.CYPRESS_TRAPDOOR,
+                RegionsUnexploredBlocks.CYPRESS_SIGN,
                 RegionsUnexploredBlocks.CYPRESS_PRESSURE_PLATE,
                 RegionsUnexploredBlocks.CYPRESS_BUTTON,
                 RegionsUnexploredBlocks.DEAD_LOG,
@@ -189,6 +247,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.DEAD_FENCE_GATE,
                 RegionsUnexploredBlocks.DEAD_DOOR,
                 RegionsUnexploredBlocks.DEAD_TRAPDOOR,
+                RegionsUnexploredBlocks.DEAD_SIGN,
                 RegionsUnexploredBlocks.DEAD_PRESSURE_PLATE,
                 RegionsUnexploredBlocks.DEAD_BUTTON,
                 RegionsUnexploredBlocks.EUCALYPTUS_LOG,
@@ -202,6 +261,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.EUCALYPTUS_FENCE_GATE,
                 RegionsUnexploredBlocks.EUCALYPTUS_DOOR,
                 RegionsUnexploredBlocks.EUCALYPTUS_TRAPDOOR,
+                RegionsUnexploredBlocks.EUCALYPTUS_SIGN,
                 RegionsUnexploredBlocks.EUCALYPTUS_PRESSURE_PLATE,
                 RegionsUnexploredBlocks.EUCALYPTUS_BUTTON,
                 RegionsUnexploredBlocks.JOSHUA_LOG,
@@ -215,6 +275,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.JOSHUA_FENCE_GATE,
                 RegionsUnexploredBlocks.JOSHUA_DOOR,
                 RegionsUnexploredBlocks.JOSHUA_TRAPDOOR,
+                RegionsUnexploredBlocks.JOSHUA_SIGN,
                 RegionsUnexploredBlocks.JOSHUA_PRESSURE_PLATE,
                 RegionsUnexploredBlocks.JOSHUA_BUTTON,
                 RegionsUnexploredBlocks.LARCH_LOG,
@@ -228,6 +289,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.LARCH_FENCE_GATE,
                 RegionsUnexploredBlocks.LARCH_DOOR,
                 RegionsUnexploredBlocks.LARCH_TRAPDOOR,
+                RegionsUnexploredBlocks.LARCH_SIGN,
                 RegionsUnexploredBlocks.LARCH_PRESSURE_PLATE,
                 RegionsUnexploredBlocks.LARCH_BUTTON,
                 RegionsUnexploredBlocks.MAPLE_LOG,
@@ -241,6 +303,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.MAPLE_FENCE_GATE,
                 RegionsUnexploredBlocks.MAPLE_DOOR,
                 RegionsUnexploredBlocks.MAPLE_TRAPDOOR,
+                RegionsUnexploredBlocks.MAPLE_SIGN,
                 RegionsUnexploredBlocks.MAPLE_PRESSURE_PLATE,
                 RegionsUnexploredBlocks.MAPLE_BUTTON,
                 RegionsUnexploredBlocks.MAUVE_LOG,
@@ -254,6 +317,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.MAUVE_FENCE_GATE,
                 RegionsUnexploredBlocks.MAUVE_DOOR,
                 RegionsUnexploredBlocks.MAUVE_TRAPDOOR,
+                RegionsUnexploredBlocks.MAUVE_SIGN,
                 RegionsUnexploredBlocks.MAUVE_PRESSURE_PLATE,
                 RegionsUnexploredBlocks.MAUVE_BUTTON,
                 RegionsUnexploredBlocks.PALM_LOG,
@@ -267,6 +331,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.PALM_FENCE_GATE,
                 RegionsUnexploredBlocks.PALM_DOOR,
                 RegionsUnexploredBlocks.PALM_TRAPDOOR,
+                RegionsUnexploredBlocks.PALM_SIGN,
                 RegionsUnexploredBlocks.PALM_PRESSURE_PLATE,
                 RegionsUnexploredBlocks.PALM_BUTTON,
                 RegionsUnexploredBlocks.PINE_LOG,
@@ -280,6 +345,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.PINE_FENCE_GATE,
                 RegionsUnexploredBlocks.PINE_DOOR,
                 RegionsUnexploredBlocks.PINE_TRAPDOOR,
+                RegionsUnexploredBlocks.PINE_SIGN,
                 RegionsUnexploredBlocks.PINE_PRESSURE_PLATE,
                 RegionsUnexploredBlocks.PINE_BUTTON,
                 RegionsUnexploredBlocks.REDWOOD_LOG,
@@ -293,6 +359,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.REDWOOD_FENCE_GATE,
                 RegionsUnexploredBlocks.REDWOOD_DOOR,
                 RegionsUnexploredBlocks.REDWOOD_TRAPDOOR,
+                RegionsUnexploredBlocks.REDWOOD_SIGN,
                 RegionsUnexploredBlocks.REDWOOD_PRESSURE_PLATE,
                 RegionsUnexploredBlocks.REDWOOD_BUTTON,
                 RegionsUnexploredBlocks.SCULKWOOD_LOG,
@@ -305,11 +372,13 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.SCULKWOOD_FENCE_GATE,
                 RegionsUnexploredBlocks.SCULKWOOD_DOOR,
                 RegionsUnexploredBlocks.SCULKWOOD_TRAPDOOR,
+                RegionsUnexploredBlocks.SCULKWOOD_SIGN,
                 RegionsUnexploredBlocks.SCULKWOOD_PRESSURE_PLATE,
                 RegionsUnexploredBlocks.SCULKWOOD_BUTTON,
                 RegionsUnexploredBlocks.WILLOW_LOG,
                 RegionsUnexploredBlocks.WILLOW_WOOD,
                 RegionsUnexploredBlocks.STRIPPED_WILLOW_LOG,
+                RegionsUnexploredBlocks.STRIPPED_WILLOW_WOOD,
                 RegionsUnexploredBlocks.STRIPPED_WILLOW_WOOD,
                 RegionsUnexploredBlocks.WILLOW_PLANKS,
                 RegionsUnexploredBlocks.WILLOW_STAIRS,
@@ -318,6 +387,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.WILLOW_FENCE_GATE,
                 RegionsUnexploredBlocks.WILLOW_DOOR,
                 RegionsUnexploredBlocks.WILLOW_TRAPDOOR,
+                RegionsUnexploredBlocks.WILLOW_SIGN,
                 RegionsUnexploredBlocks.WILLOW_PRESSURE_PLATE,
                 RegionsUnexploredBlocks.WILLOW_BUTTON,
                 RegionsUnexploredBlocks.RED_PAINTED_PLANKS,
@@ -359,23 +429,358 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.WHITE_PAINTED_PLANKS,
                 RegionsUnexploredBlocks.WHITE_PAINTED_STAIRS,
                 RegionsUnexploredBlocks.WHITE_PAINTED_SLAB,
-                RegionsUnexploredBlocks.LIGHT_GREY_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.LIGHT_GREY_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.LIGHT_GREY_PAINTED_SLAB,
-                RegionsUnexploredBlocks.GREY_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.GREY_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.GREY_PAINTED_SLAB,
+                RegionsUnexploredBlocks.LIGHT_GRAY_PAINTED_PLANKS,
+                RegionsUnexploredBlocks.LIGHT_GRAY_PAINTED_STAIRS,
+                RegionsUnexploredBlocks.LIGHT_GRAY_PAINTED_SLAB,
+                RegionsUnexploredBlocks.GRAY_PAINTED_PLANKS,
+                RegionsUnexploredBlocks.GRAY_PAINTED_STAIRS,
+                RegionsUnexploredBlocks.GRAY_PAINTED_SLAB,
                 RegionsUnexploredBlocks.BLACK_PAINTED_PLANKS,
                 RegionsUnexploredBlocks.BLACK_PAINTED_STAIRS,
                 RegionsUnexploredBlocks.BLACK_PAINTED_SLAB
         );
 
+        List<RegistryObject<Item>> itemStacks = List.of(
+                RegionsUnexploredItems.BAOBAB_BOAT,
+                RegionsUnexploredItems.BAOBAB_CHEST_BOAT,
+                RegionsUnexploredItems.BLACKWOOD_BOAT,
+                RegionsUnexploredItems.BLACKWOOD_CHEST_BOAT,
+                RegionsUnexploredItems.CHERRY_BOAT,
+                RegionsUnexploredItems.CHERRY_CHEST_BOAT,
+                RegionsUnexploredItems.CYPRESS_BOAT,
+                RegionsUnexploredItems.CYPRESS_CHEST_BOAT,
+                RegionsUnexploredItems.DEAD_BOAT,
+                RegionsUnexploredItems.DEAD_CHEST_BOAT,
+                RegionsUnexploredItems.EUCALYPTUS_BOAT,
+                RegionsUnexploredItems.EUCALYPTUS_CHEST_BOAT,
+                RegionsUnexploredItems.JOSHUA_BOAT,
+                RegionsUnexploredItems.JOSHUA_CHEST_BOAT,
+                RegionsUnexploredItems.LARCH_BOAT,
+                RegionsUnexploredItems.LARCH_CHEST_BOAT,
+                RegionsUnexploredItems.MAPLE_BOAT,
+                RegionsUnexploredItems.MAPLE_CHEST_BOAT,
+                RegionsUnexploredItems.MAUVE_BOAT,
+                RegionsUnexploredItems.MAUVE_CHEST_BOAT,
+                RegionsUnexploredItems.PALM_BOAT,
+                RegionsUnexploredItems.PALM_CHEST_BOAT,
+                RegionsUnexploredItems.PINE_BOAT,
+                RegionsUnexploredItems.PINE_CHEST_BOAT,
+                RegionsUnexploredItems.REDWOOD_BOAT,
+                RegionsUnexploredItems.REDWOOD_CHEST_BOAT,
+                RegionsUnexploredItems.SCULKWOOD_BOAT,
+                RegionsUnexploredItems.SCULKWOOD_CHEST_BOAT,
+                RegionsUnexploredItems.WILLOW_BOAT,
+                RegionsUnexploredItems.WILLOW_CHEST_BOAT
+        );
+
         event.registerCreativeModeTab(new ResourceLocation(RegionsUnexploredMod.MOD_ID, "main"), builder -> {
             builder.icon(() -> new ItemStack(RegionsUnexploredBlocks.RED_PAINTED_PLANKS.get())).title(Component.translatable("itemGroup.regions_unexplored_main")).displayItems((featureFlags, output, hasOp) -> {
 
-                buildingBlocks.forEach((state) -> {
-                    output.accept(new ItemStack(state.get()));
-                });
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHALK.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHALK_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHALK_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.POLISHED_CHALK.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.POLISHED_CHALK_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.POLISHED_CHALK_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHALK_BRICKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHALK_BRICK_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHALK_BRICK_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHALK_PILLAR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PRISMAGLASS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.ALPHA_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.ALPHA_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.ALPHA_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.ALPHA_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BAMBOO_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_BAMBOO_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BAOBAB_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BAOBAB_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_BAOBAB_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_BAOBAB_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BAOBAB_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BAOBAB_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BAOBAB_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BAOBAB_FENCE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BAOBAB_FENCE_GATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BAOBAB_DOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BAOBAB_TRAPDOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BAOBAB_SIGN.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BAOBAB_PRESSURE_PLATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BAOBAB_BUTTON.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.BAOBAB_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.BAOBAB_CHEST_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLACKWOOD_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLACKWOOD_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_BLACKWOOD_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_BLACKWOOD_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLACKWOOD_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLACKWOOD_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLACKWOOD_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLACKWOOD_FENCE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLACKWOOD_FENCE_GATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLACKWOOD_DOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLACKWOOD_TRAPDOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLACKWOOD_SIGN.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLACKWOOD_PRESSURE_PLATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLACKWOOD_BUTTON.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.BLACKWOOD_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.BLACKWOOD_CHEST_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHERRY_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHERRY_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_CHERRY_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_CHERRY_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHERRY_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHERRY_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHERRY_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHERRY_FENCE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHERRY_FENCE_GATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHERRY_DOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHERRY_TRAPDOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHERRY_SIGN.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHERRY_PRESSURE_PLATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CHERRY_BUTTON.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.CHERRY_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.CHERRY_CHEST_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CYPRESS_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CYPRESS_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_CYPRESS_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_CYPRESS_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CYPRESS_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CYPRESS_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CYPRESS_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CYPRESS_FENCE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CYPRESS_FENCE_GATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CYPRESS_DOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CYPRESS_TRAPDOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CYPRESS_SIGN.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CYPRESS_PRESSURE_PLATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CYPRESS_BUTTON.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.CYPRESS_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.CYPRESS_CHEST_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.DEAD_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.DEAD_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_DEAD_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_DEAD_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.DEAD_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.DEAD_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.DEAD_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.DEAD_FENCE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.DEAD_FENCE_GATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.DEAD_DOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.DEAD_TRAPDOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.DEAD_SIGN.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.DEAD_PRESSURE_PLATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.DEAD_BUTTON.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.DEAD_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.DEAD_CHEST_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.EUCALYPTUS_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.EUCALYPTUS_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_EUCALYPTUS_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_EUCALYPTUS_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.EUCALYPTUS_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.EUCALYPTUS_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.EUCALYPTUS_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.EUCALYPTUS_FENCE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.EUCALYPTUS_FENCE_GATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.EUCALYPTUS_DOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.EUCALYPTUS_TRAPDOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.EUCALYPTUS_SIGN.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.EUCALYPTUS_PRESSURE_PLATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.EUCALYPTUS_BUTTON.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.EUCALYPTUS_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.EUCALYPTUS_CHEST_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.JOSHUA_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.JOSHUA_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_JOSHUA_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_JOSHUA_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.JOSHUA_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.JOSHUA_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.JOSHUA_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.JOSHUA_FENCE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.JOSHUA_FENCE_GATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.JOSHUA_DOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.JOSHUA_TRAPDOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.JOSHUA_SIGN.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.JOSHUA_PRESSURE_PLATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.JOSHUA_BUTTON.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.JOSHUA_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.JOSHUA_CHEST_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LARCH_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LARCH_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_LARCH_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_LARCH_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LARCH_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LARCH_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LARCH_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LARCH_FENCE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LARCH_FENCE_GATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LARCH_DOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LARCH_TRAPDOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LARCH_SIGN.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LARCH_PRESSURE_PLATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LARCH_BUTTON.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.LARCH_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.LARCH_CHEST_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAPLE_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAPLE_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_MAPLE_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_MAPLE_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAPLE_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAPLE_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAPLE_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAPLE_FENCE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAPLE_FENCE_GATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAPLE_DOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAPLE_TRAPDOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAPLE_SIGN.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAPLE_PRESSURE_PLATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAPLE_BUTTON.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.MAPLE_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.MAPLE_CHEST_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAUVE_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAUVE_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_MAUVE_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_MAUVE_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAUVE_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAUVE_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAUVE_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAUVE_FENCE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAUVE_FENCE_GATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAUVE_DOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAUVE_TRAPDOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAUVE_SIGN.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAUVE_PRESSURE_PLATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAUVE_BUTTON.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.MAUVE_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.MAUVE_CHEST_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PALM_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PALM_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_PALM_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_PALM_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PALM_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PALM_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PALM_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PALM_FENCE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PALM_FENCE_GATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PALM_DOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PALM_TRAPDOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PALM_SIGN.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PALM_PRESSURE_PLATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PALM_BUTTON.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.PALM_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.PALM_CHEST_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PINE_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PINE_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_PINE_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_PINE_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PINE_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PINE_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PINE_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PINE_FENCE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PINE_FENCE_GATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PINE_DOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PINE_TRAPDOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PINE_SIGN.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PINE_PRESSURE_PLATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PINE_BUTTON.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.PINE_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.PINE_CHEST_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.REDWOOD_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.REDWOOD_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_REDWOOD_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_REDWOOD_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.REDWOOD_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.REDWOOD_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.REDWOOD_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.REDWOOD_FENCE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.REDWOOD_FENCE_GATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.REDWOOD_DOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.REDWOOD_TRAPDOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.REDWOOD_SIGN.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.REDWOOD_PRESSURE_PLATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.REDWOOD_BUTTON.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.REDWOOD_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.REDWOOD_CHEST_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_LOG_TRANSITION.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_FENCE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_FENCE_GATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_DOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_TRAPDOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_SIGN.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_PRESSURE_PLATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_BUTTON.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.SCULKWOOD_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.SCULKWOOD_CHEST_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_WILLOW_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_WILLOW_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_WILLOW_WOOD.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_FENCE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_FENCE_GATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_DOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_TRAPDOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_SIGN.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_PRESSURE_PLATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_BUTTON.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.WILLOW_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.WILLOW_CHEST_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.RED_PAINTED_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.RED_PAINTED_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.RED_PAINTED_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.ORANGE_PAINTED_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.ORANGE_PAINTED_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.ORANGE_PAINTED_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.YELLOW_PAINTED_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.YELLOW_PAINTED_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.YELLOW_PAINTED_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LIME_PAINTED_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LIME_PAINTED_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LIME_PAINTED_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.GREEN_PAINTED_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.GREEN_PAINTED_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.GREEN_PAINTED_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CYAN_PAINTED_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CYAN_PAINTED_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.CYAN_PAINTED_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LIGHT_BLUE_PAINTED_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LIGHT_BLUE_PAINTED_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LIGHT_BLUE_PAINTED_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLUE_PAINTED_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLUE_PAINTED_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLUE_PAINTED_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PURPLE_PAINTED_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PURPLE_PAINTED_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PURPLE_PAINTED_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAGENTA_PAINTED_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAGENTA_PAINTED_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.MAGENTA_PAINTED_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PINK_PAINTED_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PINK_PAINTED_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.PINK_PAINTED_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BROWN_PAINTED_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BROWN_PAINTED_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BROWN_PAINTED_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.WHITE_PAINTED_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.WHITE_PAINTED_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.WHITE_PAINTED_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LIGHT_GRAY_PAINTED_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LIGHT_GRAY_PAINTED_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.LIGHT_GRAY_PAINTED_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.GRAY_PAINTED_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.GRAY_PAINTED_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.GRAY_PAINTED_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLACK_PAINTED_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLACK_PAINTED_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BLACK_PAINTED_SLAB.get()));
 
             });
         });
@@ -419,13 +824,25 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.PRISMOSS_SPROUT,
                 RegionsUnexploredBlocks.POINTED_REDSTONE,
                 RegionsUnexploredBlocks.REDSTONE_BUD,
+                RegionsUnexploredBlocks.BAOBAB_BRANCH,
                 RegionsUnexploredBlocks.BIRCH_BRANCH,
                 RegionsUnexploredBlocks.BLACKWOOD_BRANCH,
+                RegionsUnexploredBlocks.CHERRY_BRANCH,
+                RegionsUnexploredBlocks.CYPRESS_BRANCH,
                 RegionsUnexploredBlocks.DEAD_BRANCH,
+                RegionsUnexploredBlocks.EUCALYPTUS_BRANCH,
+                RegionsUnexploredBlocks.JOSHUA_BEARD,
+                RegionsUnexploredBlocks.JUNGLE_BRANCH,
+                RegionsUnexploredBlocks.LARCH_BRANCH,
+                RegionsUnexploredBlocks.MAPLE_BRANCH,
+                RegionsUnexploredBlocks.MAUVE_BRANCH,
+                RegionsUnexploredBlocks.OAK_BRANCH,
+                RegionsUnexploredBlocks.PALM_BEARD,
                 RegionsUnexploredBlocks.PINE_BRANCH,
                 RegionsUnexploredBlocks.REDWOOD_BRANCH,
+                RegionsUnexploredBlocks.SPRUCE_BRANCH,
+                RegionsUnexploredBlocks.WILLOW_BRANCH,
                 RegionsUnexploredBlocks.BAMBOO_LOG,
-                RegionsUnexploredBlocks.BAMBOO_LOG_LEAVES,
                 RegionsUnexploredBlocks.ALPHA_LOG,
                 RegionsUnexploredBlocks.BAOBAB_LOG,
                 RegionsUnexploredBlocks.SILVER_BIRCH_LOG_BASE,

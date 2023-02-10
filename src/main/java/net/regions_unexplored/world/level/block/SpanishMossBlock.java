@@ -13,7 +13,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 
 public class SpanishMossBlock extends GrowingPlantHeadBlock {
-    protected static final VoxelShape SHAPE = Block.box(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+    protected static final VoxelShape SHAPE = Block.box(3.0D, 3.0D, 3.0D, 13.0D, 16.0D, 13.0D);
 
     public SpanishMossBlock(Properties properties) {
         super(properties, Direction.DOWN, SHAPE, false, 0.1D);

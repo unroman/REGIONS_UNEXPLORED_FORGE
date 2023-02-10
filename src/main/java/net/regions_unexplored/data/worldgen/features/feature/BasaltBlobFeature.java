@@ -19,7 +19,49 @@ import net.regions_unexplored.data.tags.RegionsUnexploredTags;
 import javax.annotation.Nullable;
 
 public class BasaltBlobFeature extends Feature<ColumnFeatureConfiguration> {
-    private static final ImmutableList<Block> CANNOT_PLACE_ON = ImmutableList.of(Blocks.LAVA, Blocks.BEDROCK, Blocks.MAGMA_BLOCK, Blocks.SOUL_SAND, Blocks.NETHER_BRICKS, Blocks.NETHER_BRICK_FENCE, Blocks.NETHER_BRICK_STAIRS, Blocks.NETHER_WART, Blocks.CHEST, RegionsUnexploredBlocks.ASH_VENT.get(), RegionsUnexploredBlocks.DEAD_LEAVES.get());
+    private static final ImmutableList<Block> CANNOT_PLACE_ON = ImmutableList.of(
+            Blocks.COBBLESTONE,
+            Blocks.COBBLESTONE_SLAB,
+            Blocks.COBBLESTONE_STAIRS,
+            Blocks.MOSSY_COBBLESTONE,
+            Blocks.MOSSY_COBBLESTONE_SLAB,
+            Blocks.MOSSY_COBBLESTONE_STAIRS,
+            Blocks.STONE_BRICKS,
+            Blocks.MOSSY_STONE_BRICKS,
+            Blocks.CRACKED_STONE_BRICKS,
+            Blocks.STONE_BRICK_SLAB,
+            Blocks.RED_NETHER_BRICKS,
+            Blocks.RED_NETHER_BRICK_SLAB,
+            Blocks.RED_NETHER_BRICK_STAIRS,
+            Blocks.MOSSY_STONE_BRICK_SLAB,
+            Blocks.STONE_BRICK_SLAB,
+            Blocks.COAL_BLOCK,
+            Blocks.NETHERRACK,
+            Blocks.SOUL_SAND,
+            Blocks.POLISHED_ANDESITE,
+            Blocks.POLISHED_DIORITE,
+            Blocks.POLISHED_GRANITE,
+            Blocks.POLISHED_ANDESITE_SLAB,
+            Blocks.POLISHED_DIORITE_SLAB,
+            Blocks.POLISHED_GRANITE_SLAB,
+            Blocks.POLISHED_ANDESITE_STAIRS,
+            Blocks.POLISHED_DIORITE_STAIRS,
+            Blocks.POLISHED_GRANITE_STAIRS,
+            Blocks.IRON_BARS,
+            Blocks.SOUL_SOIL,
+            Blocks.GRAVEL,
+            Blocks.MOSSY_STONE_BRICK_SLAB,
+            Blocks.LAVA,
+            Blocks.BEDROCK,
+            Blocks.MAGMA_BLOCK,
+            Blocks.SOUL_SAND,
+            Blocks.NETHER_BRICKS,
+            Blocks.NETHER_BRICK_FENCE,
+            Blocks.NETHER_BRICK_STAIRS,
+            Blocks.NETHER_WART,
+            Blocks.CHEST,
+            RegionsUnexploredBlocks.ASH_VENT.get(),
+            RegionsUnexploredBlocks.DEAD_LEAVES.get());
 
     public BasaltBlobFeature(Codec<ColumnFeatureConfiguration> codec) {
         super(codec);

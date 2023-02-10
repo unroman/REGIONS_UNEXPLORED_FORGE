@@ -102,11 +102,11 @@
           "conditions": [
             {
               "chances": [
+                0.01,
+                0.025,
                 0.04,
-                0.044444446,
-                0.05,
-                0.06666667,
-                0.2
+                0.06,
+                0.1
               ],
               "condition": "minecraft:table_bonus",
               "enchantment": "minecraft:fortune"
@@ -124,63 +124,6 @@
             },
             {
               "function": "minecraft:explosion_decay"
-            }
-          ],
-          "name": "minecraft:apple"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "condition": "minecraft:inverted",
-          "term": {
-            "condition": "minecraft:alternative",
-            "terms": [
-              {
-                "condition": "minecraft:match_tool",
-                "predicate": {
-                  "items": [
-                    "minecraft:shears"
-                  ]
-                }
-              },
-              {
-                "condition": "minecraft:match_tool",
-                "predicate": {
-                  "enchantments": [
-                    {
-                      "enchantment": "minecraft:silk_touch",
-                      "levels": {
-                        "min": 1
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        }
-      ],
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "conditions": [
-            {
-              "condition": "minecraft:survives_explosion"
-            },
-            {
-              "chances": [
-                0.05,
-                0.055555557,
-                0.0625,
-                0.08333334,
-                0.25
-              ],
-              "condition": "minecraft:table_bonus",
-              "enchantment": "minecraft:fortune"
             }
           ],
           "name": "minecraft:apple"

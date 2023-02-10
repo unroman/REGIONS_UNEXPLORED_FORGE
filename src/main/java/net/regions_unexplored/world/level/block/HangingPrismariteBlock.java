@@ -12,12 +12,16 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.world.level.block.state.properties.HangingPrismariteShape;
 import net.regions_unexplored.world.level.block.state.properties.RuBlockStateProperties;
 
 public class HangingPrismariteBlock extends Block {
     public static final EnumProperty<HangingPrismariteShape> SHAPE = RuBlockStateProperties.HANGING_PRISMARITE_SHAPE;
+    protected static final VoxelShape BOX = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
     public HangingPrismariteBlock(Properties properties) {
         super(properties);
@@ -26,6 +30,10 @@ public class HangingPrismariteBlock extends Block {
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> stateBuilder) {
         stateBuilder.add(SHAPE);
+    }
+    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+        Vec3 vec3 = state.getOffset(getter, pos);
+        return BOX.move(vec3.x, vec3.y, vec3.z);
     }
 
     @Override

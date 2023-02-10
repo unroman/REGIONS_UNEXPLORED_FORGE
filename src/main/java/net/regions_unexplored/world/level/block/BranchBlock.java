@@ -25,6 +25,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
+import net.regions_unexplored.data.tags.RegionsUnexploredTags;
 
 import javax.annotation.Nullable;
 import java.util.Map;
@@ -40,13 +41,22 @@ public class BranchBlock extends BushBlock {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
-
+        if(state.is(RegionsUnexploredBlocks.JOSHUA_BEARD.get())||state.is(RegionsUnexploredBlocks.PALM_BEARD.get())){
+            return switch (state.getValue(FACING)) {
+                default -> box(0, 0, 0, 16, 16, 3);
+                case NORTH -> box(0, 0, 13, 16, 16, 16);
+                case EAST -> box(0, 0, 0, 3, 16, 16);
+                case WEST -> box(13, 0, 0, 16, 16, 16);
+            };
+        }
+        else{
         return switch (state.getValue(FACING)) {
             default -> box(7, 3, 0, 9, 13, 16);
             case NORTH -> box(7, 3, 0, 9, 13, 16);
             case EAST -> box(0, 3, 7, 16, 13, 9);
             case WEST -> box(0, 3, 7, 16, 13, 9);
         };
+        }
     }
 
 
@@ -63,6 +73,12 @@ public class BranchBlock extends BushBlock {
         BlockPos blockpose = pos.east();
         BlockPos blockposw = pos.west();
         if (direction==Direction.SOUTH) {
+
+            if(!state.is(RegionsUnexploredBlocks.JOSHUA_BEARD.get())&&!state.is(RegionsUnexploredBlocks.PALM_BEARD.get())){
+            if(!level.getBlockState(blockposn).isFaceSturdy(level, blockposn, Direction.SOUTH)){
+                return false;
+            }
+            }
             if(mayPlaceOn(level.getBlockState(blockposn), level, blockposn)){
                 return true;
             }
@@ -72,6 +88,11 @@ public class BranchBlock extends BushBlock {
         }
 
         if (direction==Direction.NORTH) {
+            if(!state.is(RegionsUnexploredBlocks.JOSHUA_BEARD.get())&&!state.is(RegionsUnexploredBlocks.PALM_BEARD.get())){
+            if(!level.getBlockState(blockposs).isFaceSturdy(level, blockposs, Direction.NORTH)){
+                return false;
+            }
+            }
             if(mayPlaceOn(level.getBlockState(blockposs), level, blockposs)){
                 return true;
             }
@@ -81,6 +102,11 @@ public class BranchBlock extends BushBlock {
         }
 
         if (direction==Direction.WEST) {
+            if(!state.is(RegionsUnexploredBlocks.JOSHUA_BEARD.get())&&!state.is(RegionsUnexploredBlocks.PALM_BEARD.get())){
+            if(!level.getBlockState(blockpose).isFaceSturdy(level, blockpose, Direction.WEST)){
+                return false;
+            }
+            }
             if(mayPlaceOn(level.getBlockState(blockpose), level, blockpose)){
                 return true;
             }
@@ -90,6 +116,11 @@ public class BranchBlock extends BushBlock {
         }
 
         if (direction==Direction.EAST) {
+            if(!state.is(RegionsUnexploredBlocks.JOSHUA_BEARD.get())&&!state.is(RegionsUnexploredBlocks.PALM_BEARD.get())){
+            if(!level.getBlockState(blockposw).isFaceSturdy(level, blockposw, Direction.EAST)){
+                return false;
+            }
+            }
             if(mayPlaceOn(level.getBlockState(blockposw), level, blockposw)){
                 return true;
             }
@@ -102,7 +133,7 @@ public class BranchBlock extends BushBlock {
 
     @Override
     public boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {
-        return state.is(BlockTags.OVERWORLD_NATURAL_LOGS);
+        return state.is(RegionsUnexploredTags.BRANCHES_CAN_SURVIVE_ON);
     }
 
     @Override

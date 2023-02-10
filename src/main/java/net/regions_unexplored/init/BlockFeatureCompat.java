@@ -1,9 +1,7 @@
 package net.regions_unexplored.init;
 
 import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -11,7 +9,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 
 public class BlockFeatureCompat {
@@ -122,6 +119,7 @@ public class BlockFeatureCompat {
 
         registerFlammableBlock(RegionsUnexploredBlocks.BAMBOO_LEAVES.get(), 30, 60);
         registerFlammableBlock(RegionsUnexploredBlocks.BAMBOO_LOG.get(), 5, 5);
+        registerFlammableBlock(RegionsUnexploredBlocks.STRIPPED_BAMBOO_LOG.get(), 5, 5);
         registerFlammableBlock(RegionsUnexploredBlocks.BAMBOO_LOG_LEAVES.get(), 5, 5);
 
         registerFlammableBlock(RegionsUnexploredBlocks.ALPHA_LEAVES.get(), 30, 60);
@@ -384,19 +382,20 @@ public class BlockFeatureCompat {
         registerFlammableBlock(RegionsUnexploredBlocks.WHITE_PAINTED_SLAB.get(), 5, 20);
         registerFlammableBlock(RegionsUnexploredBlocks.WHITE_PAINTED_STAIRS.get(), 5, 20);
 
-        registerFlammableBlock(RegionsUnexploredBlocks.LIGHT_GREY_PAINTED_PLANKS.get(), 5, 20);
-        registerFlammableBlock(RegionsUnexploredBlocks.LIGHT_GREY_PAINTED_SLAB.get(), 5, 20);
-        registerFlammableBlock(RegionsUnexploredBlocks.LIGHT_GREY_PAINTED_STAIRS.get(), 5, 20);
+        registerFlammableBlock(RegionsUnexploredBlocks.LIGHT_GRAY_PAINTED_PLANKS.get(), 5, 20);
+        registerFlammableBlock(RegionsUnexploredBlocks.LIGHT_GRAY_PAINTED_SLAB.get(), 5, 20);
+        registerFlammableBlock(RegionsUnexploredBlocks.LIGHT_GRAY_PAINTED_STAIRS.get(), 5, 20);
 
-        registerFlammableBlock(RegionsUnexploredBlocks.GREY_PAINTED_PLANKS.get(), 5, 20);
-        registerFlammableBlock(RegionsUnexploredBlocks.GREY_PAINTED_SLAB.get(), 5, 20);
-        registerFlammableBlock(RegionsUnexploredBlocks.GREY_PAINTED_STAIRS.get(), 5, 20);
+        registerFlammableBlock(RegionsUnexploredBlocks.GRAY_PAINTED_PLANKS.get(), 5, 20);
+        registerFlammableBlock(RegionsUnexploredBlocks.GRAY_PAINTED_SLAB.get(), 5, 20);
+        registerFlammableBlock(RegionsUnexploredBlocks.GRAY_PAINTED_STAIRS.get(), 5, 20);
 
         registerFlammableBlock(RegionsUnexploredBlocks.BLACK_PAINTED_PLANKS.get(), 5, 20);
         registerFlammableBlock(RegionsUnexploredBlocks.BLACK_PAINTED_SLAB.get(), 5, 20);
         registerFlammableBlock(RegionsUnexploredBlocks.BLACK_PAINTED_STAIRS.get(), 5, 20);
 
         //StripBlocks
+
         registerStrippableBlock(RegionsUnexploredBlocks.BAOBAB_LOG.get(), RegionsUnexploredBlocks.STRIPPED_BAOBAB_LOG.get());
         registerStrippableBlock(RegionsUnexploredBlocks.BAOBAB_WOOD.get(), RegionsUnexploredBlocks.STRIPPED_BAOBAB_WOOD.get());
         
@@ -446,26 +445,18 @@ public class BlockFeatureCompat {
         registerStrippableBlock(RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK.get(), RegionsUnexploredBlocks.SCULKWOOD_LOG.get());
 
         registerStrippableBlock(RegionsUnexploredBlocks.BAMBOO_LOG_LEAVES.get(), RegionsUnexploredBlocks.BAMBOO_LOG.get());
-        //TillBlocks//TO BE FIXED-USING EVENT INSTEAD
-        registerTillableDirts(RegionsUnexploredBlocks.FOREST_GRASS_BLOCK.get(), RegionsUnexploredBlocks.FOREST_FARMLAND.get().defaultBlockState());
-        registerTillableDirts(RegionsUnexploredBlocks.FOREST_DIRT.get(), RegionsUnexploredBlocks.FOREST_FARMLAND.get().defaultBlockState());
-        registerTillableDirts(RegionsUnexploredBlocks.FOREST_COARSE_DIRT.get(), RegionsUnexploredBlocks.FOREST_DIRT.get().defaultBlockState());
-
-        registerTillableDirts(RegionsUnexploredBlocks.ALPHA_GRASS_BLOCK.get(), Blocks.FARMLAND.defaultBlockState());
-
-        registerTillableDirts(RegionsUnexploredBlocks.PLAINS_GRASS_BLOCK.get(), RegionsUnexploredBlocks.PLAINS_FARMLAND.get().defaultBlockState());
-        registerTillableDirts(RegionsUnexploredBlocks.PLAINS_DIRT.get(), RegionsUnexploredBlocks.PLAINS_FARMLAND.get().defaultBlockState());
-        registerTillableDirts(RegionsUnexploredBlocks.PLAINS_COARSE_DIRT.get(), RegionsUnexploredBlocks.PLAINS_DIRT.get().defaultBlockState());
         //ShovelBlocks
-        registerShovelled(RegionsUnexploredBlocks.FOREST_GRASS_BLOCK.get(), RegionsUnexploredBlocks.FOREST_DIRT_PATH.get().defaultBlockState());
-        registerShovelled(RegionsUnexploredBlocks.FOREST_DIRT.get(), RegionsUnexploredBlocks.FOREST_DIRT_PATH.get().defaultBlockState());
-        registerShovelled(RegionsUnexploredBlocks.FOREST_COARSE_DIRT.get(), RegionsUnexploredBlocks.FOREST_DIRT_PATH.get().defaultBlockState());
+        registerShovelled(RegionsUnexploredBlocks.STONE_GRASS_BLOCK.get(), Blocks.STONE.defaultBlockState());
+        registerShovelled(RegionsUnexploredBlocks.VIRIDESCENT_NYLIUM.get(), Blocks.STONE.defaultBlockState());
+        registerShovelled(RegionsUnexploredBlocks.PRISMOSS.get(), Blocks.STONE.defaultBlockState());
+        registerShovelled(RegionsUnexploredBlocks.CHALK_GRASS_BLOCK.get(), RegionsUnexploredBlocks.CHALK.get().defaultBlockState());
+        registerShovelled(RegionsUnexploredBlocks.MOSSY_STONE.get(), Blocks.STONE.defaultBlockState());
 
-        registerShovelled(RegionsUnexploredBlocks.ALPHA_GRASS_BLOCK.get(), Blocks.DIRT_PATH.defaultBlockState());
+        registerShovelled(RegionsUnexploredBlocks.DEEPSLATE_GRASS_BLOCK.get(), Blocks.DEEPSLATE.defaultBlockState());
+        registerShovelled(RegionsUnexploredBlocks.DEEPSLATE_VIRIDESCENT_NYLIUM.get(), Blocks.DEEPSLATE.defaultBlockState());
+        registerShovelled(RegionsUnexploredBlocks.DEEPSLATE_PRISMOSS.get(), Blocks.DEEPSLATE.defaultBlockState());
 
-        registerShovelled(RegionsUnexploredBlocks.PLAINS_GRASS_BLOCK.get(), RegionsUnexploredBlocks.PLAINS_DIRT_PATH.get().defaultBlockState());
-        registerShovelled(RegionsUnexploredBlocks.PLAINS_DIRT.get(), RegionsUnexploredBlocks.PLAINS_DIRT_PATH.get().defaultBlockState());
-        registerShovelled(RegionsUnexploredBlocks.PLAINS_COARSE_DIRT.get(), RegionsUnexploredBlocks.PLAINS_DIRT_PATH.get().defaultBlockState());
+        registerShovelled(RegionsUnexploredBlocks.CHALK_GRASS_BLOCK.get(), RegionsUnexploredBlocks.CHALK.get().defaultBlockState());
     }
     
     public static void registerCompostableItems(float possibility, ItemLike item) {
@@ -475,11 +466,6 @@ public class BlockFeatureCompat {
     public static void registerStrippableBlock(Block log, Block strippedLog) {
         AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
         AxeItem.STRIPPABLES.put(log, strippedLog);
-    }
-
-    public static void registerTillableDirts(Block block, BlockState tilled_block) {
-        HoeItem.TILLABLES = Maps.newHashMap(HoeItem.TILLABLES);
-        HoeItem.TILLABLES.put(block, Pair.of(HoeItem::onlyIfAirAbove, HoeItem.changeIntoState(tilled_block)));
     }
 
     public static void registerShovelled(Block block, BlockState shovelledBlock) {

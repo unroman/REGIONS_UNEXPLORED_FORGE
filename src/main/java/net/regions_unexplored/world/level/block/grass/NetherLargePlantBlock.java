@@ -3,6 +3,7 @@ package net.regions_unexplored.world.level.block.grass;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -26,6 +27,11 @@ public class NetherLargePlantBlock extends FlowerBlock {
 
     protected boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {
         return state.is(BlockTags.NYLIUM) || state.is(Blocks.SOUL_SOIL) || super.mayPlaceOn(state, getter, pos);
+    }
+
+    @Override
+    public boolean canBeReplaced(BlockState state, BlockPlaceContext context) {
+        return false;
     }
 
     @Override

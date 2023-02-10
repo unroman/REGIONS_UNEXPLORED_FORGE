@@ -2,6 +2,7 @@ package net.regions_unexplored.world.level.block.placer;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -24,6 +25,13 @@ public class GrassPlacementBlock extends BushBlock {
                 || state.is(RegionsUnexploredBlocks.FOREST_GRASS_BLOCK.get())
                 || state.is(RegionsUnexploredBlocks.PLAINS_GRASS_BLOCK.get())
                 || state.is(RegionsUnexploredBlocks.CHALK_GRASS_BLOCK.get()) || state.is(Blocks.GRASS_BLOCK) || state.is(Blocks.MOSS_BLOCK);
+    }
+
+
+    @Override
+    public boolean canSurvive(BlockState p_51028_, LevelReader p_51029_, BlockPos p_51030_) {
+        BlockPos blockpos = p_51030_.below();
+        return this.mayPlaceOn(p_51029_.getBlockState(blockpos), p_51029_, blockpos);
     }
 }
 

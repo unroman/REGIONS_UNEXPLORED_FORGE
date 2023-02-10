@@ -1,25 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "bioshroom_block",
   "pattern": [
-    "01",
-    "23"
+    "00",
+    "00"
   ],
   "key": {
     "0": {
       "item": "regions_unexplored:green_bioshroom"
-    },
-    "1": {
-      "item": "regions_unexplored:green_bioshroom"
-    },
-    "2": {
-      "item": "regions_unexplored:green_bioshroom"
-    },
-    "3": {
-      "item": "regions_unexplored:green_bioshroom"
     }
   },
   "result": {
-    "item": "regions_unexplored:green_bioshroom_block",
-    "count": 1
+    "count": 1,
+    "item": "regions_unexplored:green_bioshroom_block"
   }
 }

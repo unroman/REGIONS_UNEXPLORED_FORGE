@@ -3,6 +3,7 @@ package net.regions_unexplored.data.worldgen;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.regions_unexplored.data.worldgen.placement.RuBiomePlacements;
 import net.regions_unexplored.data.worldgen.placement.RuPlacements;
 import net.regions_unexplored.data.worldgen.structures.MeadowRock;
 import net.regions_unexplored.data.worldgen.placement.RuVegetationPlacements;
@@ -54,10 +55,12 @@ public class RuBiomeDefaultFeatures {
 
     public static void addSpringVegetation(BiomeGenerationSettings.Builder p_194721_) {
         p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuPlacements.MINERAL_VEGETATION);
+        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuPlacements.MINERAL_VEGETATION_DEEPSLATE);
         p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuPlacements.MINERAL_POOL);
         p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuPlacements.TOP_DRIPSTONE);
         p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuPlacements.MINERAL_VINES);
         p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.OVERGROWN_VINES);
+        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.LUSH_DELTA_AZALEA);
     }
 
     public static void addPinkFlowers(BiomeGenerationSettings.Builder p_194721_) {

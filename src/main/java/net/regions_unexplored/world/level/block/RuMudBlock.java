@@ -5,13 +5,13 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.regions_unexplored.event.MudDry;
 
 public class RuMudBlock extends Block {
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D);
@@ -22,6 +22,16 @@ public class RuMudBlock extends Block {
 
     public VoxelShape getCollisionShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         return SHAPE;
+    }
+
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (level.getBlockState(pos.below()).canOcclude()) {
+            if ((level.getBlockState(pos.below().below())).getBlock() == Blocks.POINTED_DRIPSTONE) {
+                if (Math.random() < 0.05) {
+                    level.setBlock(pos, Blocks.CLAY.defaultBlockState(), 3);
+                }
+            }
+        }
     }
 
     public VoxelShape getBlockSupportShape(BlockState state, BlockGetter getter, BlockPos pos) {
@@ -46,7 +56,5 @@ public class RuMudBlock extends Block {
         int x = pos.getX();
         int y = pos.getY();
         int z = pos.getZ();
-
-        MudDry.execute(level, x, y, z);
     }
 }

@@ -1,25 +1,18 @@
 package net.regions_unexplored.world.level.block.grass;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.data.ForgeBlockTagsProvider;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
-
-import static net.minecraft.world.level.block.DoublePlantBlock.copyWaterloggedFrom;
 
 public class BarrelCactusBlock extends BushBlock implements net.minecraftforge.common.IForgeShearable {
     protected static final float AABB_OFFSET = 6.0F;
@@ -44,8 +37,7 @@ public class BarrelCactusBlock extends BushBlock implements net.minecraftforge.c
         return state.is(BlockTags.SAND)
                 || state.is(Blocks.SANDSTONE)
                 || state.is(Blocks.RED_SANDSTONE)
-                || state.is(RegionsUnexploredBlocks.QUICKSAND.get())
-                || state.is(RegionsUnexploredBlocks.ALPHA_SAND.get());
+                || state.is(RegionsUnexploredBlocks.QUICKSAND.get());
     }
 
     @Override

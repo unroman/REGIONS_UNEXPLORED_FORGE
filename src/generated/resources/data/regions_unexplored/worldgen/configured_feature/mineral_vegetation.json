@@ -7,13 +7,13 @@
     "ground_state": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "regions_unexplored:forest_grass_block",
+        "Name": "regions_unexplored:stone_grass_block",
         "Properties": {
           "snowy": "false"
         }
       }
     },
-    "replaceable": "#minecraft:moss_replaceable",
+    "replaceable": "#minecraft:stone_ore_replaceables",
     "surface": "floor",
     "vegetation_chance": 0.8,
     "vegetation_feature": {

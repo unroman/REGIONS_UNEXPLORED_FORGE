@@ -70,16 +70,20 @@
           "data": {
             "Name": "regions_unexplored:bamboo_log",
             "Properties": {
-              "axis": "y"
+              "axis": "y",
+              "leaves": "false",
+              "waterlogged": "false"
             }
           },
           "weight": 3
         },
         {
           "data": {
-            "Name": "regions_unexplored:bamboo_log_leaves",
+            "Name": "regions_unexplored:bamboo_log",
             "Properties": {
-              "axis": "y"
+              "axis": "y",
+              "leaves": "true",
+              "waterlogged": "false"
             }
           },
           "weight": 1

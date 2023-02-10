@@ -1,6 +1,6 @@
 {
   "variants": {
-    "snowy=false": [
+    "": [
       {
         "model": "regions_unexplored:block/deepslate_prismoss"
       },
@@ -16,9 +16,6 @@
         "model": "regions_unexplored:block/deepslate_prismoss",
         "y": 270
       }
-    ],
-    "snowy=true": {
-      "model": "regions_unexplored:block/deepslate_prismoss_snow"
-    }
+    ]
   }
 }

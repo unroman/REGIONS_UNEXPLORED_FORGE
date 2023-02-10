@@ -4,13 +4,26 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.NetherFeatures;
 import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.RandomSpreadFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.BendingTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.data.worldgen.features.RuBiomeFeatures;
@@ -490,6 +503,7 @@ public class RuBiomePlacements {
     public static final ResourceKey<PlacedFeature> FLOODED_PLAINS_GRASS = RuPlacementUtils.createKey("flooded_plains_grass");
     public static final ResourceKey<PlacedFeature> FLOODED_PLAINS_TALL_GRASS = RuPlacementUtils.createKey("flooded_plains_tall_grass");
 
+    public static final ResourceKey<PlacedFeature> LUSH_DELTA_AZALEA = RuPlacementUtils.createKey("lush_delta_azalea");
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
@@ -965,6 +979,8 @@ public class RuBiomePlacements {
         final Holder<ConfiguredFeature<?, ?>> FLOODED_PLAINS_GRASS = featureGetter.getOrThrow(VegetationFeatures.PATCH_GRASS);
         final Holder<ConfiguredFeature<?, ?>> FLOODED_PLAINS_TALL_GRASS = featureGetter.getOrThrow(VegetationFeatures.PATCH_TALL_GRASS);
 
+        final Holder<ConfiguredFeature<?, ?>> LUSH_DELTA_AZALEA = featureGetter.getOrThrow(RuTreeFeatures.LUSH_DELTA_AZALEA);
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         register(context, RuBiomePlacements.GIANT_BIOSHROOMS, GIANT_BIOSHROOMS, List.of(CountOnEveryLayerPlacement.of(150), RuFeatures.RANGE_BOTTOM_120, BiomeFilter.biome()));
@@ -1435,6 +1451,7 @@ public class RuBiomePlacements {
         register(context, RuBiomePlacements.FLOODED_PLAINS_GRASS, FLOODED_PLAINS_GRASS,   List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 15), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         register(context, RuBiomePlacements.FLOODED_PLAINS_TALL_GRASS, FLOODED_PLAINS_TALL_GRASS,   List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
 
+        register(context, RuBiomePlacements.LUSH_DELTA_AZALEA, LUSH_DELTA_AZALEA, List.of(CountOnEveryLayerPlacement.of(64), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
     }
 
     protected static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> feature, PlacementModifier... placement) {

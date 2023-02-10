@@ -2,6 +2,7 @@ package net.regions_unexplored.world.level.block.grass;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Blocks;
@@ -30,6 +31,11 @@ public class SculkSaplingBlock extends SaplingBlock {
         BlockPos blockpos = pos.below();
 
         return this.mayPlaceOn(level.getBlockState(blockpos), level, blockpos);
+    }
+
+    @Override
+    public boolean canBeReplaced(BlockState state, BlockPlaceContext context) {
+        return false;
     }
 
     protected boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {

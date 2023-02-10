@@ -13,7 +13,7 @@
       "fallback": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "regions_unexplored:forest_mud"
+          "Name": "minecraft:mud"
         }
       },
       "rules": []
@@ -22,6 +22,7 @@
       "type": "minecraft:matching_blocks",
       "blocks": [
         "regions_unexplored:forest_mud",
+        "minecraft:mud",
         "regions_unexplored:forest_dirt",
         "regions_unexplored:plains_dirt",
         "minecraft:dirt",

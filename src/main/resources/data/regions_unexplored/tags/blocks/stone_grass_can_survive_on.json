@@ -6,6 +6,8 @@
     "#minecraft:base_stone_nether",
     "#forge:ores",
     "minecraft:calcite",
+    "regions_unexplored:chalk",
+    "regions_unexplored:chalk_grass_block",
     "minecraft:dripstone_block",
     "minecraft:gravel",
     "minecraft:gilded_blackstone",

@@ -6,6 +6,8 @@ public class RegionsUnexploredCommonConfigs {
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec SPEC;
 
+    public static final ForgeConfigSpec.ConfigValue<Boolean> TOGGLE_CUSTOM_DIRTS;
+
     public static final ForgeConfigSpec.ConfigValue<Integer> REGION_NORTHERN_LIKE_WEIGHT;
     public static final ForgeConfigSpec.ConfigValue<Integer> REGION_TEMPERATE_LIKE_WEIGHT;
     public static final ForgeConfigSpec.ConfigValue<Integer> REGION_OVERSEAS_LIKE_WEIGHT;
@@ -93,6 +95,12 @@ public class RegionsUnexploredCommonConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> TOGGLE_CORRUPTED_HOLT;
     static {
         BUILDER.comment("Config for Regions Unexplored!");
+
+
+        BUILDER.push("worldgen_options");
+        TOGGLE_CUSTOM_DIRTS = BUILDER.define("toggle_custom_dirt", true);
+
+        BUILDER.pop();
         BUILDER.push("region_weights");
         REGION_NORTHERN_LIKE_WEIGHT = BUILDER.comment("Sets Terrablender region weight for Northern Like region.")
                 .defineInRange("northern_like_region_weight", 11, 0, 100000);

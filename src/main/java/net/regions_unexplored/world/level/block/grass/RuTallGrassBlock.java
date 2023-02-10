@@ -20,13 +20,19 @@ import static net.minecraft.world.level.block.DoublePlantBlock.copyWaterloggedFr
 public class RuTallGrassBlock extends BushBlock implements BonemealableBlock, net.minecraftforge.common.IForgeShearable {
     protected static final float AABB_OFFSET = 6.0F;
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
+    protected static final VoxelShape SHAPE_MEDIUM_GRASS = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 9.0D, 14.0D);
 
     public RuTallGrassBlock(BlockBehaviour.Properties properties) {
         super(properties);
     }
 
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
-        return SHAPE;
+        if(state==RegionsUnexploredBlocks.MEDIUM_GRASS.get().defaultBlockState()){
+            return SHAPE_MEDIUM_GRASS;
+        }
+        else{
+            return SHAPE;
+        }
     }
 
     public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean b) {

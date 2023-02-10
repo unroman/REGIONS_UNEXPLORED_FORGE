@@ -69,6 +69,7 @@ public class RuPlacements {
     //OTHER
     public static final ResourceKey<PlacedFeature>  MAGMA_PATCH = RuPlacementUtils.createKey("magma_patch");
     public static final ResourceKey<PlacedFeature>  MINERAL_VEGETATION = RuPlacementUtils.createKey("mineral_vegetation");
+    public static final ResourceKey<PlacedFeature>  MINERAL_VEGETATION_DEEPSLATE = RuPlacementUtils.createKey("mineral_vegetation_deepslate");
     public static final ResourceKey<PlacedFeature>  MINERAL_POOL = RuPlacementUtils.createKey("mineral_pool");
     public static final ResourceKey<PlacedFeature>  TOP_DRIPSTONE = RuPlacementUtils.createKey("top_dripstone");
     public static final ResourceKey<PlacedFeature>  MINERAL_VINES = RuPlacementUtils.createKey("mineral_vines");
@@ -110,6 +111,7 @@ public class RuPlacements {
         //OTHER
         final Holder<ConfiguredFeature<?, ?>>  MAGMA_PATCH = featureGetter.getOrThrow(RuFeatures.MAGMA_DELTA);
         final Holder<ConfiguredFeature<?, ?>>  MINERAL_VEGETATION = featureGetter.getOrThrow(RuFeatures.MINERAL_VEGETATION);
+        final Holder<ConfiguredFeature<?, ?>>  MINERAL_VEGETATION_DEEPSLATE = featureGetter.getOrThrow(RuFeatures.MINERAL_VEGETATION_DEEPSLATE);
         final Holder<ConfiguredFeature<?, ?>>  MINERAL_POOL = featureGetter.getOrThrow(RuFeatures.MINERAL_POOL);
         final Holder<ConfiguredFeature<?, ?>>  TOP_DRIPSTONE = featureGetter.getOrThrow(RuFeatures.TOP_DRIPSTONE);
         final Holder<ConfiguredFeature<?, ?>>  MINERAL_VINES = featureGetter.getOrThrow(CaveFeatures.CAVE_VINE);
@@ -150,6 +152,7 @@ public class RuPlacements {
         //OTHER
         register(context, RuPlacements.MAGMA_PATCH, MAGMA_PATCH, CountOnEveryLayerPlacement.of(40), BiomeFilter.biome());
         register(context, RuPlacements.MINERAL_VEGETATION, MINERAL_VEGETATION, CountPlacement.of(25), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(1)), BiomeFilter.biome());
+        register(context, RuPlacements.MINERAL_VEGETATION_DEEPSLATE, MINERAL_VEGETATION_DEEPSLATE, CountPlacement.of(25), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(1)), BiomeFilter.biome());
         register(context, RuPlacements.MINERAL_POOL, MINERAL_POOL, CountPlacement.of(70), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(1)), BiomeFilter.biome());
         register(context, RuPlacements.TOP_DRIPSTONE, TOP_DRIPSTONE, CountPlacement.of(UniformInt.of(192, 256)), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, CountPlacement.of(UniformInt.of(1, 5)), RandomOffsetPlacement.of(ClampedNormalInt.of(0.0F, 3.0F, -10, 10), ClampedNormalInt.of(0.0F, 0.6F, -2, 2)), BiomeFilter.biome());
         register(context, RuPlacements.MINERAL_VINES, MINERAL_VINES, CountPlacement.of(155), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.hasSturdyFace(Direction.DOWN), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(-1)), BiomeFilter.biome());

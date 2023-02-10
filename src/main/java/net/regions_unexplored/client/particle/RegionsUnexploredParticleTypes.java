@@ -10,6 +10,6 @@ import net.regions_unexplored.RegionsUnexploredMod;
 public class RegionsUnexploredParticleTypes {
     public static final DeferredRegister<ParticleType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES,
             RegionsUnexploredMod.MOD_ID);
-    public static final RegistryObject<ParticleType<?>> MAUVE = REGISTRY.register("mauve", () -> new SimpleParticleType(false));
+    public static final RegistryObject<ParticleType<?>> MAUVE = REGISTRY.register("mauve", () -> new SimpleParticleType(true));
     public static final RegistryObject<ParticleType<?>> MYCOTOXIC_SPORE = REGISTRY.register("mycotoxic_spore", () -> new SimpleParticleType(false));
 }

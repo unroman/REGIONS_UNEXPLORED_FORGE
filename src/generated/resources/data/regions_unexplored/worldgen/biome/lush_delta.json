@@ -303,10 +303,12 @@
       "regions_unexplored:lush_delta_trees",
       "minecraft:glow_lichen",
       "regions_unexplored:mineral_vegetation",
+      "regions_unexplored:mineral_vegetation_deepslate",
       "regions_unexplored:mineral_pool",
       "regions_unexplored:top_dripstone",
       "regions_unexplored:mineral_vines",
       "regions_unexplored:overgrown_vines",
+      "regions_unexplored:lush_delta_azalea",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal"
     ],
@@ -396,5 +398,5 @@
     ],
     "water_creature": []
   },
-  "temperature": 0.7
+  "temperature": 1.125
 }

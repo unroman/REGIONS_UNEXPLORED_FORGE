@@ -25,7 +25,6 @@ public class DuckweedBlock extends WaterlilyBlock {
 
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        super.entityInside(state, level, pos, entity);
     }
 
     @Override

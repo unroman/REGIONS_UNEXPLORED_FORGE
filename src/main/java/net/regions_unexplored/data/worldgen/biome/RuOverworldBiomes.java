@@ -63,7 +63,8 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
 
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).temperature(2f).downfall(0.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).temperature(2f)
+                .downfall(0.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
     public static Biome lushDelta(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
@@ -88,7 +89,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.7f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1.125f)
                 .downfall(0.8f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -108,7 +109,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
         BiomeDefaultFeatures.addInfestedStone(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.65f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.8f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -133,7 +134,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
         BiomeDefaultFeatures.addInfestedStone(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.8f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.925f)
                 .downfall(0.9f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -161,7 +162,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.8f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1.25f)
                 .downfall(0.9f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -189,7 +190,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
         BiomeDefaultFeatures.addInfestedStone(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.35f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.375f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -218,7 +219,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
         BiomeDefaultFeatures.addInfestedStone(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.275f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.28f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -246,7 +247,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
         BiomeDefaultFeatures.addInfestedStone(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.65f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -277,7 +278,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
         BiomeDefaultFeatures.addInfestedStone(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.775f)
                 .downfall(0.55f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -308,7 +309,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         RuBiomeDefaultFeatures.addSeagrass(biomeBuilder);
         BiomeDefaultFeatures.addLukeWarmKelp(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.75f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -335,7 +336,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         RuBiomeDefaultFeatures.addSeagrass(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.3f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.4f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -359,7 +360,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         RuBiomeDefaultFeatures.addSeagrass(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.55f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.85f)
                 .downfall(0.775f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -379,7 +380,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.4f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -411,7 +412,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.3f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.5f)
                 .downfall(0.4f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -443,14 +444,14 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.4f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
                 .downfall(0.5f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
     public static Biome fen(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-11629645).waterFogColor(-12884349)
-                .skyColor(7972607).foliageColorOverride(-8022710).grassColorOverride(-5918883).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .skyColor(7972607).foliageColorOverride(8754506).grassColorOverride(10858333).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
 
         MobSpawnSettings.Builder spawnBuilder = (new MobSpawnSettings.Builder()).addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.SALMON, 5, 1, 5));
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 8, 4, 4));
@@ -476,7 +477,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addDuckweed(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.75f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.85f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -512,7 +513,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.775f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.825f)
                 .downfall(0.765f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -561,7 +562,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.975f)
                 .downfall(0.8f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -587,7 +588,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addRareBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.8f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.85f)
                 .downfall(0.45f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -649,7 +650,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addRareBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.5f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.575f)
                 .downfall(0.4f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -707,7 +708,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addJungleMelons(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.95f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1f)
                 .downfall(1.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -739,7 +740,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addJungleMelons(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.9f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1f)
                 .downfall(0.95f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -775,7 +776,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         RuBiomeDefaultFeatures.addSeagrass(biomeBuilder);
         BiomeDefaultFeatures.addLukeWarmKelp(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.95f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1.05f)
                 .downfall(0.95f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -943,7 +944,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addPinkFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.5f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
                 .downfall(0.5f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1009,7 +1010,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.4f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.5f)
                 .downfall(0.4f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1036,7 +1037,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.35f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.775f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1063,7 +1064,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1.5f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1.35f)
                 .downfall(0.25f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1239,7 +1240,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.45f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.75f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1261,7 +1262,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.7f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.85f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1295,7 +1296,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.4f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.5f)
                 .downfall(0.4f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1329,7 +1330,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.35f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.45f)
                 .downfall(0.3f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1350,7 +1351,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMonsterRoom(biomeBuilder);
         BiomeDefaultFeatures.addSurfaceFreezing(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.75f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1381,7 +1382,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.55f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1472,7 +1473,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.95f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1f)
                 .downfall(0.8f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1543,7 +1544,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addSparseLily(biomeBuilder);
         RuBiomeDefaultFeatures.addMuddyMarsh(biomeBuilder);
         BiomeDefaultFeatures.addSwampExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1581,7 +1582,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addBayouCattail(biomeBuilder);
         BiomeDefaultFeatures.addSwampExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.95f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1610,7 +1611,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuBamboo(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addJungleMelons(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.8f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.875f)
                 .downfall(0.8f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1632,7 +1633,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.85f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1663,7 +1664,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.4f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
                 .downfall(0.4f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1698,7 +1699,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addPinkFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.65f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.95f)
                 .downfall(0.8f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1729,7 +1730,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.775f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1787,7 +1788,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addJungleMelons(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1.1f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1.15f)
                 .downfall(0.85f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1847,7 +1848,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.3f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.335f)
                 .downfall(0.65f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -1882,7 +1883,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addSparseJungleMelons(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.8f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.975f)
                 .downfall(0.9f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -2150,7 +2151,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addPinkFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.45f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.825f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -2176,7 +2177,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         RuBiomeDefaultFeatures.addMarsh(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.45f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.85f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 }

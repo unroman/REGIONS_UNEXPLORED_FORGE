@@ -7,11 +7,17 @@
     "regions_unexplored:dead_steppe_shrub",
     "regions_unexplored:small_desert_shrub",
     "regions_unexplored:sandy_grass",
+    "regions_unexplored:frozen_grass",
     "regions_unexplored:seeded_grass",
     "regions_unexplored:stone_bud",
     "regions_unexplored:seeded_tall_grass",
     "regions_unexplored:tall_steppe_grass",
     "regions_unexplored:sandy_tall_grass",
-    "regions_unexplored:redstone_bud"
+    "regions_unexplored:redstone_bud",
+    "regions_unexplored:tsubaki",
+    "regions_unexplored:tassel",
+    "regions_unexplored:barley",
+    "regions_unexplored:cattail",
+    "regions_unexplored:prismoss_sprout"
   ]
 }

@@ -87,9 +87,16 @@ public class AlphaGrassBlock extends SpreadingAlphaDirtBlock implements Bonemeal
    @Override
    @Nullable
    public BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction action, boolean simulate) {
+      if (ToolActions.SHOVEL_FLATTEN == action && context.getItemInHand().canPerformAction(ToolActions.SHOVEL_FLATTEN)) {
+         Block block = state.getBlock();
+         if (block == RegionsUnexploredBlocks.ALPHA_GRASS_BLOCK.get()) {
+            return Blocks.DIRT_PATH.defaultBlockState();}
+         else{
+            return null;
+         }
 
+      }
       if (ToolActions.HOE_TILL == action && context.getItemInHand().canPerformAction(ToolActions.HOE_TILL)) {
-         // Logic copied from HoeItem#TILLABLES; needs to be kept in sync during updating
          Block block = state.getBlock();
          if (block == RegionsUnexploredBlocks.ALPHA_GRASS_BLOCK.get()) {
             return Blocks.FARMLAND.defaultBlockState();}
