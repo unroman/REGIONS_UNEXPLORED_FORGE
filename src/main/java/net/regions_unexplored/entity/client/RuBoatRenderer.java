@@ -41,8 +41,8 @@ public class RuBoatRenderer extends BoatRenderer
         }
     }
 
-    private static ModelLayerLocation getModel(String name, String model) {
-        return new ModelLayerLocation(new ResourceLocation(RegionsUnexploredMod.MOD_ID, name), model);
+    private static String getTextureLocation(RuBoat.ModelType type, boolean chest) {
+        return chest ? "textures/entity/chest_boat/" + type.getName() + ".png" : "textures/entity/boat/" + type.getName() + ".png";
     }
 
     private BoatModel createBoatModel(EntityRendererProvider.Context context, RuBoat.ModelType type, boolean hasChest) {
@@ -51,15 +51,15 @@ public class RuBoatRenderer extends BoatRenderer
         return hasChest ? new ChestBoatModel(baked) : new BoatModel(baked);
     }
 
+    private static ModelLayerLocation getModel(String name, String model) {
+        return new ModelLayerLocation(new ResourceLocation(RegionsUnexploredMod.MOD_ID, name), model);
+    }
+
     public static ModelLayerLocation boatTextureLocation(RuBoat.ModelType type) {
         return getModel("boat/" + type.getName(), "main");
     }
 
     public static ModelLayerLocation chestBoatTextureLocation(RuBoat.ModelType type) {
         return getModel("chest_boat/" + type.getName(), "main");
-    }
-
-    private static String getTextureLocation(RuBoat.ModelType type, boolean chest) {
-        return chest ? "textures/entity/chest_boat/" + type.getName() + ".png" : "textures/entity/boat/" + type.getName() + ".png";
     }
 }

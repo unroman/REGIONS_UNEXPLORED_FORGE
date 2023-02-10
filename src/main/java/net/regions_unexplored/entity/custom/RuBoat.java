@@ -6,7 +6,6 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
@@ -30,21 +29,37 @@ public class RuBoat extends Boat {
 
     public RuBoat(Level level, double x, double y, double z) {
         this((EntityType<RuBoat>) RegionsUnexploredEntities.BOAT.get(), level);
-        this.setPos(x, y, z);
-        this.xo = x;
-        this.yo = y;
-        this.zo = z;
+        this.setPos(x, y, z); this.xo = x; this.yo = y; this.zo = z;
     }
 
     @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket()
-    {
+    public Item getDropItem() {
+        return switch (ModelType.byId(this.entityData.get(DATA_ID_TYPE))) {
+            case BAOBAB -> RegionsUnexploredItems.BAOBAB_BOAT.get();
+            case BLACKWOOD -> RegionsUnexploredItems.BLACKWOOD_BOAT.get();
+            case CHERRY -> RegionsUnexploredItems.CHERRY_BOAT.get();
+            case CYPRESS -> RegionsUnexploredItems.CYPRESS_BOAT.get();
+            case DEAD -> RegionsUnexploredItems.DEAD_BOAT.get();
+            case EUCALYPTUS -> RegionsUnexploredItems.EUCALYPTUS_BOAT.get();
+            case JOSHUA -> RegionsUnexploredItems.JOSHUA_BOAT.get();
+            case LARCH -> RegionsUnexploredItems.LARCH_BOAT.get();
+            case MAPLE -> RegionsUnexploredItems.MAPLE_BOAT.get();
+            case MAUVE -> RegionsUnexploredItems.MAUVE_BOAT.get();
+            case PALM -> RegionsUnexploredItems.PALM_BOAT.get();
+            case PINE -> RegionsUnexploredItems.PINE_BOAT.get();
+            case REDWOOD -> RegionsUnexploredItems.REDWOOD_BOAT.get();
+            case SCULKWOOD -> RegionsUnexploredItems.SCULKWOOD_BOAT.get();
+            case WILLOW -> RegionsUnexploredItems.WILLOW_BOAT.get();
+        };
+    }
+
+    @Override
+    public Packet<ClientGamePacketListener> getAddEntityPacket() {
         return new ClientboundAddEntityPacket(this);
     }
 
     @Override
-    protected void addAdditionalSaveData(CompoundTag tag)
-    {
+    protected void addAdditionalSaveData(CompoundTag tag) {
         tag.putString("model", getModel().getName());
     }
 
@@ -56,33 +71,25 @@ public class RuBoat extends Boat {
     }
 
     @Override
-    protected void checkFallDamage(double y, boolean bool, BlockState state, BlockPos pos) {
+    protected void checkFallDamage(double distance, boolean bool, BlockState state, BlockPos pos) {
         this.lastYd = this.getDeltaMovement().y;
-        if (!this.isPassenger())
-        {
-            if (bool)
-            {
-                if (this.fallDistance > 3.0F)
-                {
-                    if (this.status != Boat.Status.ON_LAND)
-                    {
+        if (!this.isPassenger()) {
+            if (bool) {
+                if (this.fallDistance > 3.0F) {
+                    if (this.status != Boat.Status.ON_LAND) {
                         this.resetFallDistance();
                         return;
                     }
 
                     this.causeFallDamage(this.fallDistance, 1.0F, DamageSource.FALL);
-                    if (!this.level.isClientSide && !this.isRemoved())
-                    {
+                    if (!this.level.isClientSide && !this.isRemoved()) {
                         this.kill();
-                        if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS))
-                        {
-                            for (int i = 0; i < 3; ++i)
-                            {
-                                this.spawnAtLocation(this.getModel().getPlanks());
+                        if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+                            for(int i = 0; i < 3; ++i) {
+                                this.spawnAtLocation(this.getVariant().getPlanks());
                             }
 
-                            for (int j = 0; j < 2; ++j)
-                            {
+                            for(int j = 0; j < 2; ++j) {
                                 this.spawnAtLocation(Items.STICK);
                             }
                         }
@@ -90,74 +97,34 @@ public class RuBoat extends Boat {
                 }
 
                 this.resetFallDistance();
+            } else if (!this.canBoatInFluid(this.level.getFluidState(this.blockPosition().below())) && distance < 0.0D) {
+                this.fallDistance -= (float)distance;
             }
-            else if (!this.level.getFluidState(this.blockPosition().below()).is(FluidTags.WATER) && y < 0.0D)
-            {
-                this.fallDistance -= (float)y;
-            }
+
         }
     }
 
-    @Override
-    public Item getDropItem() {
-        switch (ModelType.byId(this.entityData.get(DATA_ID_TYPE))) {
-            case BAOBAB:
-                return RegionsUnexploredItems.BAOBAB_BOAT.get();
-            case BLACKWOOD:
-                return RegionsUnexploredItems.BLACKWOOD_BOAT.get();
-            case CHERRY:
-                return RegionsUnexploredItems.CHERRY_BOAT.get();
-            case CYPRESS:
-                return RegionsUnexploredItems.CYPRESS_BOAT.get();
-            case DEAD:
-                return RegionsUnexploredItems.DEAD_BOAT.get();
-            case EUCALYPTUS:
-                return RegionsUnexploredItems.EUCALYPTUS_BOAT.get();
-            case JOSHUA:
-                return RegionsUnexploredItems.JOSHUA_BOAT.get();
-            case LARCH:
-                return RegionsUnexploredItems.LARCH_BOAT.get();
-            case MAPLE:
-                return RegionsUnexploredItems.MAPLE_BOAT.get();
-            case MAUVE:
-                return RegionsUnexploredItems.MAUVE_BOAT.get();
-            case PALM:
-                return RegionsUnexploredItems.PALM_BOAT.get();
-            case PINE:
-                return RegionsUnexploredItems.PINE_BOAT.get();
-            case REDWOOD:
-                return RegionsUnexploredItems.REDWOOD_BOAT.get();
-            case SCULKWOOD:
-                return RegionsUnexploredItems.SCULKWOOD_BOAT.get();
-            case WILLOW:
-                return RegionsUnexploredItems.WILLOW_BOAT.get();
-        }
-        return Items.OAK_BOAT;
+    public void setModel(ModelType model) {
+        this.entityData.set(DATA_ID_TYPE, model.ordinal());
     }
 
-    public void setModel(ModelType type)
-    {
-        this.entityData.set(DATA_ID_TYPE, type.ordinal());
-    }
-
-    public ModelType getModel()
-    {
+    public ModelType getModel() {
         return ModelType.byId(this.entityData.get(DATA_ID_TYPE));
     }
 
     @Deprecated
     @Override
-    public void setVariant(Type vanillaType) {}
+    public void setVariant(Type type) {
+
+    }
 
     @Deprecated
     @Override
-    public Type getVariant()
-    {
+    public Type getVariant() {
         return Type.OAK;
     }
 
-    public enum ModelType
-    {
+    public enum ModelType {
         BAOBAB("baobab", RegionsUnexploredBlocks.BAOBAB_PLANKS.get()),
         BLACKWOOD("blackwood", RegionsUnexploredBlocks.BLACKWOOD_PLANKS.get()),
         CHERRY("cherry", RegionsUnexploredBlocks.CHERRY_PLANKS.get()),
@@ -177,19 +144,16 @@ public class RuBoat extends Boat {
         private final String name;
         private final Block planks;
 
-        ModelType(String name, Block planks)
-        {
+        ModelType(String name, Block planks) {
             this.name = name;
             this.planks = planks;
         }
 
-        public String getName()
-        {
+        public String getName() {
             return this.name;
         }
 
-        public Block getPlanks()
-        {
+        public Block getPlanks() {
             return this.planks;
         }
 
@@ -197,16 +161,14 @@ public class RuBoat extends Boat {
             return this.name;
         }
 
-        public static ModelType byId(int id)
-        {
-            ModelType[] type = values();
-            return type[id < 0 || id >= type.length ? 0 : id];
+        public static ModelType byId(int id) {
+            ModelType[] model = values();
+            return model[id < 0 || id >= model.length ? 0 : id];
         }
 
-        public static ModelType byName(String aName)
-        {
-            ModelType[] type = values();
-            return Arrays.stream(type).filter(t -> t.getName().equals(aName)).findFirst().orElse(type[0]);
+        public static ModelType byName(String name) {
+            ModelType[] model = values();
+            return Arrays.stream(model).filter(t -> t.getName().equals(name)).findFirst().orElse(model[0]);
         }
     }
 }
