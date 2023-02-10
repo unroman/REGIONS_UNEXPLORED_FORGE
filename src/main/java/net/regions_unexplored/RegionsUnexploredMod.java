@@ -964,12 +964,19 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.CATTAIL,
                 RegionsUnexploredBlocks.TASSEL,
                 RegionsUnexploredBlocks.TSUBAKI,
-                RegionsUnexploredBlocks.TALL_SILVER_BIRCH_SAPLING,
-                RegionsUnexploredBlocks.TALL_LARCH_SAPLING,
+                RegionsUnexploredBlocks.TALL_EUCALYPTUS_SAPLING,
+                RegionsUnexploredBlocks.TALL_JOSHUA_SAPLING,
                 RegionsUnexploredBlocks.TALL_GOLDEN_LARCH_SAPLING,
-                RegionsUnexploredBlocks.TALL_AUTUMNAL_SAPLING,
+                RegionsUnexploredBlocks.TALL_LARCH_SAPLING,
+                RegionsUnexploredBlocks.TALL_MAPLE_SAPLING,
+                RegionsUnexploredBlocks.TALL_ORANGE_MAPLE_SAPLING,
+                RegionsUnexploredBlocks.TALL_RED_MAPLE_SAPLING,
+                RegionsUnexploredBlocks.TALL_MAUVE_SAPLING,
+                RegionsUnexploredBlocks.TALL_LARCH_SAPLING,
                 RegionsUnexploredBlocks.TALL_PINE_SAPLING,
-                RegionsUnexploredBlocks.TALL_REDWOOD_SAPLING
+                RegionsUnexploredBlocks.TALL_REDWOOD_SAPLING,
+                RegionsUnexploredBlocks.TALL_SILVER_BIRCH_SAPLING,
+                RegionsUnexploredBlocks.TALL_SPRUCE_SAPLING
         );
 
         event.registerCreativeModeTab(new ResourceLocation(RegionsUnexploredMod.MOD_ID, "natural"), builder -> {

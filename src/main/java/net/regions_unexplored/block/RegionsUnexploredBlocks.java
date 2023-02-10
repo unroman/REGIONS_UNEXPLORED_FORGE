@@ -153,15 +153,18 @@ public class RegionsUnexploredBlocks {
     public static final RegistryObject<Block> BAMBOO_LOG_LEAVES = registerBlock("bamboo_log_leaves", () -> new BambooLogBlock());
     //TALL_SAPLINGS
     //TODO add missing saplings
-    public static final RegistryObject<Block> TALL_SPRUCE_SAPLING = registerBlock("tall_spruce_sapling", () -> new TallSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
-    public static final RegistryObject<Block> TALL_PINE_SAPLING = registerBlock("tall_pine_sapling", () -> new TallSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
-    public static final RegistryObject<Block> TALL_SILVER_BIRCH_SAPLING = registerBlock("tall_silver_birch_sapling", () -> new TallSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
+    public static final RegistryObject<Block> TALL_EUCALYPTUS_SAPLING = registerBlock("tall_eucalyptus_sapling", () -> new RuDoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
+    public static final RegistryObject<Block> TALL_JOSHUA_SAPLING = registerBlock("tall_joshua_sapling", () -> new RuDoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
     public static final RegistryObject<Block> TALL_GOLDEN_LARCH_SAPLING = registerBlock("tall_golden_larch_sapling", () -> new TallSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
     public static final RegistryObject<Block> TALL_LARCH_SAPLING = registerBlock("tall_larch_sapling", () -> new TallSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
     public static final RegistryObject<Block> TALL_MAPLE_SAPLING = registerBlock("tall_maple_sapling", () -> new TallSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
-    public static final RegistryObject<Block> TALL_ORANGE_MAPLE_SAPLING = registerBlock("tall_maple_sapling", () -> new TallSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
+    public static final RegistryObject<Block> TALL_ORANGE_MAPLE_SAPLING = registerBlock("tall_orange_maple_sapling", () -> new TallSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
     public static final RegistryObject<Block> TALL_RED_MAPLE_SAPLING = registerBlock("tall_red_maple_sapling", () -> new TallSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
+    public static final RegistryObject<Block> TALL_MAUVE_SAPLING = registerBlock("tall_mauve_sapling", () -> new TallSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
+    public static final RegistryObject<Block> TALL_PINE_SAPLING = registerBlock("tall_pine_sapling", () -> new TallSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
     public static final RegistryObject<Block> TALL_REDWOOD_SAPLING = registerBlock("tall_redwood_sapling", () -> new RuDoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
+    public static final RegistryObject<Block> TALL_SILVER_BIRCH_SAPLING = registerBlock("tall_silver_birch_sapling", () -> new TallSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
+    public static final RegistryObject<Block> TALL_SPRUCE_SAPLING = registerBlock("tall_spruce_sapling", () -> new TallSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
     //BRANCHES_DONE
     public static final RegistryObject<Block> BAOBAB_BRANCH = registerBlock("baobab_branch", () -> new BranchBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().sound(SoundType.GRASS).strength(1.0F, 1.5F).dynamicShape()));
     public static final RegistryObject<Block> BIRCH_BRANCH = registerBlock("birch_branch", () -> new BranchBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().sound(SoundType.GRASS).strength(1.0F, 1.5F).dynamicShape()));
@@ -298,7 +301,6 @@ public class RegionsUnexploredBlocks {
     public static final RegistryObject<Block> STRIPPED_BAOBAB_LOG = registerBlock("stripped_baobab_log", () -> log(MaterialColor.WOOD, MaterialColor.WOOD));
     public static final RegistryObject<Block> BAOBAB_WOOD = registerBlock("baobab_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_LIGHT_GRAY).strength(2.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> STRIPPED_BAOBAB_WOOD = registerBlock("stripped_baobab_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD)));
-    //TODO revamp Baobab Planks Texture
     public static final RegistryObject<Block> BAOBAB_PLANKS = registerBlock("baobab_planks", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> BAOBAB_STAIRS = registerBlock("baobab_stairs", () -> woodStairs(MaterialColor.WOOD));
     public static final RegistryObject<Block> BAOBAB_SLAB = registerBlock("baobab_slab", () -> woodSlab(MaterialColor.WOOD));
@@ -488,12 +490,10 @@ public class RegionsUnexploredBlocks {
     public static final RegistryObject<Block> PINE_SIGN = BLOCKS.register("pine_sign", () -> new RuStandingSignBlock(BlockBehaviour.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), RuWoodTypes.PINE));
     public static final RegistryObject<Block> PINE_WALL_SIGN = BLOCKS.register("pine_wall_sign", () -> new RuWallSignBlock(BlockBehaviour.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD).dropsLike(PINE_SIGN.get()), RuWoodTypes.PINE));
     //REDWOOD_BLOCKS
-    //TODO revamp Redwood Log Top Textures (stripped as well)
     public static final RegistryObject<Block> REDWOOD_LOG = registerBlock("redwood_log", () -> log(MaterialColor.WOOD, MaterialColor.WOOD));
     public static final RegistryObject<Block> STRIPPED_REDWOOD_LOG = registerBlock("stripped_redwood_log", () -> log(MaterialColor.WOOD, MaterialColor.WOOD));
     public static final RegistryObject<Block> REDWOOD_WOOD = registerBlock("redwood_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> STRIPPED_REDWOOD_WOOD = registerBlock("stripped_redwood_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD)));
-    //TODO revamp Redwood Planks Texture
     public static final RegistryObject<Block> REDWOOD_PLANKS = registerBlock("redwood_planks", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> REDWOOD_STAIRS = registerBlock("redwood_stairs", () -> woodStairs(MaterialColor.WOOD));
     public static final RegistryObject<Block> REDWOOD_SLAB = registerBlock("redwood_slab", () -> woodSlab(MaterialColor.WOOD));
@@ -510,15 +510,12 @@ public class RegionsUnexploredBlocks {
     public static final RegistryObject<Block> STRIPPED_WILLOW_LOG = registerBlock("stripped_willow_log", () -> log(MaterialColor.WOOD, MaterialColor.WOOD));
     public static final RegistryObject<Block> WILLOW_WOOD = registerBlock("willow_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> STRIPPED_WILLOW_WOOD = registerBlock("stripped_willow_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD)));
-    //TODO revamp Willow Planks Texture
     public static final RegistryObject<Block> WILLOW_PLANKS = registerBlock("willow_planks", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> WILLOW_STAIRS = registerBlock("willow_stairs", () -> woodStairs(MaterialColor.WOOD));
     public static final RegistryObject<Block> WILLOW_SLAB = registerBlock("willow_slab", () -> woodSlab(MaterialColor.WOOD));
     public static final RegistryObject<Block> WILLOW_FENCE = registerBlock("willow_fence", () -> woodFence(MaterialColor.WOOD));
-    //TODO revamp Willow Door Texture
     public static final RegistryObject<Block> WILLOW_DOOR = registerBlock("willow_door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(3.0F).sound(SoundType.WOOD).noOcclusion(), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN));
     public static final RegistryObject<Block> WILLOW_FENCE_GATE = registerBlock("willow_fence_gate", () -> woodFenceGate(MaterialColor.WOOD));
-    //TODO revamp Willow TrapDoor Texture
     public static final RegistryObject<Block> WILLOW_TRAPDOOR = registerBlock("willow_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(RegionsUnexploredBlocks::never), SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN));
     public static final RegistryObject<Block> WILLOW_PRESSURE_PLATE = registerBlock("willow_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).noCollission().strength(0.5F).sound(SoundType.WOOD), SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON));
     public static final RegistryObject<Block> WILLOW_BUTTON = registerBlock("willow_button", () -> new ButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOD), 30, true, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON));
