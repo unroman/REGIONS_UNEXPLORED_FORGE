@@ -4,12 +4,8 @@ import com.google.common.collect.ImmutableList;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
-import net.minecraft.data.worldgen.features.FeatureUtils;
-import net.minecraft.data.worldgen.features.VegetationFeatures;
-import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.SimpleWeightedRandomList;
@@ -20,7 +16,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.block.MangrovePropaguleBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.HugeFungusConfiguration;
@@ -39,7 +34,6 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeave
 import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.*;
-import net.minecraft.world.level.levelgen.placement.*;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.world.features.treedecorators.BambooLeaveDecorator;
 import net.regions_unexplored.util.worldgen.RuFeatureUtils;
@@ -105,7 +99,8 @@ public class RuTreeFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> EUCALYPTUS_TREE = RuFeatureUtils.createKey("eucalyptus_tree");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> JOSHUA_TREE = RuFeatureUtils.createKey("joshua_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_JOSHUA_TREE = RuFeatureUtils.createKey("large_joshua_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MEDIUM_JOSHUA_TREE = RuFeatureUtils.createKey("medium_joshua_tree");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> LARCH_TREE = RuFeatureUtils.createKey("larch_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BIG_LARCH_TREE = RuFeatureUtils.createKey("big_larch_tree");
@@ -298,7 +293,8 @@ public class RuTreeFeatures {
 
         register(treeBootstrap, EUCALYPTUS_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.EUCALYPTUS_LOG.get().defaultBlockState(), 3).add(RegionsUnexploredBlocks.EUCALYPTUS_LOG.get().defaultBlockState(), 1)), new StraightTrunkPlacer(14, 8, 0),new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.EUCALYPTUS_LEAVES.get().defaultBlockState(), 5).add(RegionsUnexploredBlocks.EUCALYPTUS_LEAVES.get().defaultBlockState(), 1)), new RandomSpreadFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), ConstantInt.of(5), 150), new TwoLayersFeatureSize(1, 0, 1)).decorators(ImmutableList.of(EucalyptusLeaveDecorator.INSTANCE, EucalyptusTrunkDecorator.INSTANCE,  new LeaveVineDecorator(0.25f))).ignoreVines().build());
 
-        register(treeBootstrap, JOSHUA_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RegionsUnexploredBlocks.JOSHUA_LOG.get().defaultBlockState()),new FancyTrunkPlacer(12, 3, 0),BlockStateProvider.simple(RegionsUnexploredBlocks.JOSHUA_LEAVES.get().defaultBlockState()),new FancyFoliagePlacer(ConstantInt.of(1), ConstantInt.of(2), 3), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines().build());
+        register(treeBootstrap, LARGE_JOSHUA_TREE, RuFeatureRegistry.LARGE_JOSHUA_TREE.get(), FeatureConfiguration.NONE);
+        register(treeBootstrap, MEDIUM_JOSHUA_TREE, RuFeatureRegistry.MEDIUM_JOSHUA_TREE.get(), FeatureConfiguration.NONE);
 
         register(treeBootstrap, LARCH_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RegionsUnexploredBlocks.LARCH_LOG.get().defaultBlockState()), new StraightTrunkPlacer(10, 2, 2), BlockStateProvider.simple(RegionsUnexploredBlocks.LARCH_LEAVES.get().defaultBlockState()), new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(2, 2), UniformInt.of(5, 5)), new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().build());
         register(treeBootstrap, BIG_LARCH_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RegionsUnexploredBlocks.LARCH_LOG.get().defaultBlockState()), new StraightTrunkPlacer(19, 4, 5), BlockStateProvider.simple(RegionsUnexploredBlocks.LARCH_LEAVES.get().defaultBlockState()), new MegaPineFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0), UniformInt.of(13, 17)), new TwoLayersFeatureSize(1, 1, 2)).build());

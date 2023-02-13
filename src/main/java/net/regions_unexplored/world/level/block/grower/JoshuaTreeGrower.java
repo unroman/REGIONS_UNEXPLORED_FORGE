@@ -8,7 +8,12 @@ import net.regions_unexplored.data.worldgen.features.RuTreeFeatures;
 
 public class JoshuaTreeGrower extends AbstractTreeGrower {
     protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource random, boolean bool) {
-         return RuTreeFeatures.JOSHUA_TREE;
+        if(random.nextInt(5)==0){
+         return RuTreeFeatures.LARGE_JOSHUA_TREE;
+        }
+        else{
+            return RuTreeFeatures.MEDIUM_JOSHUA_TREE;
+        }
    }
 }
 

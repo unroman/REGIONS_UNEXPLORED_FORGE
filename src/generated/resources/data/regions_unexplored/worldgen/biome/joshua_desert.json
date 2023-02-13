@@ -300,7 +300,8 @@
       "minecraft:spring_lava"
     ],
     [
-      "regions_unexplored:joshua_desert_joshua_tree",
+      "regions_unexplored:joshua_desert_large_joshua_tree",
+      "regions_unexplored:joshua_desert_medium_joshua_tree",
       "regions_unexplored:joshua_desert_dead_steppe_shrub",
       "regions_unexplored:joshua_desert_desert_shrub",
       "regions_unexplored:joshua_desert_sandy_grass",

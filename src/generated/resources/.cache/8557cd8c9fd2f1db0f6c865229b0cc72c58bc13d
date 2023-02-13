@@ -1,4 +1,4 @@
-// 1.19.3	2023-02-13T11:29:04.5901402	worldgen/biome generator for regions_unexplored
+// 1.19.3	2023-02-13T14:25:31.6814352	worldgen/biome generator for regions_unexplored
 29cfd01f276de34c0f3f173e5083a95978e9aba2 data/regions_unexplored/worldgen/biome/alpha_grove.json
 ca9c0a067a2a21f19c43d133a513a518295596db data/regions_unexplored/worldgen/biome/arid_mountains.json
 33c633d6ac1a0b82d2be4692897540c082058884 data/regions_unexplored/worldgen/biome/autumnal_fields.json
@@ -37,7 +37,7 @@ ff3df281b9808e518a02fb5d5432e4388cdbe23e data/regions_unexplored/worldgen/biome/
 51a4e87d8b91baeb0c29024cf5f37aa44fe557ff data/regions_unexplored/worldgen/biome/highland_fields.json
 444b8348aca860e731cdd45b5df6cd235d5d2447 data/regions_unexplored/worldgen/biome/icy_desert.json
 a50979b8cf64ea767188f6da4ababc3a5653bd6b data/regions_unexplored/worldgen/biome/icy_heights.json
-21433c452e3ff303c4be5f1c26a2eb982db2b175 data/regions_unexplored/worldgen/biome/joshua_desert.json
+a16988313ca2ae4a73d8387d6b8c40857a450216 data/regions_unexplored/worldgen/biome/joshua_desert.json
 48d7df74e44586e2c1b4658a0ec807cfde63c4f1 data/regions_unexplored/worldgen/biome/lupine_plains.json
 c019a3c4d9c73cf9ba4c6e16c3457b3ac992bc8d data/regions_unexplored/worldgen/biome/lush_delta.json
 9e9ad9dcae23dcbcb11d56b442fcef7952b98ac5 data/regions_unexplored/worldgen/biome/lush_hills.json

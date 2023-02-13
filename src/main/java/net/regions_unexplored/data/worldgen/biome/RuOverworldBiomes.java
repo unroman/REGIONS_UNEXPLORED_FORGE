@@ -1198,7 +1198,8 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.JOSHUA_DESERT_JOSHUA_TREE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.JOSHUA_DESERT_LARGE_JOSHUA_TREE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.JOSHUA_DESERT_MEDIUM_JOSHUA_TREE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.JOSHUA_DESERT_DEAD_STEPPE_SHRUB);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.JOSHUA_DESERT_DESERT_SHRUB);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.JOSHUA_DESERT_SANDY_GRASS);

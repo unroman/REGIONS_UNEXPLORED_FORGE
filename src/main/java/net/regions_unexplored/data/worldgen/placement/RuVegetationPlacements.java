@@ -143,11 +143,11 @@ public class RuVegetationPlacements {
         register(context, RuVegetationPlacements.PATCH_DUCKWEED_SPARSE, PATCH_DUCKWEED_SPARSE, worldSurfaceSquaredWithCount(16));
         register(context, RuVegetationPlacements.PATCH_LILY_SPARSE, PATCH_LILY_SPARSE, worldSurfaceSquaredWithCount(6));
 
-        register(context, RuVegetationPlacements.CATTAIL_VANILLA, CATTAIL_VANILLA, List.of(RarityFilter.onAverageOnceEvery(3), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, RuVegetationFeatures.WATERSIDE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.CATTAIL_RIVER, CATTAIL_RIVER, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 48), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, RuVegetationFeatures.WATERSIDE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.CATTAIL_14, CATTAIL_14, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 14), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, RuVegetationFeatures.WATERSIDE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.CATTAIL_BAYOU, CATTAIL_BAYOU, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 14), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, RuVegetationFeatures.WATERSIDE, PlacementUtils.filteredByBlockSurvival(RegionsUnexploredBlocks.MUD_PLACEMENT.get()), BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.CATTAIL_30, CATTAIL_30, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 30), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, RuVegetationFeatures.WATERSIDE, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.CATTAIL_VANILLA, CATTAIL_VANILLA, List.of(RarityFilter.onAverageOnceEvery(3), SurfaceWaterDepthFilter.forMaxDepth(3), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RuVegetationFeatures.WATERSIDE, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.CATTAIL_RIVER, CATTAIL_RIVER, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 48), SurfaceWaterDepthFilter.forMaxDepth(3), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RuVegetationFeatures.WATERSIDE, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.CATTAIL_14, CATTAIL_14, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 14), SurfaceWaterDepthFilter.forMaxDepth(3), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RuVegetationFeatures.WATERSIDE, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.CATTAIL_BAYOU, CATTAIL_BAYOU, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 14), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(3), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RuVegetationFeatures.WATERSIDE, PlacementUtils.filteredByBlockSurvival(RegionsUnexploredBlocks.MUD_PLACEMENT.get()), BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.CATTAIL_30, CATTAIL_30, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 30), SurfaceWaterDepthFilter.forMaxDepth(3), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RuVegetationFeatures.WATERSIDE, BiomeFilter.biome()));
 
         register(context, RuVegetationPlacements.OVERGROWN_VINES, OVERGROWN_VINES, CountPlacement.of(200), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.hasSturdyFace(Direction.DOWN), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(-1)), BiomeFilter.biome());
 

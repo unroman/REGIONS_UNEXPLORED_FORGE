@@ -37,7 +37,7 @@ import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.util.worldgen.RuFeatureUtils;
 
 public class RuVegetationFeatures {
-    public static final PlacementModifier WATERSIDE = HeightRangePlacement.uniform(VerticalAnchor.absolute(60), VerticalAnchor.absolute(61));
+    public static final PlacementModifier WATERSIDE = HeightRangePlacement.uniform(VerticalAnchor.absolute(59), VerticalAnchor.absolute(61));
     public static final PlacementModifier MARSH = HeightRangePlacement.uniform(VerticalAnchor.absolute(59), VerticalAnchor.absolute(59));
     ///RESOURCE_KEYS///
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_SEAGRASS = RuFeatureUtils.createKey("patch_seagrass");

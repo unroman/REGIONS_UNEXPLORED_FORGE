@@ -4,26 +4,13 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
-import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.NetherFeatures;
 import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.random.SimpleWeightedRandomList;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.RandomSpreadFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.BendingTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.data.worldgen.features.RuBiomeFeatures;
@@ -286,7 +273,8 @@ public class RuBiomePlacements {
     public static final ResourceKey<PlacedFeature> WOODED_ARID_MOUNTAINS_ACACIA = RuPlacementUtils.createKey("wooded_arid_mountains_acacia");
     public static final ResourceKey<PlacedFeature> WOODED_ARID_MOUNTAINS_STONE_BUD = RuPlacementUtils.createKey("wooded_arid_mountains_stone_bud");
 
-    public static final ResourceKey<PlacedFeature> JOSHUA_DESERT_JOSHUA_TREE = RuPlacementUtils.createKey("joshua_desert_joshua_tree");
+    public static final ResourceKey<PlacedFeature> JOSHUA_DESERT_LARGE_JOSHUA_TREE = RuPlacementUtils.createKey("joshua_desert_large_joshua_tree");
+    public static final ResourceKey<PlacedFeature> JOSHUA_DESERT_MEDIUM_JOSHUA_TREE = RuPlacementUtils.createKey("joshua_desert_medium_joshua_tree");
     public static final ResourceKey<PlacedFeature> JOSHUA_DESERT_DEAD_STEPPE_SHRUB = RuPlacementUtils.createKey("joshua_desert_dead_steppe_shrub");
     public static final ResourceKey<PlacedFeature> JOSHUA_DESERT_DESERT_SHRUB = RuPlacementUtils.createKey("joshua_desert_desert_shrub");
     public static final ResourceKey<PlacedFeature> JOSHUA_DESERT_SANDY_GRASS = RuPlacementUtils.createKey("joshua_desert_sandy_grass");
@@ -760,7 +748,8 @@ public class RuBiomePlacements {
         final Holder<ConfiguredFeature<?, ?>> WOODED_ARID_MOUNTAINS_ACACIA = featureGetter.getOrThrow(TreeFeatures.ACACIA);
         final Holder<ConfiguredFeature<?, ?>> WOODED_ARID_MOUNTAINS_STONE_BUD = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_STONE_BUD);
 
-        final Holder<ConfiguredFeature<?, ?>> JOSHUA_DESERT_JOSHUA_TREE = featureGetter.getOrThrow(RuTreeFeatures.JOSHUA_TREE);
+        final Holder<ConfiguredFeature<?, ?>> JOSHUA_DESERT_LARGE_JOSHUA_TREE = featureGetter.getOrThrow(RuTreeFeatures.LARGE_JOSHUA_TREE);
+        final Holder<ConfiguredFeature<?, ?>> JOSHUA_DESERT_MEDIUM_JOSHUA_TREE = featureGetter.getOrThrow(RuTreeFeatures.MEDIUM_JOSHUA_TREE);
         final Holder<ConfiguredFeature<?, ?>> JOSHUA_DESERT_DEAD_STEPPE_SHRUB = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_DEAD_STEPPE_SHRUB);
         final Holder<ConfiguredFeature<?, ?>> JOSHUA_DESERT_DESERT_SHRUB = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_SMALL_DESERT_SHRUB);
         final Holder<ConfiguredFeature<?, ?>> JOSHUA_DESERT_SANDY_GRASS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_SANDY_GRASS);
@@ -1234,7 +1223,8 @@ public class RuBiomePlacements {
         register(context, RuBiomePlacements.WOODED_ARID_MOUNTAINS_ACACIA, WOODED_ARID_MOUNTAINS_ACACIA, List.of(CountPlacement.of(5), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.WOODED_ARID_MOUNTAINS_STONE_BUD, WOODED_ARID_MOUNTAINS_STONE_BUD, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
 
-        register(context, RuBiomePlacements.JOSHUA_DESERT_JOSHUA_TREE, JOSHUA_DESERT_JOSHUA_TREE, List.of(CountPlacement.of(1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
+        register(context, RuBiomePlacements.JOSHUA_DESERT_LARGE_JOSHUA_TREE, JOSHUA_DESERT_LARGE_JOSHUA_TREE, List.of(PlacementUtils.countExtra(0, 0.1F, 3), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
+        register(context, RuBiomePlacements.JOSHUA_DESERT_MEDIUM_JOSHUA_TREE, JOSHUA_DESERT_MEDIUM_JOSHUA_TREE, List.of(CountPlacement.of(1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.JOSHUA_DESERT_DEAD_STEPPE_SHRUB, JOSHUA_DESERT_DEAD_STEPPE_SHRUB, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 7), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RegionsUnexploredBlocks.GRASS_PLACEMENT.get()), BiomeFilter.biome()));
         register(context, RuBiomePlacements.JOSHUA_DESERT_DESERT_SHRUB, JOSHUA_DESERT_DESERT_SHRUB, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 7), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         register(context, RuBiomePlacements.JOSHUA_DESERT_SANDY_GRASS, JOSHUA_DESERT_SANDY_GRASS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 9), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RegionsUnexploredBlocks.SAND_PLACEMENT.get()), BiomeFilter.biome()));

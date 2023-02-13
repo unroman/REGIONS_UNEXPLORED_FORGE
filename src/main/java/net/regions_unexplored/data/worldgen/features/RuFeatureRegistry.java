@@ -16,6 +16,8 @@ import net.regions_unexplored.data.worldgen.features.feature.LavaDeltaFeature;
 import net.regions_unexplored.data.worldgen.features.feature.bioshroom.GiantBioshroomFeature;
 import net.regions_unexplored.data.worldgen.features.feature.bioshroom.PinkBioshroomFeature;
 import net.regions_unexplored.data.worldgen.features.feature.redstonefeatures.*;
+import net.regions_unexplored.data.worldgen.features.feature.tree.LargeJoshuaTreeFeature;
+import net.regions_unexplored.data.worldgen.features.feature.tree.MediumJoshuaTreeFeature;
 import net.regions_unexplored.data.worldgen.features.treefeature.GiantSculkWillowFeature;
 import net.regions_unexplored.data.worldgen.features.treefeature.NetherWillowFeature;
 import net.regions_unexplored.data.worldgen.features.treefeature.SculkWillowFeature;
@@ -28,6 +30,8 @@ public class RuFeatureRegistry {
     public static RegistryObject<Feature> SPIRE_FEATURE = REGISTRY.register("spire_feature", () -> new Spires());
     public static RegistryObject<Feature> MEADOW_ROCKS_FEATURE = REGISTRY.register("meadow_rocks_feature", () -> new MeadowRock());
     public static final RegistryObject<Feature> ROCK_PILLAR = REGISTRY.register("rock_pillar", () -> new RockPillarFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<Feature> LARGE_JOSHUA_TREE = REGISTRY.register("large_joshua_tree", () -> new LargeJoshuaTreeFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<Feature> MEDIUM_JOSHUA_TREE = REGISTRY.register("medium_joshua_tree", () -> new MediumJoshuaTreeFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature> GIANT_PINK_BIOSHROOM = REGISTRY.register("giant_pink_bioshroom", () -> new PinkBioshroomFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature> GIANT_BIOSHROOM = REGISTRY.register("giant_bioshroom", () -> new GiantBioshroomFeature(HugeFungusConfiguration.CODEC));
     public static final RegistryObject<Feature> SCULK_WILLOW = REGISTRY.register("sculk_willow", () -> new SculkWillowFeature(NoneFeatureConfiguration.CODEC));
