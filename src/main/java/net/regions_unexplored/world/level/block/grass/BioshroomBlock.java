@@ -4,6 +4,7 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.ItemStack;
@@ -11,6 +12,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
@@ -22,15 +24,16 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.PlantType;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
+import net.regions_unexplored.data.tags.RegionsUnexploredTags;
 
-public class BioshroomBlock extends BushBlock {
+public class BioshroomBlock extends SaplingBlock {
     protected static final float AABB_OFFSET = 3.0F;
-    protected static final VoxelShape SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 10.0D, 13.0D);
+    protected static final VoxelShape SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 13.0D, 13.0D);
     private final MobEffect suspiciousStewEffect;
     private final int effectDuration;
 
-    public BioshroomBlock(MobEffect mobEffect, int duration, BlockBehaviour.Properties properties) {
-        super(properties);
+    public BioshroomBlock(AbstractTreeGrower tree, MobEffect mobEffect, int duration, BlockBehaviour.Properties properties) {
+        super(tree, properties);
         this.suspiciousStewEffect = mobEffect;
         if (mobEffect.isInstantenous()) {
             this.effectDuration = duration;
@@ -65,5 +68,15 @@ public class BioshroomBlock extends BushBlock {
 
     public int getEffectDuration() {
         return this.effectDuration;
+    }
+
+    @Override
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean bool) {
+        if(level.getBlockState(pos.below()).is(RegionsUnexploredTags.BIOSHROOM_GROW_BLOCK)) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
