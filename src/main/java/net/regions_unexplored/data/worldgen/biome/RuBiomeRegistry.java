@@ -1,6 +1,8 @@
 package net.regions_unexplored.data.worldgen.biome;
 
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;

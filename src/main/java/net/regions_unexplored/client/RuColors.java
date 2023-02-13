@@ -74,7 +74,20 @@ public class RuColors {
                     RegionsUnexploredBlocks.REDWOOD_LEAVES.get(),
                     RegionsUnexploredBlocks.WILLOW_LEAVES.get(),
                     RegionsUnexploredBlocks.TALL_REDWOOD_SAPLING.get(),
-                    RegionsUnexploredBlocks.TALL_PINE_SAPLING.get()
+                    RegionsUnexploredBlocks.TALL_PINE_SAPLING.get(),
+                    RegionsUnexploredBlocks.TALL_WILLOW_SAPLING.get(),
+                    RegionsUnexploredBlocks.TALL_OAK_SAPLING.get(),
+                    RegionsUnexploredBlocks.TALL_DARK_OAK_SAPLING.get(),
+                    RegionsUnexploredBlocks.TALL_PALM_SAPLING.get(),
+                    RegionsUnexploredBlocks.TALL_FLOWERING_SAPLING.get(),
+                    RegionsUnexploredBlocks.TALL_JOSHUA_SAPLING.get(),
+                    RegionsUnexploredBlocks.TALL_CHERRY_SAPLING.get(),
+                    RegionsUnexploredBlocks.TALL_ACACIA_SAPLING.get(),
+                    RegionsUnexploredBlocks.TALL_JUNGLE_SAPLING.get(),
+                    RegionsUnexploredBlocks.TALL_EUCALYPTUS_SAPLING.get(),
+                    RegionsUnexploredBlocks.TALL_MANGROVE_SAPLING.get(),
+                    RegionsUnexploredBlocks.TALL_CYPRESS_SAPLING.get(),
+                    RegionsUnexploredBlocks.TALL_BAOBAB_SAPLING.get()
         );
     }
 
@@ -104,6 +117,13 @@ public class RuColors {
         event.getBlockColors().register((bs, world, pos, index) -> {
             return FoliageColor.getEvergreenColor();
         }, RegionsUnexploredBlocks.TALL_SPRUCE_SAPLING.get());
+    }
+
+    @SubscribeEvent
+    public static void birchBlockColorLoad(RegisterColorHandlersEvent.Block event) {
+        event.getBlockColors().register((bs, world, pos, index) -> {
+            return FoliageColor.getBirchColor();
+        }, RegionsUnexploredBlocks.TALL_BIRCH_SAPLING.get());
     }
 
     @SubscribeEvent

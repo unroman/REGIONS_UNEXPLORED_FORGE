@@ -14,7 +14,10 @@
         },
         {
           "data": {
-            "Name": "regions_unexplored:yellow_bioshroom"
+            "Name": "regions_unexplored:yellow_bioshroom",
+            "Properties": {
+              "stage": "0"
+            }
           },
           "weight": 11
         }

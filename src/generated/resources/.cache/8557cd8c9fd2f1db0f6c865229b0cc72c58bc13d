@@ -1,4 +1,4 @@
-// 1.19.3	2023-02-04T20:22:23.4775242	worldgen/biome generator for regions_unexplored
+// 1.19.3	2023-02-13T11:29:04.5901402	worldgen/biome generator for regions_unexplored
 29cfd01f276de34c0f3f173e5083a95978e9aba2 data/regions_unexplored/worldgen/biome/alpha_grove.json
 ca9c0a067a2a21f19c43d133a513a518295596db data/regions_unexplored/worldgen/biome/arid_mountains.json
 33c633d6ac1a0b82d2be4692897540c082058884 data/regions_unexplored/worldgen/biome/autumnal_fields.json
@@ -12,7 +12,7 @@ ca9c0a067a2a21f19c43d133a513a518295596db data/regions_unexplored/worldgen/biome/
 599eb7ad583cc882d45c1ba882159e843265f15e data/regions_unexplored/worldgen/biome/blackstone_basin.json
 0f203b7fe8f2fcd4b40cf7f8e7b5808ab27095c3 data/regions_unexplored/worldgen/biome/blackwood_forest.json
 65339ea99ea23762412002506354adc0b315ef56 data/regions_unexplored/worldgen/biome/boreal_forest.json
-1c0741bee2c0a8473a6a1065b52ee6f129a5a826 data/regions_unexplored/worldgen/biome/canadian_forest.json
+a91122a1effeaec1016d97f35790140309a86d1e data/regions_unexplored/worldgen/biome/canadian_forest.json
 c0a775ca1e370b827511067f942ed6874c3e163e data/regions_unexplored/worldgen/biome/chalk_cliffs.json
 2734f8047840649b17be732388dce7edd217a04b data/regions_unexplored/worldgen/biome/cherry_hills.json
 4f7c6402e7a7d83c90a2b5e9cfafa652218a3ac3 data/regions_unexplored/worldgen/biome/cold_boreal_forest.json

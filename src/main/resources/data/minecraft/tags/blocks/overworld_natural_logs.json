@@ -19,8 +19,6 @@
     "regions_unexplored:stripped_pine_log",
     "regions_unexplored:redwood_log",
     "regions_unexplored:willow_log",
-    "regions_unexplored:alpha_log",
-    "regions_unexplored:saguaro_cactus",
-    "regions_unexplored:saguaro_cactus_corner"
+    "regions_unexplored:alpha_log"
   ]
 }

@@ -1,14 +1,18 @@
 package net.regions_unexplored.world.level.block.grass;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.regions_unexplored.data.tags.RegionsUnexploredTags;
 
 public class TallSaplingBlock extends FlowerBlock {
     protected static final float AABB_OFFSET = 6.0F;
@@ -30,5 +34,16 @@ public class TallSaplingBlock extends FlowerBlock {
     @Override
     public PushReaction getPistonPushReaction(BlockState state) {
         return PushReaction.DESTROY;
+    }
+
+    @Override
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        BlockPos blockpos = pos.below();
+        return this.mayPlaceOn(level.getBlockState(blockpos), level, blockpos);
+    }
+
+    @Override
+    protected boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {
+        return state.is(RegionsUnexploredTags.TALL_SAPLING_CAN_SURVIVE_ON);
     }
 }

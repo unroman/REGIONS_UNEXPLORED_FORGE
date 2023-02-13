@@ -14,7 +14,10 @@
         },
         {
           "data": {
-            "Name": "regions_unexplored:pink_bioshroom"
+            "Name": "regions_unexplored:pink_bioshroom",
+            "Properties": {
+              "stage": "0"
+            }
           },
           "weight": 1
         }

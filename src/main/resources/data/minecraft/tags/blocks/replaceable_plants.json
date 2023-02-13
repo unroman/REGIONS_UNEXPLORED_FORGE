@@ -18,6 +18,11 @@
     "regions_unexplored:tassel",
     "regions_unexplored:barley",
     "regions_unexplored:cattail",
-    "regions_unexplored:prismoss_sprout"
+    "regions_unexplored:prismoss_sprout",
+    "#regions_unexplored:tall_saplings",
+    "regions_unexplored:pink_bioshroom",
+    "regions_unexplored:blue_bioshroom",
+    "regions_unexplored:green_bioshroom",
+    "regions_unexplored:yellow_bioshroom"
   ]
 }

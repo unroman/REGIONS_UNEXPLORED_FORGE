@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -824,16 +825,19 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.PRISMOSS_SPROUT,
                 RegionsUnexploredBlocks.POINTED_REDSTONE,
                 RegionsUnexploredBlocks.REDSTONE_BUD,
+                RegionsUnexploredBlocks.ACACIA_BRANCH,
                 RegionsUnexploredBlocks.BAOBAB_BRANCH,
                 RegionsUnexploredBlocks.BIRCH_BRANCH,
                 RegionsUnexploredBlocks.BLACKWOOD_BRANCH,
                 RegionsUnexploredBlocks.CHERRY_BRANCH,
                 RegionsUnexploredBlocks.CYPRESS_BRANCH,
+                RegionsUnexploredBlocks.DARK_OAK_BRANCH,
                 RegionsUnexploredBlocks.DEAD_BRANCH,
                 RegionsUnexploredBlocks.EUCALYPTUS_BRANCH,
                 RegionsUnexploredBlocks.JOSHUA_BEARD,
                 RegionsUnexploredBlocks.JUNGLE_BRANCH,
                 RegionsUnexploredBlocks.LARCH_BRANCH,
+                RegionsUnexploredBlocks.MANGROVE_BRANCH,
                 RegionsUnexploredBlocks.MAPLE_BRANCH,
                 RegionsUnexploredBlocks.MAUVE_BRANCH,
                 RegionsUnexploredBlocks.OAK_BRANCH,
@@ -922,9 +926,13 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.SCULKWOOD_SAPLING,
                 RegionsUnexploredBlocks.WILLOW_SAPLING,
                 RegionsUnexploredBlocks.BLUE_BIOSHROOM,
+                RegionsUnexploredBlocks.TALL_BLUE_BIOSHROOM,
                 RegionsUnexploredBlocks.GREEN_BIOSHROOM,
+                RegionsUnexploredBlocks.TALL_GREEN_BIOSHROOM,
                 RegionsUnexploredBlocks.PINK_BIOSHROOM,
+                RegionsUnexploredBlocks.TALL_PINK_BIOSHROOM,
                 RegionsUnexploredBlocks.YELLOW_BIOSHROOM,
+                RegionsUnexploredBlocks.TALL_YELLOW_BIOSHROOM,
                 RegionsUnexploredBlocks.MEDIUM_GRASS,
                 RegionsUnexploredBlocks.SEEDED_GRASS,
                 RegionsUnexploredBlocks.STEPPE_GRASS,
@@ -964,21 +972,37 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.CATTAIL,
                 RegionsUnexploredBlocks.TASSEL,
                 RegionsUnexploredBlocks.TSUBAKI,
+                RegionsUnexploredBlocks.TALL_ACACIA_SAPLING,
+                RegionsUnexploredBlocks.TALL_BAOBAB_SAPLING,
+                RegionsUnexploredBlocks.TALL_BIRCH_SAPLING,
+                RegionsUnexploredBlocks.TALL_BLACKWOOD_SAPLING,
+                RegionsUnexploredBlocks.TALL_CHERRY_SAPLING,
+                RegionsUnexploredBlocks.TALL_RED_CHERRY_SAPLING,
+                RegionsUnexploredBlocks.TALL_PINK_CHERRY_SAPLING,
+                RegionsUnexploredBlocks.TALL_WHITE_CHERRY_SAPLING,
+                RegionsUnexploredBlocks.TALL_CYPRESS_SAPLING,
+                RegionsUnexploredBlocks.TALL_DARK_OAK_SAPLING,
+                RegionsUnexploredBlocks.TALL_DEAD_SAPLING,
+                RegionsUnexploredBlocks.TALL_DEAD_PINE_SAPLING,
                 RegionsUnexploredBlocks.TALL_EUCALYPTUS_SAPLING,
+                RegionsUnexploredBlocks.TALL_FLOWERING_SAPLING,
                 RegionsUnexploredBlocks.TALL_JOSHUA_SAPLING,
+                RegionsUnexploredBlocks.TALL_JUNGLE_SAPLING,
                 RegionsUnexploredBlocks.TALL_GOLDEN_LARCH_SAPLING,
                 RegionsUnexploredBlocks.TALL_LARCH_SAPLING,
+                RegionsUnexploredBlocks.TALL_MANGROVE_SAPLING,
                 RegionsUnexploredBlocks.TALL_MAPLE_SAPLING,
                 RegionsUnexploredBlocks.TALL_ORANGE_MAPLE_SAPLING,
                 RegionsUnexploredBlocks.TALL_RED_MAPLE_SAPLING,
                 RegionsUnexploredBlocks.TALL_MAUVE_SAPLING,
-                RegionsUnexploredBlocks.TALL_LARCH_SAPLING,
+                RegionsUnexploredBlocks.TALL_OAK_SAPLING,
+                RegionsUnexploredBlocks.TALL_PALM_SAPLING,
                 RegionsUnexploredBlocks.TALL_PINE_SAPLING,
                 RegionsUnexploredBlocks.TALL_REDWOOD_SAPLING,
                 RegionsUnexploredBlocks.TALL_SILVER_BIRCH_SAPLING,
-                RegionsUnexploredBlocks.TALL_SPRUCE_SAPLING
+                RegionsUnexploredBlocks.TALL_SPRUCE_SAPLING,
+                RegionsUnexploredBlocks.TALL_WILLOW_SAPLING
         );
-
         event.registerCreativeModeTab(new ResourceLocation(RegionsUnexploredMod.MOD_ID, "natural"), builder -> {
             builder.icon(() -> new ItemStack(RegionsUnexploredBlocks.FOREST_GRASS_BLOCK.get())).title(Component.translatable("itemGroup.regions_unexplored_natural")).displayItems((featureFlags, output, hasOp) -> {
 

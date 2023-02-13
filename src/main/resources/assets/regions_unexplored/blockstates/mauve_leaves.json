@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "regions_unexplored:block/mauve_leaves"
-    }
+    "": [
+      {
+        "model": "regions_unexplored:block/mauve_leaves"
+      },
+      {
+        "model": "regions_unexplored:block/mauve_leaves"
+      },
+      {
+        "model": "regions_unexplored:block/mauve_leaves"
+      },
+      {
+        "model": "regions_unexplored:block/mauve_leaves"
+      },
+      {
+        "model": "regions_unexplored:block/mauve_leaves_flowering"
+      }
+    ]
   }
 }

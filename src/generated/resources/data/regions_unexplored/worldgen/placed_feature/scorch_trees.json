@@ -14,7 +14,10 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "regions_unexplored:green_bioshroom"
+          "Name": "regions_unexplored:green_bioshroom",
+          "Properties": {
+            "stage": "0"
+          }
         }
       }
     },

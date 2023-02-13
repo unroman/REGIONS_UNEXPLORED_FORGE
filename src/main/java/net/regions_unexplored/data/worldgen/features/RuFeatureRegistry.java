@@ -1,6 +1,7 @@
 package net.regions_unexplored.data.worldgen.features;
 
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.HugeFungusConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.ColumnFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -12,6 +13,8 @@ import net.minecraftforge.registries.RegistryObject;
 import net.regions_unexplored.RegionsUnexploredMod;
 import net.regions_unexplored.data.worldgen.features.feature.*;
 import net.regions_unexplored.data.worldgen.features.feature.LavaDeltaFeature;
+import net.regions_unexplored.data.worldgen.features.feature.bioshroom.GiantBioshroomFeature;
+import net.regions_unexplored.data.worldgen.features.feature.bioshroom.PinkBioshroomFeature;
 import net.regions_unexplored.data.worldgen.features.feature.redstonefeatures.*;
 import net.regions_unexplored.data.worldgen.features.treefeature.GiantSculkWillowFeature;
 import net.regions_unexplored.data.worldgen.features.treefeature.NetherWillowFeature;
@@ -25,6 +28,8 @@ public class RuFeatureRegistry {
     public static RegistryObject<Feature> SPIRE_FEATURE = REGISTRY.register("spire_feature", () -> new Spires());
     public static RegistryObject<Feature> MEADOW_ROCKS_FEATURE = REGISTRY.register("meadow_rocks_feature", () -> new MeadowRock());
     public static final RegistryObject<Feature> ROCK_PILLAR = REGISTRY.register("rock_pillar", () -> new RockPillarFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<Feature> GIANT_PINK_BIOSHROOM = REGISTRY.register("giant_pink_bioshroom", () -> new PinkBioshroomFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<Feature> GIANT_BIOSHROOM = REGISTRY.register("giant_bioshroom", () -> new GiantBioshroomFeature(HugeFungusConfiguration.CODEC));
     public static final RegistryObject<Feature> SCULK_WILLOW = REGISTRY.register("sculk_willow", () -> new SculkWillowFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature> GIANT_SCULK_WILLOW = REGISTRY.register("giant_sculk_willow", () -> new GiantSculkWillowFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature> NETHER_MEADOW_ROCK = REGISTRY.register("nether_meadow_rock", () -> new NetherBlockBlobFeature(BlockStateConfiguration.CODEC));

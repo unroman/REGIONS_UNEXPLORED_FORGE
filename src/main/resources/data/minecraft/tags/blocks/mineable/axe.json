@@ -159,6 +159,7 @@
     "regions_unexplored:sculkwood_fence_gate",
     "regions_unexplored:sculkwood_fence",
     "regions_unexplored:sculkwood_pressure_plate",
-    "regions_unexplored:sculkwood_button"
+    "regions_unexplored:sculkwood_button",
+    "#regions_unexplored:tall_saplings"
   ]
 }

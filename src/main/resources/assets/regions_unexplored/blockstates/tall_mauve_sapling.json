@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "regions_unexplored:block/tall_mauve_sapling"
+      },
+      {
+        "model": "regions_unexplored:block/tall_mauve_sapling"
+      },
+      {
+        "model": "regions_unexplored:block/tall_mauve_sapling_flowering"
+      }
+    ]
+  }
+}

@@ -19,8 +19,8 @@
       "state": {
         "Name": "regions_unexplored:joshua_leaves",
         "Properties": {
-          "distance": "7",
-          "persistent": "false",
+          "half": "lower",
+          "natural": "false",
           "waterlogged": "false"
         }
       }

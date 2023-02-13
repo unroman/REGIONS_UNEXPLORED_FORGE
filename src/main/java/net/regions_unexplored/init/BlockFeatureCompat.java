@@ -14,6 +14,7 @@ import net.regions_unexplored.block.RegionsUnexploredBlocks;
 public class BlockFeatureCompat {
 
     public static void setup() {
+        //TODO ADD ALL COMPOSTABLES
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.ALPHA_SAPLING.get());
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.ALPHA_LEAVES.get());
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.BAOBAB_SAPLING.get());

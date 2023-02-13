@@ -43,6 +43,8 @@ public class RuVegetationFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_SEAGRASS = RuFeatureUtils.createKey("patch_seagrass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_LILY_PAD = RuFeatureUtils.createKey("patch_lily_pad");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_PINK_BIOSHROOM = RuFeatureUtils.createKey("giant_pink_bioshroom");
+
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_BARLEY = RuFeatureUtils.createKey("patch_barley");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_MEDIUM_GRASS = RuFeatureUtils.createKey("patch_medium_grass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_STEPPE_GRASS = RuFeatureUtils.createKey("patch_steppe_grass");
@@ -157,6 +159,8 @@ public class RuVegetationFeatures {
         //VANILLA
         register(context, PATCH_SEAGRASS, Feature.SEAGRASS, new ProbabilityFeatureConfiguration(0.6F));
         register(context, PATCH_LILY_PAD, Feature.RANDOM_PATCH, new RandomPatchConfiguration(10, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.LILY_PAD)))));
+        //BIOSHROOMS
+        register(context, GIANT_PINK_BIOSHROOM, RuFeatureRegistry.GIANT_PINK_BIOSHROOM.get(), FeatureConfiguration.NONE);
         //GRASSES
         register(context, PATCH_BARLEY , Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.BARLEY.get().defaultBlockState()), 32));
         register(context, PATCH_MEDIUM_GRASS, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.MEDIUM_GRASS.get().defaultBlockState()), 32));
@@ -200,7 +204,7 @@ public class RuVegetationFeatures {
         register(context, PATCH_PINK_LUPINE, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.PINK_LUPINE.get().defaultBlockState()), 6));
         register(context, PATCH_PURPLE_LUPINE, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.PURPLE_LUPINE.get().defaultBlockState()), 6));
         register(context, PATCH_YELLOW_BIOSHROOM, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.YELLOW_BIOSHROOM.get().defaultBlockState()), 6));
-        register(context, PATCH_PINK_BIOSHROOM, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.PINK_BIOSHROOM.get().defaultBlockState()), 6));
+        register(context, PATCH_PINK_BIOSHROOM, Feature.RANDOM_PATCH, grassPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.TALL_PINK_BIOSHROOM.get().defaultBlockState(), 1).add(RegionsUnexploredBlocks.PINK_BIOSHROOM.get().defaultBlockState(), 10)), 6));
         register(context, PATCH_POPPY_BUSH, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.POPPY_BUSH.get().defaultBlockState()), 32));
         register(context, PATCH_CAVE_HYSSOP, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.CAVE_HYSSOP.get().defaultBlockState()), 32));
         register(context, PATCH_HYSSOP, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.HYSSOP.get().defaultBlockState()), 32));
@@ -225,8 +229,8 @@ public class RuVegetationFeatures {
         register(context, PATCH_CORNFLOWER, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(Blocks.CORNFLOWER.defaultBlockState()), 32));
         register(context, PATCH_LILLY, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(Blocks.LILY_OF_THE_VALLEY.defaultBlockState()), 32));
         register(context, PATCH_SUNFLOWER, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(Blocks.SUNFLOWER.defaultBlockState()), 32));
-        register(context, PATCH_GREEN_BIOSHROOM, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.GREEN_BIOSHROOM.get().defaultBlockState()), 16));
-        register(context, PATCH_BLUE_BIOSHROOM, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.BLUE_BIOSHROOM.get().defaultBlockState()), 16));
+        register(context, PATCH_GREEN_BIOSHROOM, Feature.RANDOM_PATCH, grassPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.TALL_GREEN_BIOSHROOM.get().defaultBlockState(), 1).add(RegionsUnexploredBlocks.GREEN_BIOSHROOM.get().defaultBlockState(), 10)), 16));
+        register(context, PATCH_BLUE_BIOSHROOM, Feature.RANDOM_PATCH, grassPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.TALL_BLUE_BIOSHROOM.get().defaultBlockState(), 1).add(RegionsUnexploredBlocks.BLUE_BIOSHROOM.get().defaultBlockState(), 10)), 16));
         //OTHER
         register(context, PATCH_CATTAIL, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.CATTAIL.get()))));
         register(context, DUCKWEED, Feature.RANDOM_PATCH, new RandomPatchConfiguration(10, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.DUCKWEED.get())))));
