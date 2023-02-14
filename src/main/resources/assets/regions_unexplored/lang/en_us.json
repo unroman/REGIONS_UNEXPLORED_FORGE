@@ -628,6 +628,8 @@
   "item.regions_unexplored.redwood_chest_boat": "Redwood Boat with Chest",
   "item.regions_unexplored.sculkwood_chest_boat": "Sculkwood Boat with Chest",
   "item.regions_unexplored.willow_chest_boat": "Willow Boat with Chest",
+  "entity.regions_unexplored.boat": "Boat",
+  "entity.regions_unexplored.chest_boat": "Boat with Chest",
   "block.regions_unexplored.chalk_pillar": "Chalk Pillar",
   "block.regions_unexplored.chalk": "Chalk",
   "block.regions_unexplored.chalk_slab": "Chalk Slab",
