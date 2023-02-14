@@ -239,7 +239,7 @@ public class RuVegetationFeatures {
         register(context, TALL_LARCH_SAPLING, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_LARCH_SAPLING.get().defaultBlockState()), 5));
         register(context, TALL_GOLD_LARCH_SAPLING, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_GOLDEN_LARCH_SAPLING.get().defaultBlockState()), 5));
         register(context, TALL_SILVER_BIRCH_SAPLING, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_SILVER_BIRCH_SAPLING.get().defaultBlockState()), 10));
-        register(context, TALL_AUTUMNAL_SAPLING, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_AUTUMNAL_SAPLING.get().defaultBlockState()), 10));
+        register(context, TALL_AUTUMNAL_SAPLING, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_ORANGE_MAPLE_SAPLING.get().defaultBlockState()), 10));
         register(context, TALL_REDWOOD_SAPLING, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_REDWOOD_SAPLING.get().defaultBlockState()), 16));
         register(context, FOREST_FERN_MIX, Feature.FLOWER, grassPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.LARGE_FERN.defaultBlockState(), 1).add(Blocks.FERN.defaultBlockState(), 2)), 32));
         register(context, SEEDED_GRASS_MIX, Feature.FLOWER, grassPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.SEEDED_TALL_GRASS.get().defaultBlockState(), 1).add(RegionsUnexploredBlocks.SEEDED_GRASS.get().defaultBlockState(), 2)), 32));
