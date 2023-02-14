@@ -114,7 +114,7 @@ public class MediumJoshuaTreeFeature extends Feature<NoneFeatureConfiguration> {
         }
 
         if(level.getBlockState(east.east()).canBeReplaced()&&!level.isOutsideBuildHeight(east.east())){
-            level.setBlock(east.east(), RegionsUnexploredBlocks.JOSHUA_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z), 2);
+            level.setBlock(east.east(), RegionsUnexploredBlocks.JOSHUA_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X), 2);
         }
         if(level.getBlockState(east.east().east().above()).canBeReplaced()&&!level.isOutsideBuildHeight(east.east().east().above())){
             level.setBlock(east.east().east().above(), RegionsUnexploredBlocks.JOSHUA_LOG.get().defaultBlockState(), 2);
@@ -125,7 +125,7 @@ public class MediumJoshuaTreeFeature extends Feature<NoneFeatureConfiguration> {
         }
 
         if(level.getBlockState(west.west()).canBeReplaced()&&!level.isOutsideBuildHeight(west.west())){
-            level.setBlock(west.west(), RegionsUnexploredBlocks.JOSHUA_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z), 2);
+            level.setBlock(west.west(), RegionsUnexploredBlocks.JOSHUA_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X), 2);
         }
         if(level.getBlockState(west.west().west().above()).canBeReplaced()&&!level.isOutsideBuildHeight(west.west().west().above())){
             level.setBlock(west.west().west().above(), RegionsUnexploredBlocks.JOSHUA_LOG.get().defaultBlockState(), 2);
