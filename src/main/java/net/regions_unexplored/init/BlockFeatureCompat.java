@@ -14,7 +14,6 @@ import net.regions_unexplored.block.RegionsUnexploredBlocks;
 public class BlockFeatureCompat {
 
     public static void setup() {
-        //TODO ADD ALL COMPOSTABLES
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.ALPHA_SAPLING.get());
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.ALPHA_LEAVES.get());
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.BAOBAB_SAPLING.get());
@@ -55,6 +54,7 @@ public class BlockFeatureCompat {
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.DEAD_PINE_LEAVES.get());
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.REDWOOD_SAPLING.get());
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.REDWOOD_LEAVES.get());
+        registerCompostableItems(0.3F, RegionsUnexploredBlocks.SCULKWOOD_LEAVES.get());
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.WILLOW_SAPLING.get());
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.WILLOW_LEAVES.get());
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.CACTUS_FLOWER.get());
