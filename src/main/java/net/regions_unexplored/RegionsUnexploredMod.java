@@ -721,7 +721,6 @@ public class RegionsUnexploredMod {
                 output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_WOOD.get()));
                 output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_WILLOW_LOG.get()));
                 output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_WILLOW_WOOD.get()));
-                output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_WILLOW_WOOD.get()));
                 output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_PLANKS.get()));
                 output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_STAIRS.get()));
                 output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_SLAB.get()));
