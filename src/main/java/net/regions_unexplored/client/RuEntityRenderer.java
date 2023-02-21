@@ -16,22 +16,15 @@ import net.regions_unexplored.entity.custom.RuBoat;
 import net.regions_unexplored.entity.custom.RuChestBoat;
 
 @Mod.EventBusSubscriber(modid = RegionsUnexploredMod.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class RuEntityRenderer
-{
+public class RuEntityRenderer {
     @SubscribeEvent
-    public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event)
-    {
-        // Register boat layer definitions
+    public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
         LayerDefinition boatLayerDefinition = BoatModel.createBodyModel();
         LayerDefinition chestBoatLayerDefinition = ChestBoatModel.createBodyModel();
-
-        for (RuBoat.ModelType type : RuBoat.ModelType.values())
-        {
+        for (RuBoat.ModelType type : RuBoat.ModelType.values()) {
             ForgeHooksClient.registerLayerDefinition(RuBoatRenderer.boatTextureLocation(type), () -> boatLayerDefinition);
             ForgeHooksClient.registerLayerDefinition(RuBoatRenderer.chestBoatTextureLocation(type), () -> chestBoatLayerDefinition);
         }
-
-        // Register entity renderers
         event.registerEntityRenderer((EntityType<RuBoat>) RegionsUnexploredEntities.BOAT.get(), context -> new RuBoatRenderer(context, false));
         event.registerEntityRenderer((EntityType<RuChestBoat>) RegionsUnexploredEntities.CHEST_BOAT.get(), context -> new RuBoatRenderer(context, true));
     }
