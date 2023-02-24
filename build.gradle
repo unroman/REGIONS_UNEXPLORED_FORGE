@@ -1,12 +1,12 @@
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+        maven { url = 'https://repo.spongepowered.org/maven' }
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
     }
 }
 
@@ -20,7 +20,8 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'idea'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '0.3.0'
+
+version = '0.3.1'
 group = 'net.regions_unexplored'
 archivesBaseName = 'regions_unexplored'
 
@@ -40,6 +41,8 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
+            arg "-mixin.config=ru.mixin.json"
+
             property 'forge.enabledGameTestNamespaces', 'regions_unexplored'
 
             mods {
@@ -55,6 +58,8 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
 
             property 'forge.logging.console.level', 'debug'
+
+            arg "-mixin.config=ru.mixin.json"
 
             property 'forge.enabledGameTestNamespaces', 'regions_unexplored'
 
@@ -88,7 +93,6 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', 'regions_unexplored', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
@@ -110,6 +114,14 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.19.3-44.0.6'
     implementation fg.deobf('com.github.glitchfiend:TerraBlender-forge:1.19.3-2.1.0.132')
+
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    testAnnotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+
+mixin {
+    add sourceSets.main, "ru.refmap.json"
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
@@ -122,7 +134,10 @@ jar {
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "regions_unexploredsareus",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "TweakClass": "org.spongepowered.asm.launch.MixinTweaker",
+                "TweakOrder": 0,
+                "MixinConfigs" : "regions_unexplored.mixin.json"
         ])
     }
 }
