@@ -42,12 +42,15 @@ public class AppleLeavesBlock extends LeavesBlock implements BonemealableBlock{
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (this.decaying(state)) {
+            if(state.getValue(AGE)==4){
+                popResourceFromFace(level, pos, Direction.DOWN, new ItemStack(Items.APPLE, 1));
+            }
             dropResources(state, level, pos);
             level.removeBlock(pos, false);
         }
 
         int i = state.getValue(AGE);
-        if (i < 4 && level.getRawBrightness(pos.above(), 0) >= 9 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(5) == 0)) {
+        if (i < 4 && level.getRawBrightness(pos.above(), 0) >= 9 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(4) == 0)) {
             BlockState blockstate = state.setValue(AGE, Integer.valueOf(i + 1));
             level.setBlock(pos, blockstate, 2);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(blockstate));
