@@ -25,8 +25,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 
 public class AppleLeavesBlock extends LeavesBlock implements BonemealableBlock{
-    public static final int MAX_AGE = 2;
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_2;
+    public static final int MAX_AGE = 4;
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_4;
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
 
     public AppleLeavesBlock(Properties properties) {
@@ -36,7 +36,7 @@ public class AppleLeavesBlock extends LeavesBlock implements BonemealableBlock{
     }
 
     public boolean isRandomlyTicking(BlockState state) {
-        return state.getValue(AGE) < 2;
+        return state.getValue(AGE) < 4;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class AppleLeavesBlock extends LeavesBlock implements BonemealableBlock{
         }
 
         int i = state.getValue(AGE);
-        if (i < 2 && level.getRawBrightness(pos.above(), 0) >= 9 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(5) == 0)) {
+        if (i < 4 && level.getRawBrightness(pos.above(), 0) >= 9 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(5) == 0)) {
             BlockState blockstate = state.setValue(AGE, Integer.valueOf(i + 1));
             level.setBlock(pos, blockstate, 2);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(blockstate));
@@ -58,10 +58,10 @@ public class AppleLeavesBlock extends LeavesBlock implements BonemealableBlock{
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         int i = state.getValue(AGE);
-        boolean flag = i == 2;
+        boolean flag = i == 4;
         if (!flag && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
             return InteractionResult.PASS;
-        } else if (i > 1) {
+        } else if (i > 3) {
             int j = 1 + level.random.nextInt(1);
             popResourceFromFace(level, pos, result.getDirection(), new ItemStack(Items.APPLE, 1));
             level.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
@@ -79,7 +79,7 @@ public class AppleLeavesBlock extends LeavesBlock implements BonemealableBlock{
     }
 
     public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean b) {
-        return state.getValue(AGE) < 2;
+        return state.getValue(AGE) < 4;
     }
 
     public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
@@ -87,7 +87,7 @@ public class AppleLeavesBlock extends LeavesBlock implements BonemealableBlock{
     }
 
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-        int i = Math.min(2, state.getValue(AGE) + 1);
+        int i = Math.min(4, state.getValue(AGE) + 1);
         level.setBlock(pos, state.setValue(AGE, Integer.valueOf(i)), 2);
     }
 
