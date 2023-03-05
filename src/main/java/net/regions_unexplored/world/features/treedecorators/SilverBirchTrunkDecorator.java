@@ -14,6 +14,8 @@
 */
 package net.regions_unexplored.world.features.treedecorators;
 
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -38,13 +40,28 @@ public class SilverBirchTrunkDecorator extends TrunkVineDecorator {
 
 	@Override
 	public void place(TreeDecorator.Context context) {
-			int size = context.random().nextInt(3)+2;
-			for(int i = 0; i < context.logs().size(); i++){
+		for(int i = 0; i < context.logs().size(); i++){
 			BlockPos newpos = context.logs().get(i);
-			if(i==1){
-				context.setBlock(newpos, RegionsUnexploredBlocks.SILVER_BIRCH_LOG_BASE.get().defaultBlockState());
+			if(i==0){
+				if(context.level().isStateAtPosition(newpos, SilverBirchTrunkDecorator::isGrass)){
+					context.setBlock(newpos.above(), RegionsUnexploredBlocks.SILVER_BIRCH_LOG_BASE.get().defaultBlockState());
+				}
+				else{
+					context.setBlock(newpos, RegionsUnexploredBlocks.SILVER_BIRCH_LOG_BASE.get().defaultBlockState());
+				}
 			}
 		}
-		}
 	}
+
+	public static boolean isGrass(BlockState state) {
+		return state.is(Blocks.GRASS_BLOCK)
+				||state.is(Blocks.MYCELIUM)
+				||state.is(Blocks.DIRT)
+				||state.is(RegionsUnexploredBlocks.FOREST_GRASS_BLOCK.get())
+				||state.is(RegionsUnexploredBlocks.PLAINS_GRASS_BLOCK.get())
+				||state.is(RegionsUnexploredBlocks.ALPHA_GRASS_BLOCK.get())
+				||state.is(RegionsUnexploredBlocks.FOREST_DIRT.get())
+				||state.is(RegionsUnexploredBlocks.PLAINS_DIRT.get());
+	}
+}
 
