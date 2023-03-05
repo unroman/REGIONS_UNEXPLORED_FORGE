@@ -69,11 +69,10 @@ public class RuRegionRare extends Region
             if(RegionsUnexploredCommonConfigs.TOGGLE_HIGHLAND_FIELDS.get())
                 builder.replaceBiome(Biomes.MEADOW, RuBiomes.HIGHLAND_FIELDS);
 
-            if(RegionsUnexploredCommonConfigs.TOGGLE_FUNGAL_FEN.get())
+            if(RegionsUnexploredCommonConfigs.TOGGLE_FUNGAL_FEN.get()) {
                 builder.replaceBiome(Biomes.JUNGLE, RuBiomes.FUNGAL_FEN);
-
-            if(RegionsUnexploredCommonConfigs.TOGGLE_REDWOODS.get())
                 builder.replaceBiome(Biomes.BAMBOO_JUNGLE, RuBiomes.FUNGAL_FEN);
+            }
 
             if(RegionsUnexploredCommonConfigs.TOGGLE_SPIRES.get())
                 builder.replaceBiome(Biomes.SNOWY_TAIGA, RuBiomes.SPIRES);
