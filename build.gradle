@@ -137,7 +137,7 @@ jar {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
                 "TweakClass": "org.spongepowered.asm.launch.MixinTweaker",
                 "TweakOrder": 0,
-                "MixinConfigs" : "regions_unexplored.mixin.json"
+                "MixinConfigs" : "ru.mixin.json"
         ])
     }
 }
