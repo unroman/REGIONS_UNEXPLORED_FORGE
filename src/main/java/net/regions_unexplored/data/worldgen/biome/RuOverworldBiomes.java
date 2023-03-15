@@ -137,21 +137,37 @@ public class RuOverworldBiomes {
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.925f)
                 .downfall(0.9f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
-
+    //DONE_FOR_1_20
     public static Biome bioshroomCaves(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-
-        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-11093410).grassColorOverride(-11093361)
-                .ambientParticle(new AmbientParticleSettings(ParticleTypes.SPORE_BLOSSOM_AIR, 0.01F)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
-
+        //BIOME COLOURS AND SOUNDS
+        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder()
+                .skyColor(7972607)
+                .fogColor(12638463)
+                .waterColor(4159204)
+                .waterFogColor(329011)
+                .grassColorOverride(-11093361)
+                .foliageColorOverride(-11093410)
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.SPORE_BLOSSOM_AIR, 0.01F))
+                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES))
+                .build();
+        //ADD SPAWNS
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        spawnBuilder.addSpawn(MobCategory.AXOLOTLS, new MobSpawnSettings.SpawnerData(EntityType.AXOLOTL, 10, 4, 6));
+        spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 25, 8, 8));
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.GIANT_BIOSHROOMS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.GIANT_BIOSHROOMS_DEEPSLATE);
+        //ADD GIANT_BIOSHROOMS
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.BIOSHROOM_CAVES_GIANT_GREEN_BIOSHROOM);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.BIOSHROOM_CAVES_GIANT_BLUE_BIOSHROOM);
+
+        //ADD GRASS
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.BIOSHROOM_CAVES_GRASS);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.BIOSHROOM_CAVES_TALL_GRASS);
+
+        //ADD BIOSHROOM_PLANTS
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.BIOSHROOM_CAVES_GREEN_BIOSHROOM);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.BIOSHROOM_CAVES_BLUE_BIOSHROOM);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.BIOSHROOM_CAVES_PINK_BIOSHROOM);
@@ -162,8 +178,15 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1.25f)
-                .downfall(0.9f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
+
+        return new Biome.BiomeBuilder()
+                .precipitation(Biome.Precipitation.RAIN)
+                .temperature(1.25f)
+                .downfall(0.9f)
+                .specialEffects(effects)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(biomeBuilder.build())
+                .build();
     }
 
     public static Biome pineSlopes(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {

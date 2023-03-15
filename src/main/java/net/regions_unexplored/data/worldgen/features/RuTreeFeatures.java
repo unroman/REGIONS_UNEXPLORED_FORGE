@@ -48,15 +48,6 @@ import java.util.OptionalInt;
 
 
 public class RuTreeFeatures {
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_GREEN_BIOSHROOM = RuFeatureUtils.createKey("giant_green_bioshroom");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_BLUE_BIOSHROOM = RuFeatureUtils.createKey("giant_blue_bioshroom");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_GREEN_BIOSHROOM_DEEPSLATE = RuFeatureUtils.createKey("giant_green_bioshroom_deepslate");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_BLUE_BIOSHROOM_DEEPSLATE = RuFeatureUtils.createKey("giant_blue_bioshroom_deepslate");
-
-
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_GREEN_BIOSHROOM_PLANTED = RuFeatureUtils.createKey("giant_green_bioshroom_planted");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_BLUE_BIOSHROOM_PLANTED = RuFeatureUtils.createKey("giant_blue_bioshroom_planted");
-
     public static final ResourceKey<ConfiguredFeature<?, ?>> ALPHA_OAK_TREE = RuFeatureUtils.createKey("alpha_oak_tree");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> BAMBOO_TREE = RuFeatureUtils.createKey("bamboo_tree");
@@ -242,14 +233,6 @@ public class RuTreeFeatures {
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> treeBootstrap) {
         HolderGetter<Block> holderGetter = treeBootstrap.lookup(Registries.BLOCK);
-        register(treeBootstrap, GIANT_GREEN_BIOSHROOM_PLANTED, RuFeatureRegistry.GIANT_BIOSHROOM.get(), new HugeFungusConfiguration(RegionsUnexploredBlocks.VIRIDESCENT_NYLIUM.get().defaultBlockState(), Blocks.MUSHROOM_STEM.defaultBlockState(), RegionsUnexploredBlocks.GREEN_BIOSHROOM_BLOCK.get().defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), true));
-        register(treeBootstrap, GIANT_BLUE_BIOSHROOM_PLANTED, RuFeatureRegistry.GIANT_BIOSHROOM.get(), new HugeFungusConfiguration(RegionsUnexploredBlocks.VIRIDESCENT_NYLIUM.get().defaultBlockState(), Blocks.MUSHROOM_STEM.defaultBlockState(), RegionsUnexploredBlocks.BLUE_BIOSHROOM_BLOCK.get().defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), true));
-
-        register(treeBootstrap, GIANT_GREEN_BIOSHROOM, Feature.HUGE_FUNGUS, new HugeFungusConfiguration(RegionsUnexploredBlocks.VIRIDESCENT_NYLIUM.get().defaultBlockState(), Blocks.MUSHROOM_STEM.defaultBlockState(), RegionsUnexploredBlocks.GREEN_BIOSHROOM_BLOCK.get().defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), false));
-        register(treeBootstrap, GIANT_BLUE_BIOSHROOM, Feature.HUGE_FUNGUS, new HugeFungusConfiguration(RegionsUnexploredBlocks.VIRIDESCENT_NYLIUM.get().defaultBlockState(), Blocks.MUSHROOM_STEM.defaultBlockState(), RegionsUnexploredBlocks.BLUE_BIOSHROOM_BLOCK.get().defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), false));
-        register(treeBootstrap, GIANT_GREEN_BIOSHROOM_DEEPSLATE, Feature.HUGE_FUNGUS, new HugeFungusConfiguration(RegionsUnexploredBlocks.DEEPSLATE_VIRIDESCENT_NYLIUM.get().defaultBlockState(), Blocks.MUSHROOM_STEM.defaultBlockState(), RegionsUnexploredBlocks.GREEN_BIOSHROOM_BLOCK.get().defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), false));
-        register(treeBootstrap, GIANT_BLUE_BIOSHROOM_DEEPSLATE, Feature.HUGE_FUNGUS, new HugeFungusConfiguration(RegionsUnexploredBlocks.DEEPSLATE_VIRIDESCENT_NYLIUM.get().defaultBlockState(), Blocks.MUSHROOM_STEM.defaultBlockState(), RegionsUnexploredBlocks.BLUE_BIOSHROOM_BLOCK.get().defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), false));
-
         register(treeBootstrap, ALPHA_OAK_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RegionsUnexploredBlocks.ALPHA_LOG.get().defaultBlockState()), new StraightTrunkPlacer(4, 2, 0),BlockStateProvider.simple(RegionsUnexploredBlocks.ALPHA_LEAVES.get().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build());
 
         register(treeBootstrap, BAMBOO_TREE, Feature.TREE,new TreeConfiguration.TreeConfigurationBuilder(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.BAMBOO_LOG.get().defaultBlockState(), 3).add(RegionsUnexploredBlocks.BAMBOO_LOG.get().defaultBlockState().setValue(BambooLogBlock.LEAVES, true), 1)),new StraightTrunkPlacer(12, 9, 0),new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState(), 5).add(RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState(), 1)),new RandomSpreadFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), ConstantInt.of(5), 150), new TwoLayersFeatureSize(1, 0, 1)).decorators(ImmutableList.of(BambooLeaveDecorator.INSTANCE)).ignoreVines().dirt(BlockStateProvider.simple(Blocks.PODZOL)).build());

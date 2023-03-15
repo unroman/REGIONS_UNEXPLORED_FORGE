@@ -13,7 +13,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
-import net.regions_unexplored.data.worldgen.features.RuBiomeFeatures;
 import net.regions_unexplored.data.worldgen.features.RuFeatures;
 import net.regions_unexplored.data.worldgen.features.RuTreeFeatures;
 import net.regions_unexplored.data.worldgen.features.RuVegetationFeatures;
@@ -22,8 +21,6 @@ import net.regions_unexplored.util.worldgen.RuPlacementUtils;
 import java.util.List;
 
 public class RuBiomePlacements {
-    public static final ResourceKey<PlacedFeature> GIANT_BIOSHROOMS = RuPlacementUtils.createKey("giant_bioshrooms");
-    public static final ResourceKey<PlacedFeature> GIANT_BIOSHROOMS_DEEPSLATE = RuPlacementUtils.createKey("giant_bioshrooms_deepslate");
 
     public static final ResourceKey<PlacedFeature> SCORCH_TREES = RuPlacementUtils.createKey("scorch_trees");
 
@@ -41,6 +38,8 @@ public class RuBiomePlacements {
     public static final ResourceKey<PlacedFeature> PRISMACHASM_PINK_BIOSHROOM = RuPlacementUtils.createKey("prismachasm_pink_bioshroom");
     public static final ResourceKey<PlacedFeature> PRISMACHASM_YELLOW_BIOSHROOM = RuPlacementUtils.createKey("prismachasm_yellow_bioshroom");
 
+    public static final ResourceKey<PlacedFeature> BIOSHROOM_CAVES_GIANT_GREEN_BIOSHROOM = RuPlacementUtils.createKey("bioshroom_caves_giant_green_bioshroom");
+    public static final ResourceKey<PlacedFeature> BIOSHROOM_CAVES_GIANT_BLUE_BIOSHROOM = RuPlacementUtils.createKey("bioshroom_caves_giant_blue_bioshroom");
     public static final ResourceKey<PlacedFeature> BIOSHROOM_CAVES_GRASS = RuPlacementUtils.createKey("bioshroom_caves_grass");
     public static final ResourceKey<PlacedFeature> BIOSHROOM_CAVES_TALL_GRASS = RuPlacementUtils.createKey("bioshroom_caves_tall_grass");
     public static final ResourceKey<PlacedFeature> BIOSHROOM_CAVES_HYSSOP = RuPlacementUtils.createKey("bioshroom_caves_hyssop");
@@ -497,9 +496,6 @@ public class RuBiomePlacements {
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> featureGetter = context.lookup(Registries.CONFIGURED_FEATURE);
 
-        final Holder<ConfiguredFeature<?, ?>> GIANT_BIOSHROOMS = featureGetter.getOrThrow(RuBiomeFeatures.GIANT_BIOSHROOMS);
-        final Holder<ConfiguredFeature<?, ?>> GIANT_BIOSHROOMS_DEEPSLATE = featureGetter.getOrThrow(RuBiomeFeatures.GIANT_BIOSHROOMS_DEEPSLATE);
-
         final Holder<ConfiguredFeature<?, ?>> SCORCH_TREES = featureGetter.getOrThrow(RuTreeFeatures.DEAD_OAK_BUSH);
 
         final Holder<ConfiguredFeature<?, ?>> LUSH_DELTA_GRASS = featureGetter.getOrThrow(VegetationFeatures.PATCH_GRASS);
@@ -516,6 +512,8 @@ public class RuBiomePlacements {
         final Holder<ConfiguredFeature<?, ?>> PRISMACHASM_PINK_BIOSHROOM = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_PINK_BIOSHROOM);
         final Holder<ConfiguredFeature<?, ?>> PRISMACHASM_YELLOW_BIOSHROOM = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_YELLOW_BIOSHROOM);
 
+        final Holder<ConfiguredFeature<?, ?>> BIOSHROOM_CAVES_GIANT_GREEN_BIOSHROOM = featureGetter.getOrThrow(RuVegetationFeatures.GIANT_GREEN_BIOSHROOM);
+        final Holder<ConfiguredFeature<?, ?>> BIOSHROOM_CAVES_GIANT_BLUE_BIOSHROOM = featureGetter.getOrThrow(RuVegetationFeatures.GIANT_BLUE_BIOSHROOM);
         final Holder<ConfiguredFeature<?, ?>> BIOSHROOM_CAVES_GRASS = featureGetter.getOrThrow(VegetationFeatures.PATCH_GRASS);
         final Holder<ConfiguredFeature<?, ?>> BIOSHROOM_CAVES_TALL_GRASS = featureGetter.getOrThrow(VegetationFeatures.PATCH_TALL_GRASS);
         final Holder<ConfiguredFeature<?, ?>> BIOSHROOM_CAVES_HYSSOP = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_CAVE_HYSSOP);
@@ -971,10 +969,6 @@ public class RuBiomePlacements {
         final Holder<ConfiguredFeature<?, ?>> LUSH_DELTA_AZALEA = featureGetter.getOrThrow(RuTreeFeatures.LUSH_DELTA_AZALEA);
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        register(context, RuBiomePlacements.GIANT_BIOSHROOMS, GIANT_BIOSHROOMS, List.of(CountOnEveryLayerPlacement.of(150), RuFeatures.RANGE_BOTTOM_120, BiomeFilter.biome()));
-        register(context, RuBiomePlacements.GIANT_BIOSHROOMS_DEEPSLATE, GIANT_BIOSHROOMS_DEEPSLATE, List.of(CountOnEveryLayerPlacement.of(150), RuFeatures.RANGE_BOTTOM_120, BiomeFilter.biome()));
-
         register(context, RuBiomePlacements.SCORCH_TREES, SCORCH_TREES, List.of(CountOnEveryLayerPlacement.of(1), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.filteredByBlockSurvival(RegionsUnexploredBlocks.GREEN_BIOSHROOM.get()), BiomeFilter.biome()));
 
         register(context, RuBiomePlacements.LUSH_DELTA_GRASS, LUSH_DELTA_GRASS, List.of(CountOnEveryLayerPlacement.of(32), BiomeFilter.biome()));
@@ -991,6 +985,8 @@ public class RuBiomePlacements {
         register(context, RuBiomePlacements.PRISMACHASM_PINK_BIOSHROOM, PRISMACHASM_PINK_BIOSHROOM, List.of(CountOnEveryLayerPlacement.of(2), InSquarePlacement.spread(), BiomeFilter.biome()));
         register(context, RuBiomePlacements.PRISMACHASM_YELLOW_BIOSHROOM, PRISMACHASM_YELLOW_BIOSHROOM, List.of(CountOnEveryLayerPlacement.of(2), InSquarePlacement.spread(), BiomeFilter.biome()));
 
+        register(context, RuBiomePlacements.BIOSHROOM_CAVES_GIANT_BLUE_BIOSHROOM, BIOSHROOM_CAVES_GIANT_BLUE_BIOSHROOM, List.of(CountOnEveryLayerPlacement.of(3), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
+        register(context, RuBiomePlacements.BIOSHROOM_CAVES_GIANT_GREEN_BIOSHROOM, BIOSHROOM_CAVES_GIANT_GREEN_BIOSHROOM, List.of(CountOnEveryLayerPlacement.of(3), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.BIOSHROOM_CAVES_GRASS, BIOSHROOM_CAVES_GRASS, List.of(CountOnEveryLayerPlacement.of(70), BiomeFilter.biome()));
         register(context, RuBiomePlacements.BIOSHROOM_CAVES_TALL_GRASS, BIOSHROOM_CAVES_TALL_GRASS, List.of(CountOnEveryLayerPlacement.of(15), BiomeFilter.biome()));
         register(context, RuBiomePlacements.BIOSHROOM_CAVES_HYSSOP, BIOSHROOM_CAVES_HYSSOP, List.of(CountOnEveryLayerPlacement.of(10), BiomeFilter.biome()));

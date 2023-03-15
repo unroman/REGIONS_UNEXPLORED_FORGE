@@ -1,26 +1,33 @@
 {
-  "type": "minecraft:huge_fungus",
+  "type": "regions_unexplored:giant_green_bioshroom",
   "config": {
-    "decor_state": {
-      "Name": "minecraft:shroomlight"
-    },
-    "hat_state": {
-      "Name": "regions_unexplored:green_bioshroom_block"
-    },
-    "planted": false,
-    "stem_state": {
-      "Name": "minecraft:mushroom_stem",
-      "Properties": {
-        "down": "true",
-        "east": "true",
-        "north": "true",
-        "south": "true",
-        "up": "true",
-        "west": "true"
+    "cap_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "regions_unexplored:green_bioshroom_block"
       }
     },
-    "valid_base_block": {
-      "Name": "regions_unexplored:viridescent_nylium"
+    "glow_block_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "regions_unexplored:glowing_green_bioshroom_block"
+      }
+    },
+    "minimum_size": 8,
+    "size_variation": 5,
+    "stem_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:mushroom_stem",
+        "Properties": {
+          "down": "true",
+          "east": "true",
+          "north": "true",
+          "south": "true",
+          "up": "true",
+          "west": "true"
+        }
+      }
     }
   }
 }
