@@ -1,6 +1,9 @@
 {
   "variants": {
-    "": {
+    "half=upper": {
+      "model": "regions_unexplored:block/tall_pink_cherry_sapling_empty"
+    },
+    "half=lower": {
       "model": "regions_unexplored:block/tall_pink_cherry_sapling"
     }
   }

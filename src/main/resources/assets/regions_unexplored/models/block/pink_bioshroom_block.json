@@ -1,7 +1,7 @@
 {
   "parent": "block/cube",
   "textures": {
-    "down": "regions_unexplored:block/pink_bioshroom_block",
+    "down": "regions_unexplored:block/pink_bioshroom_block_glowing",
     "up": "regions_unexplored:block/pink_bioshroom_block",
     "north": "regions_unexplored:block/pink_bioshroom_block",
     "east": "regions_unexplored:block/pink_bioshroom_block",

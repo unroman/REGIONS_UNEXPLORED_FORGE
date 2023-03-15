@@ -1,5 +1,5 @@
 {
-  "parent": "regions_unexplored:block/eucalyptus_wood",
+  "parent": "regions_unexplored:block/eucalyptus_wood_inventory",
   "display": {
     "thirdperson": {
       "rotation": [

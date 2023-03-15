@@ -1,6 +1,9 @@
 {
   "variants": {
-    "": {
+    "half=upper": {
+      "model": "regions_unexplored:block/tall_mangrove_sapling_empty"
+    },
+    "half=lower": {
       "model": "regions_unexplored:block/tall_mangrove_sapling"
     }
   }

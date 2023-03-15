@@ -1,5 +1,5 @@
 {
-  "parent": "regions_unexplored:block/eucalyptus_log",
+  "parent": "regions_unexplored:block/eucalyptus_log_inventory",
   "display": {
     "thirdperson": {
       "rotation": [
