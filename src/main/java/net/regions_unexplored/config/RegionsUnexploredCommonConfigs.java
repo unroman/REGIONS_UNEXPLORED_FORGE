@@ -6,13 +6,17 @@ public class RegionsUnexploredCommonConfigs {
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec SPEC;
 
+
+    public static final ForgeConfigSpec.DoubleValue EUCALYPTUS_TRANSITION_SIZE;
+    public static final ForgeConfigSpec.ConfigValue<Double> EUCALYPTUS_SATURATION;
+    public static final ForgeConfigSpec.DoubleValue EUCALYPTUS_BRIGHTNESS;
+
     public static final ForgeConfigSpec.ConfigValue<Boolean> TOGGLE_CUSTOM_DIRTS;
 
-    public static final ForgeConfigSpec.ConfigValue<Integer> REGION_NORTHERN_LIKE_WEIGHT;
-    public static final ForgeConfigSpec.ConfigValue<Integer> REGION_TEMPERATE_LIKE_WEIGHT;
-    public static final ForgeConfigSpec.ConfigValue<Integer> REGION_OVERSEAS_LIKE_WEIGHT;
-    public static final ForgeConfigSpec.ConfigValue<Integer> REGION_RARE_WEIGHT;
+    public static final ForgeConfigSpec.ConfigValue<Integer> REGION_PRIMARY_WEIGHT;
+    public static final ForgeConfigSpec.ConfigValue<Integer> REGION_SECONDARY_WEIGHT;
     public static final ForgeConfigSpec.ConfigValue<Integer> REGION_NETHER_WEIGHT;
+    public static final ForgeConfigSpec.ConfigValue<Integer> REGION_VANILLA_MODIFIED_WEIGHT;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> TOGGLE_REDSTONE_CAVES;
     public static final ForgeConfigSpec.ConfigValue<Boolean> TOGGLE_BIOSHROOM_CAVES;
@@ -97,25 +101,22 @@ public class RegionsUnexploredCommonConfigs {
         BUILDER.comment("Config for Regions Unexplored!");
 
 
-        BUILDER.push("worldgen_options");
-        TOGGLE_CUSTOM_DIRTS = BUILDER.define("toggle_custom_dirt", true);
 
-        BUILDER.pop();
         BUILDER.push("region_weights");
-        REGION_NORTHERN_LIKE_WEIGHT = BUILDER.comment("Sets Terrablender region weight for Northern Like region.")
-                .defineInRange("northern_like_region_weight", 11, 0, 100000);
 
-        REGION_TEMPERATE_LIKE_WEIGHT = BUILDER.comment("Sets Terrablender region weight for Temperate Like region.")
-                .defineInRange("temperate_like_region_weight", 11, 0, 100000);
+        REGION_PRIMARY_WEIGHT = BUILDER.comment("Sets Terrablender region weight for the primary region.")
+                .defineInRange("primary_region_weight", 11, 0, 2147483646);
 
-        REGION_OVERSEAS_LIKE_WEIGHT = BUILDER.comment("Sets Terrablender region weight for Overseas Like region.")
-                .defineInRange("overseas_like_region_weight", 10, 0, 100000);
-        
-        REGION_RARE_WEIGHT = BUILDER.comment("Sets Terrablender region weight for rare region.")
-                .defineInRange("rare_region_weight", 1, 0, 100000);
+        REGION_SECONDARY_WEIGHT = BUILDER.comment("Sets Terrablender region weight for the secondary region.")
+                .defineInRange("secondary_region_weight", 8, 0, 2147483646);
 
         REGION_NETHER_WEIGHT = BUILDER.comment("Sets Terrablender region weight for Nether region.")
-                .defineInRange("nether_region_weight", 14, 0, 100000);
+                .defineInRange("nether_region_weight", 14, 0, 2147483646);
+
+
+        BUILDER.comment("(NOTICE: set to 0 by default. Set vanilla region weight in the Terrablender config to 0 before setting this to 10)");
+        REGION_VANILLA_MODIFIED_WEIGHT = BUILDER.comment("Sets Terrablender region weight for the modified vanilla region.")
+                .defineInRange("experimental_modified_vanilla_region_weight", 0, 0, 2147483646);
 
         BUILDER.pop();
         BUILDER.push("biome_toggles");
@@ -213,7 +214,26 @@ public class RegionsUnexploredCommonConfigs {
         TOGGLE_CORRUPTED_HOLT = BUILDER.define("toggle_corrupted_holt", true);
 
         BUILDER.pop();
+        //
+        BUILDER.push("worldgen_options");
 
+        BUILDER.comment("surface_rules");
+        TOGGLE_CUSTOM_DIRTS = BUILDER.define("toggle_custom_dirt", true);
+
+        BUILDER.pop();
+        //
+        BUILDER.push("block_color_options");
+
+        BUILDER.comment("block_color_options");
+        EUCALYPTUS_TRANSITION_SIZE = BUILDER.comment("Sets Eucalyptus colour transition size. Bigger number = bigger distance between colours.")
+                .defineInRange("eucalyptus_transition_size", 25.0, 0.0, 200.0);
+        EUCALYPTUS_SATURATION = BUILDER.comment("Sets Eucalyptus colour saturation.")
+                .defineInRange("eucalyptus_saturation", 0.5, 0.0, 1.0);
+        EUCALYPTUS_BRIGHTNESS = BUILDER.comment("Sets Eucalyptus colour saturation.")
+                .defineInRange("eucalyptus_brightness", 0.8, 0.0, 1.0);
+
+        BUILDER.pop();
+        //
         SPEC = BUILDER.build();
     }
 }

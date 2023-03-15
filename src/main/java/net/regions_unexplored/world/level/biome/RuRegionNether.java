@@ -17,7 +17,7 @@ import java.util.function.Consumer;
 
 public class RuRegionNether extends Region
 {
-    public static final ResourceLocation LOCATION = new ResourceLocation(RegionsUnexploredMod.MOD_ID, "nether_common");
+    public static final ResourceLocation LOCATION = new ResourceLocation(RegionsUnexploredMod.MOD_ID, "nether");
 
     public RuRegionNether(int weight)
     {
