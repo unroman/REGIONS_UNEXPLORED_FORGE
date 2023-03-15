@@ -34,6 +34,7 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.minecraft.world.level.material.Fluids;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
+import net.regions_unexplored.data.worldgen.features.feature.bioshroom.GiantBioshroomConfiguration;
 import net.regions_unexplored.util.worldgen.RuFeatureUtils;
 
 public class RuVegetationFeatures {
@@ -43,6 +44,8 @@ public class RuVegetationFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_SEAGRASS = RuFeatureUtils.createKey("patch_seagrass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_LILY_PAD = RuFeatureUtils.createKey("patch_lily_pad");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_BLUE_BIOSHROOM = RuFeatureUtils.createKey("giant_blue_bioshroom");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_GREEN_BIOSHROOM = RuFeatureUtils.createKey("giant_green_bioshroom");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_PINK_BIOSHROOM = RuFeatureUtils.createKey("giant_pink_bioshroom");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_BARLEY = RuFeatureUtils.createKey("patch_barley");
@@ -160,6 +163,8 @@ public class RuVegetationFeatures {
         register(context, PATCH_SEAGRASS, Feature.SEAGRASS, new ProbabilityFeatureConfiguration(0.6F));
         register(context, PATCH_LILY_PAD, Feature.RANDOM_PATCH, new RandomPatchConfiguration(10, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.LILY_PAD)))));
         //BIOSHROOMS
+        register(context, GIANT_BLUE_BIOSHROOM, RuFeatureRegistry.GIANT_BLUE_BIOSHROOM.get(), new GiantBioshroomConfiguration(BlockStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.BLUE_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.GLOWING_BLUE_BIOSHROOM_BLOCK.get().defaultBlockState()), 7, 7));
+        register(context, GIANT_GREEN_BIOSHROOM, RuFeatureRegistry.GIANT_GREEN_BIOSHROOM.get(), new GiantBioshroomConfiguration(BlockStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.GREEN_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.GLOWING_GREEN_BIOSHROOM_BLOCK.get().defaultBlockState()), 8, 5));
         register(context, GIANT_PINK_BIOSHROOM, RuFeatureRegistry.GIANT_PINK_BIOSHROOM.get(), FeatureConfiguration.NONE);
         //GRASSES
         register(context, PATCH_BARLEY , Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.BARLEY.get().defaultBlockState()), 32));
