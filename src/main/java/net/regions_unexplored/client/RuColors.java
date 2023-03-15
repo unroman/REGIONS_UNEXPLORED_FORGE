@@ -12,6 +12,7 @@ import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
+import net.regions_unexplored.config.RegionsUnexploredCommonConfigs;
 
 import java.awt.*;
 
@@ -147,6 +148,15 @@ public class RuColors {
         },RegionsUnexploredBlocks.PRISMAGLASS.get());
     }
 
+    @SubscribeEvent
+    public static void rainbowEucalyptusColorLoad(RegisterColorHandlersEvent.Block event) {
+        event.getBlockColors().register((bs, world, pos, index) -> {
+                    return world != null && pos != null ? getRainbowEucalyptusColor(world, pos) : FoliageColor.getDefaultColor();
+                },      RegionsUnexploredBlocks.EUCALYPTUS_LOG.get(),
+                RegionsUnexploredBlocks.EUCALYPTUS_WOOD.get()
+        );
+    }
+
     public static int getRainbowColor(BlockAndTintGetter world, BlockPos pos) {
         Color rainbow = Color.getHSBColor(((float)pos.getX() + (float)pos.getZ()) / 50.0F, 1.0F, 1.0F);
         return rainbow.getRGB();
@@ -154,6 +164,14 @@ public class RuColors {
 
     public static int getRainbowGlassColor(BlockAndTintGetter world, BlockPos pos) {
         Color rainbow = Color.getHSBColor(((float)pos.getX() + (float)pos.getY() + (float)pos.getZ()) / 35.0F, 1.0F, 1.0F);
+        return rainbow.getRGB();
+    }
+
+    public static int getRainbowEucalyptusColor(BlockAndTintGetter world, BlockPos pos) {
+        Color rainbow = Color.getHSBColor(((float)pos.getX() + (float)pos.getY() + (float)pos.getZ()) /
+                RegionsUnexploredCommonConfigs.EUCALYPTUS_TRANSITION_SIZE.get().floatValue(),
+                RegionsUnexploredCommonConfigs.EUCALYPTUS_SATURATION.get().floatValue(),
+                RegionsUnexploredCommonConfigs.EUCALYPTUS_BRIGHTNESS.get().floatValue());
         return rainbow.getRGB();
     }
 
