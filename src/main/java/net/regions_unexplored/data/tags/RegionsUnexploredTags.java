@@ -17,6 +17,7 @@ public final class RegionsUnexploredTags {
    public static final TagKey<Block> REPLACEABLE_BLOCKS = create("replaceable_blocks");
    public static final TagKey<Block> BIOSHROOM_GROW_BLOCK = create("bioshroom_grow_block");
    public static final TagKey<Block> TALL_SAPLINGS = create("tall_saplings");
+   public static final TagKey<Block> TREE_GRASS_REPLACEABLES = create("tree_grass_replaceables");
    public static final TagKey<Block> SANDS = create("sands");
    public static final TagKey<Block> FLUIDS = create("fluids");
    public static final TagKey<Block> ASH = create("ash");
