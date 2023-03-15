@@ -26,7 +26,6 @@ import net.regions_unexplored.RegionsUnexploredMod;
 import net.regions_unexplored.data.worldgen.noise.RuNoises;
 import net.regions_unexplored.data.worldgen.biome.RuBiomeRegistry;
 import net.regions_unexplored.data.worldgen.biome.RuBiomes;
-import net.regions_unexplored.data.worldgen.features.RuBiomeFeatures;
 import net.regions_unexplored.data.worldgen.features.RuFeatures;
 import net.regions_unexplored.data.worldgen.features.RuTreeFeatures;
 import net.regions_unexplored.data.worldgen.features.RuVegetationFeatures;
@@ -53,9 +52,9 @@ public class DataGenEvent {
 
         Map<ResourceLocation, NormalNoise.NoiseParameters> noiseMapping = createMappings(Registries.NOISE, lookupProvider, RuNoises.class);
 
-        Map<ResourceLocation, ConfiguredFeature<?, ?>> featureConfigMapping = createMappings(Registries.CONFIGURED_FEATURE, lookupProvider, RuFeatures.class, RuVegetationFeatures.class, RuBiomeFeatures.class, RuTreeFeatures.class);
+        Map<ResourceLocation, ConfiguredFeature<?, ?>> featureConfigMapping = createMappings(Registries.CONFIGURED_FEATURE, lookupProvider, RuFeatures.class, RuVegetationFeatures.class, RuTreeFeatures.class);
 
-        Map<ResourceLocation, PlacedFeature> featurePlacedMapping = createMappings(Registries.PLACED_FEATURE, lookupProvider, RuPlacements.class, RuBiomePlacements.class, RuNetherBiomePlacements.class, RuVegetationPlacements.class, RuTreePlacements.class);
+        Map<ResourceLocation, PlacedFeature> featurePlacedMapping = createMappings(Registries.PLACED_FEATURE, lookupProvider, RuPlacements.class, RuBiomePlacements.class, RuNetherBiomePlacements.class, RuVegetationPlacements.class);
 
         Map<ResourceLocation, Biome> biomeMapping = createMappings(Registries.BIOME, lookupProvider, RuBiomes.class);
 

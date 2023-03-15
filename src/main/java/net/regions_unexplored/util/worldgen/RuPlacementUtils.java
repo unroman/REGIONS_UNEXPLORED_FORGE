@@ -7,12 +7,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.regions_unexplored.RegionsUnexploredMod;
 import net.regions_unexplored.data.worldgen.placement.*;
-import net.regions_unexplored.data.worldgen.structures.MeadowRock;
-import net.regions_unexplored.data.worldgen.structures.Spires;
 
 public class RuPlacementUtils {
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
-        RuTreePlacements.bootstrap(context);
         RuPlacements.bootstrap(context);
         RuBiomePlacements.bootstrap(context);
         RuNetherBiomePlacements.bootstrap(context);
