@@ -11,9 +11,9 @@ public class CypressTreeGrower extends AbstractTreeGrower {
       if (random.nextInt(10) == 0) {
       	int i = random.nextInt(3);
       	if(i==0){
-         return RuTreeFeatures.GIANT_CYPRESS_TREE;
+         return RuTreeFeatures.CYPRESS_TREE;
       	} else {
-         return RuTreeFeatures.GIANT_CYPRESS_TREE_MOSS;
+         return RuTreeFeatures.CYPRESS_TREE_MOSS;
       	}
       }
       else{
