@@ -43,7 +43,7 @@ public class BambooLogBlock extends Block implements BonemealableBlock,SimpleWat
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public BambooLogBlock() {
-        super(BlockBehaviour.Properties.of(Material.BAMBOO, MaterialColor.COLOR_LIGHT_GREEN).sound(SoundType.BAMBOO).strength(2f, 3f).noOcclusion()
+        super(Properties.of(Material.BAMBOO, MaterialColor.COLOR_LIGHT_GREEN).sound(SoundType.BAMBOO).strength(2f, 3f).noOcclusion()
                 .isRedstoneConductor((bs, br, bp) -> false));
         this.registerDefaultState(this.stateDefinition.any().setValue(AXIS, Direction.Axis.Y).setValue(LEAVES, false).setValue(WATERLOGGED, Boolean.valueOf(false)));
     }

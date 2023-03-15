@@ -30,7 +30,7 @@ public class JoshuaLeavesBlock extends DoublePlantBlock implements SimpleWaterlo
     public static final BooleanProperty NATURAL = RuBlockStateProperties.NATURAL;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    public JoshuaLeavesBlock(BlockBehaviour.Properties properties) {
+    public JoshuaLeavesBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(NATURAL, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)).setValue(HALF, DoubleBlockHalf.LOWER));
     }

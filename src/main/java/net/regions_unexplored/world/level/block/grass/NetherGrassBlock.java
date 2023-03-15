@@ -15,7 +15,7 @@ public class NetherGrassBlock extends BushBlock {
     protected static final float AABB_OFFSET = 6.0F;
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
-    public NetherGrassBlock(BlockBehaviour.Properties properties) {
+    public NetherGrassBlock(Properties properties) {
         super(properties);
     }
 

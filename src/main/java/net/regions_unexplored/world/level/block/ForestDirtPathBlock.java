@@ -20,7 +20,7 @@ import net.regions_unexplored.block.RegionsUnexploredBlocks;
 public class ForestDirtPathBlock extends Block {
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 15.0D, 16.0D);
 
-    public ForestDirtPathBlock(BlockBehaviour.Properties properties) {
+    public ForestDirtPathBlock(Properties properties) {
         super(properties);
     }
 

@@ -17,7 +17,7 @@ import net.regions_unexplored.block.RegionsUnexploredBlocks;
 * */
 public class DirtPlacementBlock extends BushBlock {
     public DirtPlacementBlock() {
-        super(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.GRASS).instabreak().noCollission());
+        super(Properties.of(Material.PLANT).sound(SoundType.GRASS).instabreak().noCollission());
     }
 
     @Override

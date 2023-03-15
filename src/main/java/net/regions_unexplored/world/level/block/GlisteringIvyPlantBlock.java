@@ -11,7 +11,7 @@ import net.regions_unexplored.block.RegionsUnexploredBlocks;
 public class GlisteringIvyPlantBlock extends GrowingPlantBodyBlock {
     public static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
-    public GlisteringIvyPlantBlock(BlockBehaviour.Properties properties) {
+    public GlisteringIvyPlantBlock(Properties properties) {
         super(properties, Direction.DOWN, SHAPE, false);
     }
 

@@ -57,7 +57,7 @@ public class PointedRedstoneBlock extends Block implements Fallable, SimpleWater
     private static final VoxelShape BASE_SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
     private static final VoxelShape REQUIRED_SPACE_TO_DRIP_THROUGH_NON_SOLID_BLOCK = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D);
 
-    public PointedRedstoneBlock(BlockBehaviour.Properties properties) {
+    public PointedRedstoneBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(TIP_DIRECTION, Direction.UP).setValue(THICKNESS, DripstoneThickness.TIP).setValue(WATERLOGGED, Boolean.valueOf(false)));
     }
@@ -435,7 +435,7 @@ public class PointedRedstoneBlock extends Block implements Fallable, SimpleWater
         return state.is(RegionsUnexploredBlocks.POINTED_REDSTONE.get()) && state.getValue(TIP_DIRECTION) == direction;
     }
 
-    private static Optional<PointedRedstoneBlock.FluidInfo> getFluidAboveStalactite(Level level, BlockPos pos, BlockState state) {
+    private static Optional<FluidInfo> getFluidAboveStalactite(Level level, BlockPos pos, BlockState state) {
         return !isStalactite(state) ? Optional.empty() : findRootBlock(level, pos, state, 11).map((pos1) -> {
             BlockPos blockpos = pos1.above();
             BlockState blockstate = level.getBlockState(blockpos);
@@ -446,7 +446,7 @@ public class PointedRedstoneBlock extends Block implements Fallable, SimpleWater
                 fluid = level.getFluidState(blockpos).getType();
             }
 
-            return new PointedRedstoneBlock.FluidInfo(blockpos, fluid, blockstate);
+            return new FluidInfo(blockpos, fluid, blockstate);
         });
     }
 

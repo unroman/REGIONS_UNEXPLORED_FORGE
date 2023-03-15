@@ -27,7 +27,7 @@ import net.minecraft.world.level.material.PushReaction;
 
 public class RuDoublePlantBlock extends DoublePlantBlock {
 
-    public RuDoublePlantBlock(BlockBehaviour.Properties properties) {
+    public RuDoublePlantBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER));
     }

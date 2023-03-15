@@ -19,7 +19,7 @@ public class AshVentBlock extends Block {
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
     private final boolean spawnParticles;
 
-    public AshVentBlock(BlockBehaviour.Properties properties) {
+    public AshVentBlock(Properties properties) {
         super(properties);
         this.spawnParticles = true;
         this.registerDefaultState(this.stateDefinition.any());

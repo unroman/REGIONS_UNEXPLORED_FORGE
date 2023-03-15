@@ -29,7 +29,7 @@ public class ForestFarmBlock extends Block {
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 15.0D, 16.0D);
     public static final int MAX_MOISTURE = 7;
 
-    public ForestFarmBlock(BlockBehaviour.Properties properties) {
+    public ForestFarmBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(MOISTURE, Integer.valueOf(0)));
     }
@@ -107,7 +107,7 @@ public class ForestFarmBlock extends Block {
     private static boolean isUnderCrops(BlockGetter getter, BlockPos pos) {
         BlockState plant = getter.getBlockState(pos.above());
         BlockState state = getter.getBlockState(pos);
-        return plant.getBlock() instanceof net.minecraftforge.common.IPlantable && state.canSustainPlant(getter, pos, Direction.UP, (net.minecraftforge.common.IPlantable)plant.getBlock());
+        return plant.getBlock() instanceof IPlantable && state.canSustainPlant(getter, pos, Direction.UP, (IPlantable)plant.getBlock());
     }
 
     private static boolean isNearWater(LevelReader level, BlockPos pos) {

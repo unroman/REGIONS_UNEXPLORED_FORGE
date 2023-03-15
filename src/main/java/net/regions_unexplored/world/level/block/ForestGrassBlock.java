@@ -27,7 +27,7 @@ import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import javax.annotation.Nullable;
 
 public class ForestGrassBlock extends SpreadingForestDirtBlock implements BonemealableBlock {
-   public ForestGrassBlock(BlockBehaviour.Properties properties) {
+   public ForestGrassBlock(Properties properties) {
       super(properties);
    }
 

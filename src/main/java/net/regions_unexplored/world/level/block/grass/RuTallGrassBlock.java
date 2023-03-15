@@ -22,7 +22,7 @@ public class RuTallGrassBlock extends BushBlock implements BonemealableBlock, ne
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
     protected static final VoxelShape SHAPE_MEDIUM_GRASS = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 9.0D, 14.0D);
 
-    public RuTallGrassBlock(BlockBehaviour.Properties properties) {
+    public RuTallGrassBlock(Properties properties) {
         super(properties);
     }
 

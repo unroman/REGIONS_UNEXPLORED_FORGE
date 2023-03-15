@@ -17,7 +17,7 @@ public class DeadShrubBlock extends BushBlock implements net.minecraftforge.comm
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
     protected static final VoxelShape SHAPE_SMALL_DESERT_SHRUB = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 9.0D, 14.0D);
 
-    public DeadShrubBlock(BlockBehaviour.Properties properties) {
+    public DeadShrubBlock(Properties properties) {
         super(properties);
     }
 

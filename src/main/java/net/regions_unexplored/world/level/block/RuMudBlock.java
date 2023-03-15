@@ -16,7 +16,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class RuMudBlock extends Block {
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D);
 
-    public RuMudBlock(BlockBehaviour.Properties properties) {
+    public RuMudBlock(Properties properties) {
         super(properties);
     }
 

@@ -18,7 +18,7 @@ import net.minecraft.world.level.material.PushReaction;
 public class DuckweedBlock extends WaterlilyBlock {
 
     public DuckweedBlock() {
-        super(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.CORAL_BLOCK).instabreak().noCollission().noOcclusion()
+        super(Properties.of(Material.PLANT).sound(SoundType.CORAL_BLOCK).instabreak().noCollission().noOcclusion()
                 .isRedstoneConductor((bs, br, bp) -> false));
         this.registerDefaultState(this.stateDefinition.any());
     }

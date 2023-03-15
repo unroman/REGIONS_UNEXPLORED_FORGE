@@ -28,7 +28,7 @@ public class AshBlock extends Block implements Fallable {
 
     public static final BooleanProperty HAS_GRAVITY = RuBlockStateProperties.HAS_GRAVITY;
 
-    public AshBlock(BlockBehaviour.Properties properties) {
+    public AshBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(HAS_GRAVITY, true));
     }

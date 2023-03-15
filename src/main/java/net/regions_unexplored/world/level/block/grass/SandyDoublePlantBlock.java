@@ -13,7 +13,7 @@ import net.regions_unexplored.data.tags.RegionsUnexploredTags;
 
 public class SandyDoublePlantBlock extends DoublePlantBlock {
 
-    public SandyDoublePlantBlock(BlockBehaviour.Properties properties) {
+    public SandyDoublePlantBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER));
     }

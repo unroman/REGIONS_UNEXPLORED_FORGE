@@ -21,7 +21,7 @@ import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.data.worldgen.features.RuVegetationFeatures;
 
 public class RuNyliumBlock extends Block implements BonemealableBlock {
-    public RuNyliumBlock(BlockBehaviour.Properties properties) {
+    public RuNyliumBlock(Properties properties) {
         super(properties);
     }
 

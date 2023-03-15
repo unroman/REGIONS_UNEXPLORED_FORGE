@@ -15,7 +15,7 @@ import net.minecraft.world.level.material.PushReaction;
 
 public class RuSaplingBlock extends SaplingBlock {
     public RuSaplingBlock(AbstractTreeGrower tree) {
-        super(tree, BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.WOOD).noCollission().instabreak().sound(SoundType.GRASS).randomTicks());
+        super(tree, Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.WOOD).noCollission().instabreak().sound(SoundType.GRASS).randomTicks());
     }
 
     @Override

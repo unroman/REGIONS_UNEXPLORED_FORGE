@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class CobaltObsidianBlock extends Block {
-    public CobaltObsidianBlock(BlockBehaviour.Properties properties) {
+    public CobaltObsidianBlock(Properties properties) {
         super(properties);
     }
 

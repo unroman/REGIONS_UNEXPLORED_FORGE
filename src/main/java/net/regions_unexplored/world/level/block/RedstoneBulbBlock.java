@@ -17,7 +17,7 @@ public class RedstoneBulbBlock extends BushBlock {
     protected static final float AABB_OFFSET = 3.0F;
     protected static final VoxelShape SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 10.0D, 13.0D);
 
-    public RedstoneBulbBlock(BlockBehaviour.Properties properties) {
+    public RedstoneBulbBlock(Properties properties) {
         super(properties);
     }
 

@@ -15,7 +15,7 @@ import net.minecraftforge.common.PlantType;
 public class RedstoneBudBlock extends BushBlock {
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 3.0D, 14.0D);
 
-    public RedstoneBudBlock(BlockBehaviour.Properties properties) {
+    public RedstoneBudBlock(Properties properties) {
         super(properties);
     }
 

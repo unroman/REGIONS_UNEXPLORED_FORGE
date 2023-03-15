@@ -17,7 +17,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 
 public class QuicksandBlock extends Block {
-    public QuicksandBlock(BlockBehaviour.Properties properties) {
+    public QuicksandBlock(Properties properties) {
         super(properties);
     }
 

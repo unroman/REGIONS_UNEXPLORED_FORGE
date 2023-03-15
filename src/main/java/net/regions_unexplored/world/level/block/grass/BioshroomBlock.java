@@ -32,7 +32,7 @@ public class BioshroomBlock extends SaplingBlock {
     private final MobEffect suspiciousStewEffect;
     private final int effectDuration;
 
-    public BioshroomBlock(AbstractTreeGrower tree, MobEffect mobEffect, int duration, BlockBehaviour.Properties properties) {
+    public BioshroomBlock(AbstractTreeGrower tree, MobEffect mobEffect, int duration, Properties properties) {
         super(tree, properties);
         this.suspiciousStewEffect = mobEffect;
         if (mobEffect.isInstantenous()) {
