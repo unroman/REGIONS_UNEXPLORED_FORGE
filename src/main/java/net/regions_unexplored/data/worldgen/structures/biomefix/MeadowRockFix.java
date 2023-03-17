@@ -6,16 +6,16 @@ import net.minecraft.world.level.LevelAccessor;
 
 public class MeadowRockFix {
     public static boolean execute(LevelAccessor level, double x, double y, double z) {
-        if (level.getBiome(new BlockPos(x, y, z)).is(new ResourceLocation("regions_unexplored:meadow"))) {
+        if (level.getBiome(new BlockPos((int)x, (int)y, (int)z)).is(new ResourceLocation("regions_unexplored:meadow"))) {
             return true;
         }
-        if (level.getBiome(new BlockPos(x, y, z)).is(new ResourceLocation("regions_unexplored:temperate_grove"))) {
+        if (level.getBiome(new BlockPos((int)x, (int)y, (int)z)).is(new ResourceLocation("regions_unexplored:temperate_grove"))) {
             return true;
         }
-        if (level.getBiome(new BlockPos(x, y, z)).is(new ResourceLocation("regions_unexplored:golden_boreal_forest"))) {
+        if (level.getBiome(new BlockPos((int)x, (int)y, (int)z)).is(new ResourceLocation("regions_unexplored:golden_boreal_forest"))) {
             return true;
         }
-        if (level.getBiome(new BlockPos(x, y, z)).is(new ResourceLocation("regions_unexplored:lush_hills"))) {
+        if (level.getBiome(new BlockPos((int)x, (int)y, (int)z)).is(new ResourceLocation("regions_unexplored:lush_hills"))) {
             return true;
         }
         return false;

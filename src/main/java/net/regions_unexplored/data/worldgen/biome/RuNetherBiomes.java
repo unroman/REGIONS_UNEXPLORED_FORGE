@@ -55,7 +55,7 @@ public class RuNetherBiomes {
         BiomeDefaultFeatures.addNetherDefaultOres(biomeBuilder);
 
         return new Biome.BiomeBuilder()
-                .precipitation(Biome.Precipitation.NONE).temperature(2.0F).downfall(0.0F).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
+                .temperature(2.0F).downfall(0.0F).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
     public static Biome redstoneHell(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverHolder) {
@@ -80,7 +80,7 @@ public class RuNetherBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
         BiomeDefaultFeatures.addNetherDefaultOres(biomeBuilder);
 
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).temperature(2.0f)
+        return new Biome.BiomeBuilder().temperature(2.0f)
                 .downfall(0.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -113,7 +113,7 @@ public class RuNetherBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
         BiomeDefaultFeatures.addNetherDefaultOres(biomeBuilder);
 
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).temperature(2.0f)
+        return new Biome.BiomeBuilder().temperature(2.0f)
                 .downfall(0.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -144,7 +144,7 @@ public class RuNetherBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
         BiomeDefaultFeatures.addNetherDefaultOres(biomeBuilder);
 
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).temperature(2.0f)
+        return new Biome.BiomeBuilder().temperature(2.0f)
                 .downfall(0.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -178,7 +178,7 @@ public class RuNetherBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
         BiomeDefaultFeatures.addNetherDefaultOres(biomeBuilder);
 
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).temperature(2.0f)
+        return new Biome.BiomeBuilder().temperature(2.0f)
                 .downfall(0.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 }

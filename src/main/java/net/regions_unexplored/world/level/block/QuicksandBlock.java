@@ -39,7 +39,7 @@ public class QuicksandBlock extends Block {
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         Vec3 Eyeheight = entity.getEyePosition();
-        BlockPos EyePos = new BlockPos(Eyeheight.x, Eyeheight.y, Eyeheight.z);
+        BlockPos EyePos = new BlockPos((int)Eyeheight.x, (int)Eyeheight.y, (int)Eyeheight.z);
         super.entityInside(state, level, pos, entity);
         if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.ARTHROPOD : false) == false) {
         entity.makeStuckInBlock(Blocks.AIR.defaultBlockState(), new Vec3(0.25, 0.05, 0.25));
@@ -48,7 +48,8 @@ public class QuicksandBlock extends Block {
             if (entity == null)
                 return;
             if (entity instanceof LivingEntity _entity)
-                _entity.hurt(new DamageSource("quicksand").bypassArmor(), 1);
+                //TODO:fix
+                _entity.hurt(level.damageSources().cramming(), 1);
         }
     }
 }

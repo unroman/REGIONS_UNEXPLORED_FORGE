@@ -43,8 +43,9 @@ public abstract class AbstractUltraTreeGrower extends AbstractMegaTreeGrower {
             if (resourcekey == null) {
                 return false;
             } else {
-                Holder<? extends ConfiguredFeature<?, ?>> holder = this.getConfiguredUltraFeature(level, generator, pos, state, random, resourcekey);
-                net.minecraftforge.event.level.SaplingGrowTreeEvent event = net.minecraftforge.event.ForgeEventFactory.blockGrowFeature(level, random, pos, holder);
+                Holder<ConfiguredFeature<?, ?>> holder = level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE).getHolder(resourcekey).orElse((Holder.Reference<ConfiguredFeature<?, ?>>)null);
+                var event = net.minecraftforge.event.ForgeEventFactory.blockGrowFeature(level, random, pos, holder);
+
                 if (event.getResult().equals(net.minecraftforge.eventbus.api.Event.Result.DENY) || event.getFeature() == null) {
                     return false;
                 } else {

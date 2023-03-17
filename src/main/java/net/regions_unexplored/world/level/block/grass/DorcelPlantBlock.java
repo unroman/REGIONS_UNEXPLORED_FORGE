@@ -39,7 +39,8 @@ public class DorcelPlantBlock extends FlowerBlock {
 
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-            entity.hurt(new DamageSource("dorcel").bypassArmor(), 1.0f);
+        //TODO:fix
+        entity.hurt(level.damageSources().wither(), 1.0f);
     }
 
     @Override

@@ -6,7 +6,7 @@ import net.minecraft.world.level.LevelAccessor;
 
 public class SpiresFix {
     public static boolean execute(LevelAccessor level, double x, double y, double z) {
-        if (level.getBiome(new BlockPos(x, y, z)).is(new ResourceLocation("regions_unexplored:spires"))) {
+        if (level.getBiome(new BlockPos((int)x, (int)y, (int)z)).is(new ResourceLocation("regions_unexplored:spires"))) {
             return true;
         }
         return false;

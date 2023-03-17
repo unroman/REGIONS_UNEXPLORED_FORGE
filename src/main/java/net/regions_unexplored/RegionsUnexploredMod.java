@@ -15,7 +15,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -32,7 +31,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.block.entity.RegionsUnexploredBlockEntities;
-import net.regions_unexplored.block.entity.RuWoodTypes;
+import net.regions_unexplored.world.level.block.state.properties.RuWoodTypes;
 import net.regions_unexplored.data.worldgen.RuNetherSurfaceRuleData;
 import net.regions_unexplored.data.worldgen.RuSurfaceRuleData;
 import net.regions_unexplored.entity.RegionsUnexploredEntities;
@@ -475,7 +474,7 @@ public class RegionsUnexploredMod {
         );
 
         event.registerCreativeModeTab(new ResourceLocation(RegionsUnexploredMod.MOD_ID, "main"), builder -> {
-            builder.icon(() -> new ItemStack(RegionsUnexploredBlocks.RED_PAINTED_PLANKS.get())).title(Component.translatable("itemGroup.regions_unexplored_main")).displayItems((featureFlags, output, hasOp) -> {
+            builder.icon(() -> new ItemStack(RegionsUnexploredBlocks.RED_PAINTED_PLANKS.get())).title(Component.translatable("itemGroup.regions_unexplored_main")).displayItems((featureFlags, output) -> {
 
                 output.accept(new ItemStack(RegionsUnexploredBlocks.CHALK.get()));
                 output.accept(new ItemStack(RegionsUnexploredBlocks.CHALK_STAIRS.get()));
@@ -1003,7 +1002,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.TALL_WILLOW_SAPLING
         );
         event.registerCreativeModeTab(new ResourceLocation(RegionsUnexploredMod.MOD_ID, "natural"), builder -> {
-            builder.icon(() -> new ItemStack(RegionsUnexploredBlocks.FOREST_GRASS_BLOCK.get())).title(Component.translatable("itemGroup.regions_unexplored_natural")).displayItems((featureFlags, output, hasOp) -> {
+            builder.icon(() -> new ItemStack(RegionsUnexploredBlocks.FOREST_GRASS_BLOCK.get())).title(Component.translatable("itemGroup.regions_unexplored_natural")).displayItems((featureFlags, output) -> {
 
                 naturalBlocks.forEach((state) -> {
                     output.accept(new ItemStack(state.get()));
@@ -1062,7 +1061,7 @@ public class RegionsUnexploredMod {
         );
 
         event.registerCreativeModeTab(new ResourceLocation(RegionsUnexploredMod.MOD_ID, "nether"), builder -> {
-            builder.icon(() -> new ItemStack(RegionsUnexploredBlocks.MYCOTOXIC_NYLIUM.get())).title(Component.translatable("itemGroup.regions_unexplored_nether")).displayItems((featureFlags, output, hasOp) -> {
+            builder.icon(() -> new ItemStack(RegionsUnexploredBlocks.MYCOTOXIC_NYLIUM.get())).title(Component.translatable("itemGroup.regions_unexplored_nether")).displayItems((featureFlags, output) -> {
 
                 netherBlocks.forEach((state) -> {
                     output.accept(new ItemStack(state.get()));
