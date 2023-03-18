@@ -18,7 +18,11 @@ import net.regions_unexplored.data.worldgen.features.feature.bioshroom.GiantGree
 import net.regions_unexplored.data.worldgen.features.feature.bioshroom.PinkBioshroomFeature;
 import net.regions_unexplored.data.worldgen.features.feature.redstonefeatures.*;
 import net.regions_unexplored.data.worldgen.features.feature.tree.LargeJoshuaTreeFeature;
+import net.regions_unexplored.data.worldgen.features.feature.tree.MapleTreeFeature;
 import net.regions_unexplored.data.worldgen.features.feature.tree.MediumJoshuaTreeFeature;
+import net.regions_unexplored.data.worldgen.features.feature.tree.TallSaplingFeature;
+import net.regions_unexplored.data.worldgen.features.feature.tree.config.RuTreeConfiguration;
+import net.regions_unexplored.data.worldgen.features.feature.tree.config.TallSaplingConfiguration;
 import net.regions_unexplored.data.worldgen.features.treefeature.GiantSculkWillowFeature;
 import net.regions_unexplored.data.worldgen.features.treefeature.NetherWillowFeature;
 import net.regions_unexplored.data.worldgen.features.treefeature.SculkWillowFeature;
@@ -30,8 +34,13 @@ public class RuFeatureRegistry {
     public static final DeferredRegister<Feature<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.FEATURES, RegionsUnexploredMod.MOD_ID);
     public static RegistryObject<Feature> SPIRE_FEATURE = REGISTRY.register("spire_feature", () -> new Spires());
     public static RegistryObject<Feature> MEADOW_ROCKS_FEATURE = REGISTRY.register("meadow_rocks_feature", () -> new MeadowRock());
+    //1.19.4 stuff
     public static final RegistryObject<Feature> GIANT_GREEN_BIOSHROOM = REGISTRY.register("giant_green_bioshroom", () -> new GiantGreenBioshroomFeature(GiantBioshroomConfiguration.CODEC));
     public static final RegistryObject<Feature> GIANT_BLUE_BIOSHROOM = REGISTRY.register("giant_blue_bioshroom", () -> new GiantBlueBioshroomFeature(GiantBioshroomConfiguration.CODEC));
+
+    public static final RegistryObject<Feature> MAPLE_TREE = REGISTRY.register("maple_tree", () -> new MapleTreeFeature(RuTreeConfiguration.CODEC));
+    public static final RegistryObject<Feature> TALL_SAPLING = REGISTRY.register("tall_sapling", () -> new TallSaplingFeature(TallSaplingConfiguration.CODEC));
+
     public static final RegistryObject<Feature> ROCK_PILLAR = REGISTRY.register("rock_pillar", () -> new RockPillarFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature> LARGE_JOSHUA_TREE = REGISTRY.register("large_joshua_tree", () -> new LargeJoshuaTreeFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature> MEDIUM_JOSHUA_TREE = REGISTRY.register("medium_joshua_tree", () -> new MediumJoshuaTreeFeature(NoneFeatureConfiguration.CODEC));

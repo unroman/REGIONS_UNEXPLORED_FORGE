@@ -73,12 +73,11 @@ public class RuBiomePlacements {
     public static final ResourceKey<PlacedFeature> CANADIAN_FOREST_TALL_GRASS = RuPlacementUtils.createKey("canadian_forest_tall_grass");
 
     public static final ResourceKey<PlacedFeature> MAPLE_FOREST_MAPLE = RuPlacementUtils.createKey("maple_forest_maple");
-    public static final ResourceKey<PlacedFeature> MAPLE_FOREST_OAK = RuPlacementUtils.createKey("maple_forest_oak");
-    public static final ResourceKey<PlacedFeature> MAPLE_FOREST_MAPLE_SHORT = RuPlacementUtils.createKey("maple_forest_maple_short");
     public static final ResourceKey<PlacedFeature> MAPLE_FOREST_RED_MAPLE = RuPlacementUtils.createKey("maple_forest_red_maple");
     public static final ResourceKey<PlacedFeature> MAPLE_FOREST_BIG_MAPLE = RuPlacementUtils.createKey("maple_forest_big_maple");
-    public static final ResourceKey<PlacedFeature> MAPLE_FOREST_BIG_OAK = RuPlacementUtils.createKey("maple_forest_big_oak");
+    public static final ResourceKey<PlacedFeature> MAPLE_FOREST_PINE = RuPlacementUtils.createKey("maple_forest_pine");
     public static final ResourceKey<PlacedFeature> MAPLE_FOREST_GRASS = RuPlacementUtils.createKey("maple_forest_grass");
+    public static final ResourceKey<PlacedFeature> MAPLE_FOREST_STONE_BUD = RuPlacementUtils.createKey("maple_forest_stone_bud");
     public static final ResourceKey<PlacedFeature> MAPLE_FOREST_TRILLIUM = RuPlacementUtils.createKey("maple_forest_trillium");
 
     public static final ResourceKey<PlacedFeature> FEN_SHRUB = RuPlacementUtils.createKey("fen_shrub");
@@ -195,7 +194,7 @@ public class RuBiomePlacements {
 
     public static final ResourceKey<PlacedFeature> AUTUMNAL_MAPLE_FOREST_RED_MAPLE = RuPlacementUtils.createKey("autumnal_maple_forest_red_maple");
     public static final ResourceKey<PlacedFeature> AUTUMNAL_MAPLE_FOREST_ORANGE_MAPLE = RuPlacementUtils.createKey("autumnal_maple_forest_orange_maple");
-    public static final ResourceKey<PlacedFeature> AUTUMNAL_MAPLE_FOREST_DEAD_TREE = RuPlacementUtils.createKey("autumnal_maple_forest_dead_tree");
+    public static final ResourceKey<PlacedFeature> AUTUMNAL_MAPLE_FOREST_MAPLE_TREE = RuPlacementUtils.createKey("autumnal_maple_forest_maple_tree");
     public static final ResourceKey<PlacedFeature> AUTUMNAL_MAPLE_FOREST_SILVER_BIRCH = RuPlacementUtils.createKey("autumnal_maple_forest_silver_birch");
     public static final ResourceKey<PlacedFeature> AUTUMNAL_MAPLE_FOREST_BIG_RED_MAPLE = RuPlacementUtils.createKey("autumnal_maple_forest_big_red_maple");
     public static final ResourceKey<PlacedFeature> AUTUMNAL_MAPLE_FOREST_BIG_ORANGE_MAPLE = RuPlacementUtils.createKey("autumnal_maple_forest_big_orange_maple");
@@ -535,12 +534,11 @@ public class RuBiomePlacements {
         final Holder<ConfiguredFeature<?, ?>> CANADIAN_FOREST_TALL_GRASS = featureGetter.getOrThrow(VegetationFeatures.PATCH_TALL_GRASS);
 
         final Holder<ConfiguredFeature<?, ?>> MAPLE_FOREST_MAPLE = featureGetter.getOrThrow(RuTreeFeatures.MAPLE_TREE);
-        final Holder<ConfiguredFeature<?, ?>> MAPLE_FOREST_OAK = featureGetter.getOrThrow(TreeFeatures.OAK);
-        final Holder<ConfiguredFeature<?, ?>> MAPLE_FOREST_MAPLE_SHORT = featureGetter.getOrThrow(RuTreeFeatures.MAPLE_SHORT);
         final Holder<ConfiguredFeature<?, ?>> MAPLE_FOREST_RED_MAPLE = featureGetter.getOrThrow(RuTreeFeatures.RED_MAPLE_TREE);
         final Holder<ConfiguredFeature<?, ?>> MAPLE_FOREST_BIG_MAPLE = featureGetter.getOrThrow(RuTreeFeatures.BIG_MAPLE_TREE);
-        final Holder<ConfiguredFeature<?, ?>> MAPLE_FOREST_BIG_OAK = featureGetter.getOrThrow(RuTreeFeatures.BIG_OAK_TREE);
+        final Holder<ConfiguredFeature<?, ?>> MAPLE_FOREST_PINE = featureGetter.getOrThrow(RuTreeFeatures.SPRUCE);
         final Holder<ConfiguredFeature<?, ?>> MAPLE_FOREST_GRASS = featureGetter.getOrThrow(VegetationFeatures.PATCH_GRASS);
+        final Holder<ConfiguredFeature<?, ?>> MAPLE_FOREST_STONE_BUD = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_STONE_BUD);
         final Holder<ConfiguredFeature<?, ?>> MAPLE_FOREST_TRILLIUM = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_WHITE_TRILLIUM);
 
         final Holder<ConfiguredFeature<?, ?>> FEN_SHRUB = featureGetter.getOrThrow(RuTreeFeatures.OAK_SHRUB);
@@ -657,7 +655,7 @@ public class RuBiomePlacements {
 
         final Holder<ConfiguredFeature<?, ?>> AUTUMNAL_MAPLE_FOREST_RED_MAPLE = featureGetter.getOrThrow(RuTreeFeatures.RED_MAPLE_TREE);
         final Holder<ConfiguredFeature<?, ?>> AUTUMNAL_MAPLE_FOREST_ORANGE_MAPLE = featureGetter.getOrThrow(RuTreeFeatures.ORANGE_MAPLE_TREE);
-        final Holder<ConfiguredFeature<?, ?>> AUTUMNAL_MAPLE_FOREST_DEAD_TREE = featureGetter.getOrThrow(RuTreeFeatures.DEAD_TREE);
+        final Holder<ConfiguredFeature<?, ?>> AUTUMNAL_MAPLE_FOREST_MAPLE_TREE = featureGetter.getOrThrow(RuTreeFeatures.MAPLE_TREE);
         final Holder<ConfiguredFeature<?, ?>> AUTUMNAL_MAPLE_FOREST_SILVER_BIRCH = featureGetter.getOrThrow(RuTreeFeatures.SILVER_BIRCH);
         final Holder<ConfiguredFeature<?, ?>> AUTUMNAL_MAPLE_FOREST_BIG_RED_MAPLE = featureGetter.getOrThrow(RuTreeFeatures.BIG_RED_MAPLE_TREE);
         final Holder<ConfiguredFeature<?, ?>> AUTUMNAL_MAPLE_FOREST_BIG_ORANGE_MAPLE = featureGetter.getOrThrow(RuTreeFeatures.BIG_ORANGE_MAPLE_TREE);
@@ -995,14 +993,13 @@ public class RuBiomePlacements {
         register(context, RuBiomePlacements.CANADIAN_FOREST_TRILLIUM, CANADIAN_FOREST_TRILLIUM, List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
         register(context, RuBiomePlacements.CANADIAN_FOREST_TALL_GRASS, CANADIAN_FOREST_TALL_GRASS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RegionsUnexploredBlocks.DIRT_PLACEMENT.get()), BiomeFilter.biome()));
 
-        register(context, RuBiomePlacements.MAPLE_FOREST_MAPLE, MAPLE_FOREST_MAPLE, List.of(CountPlacement.of(3), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
-        register(context, RuBiomePlacements.MAPLE_FOREST_OAK, MAPLE_FOREST_OAK, List.of(CountPlacement.of(3), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
-        register(context, RuBiomePlacements.MAPLE_FOREST_MAPLE_SHORT, MAPLE_FOREST_MAPLE_SHORT, List.of(CountPlacement.of(4), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
+        register(context, RuBiomePlacements.MAPLE_FOREST_MAPLE, MAPLE_FOREST_MAPLE, List.of(CountPlacement.of(4), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.MAPLE_FOREST_RED_MAPLE, MAPLE_FOREST_RED_MAPLE, List.of(CountPlacement.of(1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.MAPLE_FOREST_BIG_MAPLE, MAPLE_FOREST_BIG_MAPLE, List.of(CountPlacement.of(1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
-        register(context, RuBiomePlacements.MAPLE_FOREST_BIG_OAK, MAPLE_FOREST_BIG_OAK, List.of(CountPlacement.of(1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
-        register(context, RuBiomePlacements.MAPLE_FOREST_GRASS, MAPLE_FOREST_GRASS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 7), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
-        register(context, RuBiomePlacements.MAPLE_FOREST_TRILLIUM, MAPLE_FOREST_TRILLIUM, List.of(RarityFilter.onAverageOnceEvery(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+        register(context, RuBiomePlacements.MAPLE_FOREST_PINE, MAPLE_FOREST_PINE, List.of(CountPlacement.of(4), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
+        register(context, RuBiomePlacements.MAPLE_FOREST_GRASS, MAPLE_FOREST_GRASS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+        register(context, RuBiomePlacements.MAPLE_FOREST_STONE_BUD, MAPLE_FOREST_STONE_BUD, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+        register(context, RuBiomePlacements.MAPLE_FOREST_TRILLIUM, MAPLE_FOREST_TRILLIUM, List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
 
         register(context, RuBiomePlacements.FEN_SHRUB, FEN_SHRUB, List.of(CountPlacement.of(1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.FEN_BUSH, FEN_BUSH, List.of(CountPlacement.of(5), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
@@ -1118,7 +1115,7 @@ public class RuBiomePlacements {
 
         register(context, RuBiomePlacements.AUTUMNAL_MAPLE_FOREST_RED_MAPLE, AUTUMNAL_MAPLE_FOREST_RED_MAPLE, List.of(CountPlacement.of(3), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.AUTUMNAL_MAPLE_FOREST_ORANGE_MAPLE, AUTUMNAL_MAPLE_FOREST_ORANGE_MAPLE, List.of(CountPlacement.of(3), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
-        register(context, RuBiomePlacements.AUTUMNAL_MAPLE_FOREST_DEAD_TREE, AUTUMNAL_MAPLE_FOREST_DEAD_TREE, List.of(CountPlacement.of(3), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
+        register(context, RuBiomePlacements.AUTUMNAL_MAPLE_FOREST_MAPLE_TREE, AUTUMNAL_MAPLE_FOREST_MAPLE_TREE, List.of(CountPlacement.of(3), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.AUTUMNAL_MAPLE_FOREST_SILVER_BIRCH, AUTUMNAL_MAPLE_FOREST_SILVER_BIRCH, List.of(CountPlacement.of(2), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.AUTUMNAL_MAPLE_FOREST_BIG_RED_MAPLE, AUTUMNAL_MAPLE_FOREST_BIG_RED_MAPLE, List.of(CountPlacement.of(1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.AUTUMNAL_MAPLE_FOREST_BIG_ORANGE_MAPLE, AUTUMNAL_MAPLE_FOREST_BIG_ORANGE_MAPLE, List.of(CountPlacement.of(1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));

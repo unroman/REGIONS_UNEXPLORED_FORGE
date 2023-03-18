@@ -14,6 +14,12 @@ public class RuBiomeDefaultFeatures {
         p_126752_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_MEDIUM_GRASS);
     }
 
+    public static void mapleForestVegetation(BiomeGenerationSettings.Builder builder){
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.MAPLE_FOREST_GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.MAPLE_FOREST_STONE_BUD);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.MAPLE_FOREST_TRILLIUM);
+    }
+
     public static void addOutbackExtraVegetation(BiomeGenerationSettings.Builder p_126752_) {
         p_126752_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_SUGAR_CANE_DESERT);
         p_126752_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_PUMPKIN);

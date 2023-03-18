@@ -398,26 +398,27 @@ public class RuOverworldBiomes {
         return new Biome.BiomeBuilder().temperature(0.6f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
+    //DONE_FOR_1_20
     public static Biome mapleForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-5718172).grassColorOverride(-6502291).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(6462505).grassColorOverride(9550928)
+                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 5, 4, 4));
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
+
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.MAPLE_FOREST_MAPLE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.MAPLE_FOREST_OAK);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.MAPLE_FOREST_MAPLE_SHORT);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.MAPLE_FOREST_RED_MAPLE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.MAPLE_FOREST_BIG_MAPLE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.MAPLE_FOREST_BIG_OAK);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.MAPLE_FOREST_GRASS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.MAPLE_FOREST_TRILLIUM);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.MAPLE_FOREST_PINE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TALL_MAPLE_SAPLING_MIX);
+        RuBiomeDefaultFeatures.mapleForestVegetation(biomeBuilder);
 
         globalOverworldGeneration(biomeBuilder);
         RuBiomeDefaultFeatures.mediumGrass(biomeBuilder);
@@ -804,7 +805,7 @@ public class RuOverworldBiomes {
 
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.AUTUMNAL_MAPLE_FOREST_RED_MAPLE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.AUTUMNAL_MAPLE_FOREST_ORANGE_MAPLE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.AUTUMNAL_MAPLE_FOREST_DEAD_TREE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.AUTUMNAL_MAPLE_FOREST_MAPLE_TREE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.AUTUMNAL_MAPLE_FOREST_SILVER_BIRCH);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.AUTUMNAL_MAPLE_FOREST_BIG_RED_MAPLE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.AUTUMNAL_MAPLE_FOREST_BIG_ORANGE_MAPLE);
