@@ -1,8 +1,6 @@
 package net.regions_unexplored.data.worldgen.biome;
 
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
@@ -10,13 +8,9 @@ import net.minecraft.world.entity.npc.VillagerType;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.regions_unexplored.RegionsUnexploredMod;
 import net.regions_unexplored.config.RegionsUnexploredCommonConfigs;
-import net.regions_unexplored.data.worldgen.RuNetherSurfaceRuleData;
-import net.regions_unexplored.data.worldgen.RuSurfaceRuleData;
 import net.regions_unexplored.world.level.biome.*;
 import terrablender.api.Regions;
-import terrablender.api.SurfaceRuleManager;
 
 public class RuBiomeRegistry {
 
@@ -31,7 +25,7 @@ public class RuBiomeRegistry {
         Regions.register(new RuRegionNether(RegionsUnexploredCommonConfigs.REGION_NETHER_WEIGHT.get()));
     }
 
-    public static void bootstrapBiomes(BootstapContext<Biome> context) {
+    public static void bootstrap(BootstapContext<Biome> context) {
         HolderGetter<ConfiguredWorldCarver<?>> carversGetter = context.lookup(Registries.CONFIGURED_CARVER);
         HolderGetter<PlacedFeature> featuresGetter = context.lookup(Registries.PLACED_FEATURE);
 
@@ -54,16 +48,12 @@ public class RuBiomeRegistry {
         register(context, RuBiomes.FLOWER_FIELD, RuOverworldBiomes.flowerField(featuresGetter, carversGetter));
         register(context, RuBiomes.ALPHA_GROVE, RuOverworldBiomes.alphaGrove(featuresGetter, carversGetter));
         register(context, RuBiomes.ARID_MOUNTAINS, RuOverworldBiomes.aridMountains(featuresGetter, carversGetter));
-        register(context, RuBiomes.WOODED_ARID_MOUNTAINS, RuOverworldBiomes.woodedAridMountains(featuresGetter, carversGetter));
         register(context, RuBiomes.JOSHUA_DESERT, RuOverworldBiomes.joshuaDesert(featuresGetter, carversGetter));
-        register(context, RuBiomes.CANADIAN_FOREST, RuOverworldBiomes.canadianForest(featuresGetter, carversGetter));
         register(context, RuBiomes.MAPLE_FOREST, RuOverworldBiomes.mapleForest(featuresGetter, carversGetter));
         register(context, RuBiomes.CHERRY_HILLS, RuOverworldBiomes.cherryHills(featuresGetter, carversGetter));
         register(context, RuBiomes.CHALK_CLIFFS, RuOverworldBiomes.chalkCliffs(featuresGetter, carversGetter));
         register(context, RuBiomes.PUMPKIN_FIELDS, RuOverworldBiomes.pumpkinFields(featuresGetter, carversGetter));
-        register(context, RuBiomes.AUTUMNAL_FIELDS, RuOverworldBiomes.autumnalFields(featuresGetter, carversGetter));
         register(context, RuBiomes.WILLOW_FOREST, RuOverworldBiomes.mixedForest(featuresGetter, carversGetter));
-        register(context, RuBiomes.AUTUMNAL_MIXED_TAIGA, RuOverworldBiomes.autumnalMixedTaiga(featuresGetter, carversGetter));
         register(context, RuBiomes.RAINFOREST, RuOverworldBiomes.rainforest(featuresGetter, carversGetter));
         register(context, RuBiomes.OLD_GROWTH_RAINFOREST, RuOverworldBiomes.oldGrowthRainforest(featuresGetter, carversGetter));
         register(context, RuBiomes.FEN, RuOverworldBiomes.fen(featuresGetter, carversGetter));
@@ -72,7 +62,6 @@ public class RuBiomeRegistry {
         register(context, RuBiomes.OUTBACK, RuOverworldBiomes.outback(featuresGetter, carversGetter));
         register(context, RuBiomes.MEADOW, RuOverworldBiomes.meadow(featuresGetter, carversGetter));
         register(context, RuBiomes.STEPPE, RuOverworldBiomes.steppe(featuresGetter, carversGetter));
-        register(context, RuBiomes.WOODED_STEPPE, RuOverworldBiomes.woodedSteppe(featuresGetter, carversGetter));
         register(context, RuBiomes.ICY_HEIGHTS, RuOverworldBiomes.icyHeights(featuresGetter, carversGetter));
         register(context, RuBiomes.AUTUMNAL_MAPLE_FOREST, RuOverworldBiomes.autumnalMapleForest(featuresGetter, carversGetter));
         register(context, RuBiomes.FROZEN_FOREST, RuOverworldBiomes.frozenForest(featuresGetter, carversGetter));
@@ -98,7 +87,6 @@ public class RuBiomeRegistry {
         register(context, RuBiomes.MOUNTAINS, RuOverworldBiomes.mountains(featuresGetter, carversGetter));
         register(context, RuBiomes.PINE_FOREST, RuOverworldBiomes.pineForest(featuresGetter, carversGetter));
         register(context, RuBiomes.EUCALYPTUS_FOREST, RuOverworldBiomes.eucalyptusForest(featuresGetter, carversGetter));
-        register(context, RuBiomes.ROOFED_EUCALYPTUS_FOREST, RuOverworldBiomes.roofedEucalyptusForest(featuresGetter, carversGetter));
         register(context, RuBiomes.REDWOODS, RuOverworldBiomes.redwoodForest(featuresGetter, carversGetter));
         register(context, RuBiomes.SPARSE_REDWOODS, RuOverworldBiomes.sparseRedwoods(featuresGetter, carversGetter));
         register(context, RuBiomes.HIGHLAND_FIELDS, RuOverworldBiomes.highlandFields(featuresGetter, carversGetter));
@@ -106,7 +94,6 @@ public class RuBiomeRegistry {
         register(context, RuBiomes.COLD_DECIDUOUS_FOREST, RuOverworldBiomes.coldDeciduousForest(featuresGetter, carversGetter));
         register(context, RuBiomes.COLD_BOREAL_FOREST, RuOverworldBiomes.coldBorealForest(featuresGetter, carversGetter));
         register(context, RuBiomes.GOLDEN_BOREAL_FOREST, RuOverworldBiomes.goldenBorealForest(featuresGetter, carversGetter));
-        register(context, RuBiomes.OLD_GROWTH_BOREAL_FOREST, RuOverworldBiomes.oldGrowthBorealForest(featuresGetter, carversGetter));
 
         register(context, RuBiomes.MYCOTOXIC_UNDERGROWTH, RuNetherBiomes.mycotoxicUndergrowth(featuresGetter, carversGetter));
         register(context, RuBiomes.GLISTERING_MEADOW, RuNetherBiomes.glisteringMeadow(featuresGetter, carversGetter));
@@ -135,16 +122,12 @@ public class RuBiomeRegistry {
         registerVillagers(RuBiomes.FLOWER_FIELD, VillagerType.PLAINS);
         registerVillagers(RuBiomes.ALPHA_GROVE, VillagerType.PLAINS);
         registerVillagers(RuBiomes.ARID_MOUNTAINS, VillagerType.SAVANNA);
-        registerVillagers(RuBiomes.WOODED_ARID_MOUNTAINS, VillagerType.SAVANNA);
         registerVillagers(RuBiomes.JOSHUA_DESERT, VillagerType.DESERT);
-        registerVillagers(RuBiomes.CANADIAN_FOREST, VillagerType.PLAINS);
         registerVillagers(RuBiomes.MAPLE_FOREST, VillagerType.PLAINS);
         registerVillagers(RuBiomes.CHERRY_HILLS, VillagerType.PLAINS);
         registerVillagers(RuBiomes.CHALK_CLIFFS, VillagerType.PLAINS);
         registerVillagers(RuBiomes.PUMPKIN_FIELDS, VillagerType.PLAINS);
-        registerVillagers(RuBiomes.AUTUMNAL_FIELDS, VillagerType.PLAINS);
         registerVillagers(RuBiomes.WILLOW_FOREST, VillagerType.TAIGA);
-        registerVillagers(RuBiomes.AUTUMNAL_MIXED_TAIGA, VillagerType.TAIGA);
         registerVillagers(RuBiomes.RAINFOREST, VillagerType.JUNGLE);
         registerVillagers(RuBiomes.OLD_GROWTH_RAINFOREST, VillagerType.JUNGLE);
         registerVillagers(RuBiomes.FEN, VillagerType.SWAMP);
@@ -153,7 +136,6 @@ public class RuBiomeRegistry {
         registerVillagers(RuBiomes.OUTBACK, VillagerType.DESERT);
         registerVillagers(RuBiomes.MEADOW, VillagerType.PLAINS);
         registerVillagers(RuBiomes.STEPPE, VillagerType.SAVANNA);
-        registerVillagers(RuBiomes.WOODED_STEPPE, VillagerType.SAVANNA);
         registerVillagers(RuBiomes.ICY_HEIGHTS, VillagerType.SNOW);
         registerVillagers(RuBiomes.AUTUMNAL_MAPLE_FOREST, VillagerType.PLAINS);
         registerVillagers(RuBiomes.FROZEN_FOREST, VillagerType.SNOW);
@@ -179,7 +161,6 @@ public class RuBiomeRegistry {
         registerVillagers(RuBiomes.MOUNTAINS, VillagerType.PLAINS);
         registerVillagers(RuBiomes.PINE_FOREST, VillagerType.TAIGA);
         registerVillagers(RuBiomes.EUCALYPTUS_FOREST, VillagerType.JUNGLE);
-        registerVillagers(RuBiomes.ROOFED_EUCALYPTUS_FOREST, VillagerType.JUNGLE);
         registerVillagers(RuBiomes.REDWOODS, VillagerType.TAIGA);
         registerVillagers(RuBiomes.SPARSE_REDWOODS, VillagerType.TAIGA);
         registerVillagers(RuBiomes.HIGHLAND_FIELDS, VillagerType.PLAINS);
@@ -187,7 +168,6 @@ public class RuBiomeRegistry {
         registerVillagers(RuBiomes.COLD_DECIDUOUS_FOREST, VillagerType.SNOW);
         registerVillagers(RuBiomes.COLD_BOREAL_FOREST, VillagerType.SNOW);
         registerVillagers(RuBiomes.GOLDEN_BOREAL_FOREST, VillagerType.TAIGA);
-        registerVillagers(RuBiomes.OLD_GROWTH_BOREAL_FOREST, VillagerType.TAIGA);
     }
 
     private static void register(BootstapContext<Biome> context, ResourceKey<Biome> key, Biome biome) {

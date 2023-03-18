@@ -112,7 +112,7 @@ public class RegionModifiedVanillaBiomeBuilder {
     private final ResourceKey<Biome>[][] MIDDLE_BIOMES = new ResourceKey[][]{
             //-----------ARID,DRY,NEUTRAL,WET,HUMID
             /*ICY*/     {Biomes.SNOWY_PLAINS, RuBiomes.FROZEN_TUNDRA, Biomes.SNOWY_PLAINS, Biomes.SNOWY_TAIGA, Biomes.TAIGA},
-            /*COOL*/    {RuBiomes.PUMPKIN_FIELDS, RuBiomes.AUTUMNAL_FIELDS, RuBiomes.AUTUMNAL_MAPLE_FOREST, Biomes.TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA},
+            /*COOL*/    {RuBiomes.PUMPKIN_FIELDS, RuBiomes.AUTUMNAL_MAPLE_FOREST, Biomes.FOREST, Biomes.TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA},
             /*NEUTRAL*/ {Biomes.SUNFLOWER_PLAINS, Biomes.PLAINS, Biomes.FOREST, Biomes.BIRCH_FOREST, Biomes.DARK_FOREST},
             /*WARM*/    {Biomes.SAVANNA, Biomes.SAVANNA, Biomes.FOREST, Biomes.JUNGLE, RuBiomes.BAMBOO_FOREST},
             /*HOT*/     {RuBiomes.JOSHUA_DESERT, Biomes.DESERT, Biomes.DESERT, Biomes.DESERT, RuBiomes.SAGUARO_DESERT}};
@@ -128,15 +128,15 @@ public class RegionModifiedVanillaBiomeBuilder {
     private final ResourceKey<Biome>[][] PLATEAU_BIOMES = new ResourceKey[][]{
             //-----------ARID,DRY,NEUTRAL,WET,HUMID
             /*ICY*/     {Biomes.SNOWY_PLAINS, RuBiomes.FROZEN_TUNDRA, Biomes.SNOWY_PLAINS, Biomes.SNOWY_TAIGA, Biomes.SNOWY_TAIGA},
-            /*COOL*/    {RuBiomes.AUTUMNAL_MAPLE_FOREST, RuBiomes.AUTUMNAL_MIXED_TAIGA, RuBiomes.AUTUMNAL_MIXED_TAIGA, Biomes.TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA},
+            /*COOL*/    {RuBiomes.SILVER_BIRCH_FOREST, RuBiomes.AUTUMNAL_MAPLE_FOREST, RuBiomes.HIGHLAND_FIELDS, Biomes.TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA},
             /*NEUTRAL*/ {Biomes.MEADOW, Biomes.MEADOW, RuBiomes.HIGHLAND_FIELDS, RuBiomes.HIGHLAND_FIELDS, Biomes.DARK_FOREST},
-            /*WARM*/    {RuBiomes.WOODED_STEPPE, RuBiomes.STEPPE, Biomes.FOREST, Biomes.JUNGLE, RuBiomes.BAMBOO_FOREST},
-            /*HOT*/     {RuBiomes.WOODED_ARID_MOUNTAINS, RuBiomes.ARID_MOUNTAINS, RuBiomes.ARID_MOUNTAINS, Biomes.BADLANDS, Biomes.WOODED_BADLANDS}};
+            /*WARM*/    {RuBiomes.STEPPE, RuBiomes.STEPPE, Biomes.FOREST, Biomes.JUNGLE, RuBiomes.BAMBOO_FOREST},
+            /*HOT*/     {RuBiomes.ARID_MOUNTAINS, RuBiomes.ARID_MOUNTAINS, RuBiomes.ARID_MOUNTAINS, Biomes.BADLANDS, Biomes.WOODED_BADLANDS}};
 
     private final ResourceKey<Biome>[][] PLATEAU_BIOMES_VARIANT = new ResourceKey[][]{
             //-----------ARID,DRY,NEUTRAL,WET,HUMID
             /*ICY*/     {Biomes.SNOWY_PLAINS, RuBiomes.FROZEN_TUNDRA, Biomes.SNOWY_TAIGA, Biomes.SNOWY_TAIGA, Biomes.SNOWY_TAIGA},
-            /*COOL*/    {RuBiomes.AUTUMNAL_FIELDS, Biomes.FOREST, Biomes.FOREST, Biomes.MEADOW, Biomes.OLD_GROWTH_PINE_TAIGA},
+            /*COOL*/    {RuBiomes.HIGHLAND_FIELDS, Biomes.FOREST, Biomes.FOREST, Biomes.MEADOW, Biomes.OLD_GROWTH_PINE_TAIGA},
             /*NEUTRAL*/ {Biomes.MEADOW, RuBiomes.HIGHLAND_FIELDS, Biomes.FOREST, Biomes.BIRCH_FOREST, Biomes.DARK_FOREST},
             /*WARM*/    {RuBiomes.STEPPE, RuBiomes.STEPPE, Biomes.FOREST, Biomes.SPARSE_JUNGLE, Biomes.BAMBOO_JUNGLE},
             /*HOT*/     {Biomes.ERODED_BADLANDS, Biomes.BADLANDS, Biomes.BADLANDS, Biomes.WOODED_BADLANDS, Biomes.WOODED_BADLANDS}};
@@ -490,10 +490,10 @@ public class RegionModifiedVanillaBiomeBuilder {
             }
         } else {
             if(humidity < 3){
-                return CheckBiomeConfig.isBiomeEnabled(RuBiomes.WOODED_ARID_MOUNTAINS) ? RuBiomes.WOODED_ARID_MOUNTAINS : Biomes.BADLANDS;
+                return Biomes.BADLANDS;
             }
             else{
-                return CheckBiomeConfig.isBiomeEnabled(RuBiomes.WOODED_ARID_MOUNTAINS) ? RuBiomes.WOODED_ARID_MOUNTAINS : Biomes.WOODED_BADLANDS;
+                return Biomes.WOODED_BADLANDS;
             }
         }
     }

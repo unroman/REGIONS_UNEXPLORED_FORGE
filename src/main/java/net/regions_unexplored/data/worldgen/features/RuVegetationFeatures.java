@@ -35,17 +35,64 @@ import net.minecraft.world.level.material.Fluids;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.data.worldgen.features.feature.bioshroom.GiantBioshroomConfiguration;
+import net.regions_unexplored.data.worldgen.features.feature.tree.config.TallSaplingConfiguration;
 import net.regions_unexplored.util.worldgen.RuFeatureUtils;
 
 public class RuVegetationFeatures {
     public static final PlacementModifier WATERSIDE = HeightRangePlacement.uniform(VerticalAnchor.absolute(59), VerticalAnchor.absolute(61));
     public static final PlacementModifier MARSH = HeightRangePlacement.uniform(VerticalAnchor.absolute(59), VerticalAnchor.absolute(59));
+    //1.19.4 Features
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_BLUE_BIOSHROOM = RuFeatureUtils.createKey("giant_blue_bioshroom");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_GREEN_BIOSHROOM = RuFeatureUtils.createKey("giant_green_bioshroom");
+    //TALL_SAPLINGS
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_ACACIA_SAPLING = RuFeatureUtils.createKey("tall_acacia_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_BAOBAB_SAPLING = RuFeatureUtils.createKey("tall_baobab_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_BIRCH_SAPLING = RuFeatureUtils.createKey("tall_birch_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_BLACKWOOD_SAPLING = RuFeatureUtils.createKey("tall_blackwood_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_CHERRY_SAPLING = RuFeatureUtils.createKey("tall_cherry_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_RED_CHERRY_SAPLING = RuFeatureUtils.createKey("tall_red_cherry_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_PINK_CHERRY_SAPLING = RuFeatureUtils.createKey("tall_pink_cherry_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_WHITE_CHERRY_SAPLING = RuFeatureUtils.createKey("tall_white_cherry_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_CYPRESS_SAPLING = RuFeatureUtils.createKey("tall_cypress_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_DARK_OAK_SAPLING = RuFeatureUtils.createKey("tall_dark_oak_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_DEAD_SAPLING = RuFeatureUtils.createKey("tall_dead_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_DEAD_PINE_SAPLING = RuFeatureUtils.createKey("tall_dead_pine_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_EUCALYPTUS_SAPLING = RuFeatureUtils.createKey("tall_eucalyptus_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_FLOWERING_SAPLING = RuFeatureUtils.createKey("tall_flowering_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_JOSHUA_SAPLING = RuFeatureUtils.createKey("tall_joshua_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_JUNGLE_SAPLING = RuFeatureUtils.createKey("tall_jungle_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_LARCH_SAPLING = RuFeatureUtils.createKey("tall_larch_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_GOLDEN_LARCH_SAPLING = RuFeatureUtils.createKey("tall_golden_larch_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_MANGROVE_SAPLING = RuFeatureUtils.createKey("tall_mangrove_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_MAPLE_SAPLING = RuFeatureUtils.createKey("tall_maple_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_RED_MAPLE_SAPLING = RuFeatureUtils.createKey("tall_red_maple_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_ORANGE_MAPLE_SAPLING = RuFeatureUtils.createKey("tall_orange_maple_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_MAUVE_SAPLING = RuFeatureUtils.createKey("tall_mauve_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_OAK_SAPLING = RuFeatureUtils.createKey("tall_oak_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_PALM_SAPLING = RuFeatureUtils.createKey("tall_palm_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_PINE_SAPLING = RuFeatureUtils.createKey("tall_pine_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_REDWOOD_SAPLING = RuFeatureUtils.createKey("tall_redwood_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_SILVER_BIRCH_SAPLING = RuFeatureUtils.createKey("tall_silver_birch_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_SPRUCE_SAPLING = RuFeatureUtils.createKey("tall_spruce_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_WILLOW_SAPLING = RuFeatureUtils.createKey("tall_willow_sapling");
+    //mixes
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_AUTUMNAL_SAPLING_MIX = RuFeatureUtils.createKey("tall_autumnal_sapling_mix");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_BIRCH_SAPLING_MIX = RuFeatureUtils.createKey("tall_birch_sapling_mix");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_BLACKWOOD_DARK_OAK_SAPLING_MIX = RuFeatureUtils.createKey("tall_blackwood_dark_oak_sapling_mix");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_CHERRY_SAPLING_MIX = RuFeatureUtils.createKey("tall_cherry_sapling_mix");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_DEAD_SAPLING_MIX = RuFeatureUtils.createKey("tall_dead_sapling_mix");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_LARCH_SAPLING_MIX = RuFeatureUtils.createKey("tall_larch_sapling_mix");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_GOLDEN_LARCH_SAPLING_MIX = RuFeatureUtils.createKey("tall_golden_larch_sapling_mix");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_MAPLE_SAPLING_MIX = RuFeatureUtils.createKey("tall_maple_sapling_mix");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_PALM_MANGROVE_SAPLING_MIX = RuFeatureUtils.createKey("tall_palm_mangrove_sapling_mix");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_PINE_SPRUCE_SAPLING_MIX = RuFeatureUtils.createKey("tall_pine_spruce_sapling_mix");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_PINE_DEAD_SAPLING_MIX = RuFeatureUtils.createKey("tall_pine_dead_sapling_mix");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_WILLOW_CYPRESS_SAPLING_MIX = RuFeatureUtils.createKey("tall_willow_cypress_sapling_mix");
+
     ///RESOURCE_KEYS///
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_SEAGRASS = RuFeatureUtils.createKey("patch_seagrass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_LILY_PAD = RuFeatureUtils.createKey("patch_lily_pad");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_BLUE_BIOSHROOM = RuFeatureUtils.createKey("giant_blue_bioshroom");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_GREEN_BIOSHROOM = RuFeatureUtils.createKey("giant_green_bioshroom");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_PINK_BIOSHROOM = RuFeatureUtils.createKey("giant_pink_bioshroom");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_BARLEY = RuFeatureUtils.createKey("patch_barley");
@@ -120,13 +167,6 @@ public class RuVegetationFeatures {
     //OTHER
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_CATTAIL = RuFeatureUtils.createKey("cattails");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DUCKWEED = RuFeatureUtils.createKey("duckweed");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_PINE_SAPLING_DENSE = RuFeatureUtils.createKey("tall_pine_sapling_dense");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_PINE_SAPLING = RuFeatureUtils.createKey("tall_pine_sapling");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_LARCH_SAPLING = RuFeatureUtils.createKey("tall_larch_sapling");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_GOLD_LARCH_SAPLING = RuFeatureUtils.createKey("tall_gold_larch_sapling");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_SILVER_BIRCH_SAPLING = RuFeatureUtils.createKey("tall_silver_birch_sapling");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_AUTUMNAL_SAPLING = RuFeatureUtils.createKey("tall_autumnal_sapling");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_REDWOOD_SAPLING = RuFeatureUtils.createKey("tall_redwood_sapling");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FOREST_FERN_MIX = RuFeatureUtils.createKey("forest_fern_mix");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SEEDED_GRASS_MIX = RuFeatureUtils.createKey("seeded_grass_mix");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DAISY_MIX = RuFeatureUtils.createKey("daisy_mix");
@@ -159,12 +199,58 @@ public class RuVegetationFeatures {
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         WeightedStateProvider leaveProvider = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.AZALEA_LEAVES.defaultBlockState().setValue(LeavesBlock.PERSISTENT, true), 4).add(Blocks.FLOWERING_AZALEA_LEAVES.defaultBlockState().setValue(LeavesBlock.PERSISTENT, true), 1));
+        //1.19.4 Features
+        register(context, GIANT_BLUE_BIOSHROOM, RuFeatureRegistry.GIANT_BLUE_BIOSHROOM.get(), new GiantBioshroomConfiguration(BlockStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.BLUE_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.GLOWING_BLUE_BIOSHROOM_BLOCK.get().defaultBlockState()), 7, 7));
+        register(context, GIANT_GREEN_BIOSHROOM, RuFeatureRegistry.GIANT_GREEN_BIOSHROOM.get(), new GiantBioshroomConfiguration(BlockStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.GREEN_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.GLOWING_GREEN_BIOSHROOM_BLOCK.get().defaultBlockState()), 8, 5));
+        //TALL_SAPLINGS
+        register(context, TALL_ACACIA_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_ACACIA_SAPLING.get().defaultBlockState())));
+        register(context, TALL_BAOBAB_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_BAOBAB_SAPLING.get().defaultBlockState())));
+        register(context, TALL_BIRCH_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_BIRCH_SAPLING.get().defaultBlockState())));
+        register(context, TALL_BLACKWOOD_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_BLACKWOOD_SAPLING.get().defaultBlockState())));
+        register(context, TALL_CHERRY_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_CHERRY_SAPLING.get().defaultBlockState())));
+        register(context, TALL_RED_CHERRY_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_RED_CHERRY_SAPLING.get().defaultBlockState())));
+        register(context, TALL_PINK_CHERRY_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_PINK_CHERRY_SAPLING.get().defaultBlockState())));
+        register(context, TALL_WHITE_CHERRY_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_WHITE_CHERRY_SAPLING.get().defaultBlockState())));
+        register(context, TALL_CYPRESS_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_CYPRESS_SAPLING.get().defaultBlockState())));
+        register(context, TALL_DARK_OAK_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_DARK_OAK_SAPLING.get().defaultBlockState())));
+        register(context, TALL_DEAD_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_DEAD_SAPLING.get().defaultBlockState())));
+        register(context, TALL_DEAD_PINE_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_DEAD_PINE_SAPLING.get().defaultBlockState())));
+        register(context, TALL_EUCALYPTUS_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_EUCALYPTUS_SAPLING.get().defaultBlockState())));
+        register(context, TALL_FLOWERING_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_FLOWERING_SAPLING.get().defaultBlockState())));
+        register(context, TALL_JOSHUA_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_JOSHUA_SAPLING.get().defaultBlockState())));
+        register(context, TALL_JUNGLE_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_JUNGLE_SAPLING.get().defaultBlockState())));
+        register(context, TALL_LARCH_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_LARCH_SAPLING.get().defaultBlockState())));
+        register(context, TALL_GOLDEN_LARCH_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_GOLDEN_LARCH_SAPLING.get().defaultBlockState())));
+        register(context, TALL_MANGROVE_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_MANGROVE_SAPLING.get().defaultBlockState())));
+        register(context, TALL_MAPLE_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_MAPLE_SAPLING.get().defaultBlockState())));
+        register(context, TALL_RED_MAPLE_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_RED_MAPLE_SAPLING.get().defaultBlockState())));
+        register(context, TALL_ORANGE_MAPLE_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_ORANGE_MAPLE_SAPLING.get().defaultBlockState())));
+        register(context, TALL_MAUVE_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_MAUVE_SAPLING.get().defaultBlockState())));
+        register(context, TALL_OAK_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_OAK_SAPLING.get().defaultBlockState())));
+        register(context, TALL_PALM_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_PALM_SAPLING.get().defaultBlockState())));
+        register(context, TALL_PINE_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_PINE_SAPLING.get().defaultBlockState())));
+        register(context, TALL_REDWOOD_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_REDWOOD_SAPLING.get().defaultBlockState())));
+        register(context, TALL_SILVER_BIRCH_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_SILVER_BIRCH_SAPLING.get().defaultBlockState())));
+        register(context, TALL_SPRUCE_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_SPRUCE_SAPLING.get().defaultBlockState())));
+        register(context, TALL_WILLOW_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_WILLOW_SAPLING.get().defaultBlockState())));
+        //mixes
+        register(context, TALL_AUTUMNAL_SAPLING_MIX, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.TALL_MAPLE_SAPLING.get().defaultBlockState(), 2).add(RegionsUnexploredBlocks.TALL_SILVER_BIRCH_SAPLING.get().defaultBlockState(), 4).add(RegionsUnexploredBlocks.TALL_RED_MAPLE_SAPLING.get().defaultBlockState(), 4).add(RegionsUnexploredBlocks.TALL_ORANGE_MAPLE_SAPLING.get().defaultBlockState(), 4).add(RegionsUnexploredBlocks.TALL_DEAD_SAPLING.get().defaultBlockState(), 1))));
+        register(context, TALL_BIRCH_SAPLING_MIX, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.TALL_SILVER_BIRCH_SAPLING.get().defaultBlockState(), 3).add(RegionsUnexploredBlocks.TALL_BIRCH_SAPLING.get().defaultBlockState(), 1))));
+        register(context, TALL_BLACKWOOD_DARK_OAK_SAPLING_MIX, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.TALL_BLACKWOOD_SAPLING.get().defaultBlockState(), 3).add(RegionsUnexploredBlocks.TALL_DARK_OAK_SAPLING.get().defaultBlockState(), 1))));
+        register(context, TALL_CHERRY_SAPLING_MIX, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.TALL_CHERRY_SAPLING.get().defaultBlockState(), 1).add(RegionsUnexploredBlocks.TALL_RED_CHERRY_SAPLING.get().defaultBlockState(), 1).add(RegionsUnexploredBlocks.TALL_PINK_CHERRY_SAPLING.get().defaultBlockState(), 1).add(RegionsUnexploredBlocks.TALL_WHITE_CHERRY_SAPLING.get().defaultBlockState(), 1))));
+        register(context, TALL_DEAD_SAPLING_MIX, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.TALL_DEAD_SAPLING.get().defaultBlockState(), 2).add(RegionsUnexploredBlocks.TALL_DEAD_PINE_SAPLING.get().defaultBlockState(), 1))));
+        register(context, TALL_LARCH_SAPLING_MIX, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.TALL_LARCH_SAPLING.get().defaultBlockState(), 3).add(RegionsUnexploredBlocks.TALL_GOLDEN_LARCH_SAPLING.get().defaultBlockState(), 1))));
+        register(context, TALL_GOLDEN_LARCH_SAPLING_MIX, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.TALL_LARCH_SAPLING.get().defaultBlockState(), 1).add(RegionsUnexploredBlocks.TALL_GOLDEN_LARCH_SAPLING.get().defaultBlockState(), 3))));
+        register(context, TALL_MAPLE_SAPLING_MIX, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.TALL_MAPLE_SAPLING.get().defaultBlockState(), 4).add(RegionsUnexploredBlocks.TALL_RED_MAPLE_SAPLING.get().defaultBlockState(), 1))));
+        register(context, TALL_PINE_SPRUCE_SAPLING_MIX, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.TALL_PINE_SAPLING.get().defaultBlockState(), 1).add(RegionsUnexploredBlocks.TALL_SPRUCE_SAPLING.get().defaultBlockState(), 1))));
+        register(context, TALL_PINE_DEAD_SAPLING_MIX, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.TALL_PINE_SAPLING.get().defaultBlockState(), 2).add(RegionsUnexploredBlocks.TALL_DEAD_PINE_SAPLING.get().defaultBlockState(), 1))));
+        register(context, TALL_PALM_MANGROVE_SAPLING_MIX, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.TALL_PALM_SAPLING.get().defaultBlockState(), 5).add(RegionsUnexploredBlocks.TALL_MANGROVE_SAPLING.get().defaultBlockState(), 1))));
+        register(context, TALL_WILLOW_CYPRESS_SAPLING_MIX, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.TALL_WILLOW_SAPLING.get().defaultBlockState(), 2).add(RegionsUnexploredBlocks.TALL_CYPRESS_SAPLING.get().defaultBlockState(), 1))));
+
         //VANILLA
         register(context, PATCH_SEAGRASS, Feature.SEAGRASS, new ProbabilityFeatureConfiguration(0.6F));
         register(context, PATCH_LILY_PAD, Feature.RANDOM_PATCH, new RandomPatchConfiguration(10, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.LILY_PAD)))));
         //BIOSHROOMS
-        register(context, GIANT_BLUE_BIOSHROOM, RuFeatureRegistry.GIANT_BLUE_BIOSHROOM.get(), new GiantBioshroomConfiguration(BlockStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.BLUE_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.GLOWING_BLUE_BIOSHROOM_BLOCK.get().defaultBlockState()), 7, 7));
-        register(context, GIANT_GREEN_BIOSHROOM, RuFeatureRegistry.GIANT_GREEN_BIOSHROOM.get(), new GiantBioshroomConfiguration(BlockStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.GREEN_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.GLOWING_GREEN_BIOSHROOM_BLOCK.get().defaultBlockState()), 8, 5));
         register(context, GIANT_PINK_BIOSHROOM, RuFeatureRegistry.GIANT_PINK_BIOSHROOM.get(), FeatureConfiguration.NONE);
         //GRASSES
         register(context, PATCH_BARLEY , Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.BARLEY.get().defaultBlockState()), 32));
@@ -239,13 +325,6 @@ public class RuVegetationFeatures {
         //OTHER
         register(context, PATCH_CATTAIL, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.CATTAIL.get()))));
         register(context, DUCKWEED, Feature.RANDOM_PATCH, new RandomPatchConfiguration(10, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.DUCKWEED.get())))));
-        register(context, TALL_PINE_SAPLING_DENSE, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_PINE_SAPLING.get().defaultBlockState()), 32));
-        register(context, TALL_PINE_SAPLING, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_PINE_SAPLING.get().defaultBlockState()), 8));
-        register(context, TALL_LARCH_SAPLING, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_LARCH_SAPLING.get().defaultBlockState()), 5));
-        register(context, TALL_GOLD_LARCH_SAPLING, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_GOLDEN_LARCH_SAPLING.get().defaultBlockState()), 5));
-        register(context, TALL_SILVER_BIRCH_SAPLING, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_SILVER_BIRCH_SAPLING.get().defaultBlockState()), 10));
-        register(context, TALL_AUTUMNAL_SAPLING, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_ORANGE_MAPLE_SAPLING.get().defaultBlockState()), 10));
-        register(context, TALL_REDWOOD_SAPLING, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_REDWOOD_SAPLING.get().defaultBlockState()), 16));
         register(context, FOREST_FERN_MIX, Feature.FLOWER, grassPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.LARGE_FERN.defaultBlockState(), 1).add(Blocks.FERN.defaultBlockState(), 2)), 32));
         register(context, SEEDED_GRASS_MIX, Feature.FLOWER, grassPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.SEEDED_TALL_GRASS.get().defaultBlockState(), 1).add(RegionsUnexploredBlocks.SEEDED_GRASS.get().defaultBlockState(), 2)), 32));
         register(context, DAISY_MIX, Feature.FLOWER, grassPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.DAISY.get().defaultBlockState(), 1).add(RegionsUnexploredBlocks.FELICIA_DAISY.get().defaultBlockState(), 1)), 32));

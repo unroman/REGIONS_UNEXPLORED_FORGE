@@ -129,7 +129,7 @@ public class RegionPrimaryBiomeBuilder {
             /*COOL*/    {RuBiomes.AUTUMNAL_MAPLE_FOREST, RuBiomes.AUTUMNAL_MAPLE_FOREST, RuBiomes.MAPLE_FOREST, RuBiomes.BOREAL_FOREST, RuBiomes.BOREAL_FOREST},
             /*NEUTRAL*/ {RuBiomes.HIGHLAND_FIELDS, RuBiomes.HIGHLAND_FIELDS, RuBiomes.DECIDUOUS_FOREST, RuBiomes.HIGHLAND_FIELDS, RuBiomes.BLACKWOOD_FOREST},
             /*WARM*/    {RuBiomes.DECIDUOUS_FOREST, RuBiomes.DECIDUOUS_FOREST, RuBiomes.DECIDUOUS_FOREST, RuBiomes.DECIDUOUS_FOREST, RuBiomes.REDWOODS},
-            /*HOT*/     {RuBiomes.WOODED_STEPPE, RuBiomes.STEPPE, RuBiomes.RAINFOREST, RuBiomes.RAINFOREST, RuBiomes.RAINFOREST}};
+            /*HOT*/     {RuBiomes.STEPPE, RuBiomes.STEPPE, RuBiomes.RAINFOREST, RuBiomes.RAINFOREST, RuBiomes.RAINFOREST}};
 
     private final ResourceKey<Biome>[][] PLATEAU_BIOMES_VARIANT = new ResourceKey[][]{
             //-----------ARID,DRY,NEUTRAL,WET,HUMID
@@ -137,7 +137,7 @@ public class RegionPrimaryBiomeBuilder {
             /*COOL*/    {RuBiomes.AUTUMNAL_MAPLE_FOREST, RuBiomes.SILVER_BIRCH_FOREST, RuBiomes.MAPLE_FOREST, RuBiomes.BOREAL_FOREST, RuBiomes.GOLDEN_BOREAL_FOREST},
             /*NEUTRAL*/ {RuBiomes.HIGHLAND_FIELDS, RuBiomes.HIGHLAND_FIELDS, RuBiomes.DECIDUOUS_FOREST, RuBiomes.TEMPERATE_GROVE, RuBiomes.BLACKWOOD_FOREST},
             /*WARM*/    {RuBiomes.DECIDUOUS_FOREST, RuBiomes.DECIDUOUS_FOREST, RuBiomes.DECIDUOUS_FOREST, RuBiomes.REDWOODS, RuBiomes.SPARSE_REDWOODS},
-            /*HOT*/     {RuBiomes.WOODED_STEPPE, RuBiomes.STEPPE, RuBiomes.RAINFOREST, RuBiomes.OLD_GROWTH_RAINFOREST, RuBiomes.RAINFOREST}};
+            /*HOT*/     {RuBiomes.STEPPE, RuBiomes.STEPPE, RuBiomes.RAINFOREST, RuBiomes.OLD_GROWTH_RAINFOREST, RuBiomes.RAINFOREST}};
 
     private final ResourceKey<Biome>[][] SHATTERED_BIOMES = new ResourceKey[][]{
             //-----------ARID,DRY,NEUTRAL,WET,HUMID
@@ -480,10 +480,10 @@ public class RegionPrimaryBiomeBuilder {
             }
         } else {
             if(humidity < 3){
-                return CheckBiomeConfig.isBiomeEnabled(RuBiomes.WOODED_ARID_MOUNTAINS) ? RuBiomes.WOODED_ARID_MOUNTAINS : Biomes.BADLANDS;
+                return CheckBiomeConfig.isBiomeEnabled(RuBiomes.ARID_MOUNTAINS) ? RuBiomes.ARID_MOUNTAINS : Biomes.BADLANDS;
             }
             else{
-                return CheckBiomeConfig.isBiomeEnabled(RuBiomes.WOODED_ARID_MOUNTAINS) ? RuBiomes.WOODED_ARID_MOUNTAINS : Biomes.WOODED_BADLANDS;
+                return CheckBiomeConfig.isBiomeEnabled(RuBiomes.ARID_MOUNTAINS) ? RuBiomes.ARID_MOUNTAINS : Biomes.WOODED_BADLANDS;
             }
         }
     }

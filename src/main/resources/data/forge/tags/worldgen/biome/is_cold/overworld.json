@@ -1,11 +1,8 @@
 {
   "replace": false,
   "values": [
-    "regions_unexplored:canadian_forest",
     "regions_unexplored:maple_forest",
     "regions_unexplored:pumpkin_fields",
-    "regions_unexplored:autumnal_fields",
-    "regions_unexplored:autumnal_mixed_taiga",
     "regions_unexplored:autumnal_maple_forest",
     "regions_unexplored:highland_fields",
     "regions_unexplored:gravel_beach",
@@ -15,7 +12,6 @@
     "regions_unexplored:golden_boreal_forest",
     "regions_unexplored:silver_birch_forest",
     "regions_unexplored:mountains",
-    "regions_unexplored:old_growth_boreal_forest",
     "regions_unexplored:icy_heights",
     "regions_unexplored:frozen_forest",
     "regions_unexplored:icy_desert",

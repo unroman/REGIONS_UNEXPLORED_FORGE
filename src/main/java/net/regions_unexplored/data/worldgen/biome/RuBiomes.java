@@ -27,7 +27,6 @@ public class RuBiomes {
     public static final ResourceKey<Biome> SMOULDERING_WOODLAND = registerOverworld("smouldering_woodland");
     public static final ResourceKey<Biome> GRASSY_BEACH = registerOverworld("grassy_beach");
     public static final ResourceKey<Biome> DRY_BUSHLAND = registerOverworld("dry_bushland");
-    public static final ResourceKey<Biome> CANADIAN_FOREST = registerOverworld("canadian_forest");
     public static final ResourceKey<Biome> ORCHARD = registerOverworld("orchard");
     public static final ResourceKey<Biome> SPIRES = registerOverworld("spires");
     public static final ResourceKey<Biome> FROZEN_TUNDRA = registerOverworld("frozen_tundra");
@@ -37,13 +36,10 @@ public class RuBiomes {
     public static final ResourceKey<Biome> LUSH_HILLS = registerOverworld("lush_hills");
     public static final ResourceKey<Biome> FLOWER_FIELD = registerOverworld("flower_field");
     public static final ResourceKey<Biome> ARID_MOUNTAINS = registerOverworld("arid_mountains");
-    public static final ResourceKey<Biome> WOODED_ARID_MOUNTAINS = registerOverworld("wooded_arid_mountains");
     public static final ResourceKey<Biome> MAPLE_FOREST = registerOverworld("maple_forest");
     public static final ResourceKey<Biome> CHERRY_HILLS = registerOverworld("cherry_hills");
     public static final ResourceKey<Biome> CHALK_CLIFFS = registerOverworld("chalk_cliffs");
     public static final ResourceKey<Biome> PUMPKIN_FIELDS = registerOverworld("pumpkin_fields");
-    public static final ResourceKey<Biome> AUTUMNAL_FIELDS = registerOverworld("autumnal_fields");
-    public static final ResourceKey<Biome> AUTUMNAL_MIXED_TAIGA = registerOverworld("autumnal_mixed_taiga");
     public static final ResourceKey<Biome> WILLOW_FOREST = registerOverworld("willow_forest");
     public static final ResourceKey<Biome> RAINFOREST = registerOverworld("rainforest");
     public static final ResourceKey<Biome> OLD_GROWTH_RAINFOREST = registerOverworld("old_growth_rainforest");
@@ -56,7 +52,6 @@ public class RuBiomes {
     public static final ResourceKey<Biome> ALPHA_GROVE = registerOverworld("alpha_grove");
     public static final ResourceKey<Biome> JOSHUA_DESERT = registerOverworld("joshua_desert");
     public static final ResourceKey<Biome> STEPPE = registerOverworld("steppe");
-    public static final ResourceKey<Biome> WOODED_STEPPE = registerOverworld("wooded_steppe");
     public static final ResourceKey<Biome> ICY_HEIGHTS = registerOverworld("icy_heights");
     public static final ResourceKey<Biome> MAUVE_HILLS = registerOverworld("mauve_hills");
     public static final ResourceKey<Biome> AUTUMNAL_MAPLE_FOREST = registerOverworld("autumnal_maple_forest");
@@ -85,9 +80,7 @@ public class RuBiomes {
     public static final ResourceKey<Biome> COLD_RIVER = registerOverworld("cold_river");
     public static final ResourceKey<Biome> REDWOODS = registerOverworld("redwoods");
     public static final ResourceKey<Biome> SPARSE_REDWOODS = registerOverworld("sparse_redwoods");
-    public static final ResourceKey<Biome> OLD_GROWTH_BOREAL_FOREST = registerOverworld("old_growth_boreal_forest");
     public static final ResourceKey<Biome> EUCALYPTUS_FOREST = registerOverworld("eucalyptus_forest");
-    public static final ResourceKey<Biome> ROOFED_EUCALYPTUS_FOREST = registerOverworld("roofed_eucalyptus_forest");
     public static final ResourceKey<Biome> FROZEN_FOREST = registerOverworld("frozen_forest");
     public static final ResourceKey<Biome> ICY_DESERT = registerOverworld("icy_desert");
 

@@ -12,19 +12,70 @@ import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
+import net.regions_unexplored.data.worldgen.features.RuFeatureRegistry;
 import net.regions_unexplored.data.worldgen.features.RuTreeFeatures;
 import net.regions_unexplored.data.worldgen.features.RuVegetationFeatures;
+import net.regions_unexplored.data.worldgen.features.feature.tree.config.TallSaplingConfiguration;
+import net.regions_unexplored.util.worldgen.RuFeatureUtils;
 import net.regions_unexplored.util.worldgen.RuPlacementUtils;
 
 public class RuVegetationPlacements {
-
+    //TALL_SAPLINGS
+    public static final ResourceKey<PlacedFeature> TALL_ACACIA_SAPLING = RuPlacementUtils.createKey("tall_acacia_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_BAOBAB_SAPLING = RuPlacementUtils.createKey("tall_baobab_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_BIRCH_SAPLING = RuPlacementUtils.createKey("tall_birch_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_BLACKWOOD_SAPLING = RuPlacementUtils.createKey("tall_blackwood_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_CHERRY_SAPLING = RuPlacementUtils.createKey("tall_cherry_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_RED_CHERRY_SAPLING = RuPlacementUtils.createKey("tall_red_cherry_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_PINK_CHERRY_SAPLING = RuPlacementUtils.createKey("tall_pink_cherry_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_WHITE_CHERRY_SAPLING = RuPlacementUtils.createKey("tall_white_cherry_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_CYPRESS_SAPLING = RuPlacementUtils.createKey("tall_cypress_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_DARK_OAK_SAPLING = RuPlacementUtils.createKey("tall_dark_oak_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_DEAD_SAPLING = RuPlacementUtils.createKey("tall_dead_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_DEAD_PINE_SAPLING = RuPlacementUtils.createKey("tall_dead_pine_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_EUCALYPTUS_SAPLING = RuPlacementUtils.createKey("tall_eucalyptus_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_FLOWERING_SAPLING = RuPlacementUtils.createKey("tall_flowering_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_JOSHUA_SAPLING = RuPlacementUtils.createKey("tall_joshua_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_JUNGLE_SAPLING = RuPlacementUtils.createKey("tall_jungle_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_LARCH_SAPLING = RuPlacementUtils.createKey("tall_larch_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_GOLDEN_LARCH_SAPLING = RuPlacementUtils.createKey("tall_golden_larch_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_MANGROVE_SAPLING = RuPlacementUtils.createKey("tall_mangrove_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_MAPLE_SAPLING = RuPlacementUtils.createKey("tall_maple_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_RED_MAPLE_SAPLING = RuPlacementUtils.createKey("tall_red_maple_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_ORANGE_MAPLE_SAPLING = RuPlacementUtils.createKey("tall_orange_maple_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_MAUVE_SAPLING = RuPlacementUtils.createKey("tall_mauve_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_OAK_SAPLING = RuPlacementUtils.createKey("tall_oak_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_PALM_SAPLING = RuPlacementUtils.createKey("tall_palm_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_PINE_SAPLING = RuPlacementUtils.createKey("tall_pine_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_REDWOOD_SAPLING = RuPlacementUtils.createKey("tall_redwood_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_SILVER_BIRCH_SAPLING = RuPlacementUtils.createKey("tall_silver_birch_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_SPRUCE_SAPLING = RuPlacementUtils.createKey("tall_spruce_sapling");
+    public static final ResourceKey<PlacedFeature> TALL_WILLOW_SAPLING = RuPlacementUtils.createKey("tall_willow_sapling");
+    //mixes
+    public static final ResourceKey<PlacedFeature> TALL_AUTUMNAL_SAPLING_MIX = RuPlacementUtils.createKey("tall_autumnal_sapling_mix");
+    public static final ResourceKey<PlacedFeature> TALL_BIRCH_SAPLING_MIX = RuPlacementUtils.createKey("tall_birch_sapling_mix");
+    public static final ResourceKey<PlacedFeature> TALL_BLACKWOOD_DARK_OAK_SAPLING_MIX = RuPlacementUtils.createKey("tall_blackwood_dark_oak_sapling_mix");
+    public static final ResourceKey<PlacedFeature> TALL_CHERRY_SAPLING_MIX = RuPlacementUtils.createKey("tall_cherry_sapling_mix");
+    public static final ResourceKey<PlacedFeature> TALL_DEAD_SAPLING_MIX = RuPlacementUtils.createKey("tall_dead_sapling_mix");
+    public static final ResourceKey<PlacedFeature> TALL_LARCH_SAPLING_MIX = RuPlacementUtils.createKey("tall_larch_sapling_mix");
+    public static final ResourceKey<PlacedFeature> TALL_GOLDEN_LARCH_SAPLING_MIX = RuPlacementUtils.createKey("tall_golden_larch_sapling_mix");
+    public static final ResourceKey<PlacedFeature> TALL_MAPLE_SAPLING_MIX = RuPlacementUtils.createKey("tall_maple_sapling_mix");
+    public static final ResourceKey<PlacedFeature> TALL_PALM_MANGROVE_SAPLING_MIX = RuPlacementUtils.createKey("tall_palm_mangrove_sapling_mix");
+    public static final ResourceKey<PlacedFeature> TALL_PINE_SPRUCE_SAPLING_MIX = RuPlacementUtils.createKey("tall_pine_spruce_sapling_mix");
+    public static final ResourceKey<PlacedFeature> TALL_PINE_DEAD_SAPLING_MIX = RuPlacementUtils.createKey("tall_pine_dead_sapling_mix");
+    public static final ResourceKey<PlacedFeature> TALL_WILLOW_CYPRESS_SAPLING_MIX = RuPlacementUtils.createKey("tall_willow_cypress_sapling_mix");
+    
     public static final ResourceKey<PlacedFeature> FOREST_BAMBOO = RuPlacementUtils.createKey("forest_bamboo");
     public static final ResourceKey<PlacedFeature> SEAGRASS = RuPlacementUtils.createKey("seagrass");
     public static final ResourceKey<PlacedFeature> PATCH_CACTUS_OUTBACK = RuPlacementUtils.createKey("patch_cactus_outback");
@@ -70,6 +121,50 @@ public class RuVegetationPlacements {
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> featureGetter = context.lookup(Registries.CONFIGURED_FEATURE);
+        //TALL_SAPLINGS
+        final Holder<ConfiguredFeature<?, ?>> TALL_ACACIA_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_ACACIA_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_BAOBAB_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_BAOBAB_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_BIRCH_SAPLING =  featureGetter.getOrThrow(RuVegetationFeatures.TALL_BIRCH_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_BLACKWOOD_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_BLACKWOOD_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_CHERRY_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_CHERRY_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_RED_CHERRY_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_RED_CHERRY_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_PINK_CHERRY_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_PINK_CHERRY_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_WHITE_CHERRY_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_WHITE_CHERRY_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_CYPRESS_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_CYPRESS_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_DARK_OAK_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_DARK_OAK_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_DEAD_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_DEAD_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_DEAD_PINE_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_DEAD_PINE_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_EUCALYPTUS_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_EUCALYPTUS_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_FLOWERING_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_FLOWERING_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_JOSHUA_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_JOSHUA_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_JUNGLE_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_JUNGLE_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_LARCH_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_LARCH_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_GOLDEN_LARCH_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_GOLDEN_LARCH_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_MANGROVE_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_MANGROVE_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_MAPLE_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_MAPLE_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_RED_MAPLE_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_RED_MAPLE_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_ORANGE_MAPLE_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_ORANGE_MAPLE_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_MAUVE_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_MAUVE_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_OAK_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_OAK_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_PALM_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_PALM_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_PINE_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_PINE_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_REDWOOD_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_REDWOOD_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_SILVER_BIRCH_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_SILVER_BIRCH_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_SPRUCE_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_SPRUCE_SAPLING);
+        final Holder<ConfiguredFeature<?, ?>> TALL_WILLOW_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_WILLOW_SAPLING);
+        //mixes
+        final Holder<ConfiguredFeature<?, ?>> TALL_AUTUMNAL_SAPLING_MIX = featureGetter.getOrThrow(RuVegetationFeatures.TALL_AUTUMNAL_SAPLING_MIX);
+        final Holder<ConfiguredFeature<?, ?>> TALL_BIRCH_SAPLING_MIX = featureGetter.getOrThrow(RuVegetationFeatures.TALL_BIRCH_SAPLING_MIX);
+        final Holder<ConfiguredFeature<?, ?>> TALL_BLACKWOOD_DARK_OAK_SAPLING_MIX = featureGetter.getOrThrow(RuVegetationFeatures.TALL_BLACKWOOD_DARK_OAK_SAPLING_MIX);
+        final Holder<ConfiguredFeature<?, ?>> TALL_CHERRY_SAPLING_MIX = featureGetter.getOrThrow(RuVegetationFeatures.TALL_CHERRY_SAPLING_MIX);
+        final Holder<ConfiguredFeature<?, ?>> TALL_DEAD_SAPLING_MIX = featureGetter.getOrThrow(RuVegetationFeatures.TALL_DEAD_SAPLING_MIX);
+        final Holder<ConfiguredFeature<?, ?>> TALL_LARCH_SAPLING_MIX = featureGetter.getOrThrow(RuVegetationFeatures.TALL_LARCH_SAPLING_MIX);
+        final Holder<ConfiguredFeature<?, ?>> TALL_GOLDEN_LARCH_SAPLING_MIX = featureGetter.getOrThrow(RuVegetationFeatures.TALL_GOLDEN_LARCH_SAPLING_MIX);
+        final Holder<ConfiguredFeature<?, ?>> TALL_MAPLE_SAPLING_MIX = featureGetter.getOrThrow(RuVegetationFeatures.TALL_MAPLE_SAPLING_MIX);
+        final Holder<ConfiguredFeature<?, ?>> TALL_PALM_MANGROVE_SAPLING_MIX = featureGetter.getOrThrow(RuVegetationFeatures.TALL_PALM_MANGROVE_SAPLING_MIX);
+        final Holder<ConfiguredFeature<?, ?>> TALL_PINE_SPRUCE_SAPLING_MIX = featureGetter.getOrThrow(RuVegetationFeatures.TALL_PINE_SPRUCE_SAPLING_MIX);
+        final Holder<ConfiguredFeature<?, ?>> TALL_PINE_DEAD_SAPLING_MIX = featureGetter.getOrThrow(RuVegetationFeatures.TALL_PINE_SPRUCE_SAPLING_MIX);
+        final Holder<ConfiguredFeature<?, ?>> TALL_WILLOW_CYPRESS_SAPLING_MIX = featureGetter.getOrThrow(RuVegetationFeatures.TALL_WILLOW_CYPRESS_SAPLING_MIX);
 
         final Holder<ConfiguredFeature<?, ?>> FOREST_BAMBOO = featureGetter.getOrThrow(VegetationFeatures.BAMBOO_SOME_PODZOL);
         final Holder<ConfiguredFeature<?, ?>> SEAGRASS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_SEAGRASS);
@@ -111,6 +206,51 @@ public class RuVegetationPlacements {
 
         final Holder<ConfiguredFeature<?, ?>> SCULK_WILLOW = featureGetter.getOrThrow(RuVegetationFeatures.SCULK_WILLOW);
         final Holder<ConfiguredFeature<?, ?>> GIANT_SCULK_WILLOW = featureGetter.getOrThrow(RuVegetationFeatures.GIANT_SCULK_WILLOW);
+
+        //TALL_SAPLINGS
+        register(context, RuVegetationPlacements.TALL_ACACIA_SAPLING, TALL_ACACIA_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_BAOBAB_SAPLING, TALL_BAOBAB_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_BIRCH_SAPLING, TALL_BIRCH_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_BLACKWOOD_SAPLING, TALL_BLACKWOOD_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_CHERRY_SAPLING, TALL_CHERRY_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_RED_CHERRY_SAPLING, TALL_RED_CHERRY_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_PINK_CHERRY_SAPLING, TALL_PINK_CHERRY_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_WHITE_CHERRY_SAPLING, TALL_WHITE_CHERRY_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_CYPRESS_SAPLING, TALL_CYPRESS_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_DARK_OAK_SAPLING, TALL_DARK_OAK_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_DEAD_SAPLING, TALL_DEAD_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_DEAD_PINE_SAPLING, TALL_DEAD_PINE_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_EUCALYPTUS_SAPLING, TALL_EUCALYPTUS_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_FLOWERING_SAPLING, TALL_FLOWERING_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_JOSHUA_SAPLING, TALL_JOSHUA_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_JUNGLE_SAPLING, TALL_JUNGLE_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_LARCH_SAPLING, TALL_LARCH_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_GOLDEN_LARCH_SAPLING, TALL_GOLDEN_LARCH_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_MANGROVE_SAPLING, TALL_MANGROVE_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_MAPLE_SAPLING, TALL_MAPLE_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_RED_MAPLE_SAPLING, TALL_RED_MAPLE_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_ORANGE_MAPLE_SAPLING, TALL_ORANGE_MAPLE_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_MAUVE_SAPLING, TALL_MAUVE_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_OAK_SAPLING, TALL_OAK_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_PALM_SAPLING, TALL_PALM_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_PINE_SAPLING, TALL_PINE_SAPLING, CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_REDWOOD_SAPLING, TALL_REDWOOD_SAPLING, CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_SILVER_BIRCH_SAPLING, TALL_SILVER_BIRCH_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_SPRUCE_SAPLING, TALL_SPRUCE_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_WILLOW_SAPLING, TALL_WILLOW_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        //mixes
+        register(context, RuVegetationPlacements.TALL_AUTUMNAL_SAPLING_MIX, TALL_AUTUMNAL_SAPLING_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_BIRCH_SAPLING_MIX, TALL_BIRCH_SAPLING_MIX, CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_BLACKWOOD_DARK_OAK_SAPLING_MIX, TALL_BLACKWOOD_DARK_OAK_SAPLING_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_CHERRY_SAPLING_MIX, TALL_CHERRY_SAPLING_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_DEAD_SAPLING_MIX, TALL_DEAD_SAPLING_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_LARCH_SAPLING_MIX, TALL_LARCH_SAPLING_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_GOLDEN_LARCH_SAPLING_MIX, TALL_GOLDEN_LARCH_SAPLING_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_MAPLE_SAPLING_MIX, TALL_MAPLE_SAPLING_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_PALM_MANGROVE_SAPLING_MIX, TALL_PALM_MANGROVE_SAPLING_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_PINE_SPRUCE_SAPLING_MIX, TALL_PINE_SPRUCE_SAPLING_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_PINE_DEAD_SAPLING_MIX, TALL_PINE_DEAD_SAPLING_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.TALL_WILLOW_CYPRESS_SAPLING_MIX, TALL_WILLOW_CYPRESS_SAPLING_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
 
         //Vanilla
         register(context, RuVegetationPlacements.FOREST_BAMBOO, FOREST_BAMBOO, NoiseBasedCountPlacement.of(30, -0.8D, 2.0D), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());

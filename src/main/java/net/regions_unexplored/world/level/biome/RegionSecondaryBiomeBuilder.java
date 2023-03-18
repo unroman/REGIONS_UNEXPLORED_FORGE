@@ -497,7 +497,7 @@ public class RegionSecondaryBiomeBuilder {
                 return CheckBiomeConfig.isBiomeEnabled(RuBiomes.GRASSLAND) ? RuBiomes.GRASSLAND : Biomes.ERODED_BADLANDS;
             }
         } else if (humidity == 2) {
-                return CheckBiomeConfig.isBiomeEnabled(RuBiomes.WOODED_ARID_MOUNTAINS) ? RuBiomes.WOODED_ARID_MOUNTAINS : Biomes.WOODED_BADLANDS;
+                return CheckBiomeConfig.isBiomeEnabled(RuBiomes.ARID_MOUNTAINS) ? RuBiomes.ARID_MOUNTAINS : Biomes.WOODED_BADLANDS;
         }
         else {
             return CheckBiomeConfig.isBiomeEnabled(RuBiomes.ARID_MOUNTAINS) ? RuBiomes.ARID_MOUNTAINS : Biomes.WOODED_BADLANDS;
