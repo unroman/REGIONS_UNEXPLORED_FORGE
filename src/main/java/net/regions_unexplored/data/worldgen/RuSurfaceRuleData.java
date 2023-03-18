@@ -67,7 +67,7 @@ public class RuSurfaceRuleData
                         SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.SAGUARO_DESERT, RuBiomes.GRASSY_BEACH), SAND),
 
                         //PUMPKIN_FIELDS
-                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.PUMPKIN_FIELDS, RuBiomes.AUTUMNAL_FIELDS),
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.PUMPKIN_FIELDS),
                                 SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(2.5D), COARSE_DIRT), SurfaceRules.ifTrue(surfaceNoiseAbove(1.75D), PODZOL))),
 
                         //PODZOL/COARSE_DIRT SURFACE
@@ -127,12 +127,8 @@ public class RuSurfaceRuleData
                                 SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.75D), TERRACOTTA), SurfaceRules.ifTrue(surfaceNoiseAbove(-0.5D), COARSE_DIRT), GRASS_BLOCK)),
 
                         //TOWERING_CLIFFS
-                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.TOWERING_CLIFFS, RuBiomes.LUPINE_PLAINS),
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.TOWERING_CLIFFS),
                                 SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.75D), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.25D), COBBLESTONE),SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.0D), GRAVEL),STONE)), SurfaceRules.ifTrue(surfaceNoiseAbove(-0.5D), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.25D), GRASS_BLOCK),SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, -0.25D), COARSE_DIRT),COBBLESTONE)))),
-
-                        //CANADIAN_FOREST
-                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.CANADIAN_FOREST),
-                                SurfaceRules.sequence(SurfaceRules.ifTrue(shieldNoise(1.65D), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.25D), STONE),SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.0D), GRAVEL),STONE)), SurfaceRules.ifTrue(shieldNoise(-0.45D), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.25D), GRASS_BLOCK),SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, -0.25D), COARSE_DIRT),STONE)))),
 
                         //LUSH_HILLS
                         SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.LUSH_HILLS),
@@ -147,7 +143,7 @@ public class RuSurfaceRuleData
                                 SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.yStartCheck(VerticalAnchor.absolute(66), 0), ALPHA_GRASS))),
 
                                 //ARID_MOUNTAINS
-                                SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.WOODED_ARID_MOUNTAINS, RuBiomes.ARID_MOUNTAINS),
+                                SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ARID_MOUNTAINS),
                                         SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(74), 1)), SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(-0.45D), GRASS_BLOCK), TERRACOTTA))),
 
                         //SNOWCAPPED_MOUNTAINS
@@ -156,8 +152,8 @@ public class RuSurfaceRuleData
                                         SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(138), 0)),COARSE_DIRT),
                                         SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(142), 0)),
                                                 SurfaceRules.ifTrue(SurfaceRules.noiseCondition(RuNoises.WEIGHTED, 0.05D),COARSE_DIRT)))),
-                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.BLACKWOOD_FOREST, RuBiomes.BOREAL_FOREST, RuBiomes.COLD_BOREAL_FOREST, RuBiomes.OLD_GROWTH_BOREAL_FOREST, RuBiomes.GOLDEN_BOREAL_FOREST), FOREST_GRASS_BLOCK),
-                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.TROPICS, RuBiomes.DRY_BUSHLAND, RuBiomes.JOSHUA_DESERT, RuBiomes.BARLEY_FIELDS, RuBiomes.PRAIRIE, RuBiomes.ORCHARD, RuBiomes.STEPPE, RuBiomes.WOODED_STEPPE), PLAINS_GRASS_BLOCK)
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.BLACKWOOD_FOREST, RuBiomes.BOREAL_FOREST, RuBiomes.COLD_BOREAL_FOREST, RuBiomes.GOLDEN_BOREAL_FOREST), FOREST_GRASS_BLOCK),
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.TROPICS, RuBiomes.DRY_BUSHLAND, RuBiomes.JOSHUA_DESERT, RuBiomes.BARLEY_FIELDS, RuBiomes.PRAIRIE, RuBiomes.ORCHARD, RuBiomes.STEPPE), PLAINS_GRASS_BLOCK)
                 )))),
 
                 SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
@@ -171,7 +167,7 @@ public class RuSurfaceRuleData
                                 SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.not(surfaceNoiseAbove(1.75D)), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),DIRT)), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 30, CaveSurface.FLOOR),TERRACOTTA))),
 
                         //LUSH_HILLS/CLIFFS BASE
-                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.LUSH_HILLS, RuBiomes.TOWERING_CLIFFS, RuBiomes.LUPINE_PLAINS),
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.LUSH_HILLS, RuBiomes.TOWERING_CLIFFS),
                                 SurfaceRules.ifTrue(surfaceNoiseAbove(1.75D), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),STONE))),
 
                         //ALPHA_GROVE BASE
@@ -206,7 +202,7 @@ public class RuSurfaceRuleData
                                                 SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),SNOW_BLOCK)))),
 
                         //ARID_MOUNTAINS
-                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.WOODED_ARID_MOUNTAINS, RuBiomes.ARID_MOUNTAINS), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 30, CaveSurface.FLOOR), SurfaceRules.sequence(
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ARID_MOUNTAINS), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 30, CaveSurface.FLOOR), SurfaceRules.sequence(
                                 SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(74), 1)), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR), SurfaceRules.ifTrue(surfaceNoiseAbove(-0.45D), DIRT)), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 30, CaveSurface.FLOOR), TERRACOTTA))),
                                 SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b1", VerticalAnchor.absolute(76), VerticalAnchor.absolute(76)), COARSE_DIRT),
                                 SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b2", VerticalAnchor.absolute(79), VerticalAnchor.absolute(79)), GRANITE),
@@ -233,18 +229,14 @@ public class RuSurfaceRuleData
                                 SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b24", VerticalAnchor.absolute(159), VerticalAnchor.absolute(159)), COARSE_DIRT),
                                 TERRACOTTA))),
 
-                        //CANADIAN_FOREST_BASE
-                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.CANADIAN_FOREST),
-                                SurfaceRules.ifTrue(shieldNoise(1.65D), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),STONE))),
-
                         //ICY_DESERT_BASE
                         SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ICY_DESERT),
                                 SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),STONE)),
 
                         //DEFAULT
                         SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.MOUNTAINS), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),STONE)),
-                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.BLACKWOOD_FOREST, RuBiomes.SMOULDERING_WOODLAND, RuBiomes.BOREAL_FOREST, RuBiomes.COLD_BOREAL_FOREST, RuBiomes.OLD_GROWTH_BOREAL_FOREST, RuBiomes.GOLDEN_BOREAL_FOREST), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),FOREST_DIRT)),
-                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.TROPICS, RuBiomes.DRY_BUSHLAND, RuBiomes.JOSHUA_DESERT, RuBiomes.BARLEY_FIELDS, RuBiomes.PRAIRIE, RuBiomes.ORCHARD, RuBiomes.STEPPE, RuBiomes.WOODED_STEPPE), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),PLAINS_DIRT)),
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.BLACKWOOD_FOREST, RuBiomes.SMOULDERING_WOODLAND, RuBiomes.BOREAL_FOREST, RuBiomes.COLD_BOREAL_FOREST, RuBiomes.GOLDEN_BOREAL_FOREST), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),FOREST_DIRT)),
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.TROPICS, RuBiomes.DRY_BUSHLAND, RuBiomes.JOSHUA_DESERT, RuBiomes.BARLEY_FIELDS, RuBiomes.PRAIRIE, RuBiomes.ORCHARD, RuBiomes.STEPPE), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),PLAINS_DIRT)),
                         SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR),SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.waterBlockCheck(-1, 0),GRASS_BLOCK), DIRT)),SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),DIRT))
                 )),
                 //REDSTONE_CAVES
@@ -273,7 +265,7 @@ public class RuSurfaceRuleData
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.SAGUARO_DESERT, RuBiomes.GRASSY_BEACH), SAND),
 
                             //PUMPKIN_FIELDS
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.PUMPKIN_FIELDS, RuBiomes.AUTUMNAL_FIELDS),
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.PUMPKIN_FIELDS),
                                     SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(2.5D), COARSE_DIRT), SurfaceRules.ifTrue(surfaceNoiseAbove(1.75D), PODZOL))),
 
                             //PODZOL/COARSE_DIRT SURFACE
@@ -333,12 +325,8 @@ public class RuSurfaceRuleData
                                     SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.75D), TERRACOTTA), SurfaceRules.ifTrue(surfaceNoiseAbove(-0.5D), COARSE_DIRT), GRASS_BLOCK)),
 
                             //TOWERING_CLIFFS
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.TOWERING_CLIFFS, RuBiomes.LUPINE_PLAINS),
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.TOWERING_CLIFFS),
                                     SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(1.75D), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.25D), COBBLESTONE),SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.0D), GRAVEL),STONE)), SurfaceRules.ifTrue(surfaceNoiseAbove(-0.5D), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.25D), GRASS_BLOCK),SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, -0.25D), COARSE_DIRT),COBBLESTONE)))),
-
-                            //CANADIAN_FOREST
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.CANADIAN_FOREST),
-                                    SurfaceRules.sequence(SurfaceRules.ifTrue(shieldNoise(1.65D), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.25D), STONE),SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.0D), GRAVEL),STONE)), SurfaceRules.ifTrue(shieldNoise(-0.45D), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.25D), GRASS_BLOCK),SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, -0.25D), COARSE_DIRT),STONE)))),
 
                             //LUSH_HILLS
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.LUSH_HILLS),
@@ -353,7 +341,7 @@ public class RuSurfaceRuleData
                                     SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.yStartCheck(VerticalAnchor.absolute(66), 0), ALPHA_GRASS))),
 
                             //ARID_MOUNTAINS
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.WOODED_ARID_MOUNTAINS, RuBiomes.ARID_MOUNTAINS),
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ARID_MOUNTAINS),
                                     SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(74), 1)), SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(-0.45D), GRASS_BLOCK), TERRACOTTA))),
 
                             //SNOWCAPPED_MOUNTAINS
@@ -362,8 +350,8 @@ public class RuSurfaceRuleData
                                             SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(138), 0)),COARSE_DIRT),
                                             SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(142), 0)),
                                                     SurfaceRules.ifTrue(SurfaceRules.noiseCondition(RuNoises.WEIGHTED, 0.05D),COARSE_DIRT)))),
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.BLACKWOOD_FOREST, RuBiomes.BOREAL_FOREST, RuBiomes.COLD_BOREAL_FOREST, RuBiomes.OLD_GROWTH_BOREAL_FOREST, RuBiomes.GOLDEN_BOREAL_FOREST), GRASS_BLOCK),
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.TROPICS, RuBiomes.DRY_BUSHLAND, RuBiomes.JOSHUA_DESERT, RuBiomes.BARLEY_FIELDS, RuBiomes.PRAIRIE, RuBiomes.ORCHARD, RuBiomes.STEPPE, RuBiomes.WOODED_STEPPE), GRASS_BLOCK)
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.BLACKWOOD_FOREST, RuBiomes.BOREAL_FOREST, RuBiomes.COLD_BOREAL_FOREST, RuBiomes.GOLDEN_BOREAL_FOREST), GRASS_BLOCK),
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.TROPICS, RuBiomes.DRY_BUSHLAND, RuBiomes.JOSHUA_DESERT, RuBiomes.BARLEY_FIELDS, RuBiomes.PRAIRIE, RuBiomes.ORCHARD, RuBiomes.STEPPE), GRASS_BLOCK)
                     )))),
 
                     SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
@@ -377,7 +365,7 @@ public class RuSurfaceRuleData
                                     SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.not(surfaceNoiseAbove(1.75D)), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),DIRT)), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 30, CaveSurface.FLOOR),TERRACOTTA))),
 
                             //LUSH_HILLS/CLIFFS BASE
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.LUSH_HILLS, RuBiomes.TOWERING_CLIFFS, RuBiomes.LUPINE_PLAINS),
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.LUSH_HILLS, RuBiomes.TOWERING_CLIFFS),
                                     SurfaceRules.ifTrue(surfaceNoiseAbove(1.75D), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),STONE))),
 
                             //ALPHA_GROVE BASE
@@ -412,7 +400,7 @@ public class RuSurfaceRuleData
                                                     SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),SNOW_BLOCK)))),
 
                             //ARID_MOUNTAINS
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.WOODED_ARID_MOUNTAINS, RuBiomes.ARID_MOUNTAINS), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 30, CaveSurface.FLOOR), SurfaceRules.sequence(
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ARID_MOUNTAINS), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 30, CaveSurface.FLOOR), SurfaceRules.sequence(
                                     SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(74), 1)), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR), SurfaceRules.ifTrue(surfaceNoiseAbove(-0.45D), DIRT)), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 30, CaveSurface.FLOOR), TERRACOTTA))),
                                     SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b1", VerticalAnchor.absolute(76), VerticalAnchor.absolute(76)), COARSE_DIRT),
                                     SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b2", VerticalAnchor.absolute(79), VerticalAnchor.absolute(79)), GRANITE),
@@ -439,18 +427,14 @@ public class RuSurfaceRuleData
                                     SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b24", VerticalAnchor.absolute(159), VerticalAnchor.absolute(159)), COARSE_DIRT),
                                     TERRACOTTA))),
 
-                            //CANADIAN_FOREST_BASE
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.CANADIAN_FOREST),
-                                    SurfaceRules.ifTrue(shieldNoise(1.65D), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),STONE))),
-
                             //ICY_DESERT_BASE
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ICY_DESERT),
                                     SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),STONE)),
 
                             //DEFAULT
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.MOUNTAINS), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),STONE)),
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.BLACKWOOD_FOREST, RuBiomes.SMOULDERING_WOODLAND, RuBiomes.BOREAL_FOREST, RuBiomes.COLD_BOREAL_FOREST, RuBiomes.OLD_GROWTH_BOREAL_FOREST, RuBiomes.GOLDEN_BOREAL_FOREST), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),DIRT)),
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.TROPICS, RuBiomes.DRY_BUSHLAND, RuBiomes.JOSHUA_DESERT, RuBiomes.BARLEY_FIELDS, RuBiomes.PRAIRIE, RuBiomes.ORCHARD, RuBiomes.STEPPE, RuBiomes.WOODED_STEPPE), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),DIRT)),
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.BLACKWOOD_FOREST, RuBiomes.SMOULDERING_WOODLAND, RuBiomes.BOREAL_FOREST, RuBiomes.COLD_BOREAL_FOREST, RuBiomes.GOLDEN_BOREAL_FOREST), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),DIRT)),
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.TROPICS, RuBiomes.DRY_BUSHLAND, RuBiomes.JOSHUA_DESERT, RuBiomes.BARLEY_FIELDS, RuBiomes.PRAIRIE, RuBiomes.ORCHARD, RuBiomes.STEPPE), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),DIRT)),
                             SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR),SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.waterBlockCheck(-1, 0),GRASS_BLOCK), DIRT)),SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),DIRT))
                     )),
                     //REDSTONE_CAVES
