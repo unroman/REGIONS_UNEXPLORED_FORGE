@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
+import net.regions_unexplored.entity.RuDamageTypes;
 
 public class QuicksandBlock extends Block {
     public QuicksandBlock(Properties properties) {
@@ -38,18 +39,15 @@ public class QuicksandBlock extends Block {
 
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        Vec3 Eyeheight = entity.getEyePosition();
-        BlockPos EyePos = new BlockPos((int)Eyeheight.x, (int)Eyeheight.y, (int)Eyeheight.z);
+        BlockPos EyePos = new BlockPos(entity.getBlockX() , (int) entity.getEyeY(), entity.getBlockZ());
         super.entityInside(state, level, pos, entity);
         if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.ARTHROPOD : false) == false) {
         entity.makeStuckInBlock(Blocks.AIR.defaultBlockState(), new Vec3(0.25, 0.05, 0.25));
         }
         if (EyePos.getX()== pos.getX()&&EyePos.getY()== pos.getY()&&EyePos.getZ()== pos.getZ()){
-            if (entity == null)
-                return;
-            if (entity instanceof LivingEntity _entity)
-                //TODO:fix
-                _entity.hurt(level.damageSources().cramming(), 1);
+            if (entity instanceof LivingEntity _entity){
+                _entity.hurt(level.damageSources().source(RuDamageTypes.QUICKSAND), 1.0F);
+            }
         }
     }
 }
