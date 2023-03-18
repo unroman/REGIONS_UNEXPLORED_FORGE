@@ -649,15 +649,6 @@ public class RegionsUnexploredBlocks {
     public static final RegistryObject<Block> SCULK_TENDRIL = registerBlock("sculk_tendril", () -> new SculkPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.SCULK_SENSOR).offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 13)));
     public static final RegistryObject<Block> SCULK_SPROUT = registerBlock("sculk_sprout", () -> new SculkPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.SCULK).offsetType(BlockBehaviour.OffsetType.XYZ)));
 
-    //DEPRECATED
-    public static final RegistryObject<Block> FOREST_FERN = registerBlock("forest_fern", () -> new RuTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
-    public static final RegistryObject<Block> TALL_FOREST_FERN = registerBlock("tall_forest_fern", () -> new RuTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
-    public static final RegistryObject<Block> TALL_AUTUMNAL_SAPLING = registerBlock("tall_autumnal_sapling", () -> new TallSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
-    public static final RegistryObject<Block> ALPHA_DIRT = registerBlock("alpha_dirt", () -> new Block(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL).randomTicks()));
-    public static final RegistryObject<Block> MOSSED_STONE = registerBlock("mossed_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).sound(SoundType.STONE).strength(1.5f, 6f).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> ALPHA_SAND = registerBlock("alpha_sand", () -> new SandBlock(11098145, BlockBehaviour.Properties.of(Material.SAND, MaterialColor.SAND).strength(0.5F).sound(SoundType.GRAVEL)));
-    public static final RegistryObject<Block> ALPHA_GRAVEL = registerBlock("alpha_gravel", () -> new GravelBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.STONE).strength(0.6F).sound(SoundType.GRAVEL)));
-    public static final RegistryObject<Block> ALPHA_GLASS = registerBlock("alpha_glass", () -> new GlassBlock(BlockBehaviour.Properties.of(Material.GLASS).strength(0.3F).sound(SoundType.GLASS).noOcclusion().isValidSpawn(RegionsUnexploredBlocks::never).isRedstoneConductor(RegionsUnexploredBlocks::never).isSuffocating(RegionsUnexploredBlocks::never).isViewBlocking(RegionsUnexploredBlocks::never)));
     //PLACERS
     public static final RegistryObject<Block> DIRT_PLACEMENT = BLOCKS.register("dirt_placement", () -> new DirtPlacementBlock());
     public static final RegistryObject<Block> MUD_PLACEMENT = BLOCKS.register("mud_placement", () -> new MudPlacementBlock());

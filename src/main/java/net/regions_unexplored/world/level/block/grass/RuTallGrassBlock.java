@@ -54,12 +54,6 @@ public class RuTallGrassBlock extends BushBlock implements BonemealableBlock, ne
                 placeAt(level, grass.defaultBlockState(), pos, 2);
             }
         }
-        else if(state.is(RegionsUnexploredBlocks.FOREST_FERN.get())){
-            TallSaplingBlock grass = (TallSaplingBlock) RegionsUnexploredBlocks.TALL_FOREST_FERN.get();
-            if (grass.defaultBlockState().canSurvive(level, pos)) {
-                placeAt(level, grass.defaultBlockState(), pos, 2);
-            }
-        }
         else if(state.is(RegionsUnexploredBlocks.STEPPE_GRASS.get())||state.is(RegionsUnexploredBlocks.STEPPE_SHRUB.get())){
             DoublePlantBlock tallSteppeGrass = (DoublePlantBlock) RegionsUnexploredBlocks.TALL_STEPPE_GRASS.get();
             if (tallSteppeGrass.defaultBlockState().canSurvive(level, pos) && level.isEmptyBlock(pos.above())) {

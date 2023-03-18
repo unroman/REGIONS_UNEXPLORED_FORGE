@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredient": {
-    "tag": "regions_unexplored:alpha_sand"
-  },
-  "result": "regions_unexplored:alpha_glass"
-}

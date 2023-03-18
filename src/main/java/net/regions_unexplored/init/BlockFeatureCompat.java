@@ -133,8 +133,6 @@ public class BlockFeatureCompat {
         registerCompostableItems(0.25F, RegionsUnexploredBlocks.SANDY_GRASS.get());
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.SANDY_TALL_GRASS.get());
         registerCompostableItems(0.2F, RegionsUnexploredBlocks.SMALL_DESERT_SHRUB.get());
-        registerCompostableItems(0.5F, RegionsUnexploredBlocks.FOREST_FERN.get());
-        registerCompostableItems(0.5F, RegionsUnexploredBlocks.TALL_FOREST_FERN.get());
         registerCompostableItems(0.65F, RegionsUnexploredBlocks.ELEPHANT_EAR.get());
         registerCompostableItems(0.2F, RegionsUnexploredBlocks.FROZEN_GRASS.get());
         registerCompostableItems(0.5F, RegionsUnexploredBlocks.BLUE_LUPINE.get());
@@ -157,7 +155,6 @@ public class BlockFeatureCompat {
         registerCompostableItems(0.65F, RegionsUnexploredBlocks.BARLEY.get());
         registerCompostableItems(0.65F, RegionsUnexploredBlocks.CATTAIL.get());
         registerCompostableItems(0.5F, RegionsUnexploredBlocks.BARREL_CACTUS.get());
-        registerCompostableItems(0.65F, RegionsUnexploredBlocks.TALL_AUTUMNAL_SAPLING.get());
 
         registerCompostableItems(0.2f, RegionsUnexploredBlocks.MYCOTOXIC_GRASS.get());
         registerCompostableItems(0.3f, RegionsUnexploredBlocks.MYCOTOXIC_DAISY.get());
@@ -347,8 +344,6 @@ public class BlockFeatureCompat {
         registerFlammableBlock(RegionsUnexploredBlocks.SANDY_GRASS.get(), 60, 100);
         registerFlammableBlock(RegionsUnexploredBlocks.SANDY_TALL_GRASS.get(), 60, 100);
         registerFlammableBlock(RegionsUnexploredBlocks.SMALL_DESERT_SHRUB.get(), 60, 100);
-        registerFlammableBlock(RegionsUnexploredBlocks.FOREST_FERN.get(), 60, 100);
-        registerFlammableBlock(RegionsUnexploredBlocks.TALL_FOREST_FERN.get(), 60, 100);
         registerFlammableBlock(RegionsUnexploredBlocks.ELEPHANT_EAR.get(), 60, 100);
         registerFlammableBlock(RegionsUnexploredBlocks.FROZEN_GRASS.get(), 60, 100);
         registerFlammableBlock(RegionsUnexploredBlocks.BLUE_LUPINE.get(), 60, 100);
@@ -371,7 +366,6 @@ public class BlockFeatureCompat {
         registerFlammableBlock(RegionsUnexploredBlocks.BARLEY.get(), 60, 100);
         registerFlammableBlock(RegionsUnexploredBlocks.CATTAIL.get(), 60, 100);
         registerFlammableBlock(RegionsUnexploredBlocks.BARREL_CACTUS.get(), 60, 100);
-        registerFlammableBlock(RegionsUnexploredBlocks.TALL_AUTUMNAL_SAPLING.get(), 60, 100);
 
         registerFlammableBlock(RegionsUnexploredBlocks.ACACIA_BRANCH.get(), 30, 100);
         registerFlammableBlock(RegionsUnexploredBlocks.BAOBAB_BRANCH.get(), 30, 100);

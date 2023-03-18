@@ -31,8 +31,6 @@ public class RuColors {
                 RegionsUnexploredBlocks.STEPPE_GRASS.get(),
                 RegionsUnexploredBlocks.STONE_BUD.get(),
                 RegionsUnexploredBlocks.SEEDED_TALL_GRASS.get(),
-                RegionsUnexploredBlocks.FOREST_FERN.get(),
-                RegionsUnexploredBlocks.TALL_FOREST_FERN.get(),
                 RegionsUnexploredBlocks.SEEDED_GRASS.get()
         );
     }
@@ -50,8 +48,6 @@ public class RuColors {
                 RegionsUnexploredBlocks.STEPPE_GRASS.get(),
                 RegionsUnexploredBlocks.STONE_BUD.get(),
                 RegionsUnexploredBlocks.SEEDED_TALL_GRASS.get(),
-                RegionsUnexploredBlocks.FOREST_FERN.get(),
-                RegionsUnexploredBlocks.TALL_FOREST_FERN.get(),
                 RegionsUnexploredBlocks.SEEDED_GRASS.get()
         );
     }

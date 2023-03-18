@@ -22,7 +22,7 @@ public class SandPlacementBlock extends BushBlock {
     @Override
     public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
         return groundState.is(RegionsUnexploredBlocks.QUICKSAND.get())
-                || groundState.is(RegionsUnexploredBlocks.ALPHA_SAND.get()) || groundState.is(Blocks.SAND) || groundState.is(Blocks.RED_SAND);
+                || groundState.is(Blocks.SAND) || groundState.is(Blocks.RED_SAND);
     }
 
 
