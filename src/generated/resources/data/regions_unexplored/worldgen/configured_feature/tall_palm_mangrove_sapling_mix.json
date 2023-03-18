@@ -1,0 +1,28 @@
+{
+  "type": "regions_unexplored:tall_sapling",
+  "config": {
+    "sapling_provider": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "regions_unexplored:tall_palm_sapling",
+            "Properties": {
+              "half": "lower"
+            }
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "Name": "regions_unexplored:tall_mangrove_sapling",
+            "Properties": {
+              "half": "lower"
+            }
+          },
+          "weight": 1
+        }
+      ]
+    }
+  }
+}

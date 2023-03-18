@@ -1,0 +1,55 @@
+{
+  "type": "regions_unexplored:tall_sapling",
+  "config": {
+    "sapling_provider": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "regions_unexplored:tall_maple_sapling",
+            "Properties": {
+              "half": "lower"
+            }
+          },
+          "weight": 2
+        },
+        {
+          "data": {
+            "Name": "regions_unexplored:tall_silver_birch_sapling",
+            "Properties": {
+              "half": "lower"
+            }
+          },
+          "weight": 4
+        },
+        {
+          "data": {
+            "Name": "regions_unexplored:tall_red_maple_sapling",
+            "Properties": {
+              "half": "lower"
+            }
+          },
+          "weight": 4
+        },
+        {
+          "data": {
+            "Name": "regions_unexplored:tall_orange_maple_sapling",
+            "Properties": {
+              "half": "lower"
+            }
+          },
+          "weight": 4
+        },
+        {
+          "data": {
+            "Name": "regions_unexplored:tall_dead_sapling",
+            "Properties": {
+              "half": "lower"
+            }
+          },
+          "weight": 1
+        }
+      ]
+    }
+  }
+}

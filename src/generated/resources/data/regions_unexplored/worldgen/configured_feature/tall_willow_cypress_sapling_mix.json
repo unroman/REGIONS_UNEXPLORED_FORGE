@@ -1,0 +1,28 @@
+{
+  "type": "regions_unexplored:tall_sapling",
+  "config": {
+    "sapling_provider": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "regions_unexplored:tall_willow_sapling",
+            "Properties": {
+              "half": "lower"
+            }
+          },
+          "weight": 2
+        },
+        {
+          "data": {
+            "Name": "regions_unexplored:tall_cypress_sapling",
+            "Properties": {
+              "half": "lower"
+            }
+          },
+          "weight": 1
+        }
+      ]
+    }
+  }
+}
