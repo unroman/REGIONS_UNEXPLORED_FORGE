@@ -64,7 +64,7 @@
       "regions_unexplored:redstone_bulb_placed"
     ]
   ],
-  "precipitation": "none",
+  "has_precipitation": true,
   "spawn_costs": {},
   "spawners": {
     "ambient": [],

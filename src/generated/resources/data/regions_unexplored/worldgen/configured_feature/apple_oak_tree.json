@@ -63,6 +63,30 @@
             }
           },
           "weight": 2
+        },
+        {
+          "data": {
+            "Name": "regions_unexplored:apple_oak_leaves",
+            "Properties": {
+              "age": "3",
+              "distance": "7",
+              "persistent": "false",
+              "waterlogged": "false"
+            }
+          },
+          "weight": 2
+        },
+        {
+          "data": {
+            "Name": "regions_unexplored:apple_oak_leaves",
+            "Properties": {
+              "age": "4",
+              "distance": "7",
+              "persistent": "false",
+              "waterlogged": "false"
+            }
+          },
+          "weight": 2
         }
       ]
     },

@@ -14,14 +14,8 @@ public class CheckBiomeConfig {
         if(biome== RuBiomes.ARID_MOUNTAINS){
             return RegionsUnexploredCommonConfigs.TOGGLE_ARID_MOUNTAINS.get();
         }
-        if(biome== RuBiomes.AUTUMNAL_FIELDS){
-            return RegionsUnexploredCommonConfigs.TOGGLE_AUTUMNAL_FIELDS.get();
-        }
         if(biome== RuBiomes.AUTUMNAL_MAPLE_FOREST){
             return RegionsUnexploredCommonConfigs.TOGGLE_AUTUMNAL_MAPLE_FOREST.get();
-        }
-        if(biome== RuBiomes.AUTUMNAL_MIXED_TAIGA){
-            return RegionsUnexploredCommonConfigs.TOGGLE_AUTUMNAL_MIXED_TAIGA.get();
         }
         if(biome== RuBiomes.BAMBOO_FOREST){
             return RegionsUnexploredCommonConfigs.TOGGLE_BAMBOO_FOREST.get();
@@ -46,9 +40,6 @@ public class CheckBiomeConfig {
         }
         if(biome== RuBiomes.BOREAL_FOREST){
             return RegionsUnexploredCommonConfigs.TOGGLE_BOREAL_FOREST.get();
-        }
-        if(biome== RuBiomes.CANADIAN_FOREST){
-            return RegionsUnexploredCommonConfigs.TOGGLE_CANADIAN_FOREST.get();
         }
         if(biome== RuBiomes.CHALK_CLIFFS){
             return RegionsUnexploredCommonConfigs.TOGGLE_CHALK_CLIFFS.get();
@@ -152,9 +143,6 @@ public class CheckBiomeConfig {
         if(biome== RuBiomes.MYCOTOXIC_UNDERGROWTH){
             return RegionsUnexploredCommonConfigs.TOGGLE_MYCOTOXIC_UNDERGROWTH.get();
         }
-        if(biome== RuBiomes.OLD_GROWTH_BOREAL_FOREST){
-            return RegionsUnexploredCommonConfigs.TOGGLE_OLD_GROWTH_BOREAL_FOREST.get();
-        }
         if(biome== RuBiomes.OLD_GROWTH_RAINFOREST){
             return RegionsUnexploredCommonConfigs.TOGGLE_OLD_GROWTH_RAINFOREST.get();
         }
@@ -194,9 +182,6 @@ public class CheckBiomeConfig {
         if(biome== RuBiomes.REDWOODS){
             return RegionsUnexploredCommonConfigs.TOGGLE_REDWOODS.get();
         }
-        if(biome== RuBiomes.ROOFED_EUCALYPTUS_FOREST){
-            return RegionsUnexploredCommonConfigs.TOGGLE_ROOFED_EUCALYPTUS_FOREST.get();
-        }
         if(biome== RuBiomes.SAGUARO_DESERT){
             return RegionsUnexploredCommonConfigs.TOGGLE_SAGUARO_DESERT.get();
         }
@@ -232,12 +217,6 @@ public class CheckBiomeConfig {
         }
         if(biome== RuBiomes.WILLOW_FOREST){
             return RegionsUnexploredCommonConfigs.TOGGLE_WILLOW_FOREST.get();
-        }
-        if(biome== RuBiomes.WOODED_ARID_MOUNTAINS){
-            return RegionsUnexploredCommonConfigs.TOGGLE_WOODED_ARID_MOUNTAINS.get();
-        }
-        if(biome== RuBiomes.WOODED_STEPPE){
-            return RegionsUnexploredCommonConfigs.TOGGLE_WOODED_STEPPE.get();
         }
         return true;
     }
