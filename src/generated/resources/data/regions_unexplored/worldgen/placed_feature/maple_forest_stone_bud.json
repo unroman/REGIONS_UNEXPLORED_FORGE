@@ -1,9 +1,9 @@
 {
-  "feature": "minecraft:patch_grass",
+  "feature": "regions_unexplored:patch_stone_bud",
   "placement": [
     {
       "type": "minecraft:noise_threshold_count",
-      "above_noise": 6,
+      "above_noise": 12,
       "below_noise": 5,
       "noise_level": -0.8
     },
