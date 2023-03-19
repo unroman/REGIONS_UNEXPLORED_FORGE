@@ -761,13 +761,22 @@ public class RuOverworldBiomes {
         return new Biome.BiomeBuilder().temperature(1.05f)
                 .downfall(0.95f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
+    //DONE_FOR_1_20
     public static Biome pumpkinFields(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
 
-        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-5718172).grassColorOverride(-4733087).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder()
+                .skyColor(7972607)
+                .fogColor(12638463)
+                .waterColor(4159204)
+                .waterFogColor(329011)
+                .foliageColorOverride(9877306)
+                .grassColorOverride(11585358)
+                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.plainsSpawns(spawnBuilder);
+
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.AUTUMNAL_FIELDS_RED_MAPLE);
@@ -789,18 +798,35 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.noisePumpkins(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addRareBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().temperature(0.225f)
-                .downfall(0.3f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
+
+        return new Biome.BiomeBuilder()
+                .temperature(0.225f)
+                .downfall(0.3f)
+                .specialEffects(effects)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(biomeBuilder.build())
+                .build();
     }
+    //DONE_FOR_1_20
     public static Biome autumnalMapleForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
 
-        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-5718172).grassColorOverride(-4733087).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder()
+                .skyColor(7972607)
+                .fogColor(12638463)
+                .waterColor(4159204)
+                .waterFogColor(329011)
+                .foliageColorOverride(9877306)
+                .grassColorOverride(12896058)
+                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST))
+                .build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 5, 4, 4));
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
+
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.AUTUMNAL_MAPLE_FOREST_RED_MAPLE);
@@ -821,8 +847,14 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().temperature(0.225f)
-                .downfall(0.3f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
+
+        return new Biome.BiomeBuilder()
+                .temperature(0.225f)
+                .downfall(0.3f)
+                .specialEffects(effects)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(biomeBuilder.build())
+                .build();
     }
     public static Biome mixedForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
 
@@ -1142,9 +1174,17 @@ public class RuOverworldBiomes {
         return new Biome.BiomeBuilder().temperature(0.45f)
                 .downfall(0.3f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
+    //DONE_TEMP
     public static Biome alphaGrove(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-14919459).waterFogColor(-12292142)
-                .skyColor(7972607).foliageColorOverride(-10749125).grassColorOverride(-7876009).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder()
+                .fogColor(12638463)
+                .waterColor(-14919459)
+                .waterFogColor(-12292142)
+                .skyColor(7972607)
+                .foliageColorOverride(-10749125)
+                .grassColorOverride(-7876009)
+                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
@@ -1159,26 +1199,37 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMonsterRoom(biomeBuilder);
         BiomeDefaultFeatures.addSurfaceFreezing(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
-        return new Biome.BiomeBuilder().temperature(0.75f)
+        return new Biome.BiomeBuilder().temperature(0.0f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
+    //DONE_FOR_1_20
     public static Biome silverBirchForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
 
-        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-8865963).grassColorOverride(-6438057).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder()
+                .skyColor(7972607)
+                .fogColor(12638463)
+                .waterColor(4159204)
+                .waterFogColor(329011)
+                .foliageColorOverride(11585338)
+                .grassColorOverride(11585338)
+                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST))
+                .build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SILVER_BIRCH_FOREST_ASPEN);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SILVER_BIRCH_FOREST_SILVER_BIRCH);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SILVER_BIRCH_FOREST_BIRCH);
+
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SILVER_BIRCH_FOREST_GRASS);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SILVER_BIRCH_FOREST_SEEDED_GRASS);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SILVER_BIRCH_FOREST_TASSEL);
+
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TALL_BIRCH_SAPLING_MIX);
 
         globalOverworldGeneration(biomeBuilder);
@@ -1189,8 +1240,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().temperature(0.6f)
-                .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
+        return new Biome.BiomeBuilder()
+                .temperature(0.6f)
+                .downfall(0.6f)
+                .specialEffects(effects)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(biomeBuilder.build())
+                .build();
     }
     public static Biome deciduousForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
 

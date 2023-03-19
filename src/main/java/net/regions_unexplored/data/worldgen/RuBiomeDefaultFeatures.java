@@ -103,6 +103,7 @@ public class RuBiomeDefaultFeatures {
 
     public static void addRiverCattail(BiomeGenerationSettings.Builder p_194721_) {
             p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.CATTAIL_RIVER);
+        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WATER_CATTAIL);
     }
 
     public static void addGrasslandTallGrass(BiomeGenerationSettings.Builder p_194721_) {
