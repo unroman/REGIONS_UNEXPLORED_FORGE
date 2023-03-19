@@ -270,7 +270,7 @@ public class MapleTreeFeature extends Feature<RuTreeConfiguration> {
 
     public boolean placeBeehiveOrLeaves(LevelAccessor level, BlockPos pos, RandomSource randomSource, RuTreeConfiguration treeConfiguration){
         Random random = new Random();
-        int chance = random.nextInt(280);
+        int chance = random.nextInt(400);
         if (level.getBlockState(pos.north()).isAir()) {
             if(chance==0){
             placeLeavesBlock(level,pos.north().above(), randomSource, treeConfiguration);
