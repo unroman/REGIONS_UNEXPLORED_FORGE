@@ -39,8 +39,10 @@ public class RuFeatureRegistry {
     public static final RegistryObject<Feature> GIANT_BLUE_BIOSHROOM = REGISTRY.register("giant_blue_bioshroom", () -> new GiantBlueBioshroomFeature(GiantBioshroomConfiguration.CODEC));
 
     public static final RegistryObject<Feature> MAPLE_TREE = REGISTRY.register("maple_tree", () -> new MapleTreeFeature(RuTreeConfiguration.CODEC));
-    public static final RegistryObject<Feature> TALL_SAPLING = REGISTRY.register("tall_sapling", () -> new TallSaplingFeature(TallSaplingConfiguration.CODEC));
 
+    public static final RegistryObject<Feature> WATER_CATTAIL = REGISTRY.register("water_cattail", () -> new WaterCattailFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<Feature> TALL_SAPLING = REGISTRY.register("tall_sapling", () -> new TallSaplingFeature(TallSaplingConfiguration.CODEC));
+    //LEGACY
     public static final RegistryObject<Feature> ROCK_PILLAR = REGISTRY.register("rock_pillar", () -> new RockPillarFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature> LARGE_JOSHUA_TREE = REGISTRY.register("large_joshua_tree", () -> new LargeJoshuaTreeFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature> MEDIUM_JOSHUA_TREE = REGISTRY.register("medium_joshua_tree", () -> new MediumJoshuaTreeFeature(NoneFeatureConfiguration.CODEC));

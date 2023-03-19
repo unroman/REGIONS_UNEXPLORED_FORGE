@@ -31,6 +31,8 @@ import net.regions_unexplored.util.worldgen.RuFeatureUtils;
 import net.regions_unexplored.util.worldgen.RuPlacementUtils;
 
 public class RuVegetationPlacements {
+    //1.19.4 stuff
+    public static final ResourceKey<PlacedFeature> WATER_CATTAIL = RuPlacementUtils.createKey("water_cattail");
     //TALL_SAPLINGS
     public static final ResourceKey<PlacedFeature> TALL_ACACIA_SAPLING = RuPlacementUtils.createKey("tall_acacia_sapling");
     public static final ResourceKey<PlacedFeature> TALL_BAOBAB_SAPLING = RuPlacementUtils.createKey("tall_baobab_sapling");
@@ -121,6 +123,8 @@ public class RuVegetationPlacements {
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> featureGetter = context.lookup(Registries.CONFIGURED_FEATURE);
+        //1.19.4 stuff
+        final Holder<ConfiguredFeature<?, ?>> WATER_CATTAIL = featureGetter.getOrThrow(RuVegetationFeatures.WATER_CATTAIL);
         //TALL_SAPLINGS
         final Holder<ConfiguredFeature<?, ?>> TALL_ACACIA_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_ACACIA_SAPLING);
         final Holder<ConfiguredFeature<?, ?>> TALL_BAOBAB_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_BAOBAB_SAPLING);
@@ -207,6 +211,8 @@ public class RuVegetationPlacements {
         final Holder<ConfiguredFeature<?, ?>> SCULK_WILLOW = featureGetter.getOrThrow(RuVegetationFeatures.SCULK_WILLOW);
         final Holder<ConfiguredFeature<?, ?>> GIANT_SCULK_WILLOW = featureGetter.getOrThrow(RuVegetationFeatures.GIANT_SCULK_WILLOW);
 
+        //1.19.4 stuff
+        register(context, RuVegetationPlacements.WATER_CATTAIL, WATER_CATTAIL, CountPlacement.of(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
         //TALL_SAPLINGS
         register(context, RuVegetationPlacements.TALL_ACACIA_SAPLING, TALL_ACACIA_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
         register(context, RuVegetationPlacements.TALL_BAOBAB_SAPLING, TALL_BAOBAB_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
@@ -284,7 +290,7 @@ public class RuVegetationPlacements {
         register(context, RuVegetationPlacements.PATCH_LILY_SPARSE, PATCH_LILY_SPARSE, worldSurfaceSquaredWithCount(6));
 
         register(context, RuVegetationPlacements.CATTAIL_VANILLA, CATTAIL_VANILLA, List.of(RarityFilter.onAverageOnceEvery(3), SurfaceWaterDepthFilter.forMaxDepth(3), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RuVegetationFeatures.WATERSIDE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.CATTAIL_RIVER, CATTAIL_RIVER, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 48), SurfaceWaterDepthFilter.forMaxDepth(3), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RuVegetationFeatures.WATERSIDE, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.CATTAIL_RIVER, CATTAIL_RIVER, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 32), SurfaceWaterDepthFilter.forMaxDepth(3), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RuVegetationFeatures.WATERSIDE, BiomeFilter.biome()));
         register(context, RuVegetationPlacements.CATTAIL_14, CATTAIL_14, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 14), SurfaceWaterDepthFilter.forMaxDepth(3), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RuVegetationFeatures.WATERSIDE, BiomeFilter.biome()));
         register(context, RuVegetationPlacements.CATTAIL_BAYOU, CATTAIL_BAYOU, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 14), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(3), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RuVegetationFeatures.WATERSIDE, PlacementUtils.filteredByBlockSurvival(RegionsUnexploredBlocks.MUD_PLACEMENT.get()), BiomeFilter.biome()));
         register(context, RuVegetationPlacements.CATTAIL_30, CATTAIL_30, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 30), SurfaceWaterDepthFilter.forMaxDepth(3), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RuVegetationFeatures.WATERSIDE, BiomeFilter.biome()));

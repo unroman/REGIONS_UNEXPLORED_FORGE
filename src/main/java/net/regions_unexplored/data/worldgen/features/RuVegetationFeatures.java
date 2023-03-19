@@ -39,11 +39,13 @@ import net.regions_unexplored.data.worldgen.features.feature.tree.config.TallSap
 import net.regions_unexplored.util.worldgen.RuFeatureUtils;
 
 public class RuVegetationFeatures {
-    public static final PlacementModifier WATERSIDE = HeightRangePlacement.uniform(VerticalAnchor.absolute(59), VerticalAnchor.absolute(61));
+    public static final PlacementModifier WATERSIDE = HeightRangePlacement.uniform(VerticalAnchor.absolute(59), VerticalAnchor.absolute(60));
     public static final PlacementModifier MARSH = HeightRangePlacement.uniform(VerticalAnchor.absolute(59), VerticalAnchor.absolute(59));
     //1.19.4 Features
     public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_BLUE_BIOSHROOM = RuFeatureUtils.createKey("giant_blue_bioshroom");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_GREEN_BIOSHROOM = RuFeatureUtils.createKey("giant_green_bioshroom");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WATER_CATTAIL = RuFeatureUtils.createKey("water_cattail");
     //TALL_SAPLINGS
     public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_ACACIA_SAPLING = RuFeatureUtils.createKey("tall_acacia_sapling");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_BAOBAB_SAPLING = RuFeatureUtils.createKey("tall_baobab_sapling");
@@ -202,6 +204,8 @@ public class RuVegetationFeatures {
         //1.19.4 Features
         register(context, GIANT_BLUE_BIOSHROOM, RuFeatureRegistry.GIANT_BLUE_BIOSHROOM.get(), new GiantBioshroomConfiguration(BlockStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.BLUE_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.GLOWING_BLUE_BIOSHROOM_BLOCK.get().defaultBlockState()), 7, 7));
         register(context, GIANT_GREEN_BIOSHROOM, RuFeatureRegistry.GIANT_GREEN_BIOSHROOM.get(), new GiantBioshroomConfiguration(BlockStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.GREEN_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.GLOWING_GREEN_BIOSHROOM_BLOCK.get().defaultBlockState()), 8, 5));
+
+        register(context, WATER_CATTAIL, RuFeatureRegistry.WATER_CATTAIL.get(), FeatureConfiguration.NONE);
         //TALL_SAPLINGS
         register(context, TALL_ACACIA_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_ACACIA_SAPLING.get().defaultBlockState())));
         register(context, TALL_BAOBAB_SAPLING, RuFeatureRegistry.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_BAOBAB_SAPLING.get().defaultBlockState())));
