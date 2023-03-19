@@ -643,5 +643,9 @@
   "block.regions_unexplored.tall_blue_bioshroom": "Tall Blue Bioshroom",
   "block.regions_unexplored.tall_green_bioshroom": "Tall Green Bioshroom",
   "block.regions_unexplored.tall_pink_bioshroom": "Tall Pink Bioshroom",
-  "block.regions_unexplored.tall_yellow_bioshroom": "Tall Yellow Bioshroom"
+  "block.regions_unexplored.tall_yellow_bioshroom": "Tall Yellow Bioshroom",
+  "block.regions_unexplored.glowing_blue_bioshroom_block": "Glowing Blue Bioshroom Block",
+  "block.regions_unexplored.glowing_green_bioshroom_block": "Glowing Green Bioshroom Block",
+  "block.regions_unexplored.glowing_pink_bioshroom_block": "Glowing Pink Bioshroom Block",
+  "block.regions_unexplored.glowing_yellow_bioshroom_block": "Glowing Yellow Bioshroom Block"
 }
