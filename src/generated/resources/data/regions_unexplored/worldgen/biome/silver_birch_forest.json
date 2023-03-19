@@ -9,8 +9,8 @@
   "downfall": 0.6,
   "effects": {
     "fog_color": 12638463,
-    "foliage_color": -8865963,
-    "grass_color": -6438057,
+    "foliage_color": 11585338,
+    "grass_color": 11585338,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
