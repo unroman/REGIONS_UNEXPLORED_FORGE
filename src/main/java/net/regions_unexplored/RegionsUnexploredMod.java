@@ -31,6 +31,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.block.entity.RegionsUnexploredBlockEntities;
+import net.regions_unexplored.config.RegionsUnexploredPrimaryRegionConfig;
+import net.regions_unexplored.config.RegionsUnexploredSecondaryRegionConfig;
 import net.regions_unexplored.world.level.block.state.properties.RuWoodTypes;
 import net.regions_unexplored.data.worldgen.RuNetherSurfaceRuleData;
 import net.regions_unexplored.data.worldgen.RuSurfaceRuleData;
@@ -63,7 +65,9 @@ public class RegionsUnexploredMod {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerMainTab);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerNatureTab);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerNetherTab);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, RegionsUnexploredCommonConfigs.SPEC, "regions_unexplored-common.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, RegionsUnexploredCommonConfigs.SPEC, "regions_unexplored/regions_unexplored-common.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, RegionsUnexploredPrimaryRegionConfig.SPEC, "regions_unexplored/regions_unexplored-primary-region.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, RegionsUnexploredSecondaryRegionConfig.SPEC, "regions_unexplored/regions_unexplored-secondary-region.toml");
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         //register decorators before anything

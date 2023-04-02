@@ -21,7 +21,6 @@ public class RuBiomeRegistry {
     public static void setupBiomePlacement() {
         Regions.register(new RuRegionPrimary(RegionsUnexploredCommonConfigs.REGION_PRIMARY_WEIGHT.get()));
         Regions.register(new RuRegionSecondary(RegionsUnexploredCommonConfigs.REGION_SECONDARY_WEIGHT.get()));
-        Regions.register(new RuRegionModifiedVanilla(RegionsUnexploredCommonConfigs.REGION_VANILLA_MODIFIED_WEIGHT.get()));
         Regions.register(new RuRegionNether(RegionsUnexploredCommonConfigs.REGION_NETHER_WEIGHT.get()));
     }
 

@@ -84,7 +84,9 @@ public class RuColors {
                     RegionsUnexploredBlocks.TALL_EUCALYPTUS_SAPLING.get(),
                     RegionsUnexploredBlocks.TALL_MANGROVE_SAPLING.get(),
                     RegionsUnexploredBlocks.TALL_CYPRESS_SAPLING.get(),
-                    RegionsUnexploredBlocks.TALL_BAOBAB_SAPLING.get()
+                    RegionsUnexploredBlocks.TALL_BAOBAB_SAPLING.get(),
+                    RegionsUnexploredBlocks.MAPLE_LEAVES.get(),
+                    RegionsUnexploredBlocks.TALL_MAPLE_SAPLING.get()
         );
     }
 
@@ -105,7 +107,8 @@ public class RuColors {
                     RegionsUnexploredBlocks.PALM_LEAVES.get(),
                     RegionsUnexploredBlocks.PINE_LEAVES.get(),
                     RegionsUnexploredBlocks.REDWOOD_LEAVES.get(),
-                    RegionsUnexploredBlocks.WILLOW_LEAVES.get()
+                    RegionsUnexploredBlocks.WILLOW_LEAVES.get(),
+                    RegionsUnexploredBlocks.MAPLE_LEAVES.get()
         );
     }
 
