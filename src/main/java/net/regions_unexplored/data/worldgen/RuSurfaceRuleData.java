@@ -12,6 +12,8 @@ import net.regions_unexplored.data.worldgen.biome.RuBiomes;
 import net.regions_unexplored.data.worldgen.noise.RuNoises;
 import net.regions_unexplored.data.worldgen.noise.RuleWeight;
 
+import java.util.Random;
+
 public class RuSurfaceRuleData
 {
     private static final SurfaceRules.RuleSource AIR = makeStateRule(Blocks.CAVE_AIR);
@@ -147,10 +149,6 @@ public class RuSurfaceRuleData
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ALPHA_GROVE),
                                     SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.yStartCheck(VerticalAnchor.absolute(66), 0), ALPHA_GRASS), SurfaceRules.ifTrue(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(65), 0), AIR))),
 
-                            //ARID_MOUNTAINS
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ARID_MOUNTAINS),
-                                    SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(74), 1)), SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(-0.45D), GRASS_BLOCK), TERRACOTTA))),
-
                             //SNOWCAPPED_MOUNTAINS
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.MOUNTAINS),
                                     SurfaceRules.sequence(
@@ -207,32 +205,7 @@ public class RuSurfaceRuleData
                                                     SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),SNOW_BLOCK)))),
 
                             //ARID_MOUNTAINS
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ARID_MOUNTAINS), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 30, CaveSurface.FLOOR), SurfaceRules.sequence(
-                                    SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(74), 1)), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR), SurfaceRules.ifTrue(surfaceNoiseAbove(-0.45D), DIRT)), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 30, CaveSurface.FLOOR), TERRACOTTA))),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b1", VerticalAnchor.absolute(76), VerticalAnchor.absolute(76)), COARSE_DIRT),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b2", VerticalAnchor.absolute(79), VerticalAnchor.absolute(79)), GRANITE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b3", VerticalAnchor.absolute(80), VerticalAnchor.absolute(80)), CALCITE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b4", VerticalAnchor.absolute(81), VerticalAnchor.absolute(81)), STONE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b5", VerticalAnchor.absolute(82), VerticalAnchor.absolute(82)), CALCITE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b6", VerticalAnchor.absolute(87), VerticalAnchor.absolute(87)), COARSE_DIRT),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b7", VerticalAnchor.absolute(94), VerticalAnchor.absolute(94)), TERRACOTTA),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b8", VerticalAnchor.absolute(96), VerticalAnchor.absolute(96)), CALCITE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b9", VerticalAnchor.absolute(98), VerticalAnchor.absolute(98)), STONE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b11", VerticalAnchor.absolute(109), VerticalAnchor.absolute(109)), COARSE_DIRT),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b12", VerticalAnchor.absolute(115), VerticalAnchor.absolute(115)), TERRACOTTA),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b13", VerticalAnchor.absolute(118), VerticalAnchor.absolute(118)), STONE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b14", VerticalAnchor.absolute(119), VerticalAnchor.absolute(119)), CALCITE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b15", VerticalAnchor.absolute(123), VerticalAnchor.absolute(123)), COARSE_DIRT),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b16", VerticalAnchor.absolute(128), VerticalAnchor.absolute(128)), GRANITE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b17", VerticalAnchor.absolute(131), VerticalAnchor.absolute(131)), COARSE_DIRT),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b18", VerticalAnchor.absolute(134), VerticalAnchor.absolute(134)), CALCITE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b19", VerticalAnchor.absolute(137), VerticalAnchor.absolute(137)), COARSE_DIRT),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b20", VerticalAnchor.absolute(139), VerticalAnchor.absolute(139)), STONE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b21", VerticalAnchor.absolute(142), VerticalAnchor.absolute(142)), COARSE_DIRT),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b22", VerticalAnchor.absolute(148), VerticalAnchor.absolute(148)), GRANITE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b23", VerticalAnchor.absolute(153), VerticalAnchor.absolute(153)), TERRACOTTA),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b24", VerticalAnchor.absolute(159), VerticalAnchor.absolute(159)), COARSE_DIRT),
-                                    TERRACOTTA))),
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ARID_MOUNTAINS), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 30, CaveSurface.FLOOR), TERRACOTTA)),
 
                             //CANADIAN/MAPLE_FOREST_BASE
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.MAPLE_FOREST),
@@ -353,10 +326,6 @@ public class RuSurfaceRuleData
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ALPHA_GROVE),
                                     SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.yStartCheck(VerticalAnchor.absolute(66), 0), ALPHA_GRASS), SurfaceRules.ifTrue(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(65), 0), AIR))),
 
-                            //ARID_MOUNTAINS
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ARID_MOUNTAINS),
-                                    SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(74), 1)), SurfaceRules.sequence(SurfaceRules.ifTrue(surfaceNoiseAbove(-0.45D), GRASS_BLOCK), TERRACOTTA))),
-
                             //SNOWCAPPED_MOUNTAINS
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.MOUNTAINS),
                                     SurfaceRules.sequence(
@@ -413,32 +382,7 @@ public class RuSurfaceRuleData
                                                     SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),SNOW_BLOCK)))),
 
                             //ARID_MOUNTAINS
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ARID_MOUNTAINS), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 30, CaveSurface.FLOOR), SurfaceRules.sequence(
-                                    SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(74), 1)), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR), SurfaceRules.ifTrue(surfaceNoiseAbove(-0.45D), DIRT)), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 30, CaveSurface.FLOOR), TERRACOTTA))),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b1", VerticalAnchor.absolute(76), VerticalAnchor.absolute(76)), COARSE_DIRT),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b2", VerticalAnchor.absolute(79), VerticalAnchor.absolute(79)), GRANITE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b3", VerticalAnchor.absolute(80), VerticalAnchor.absolute(80)), CALCITE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b4", VerticalAnchor.absolute(81), VerticalAnchor.absolute(81)), STONE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b5", VerticalAnchor.absolute(82), VerticalAnchor.absolute(82)), CALCITE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b6", VerticalAnchor.absolute(87), VerticalAnchor.absolute(87)), COARSE_DIRT),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b7", VerticalAnchor.absolute(94), VerticalAnchor.absolute(94)), TERRACOTTA),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b8", VerticalAnchor.absolute(96), VerticalAnchor.absolute(96)), CALCITE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b9", VerticalAnchor.absolute(98), VerticalAnchor.absolute(98)), STONE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b11", VerticalAnchor.absolute(109), VerticalAnchor.absolute(109)), COARSE_DIRT),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b12", VerticalAnchor.absolute(115), VerticalAnchor.absolute(115)), TERRACOTTA),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b13", VerticalAnchor.absolute(118), VerticalAnchor.absolute(118)), STONE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b14", VerticalAnchor.absolute(119), VerticalAnchor.absolute(119)), CALCITE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b15", VerticalAnchor.absolute(123), VerticalAnchor.absolute(123)), COARSE_DIRT),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b16", VerticalAnchor.absolute(128), VerticalAnchor.absolute(128)), GRANITE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b17", VerticalAnchor.absolute(131), VerticalAnchor.absolute(131)), COARSE_DIRT),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b18", VerticalAnchor.absolute(134), VerticalAnchor.absolute(134)), CALCITE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b19", VerticalAnchor.absolute(137), VerticalAnchor.absolute(137)), COARSE_DIRT),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b20", VerticalAnchor.absolute(139), VerticalAnchor.absolute(139)), STONE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b21", VerticalAnchor.absolute(142), VerticalAnchor.absolute(142)), COARSE_DIRT),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b22", VerticalAnchor.absolute(148), VerticalAnchor.absolute(148)), GRANITE),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b23", VerticalAnchor.absolute(153), VerticalAnchor.absolute(153)), TERRACOTTA),
-                                    SurfaceRules.ifTrue(SurfaceRules.verticalGradient("b24", VerticalAnchor.absolute(159), VerticalAnchor.absolute(159)), COARSE_DIRT),
-                                    TERRACOTTA))),
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ARID_MOUNTAINS), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 30, CaveSurface.FLOOR), TERRACOTTA)),
 
                             //MAPLE_FOREST_BASE
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.MAPLE_FOREST),
@@ -472,8 +416,7 @@ public class RuSurfaceRuleData
             );}
     }
 
-    private static SurfaceRules.RuleSource makeStateRule(Block block)
-    {
+    private static SurfaceRules.RuleSource makeStateRule(Block block) {
         return SurfaceRules.state(block.defaultBlockState());
     }
 
