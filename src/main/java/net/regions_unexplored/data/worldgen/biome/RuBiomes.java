@@ -68,6 +68,9 @@ public class RuBiomes {
     public static final ResourceKey<Biome> TROPICS = register("tropics");
     public static final ResourceKey<Biome> WILLOW_FOREST = register("willow_forest");
 
+    public static final ResourceKey<Biome> HYACINTH_DEEPS = register("hyacinth_deeps");
+    public static final ResourceKey<Biome> ROCKY_REEF = register("rocky_reef");
+
     public static final ResourceKey<Biome> BIOSHROOM_CAVES = register("bioshroom_caves");
     public static final ResourceKey<Biome> LUSH_DELTA = register("lush_delta");
     public static final ResourceKey<Biome> PRISMACHASM = register("prismachasm");

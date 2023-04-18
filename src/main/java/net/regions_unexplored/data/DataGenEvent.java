@@ -9,7 +9,7 @@ import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.regions_unexplored.RegionsUnexploredMod;
-import net.regions_unexplored.data.worldgen.biome.RuBiomeRegistry;
+import net.regions_unexplored.data.worldgen.biome.RegionsUnexploredBiomes;
 import net.regions_unexplored.data.worldgen.noise.RuNoises;
 import net.regions_unexplored.entity.RuDamageTypes;
 import net.regions_unexplored.util.worldgen.RuFeatureUtils;
@@ -19,7 +19,7 @@ import java.util.Set;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = RegionsUnexploredMod.MOD_ID)
 public class DataGenEvent {
-    private static final RegistrySetBuilder REGISTER = new RegistrySetBuilder().add(Registries.DAMAGE_TYPE, RuDamageTypes::bootstrap).add(Registries.NOISE, RuNoises::bootstrap).add(Registries.CONFIGURED_FEATURE, RuFeatureUtils::bootstrap).add(Registries.PLACED_FEATURE, RuPlacementUtils::bootstrap).add(Registries.BIOME, RuBiomeRegistry::bootstrap);
+    private static final RegistrySetBuilder REGISTER = new RegistrySetBuilder().add(Registries.DAMAGE_TYPE, RuDamageTypes::bootstrap).add(Registries.NOISE, RuNoises::bootstrap).add(Registries.CONFIGURED_FEATURE, RuFeatureUtils::bootstrap).add(Registries.PLACED_FEATURE, RuPlacementUtils::bootstrap).add(Registries.BIOME, RegionsUnexploredBiomes::bootstrap);
     @SubscribeEvent
     public static void onGatherData(GatherDataEvent data) {
         DataGenerator generator = data.getGenerator();

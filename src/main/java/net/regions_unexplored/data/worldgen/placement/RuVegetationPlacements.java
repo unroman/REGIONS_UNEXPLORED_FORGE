@@ -1,9 +1,7 @@
 package net.regions_unexplored.data.worldgen.placement;
 
-import com.google.common.collect.ImmutableList;
 import java.util.List;
-import javax.annotation.Nullable;
-import net.minecraft.core.BlockPos;
+
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -12,27 +10,22 @@ import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
-import net.regions_unexplored.data.worldgen.features.RuFeatureRegistry;
+import net.regions_unexplored.data.worldgen.features.RuAquaticFeatures;
 import net.regions_unexplored.data.worldgen.features.RuTreeFeatures;
 import net.regions_unexplored.data.worldgen.features.RuVegetationFeatures;
-import net.regions_unexplored.data.worldgen.features.feature.tree.config.TallSaplingConfiguration;
-import net.regions_unexplored.util.worldgen.RuFeatureUtils;
 import net.regions_unexplored.util.worldgen.RuPlacementUtils;
 
 public class RuVegetationPlacements {
     //1.19.4 stuff
-    public static final ResourceKey<PlacedFeature> WATER_CATTAIL = RuPlacementUtils.createKey("water_cattail");
+    public static final ResourceKey<PlacedFeature> RED_CHERRY_FLOWERS = RuPlacementUtils.createKey("red_cherry_flowers");
+    public static final ResourceKey<PlacedFeature> PINK_CHERRY_FLOWERS = RuPlacementUtils.createKey("pink_cherry_flowers");
+    public static final ResourceKey<PlacedFeature> WHITE_CHERRY_FLOWERS = RuPlacementUtils.createKey("white_cherry_flowers");
     //TALL_SAPLINGS
     public static final ResourceKey<PlacedFeature> TALL_ACACIA_SAPLING = RuPlacementUtils.createKey("tall_acacia_sapling");
     public static final ResourceKey<PlacedFeature> TALL_BAOBAB_SAPLING = RuPlacementUtils.createKey("tall_baobab_sapling");
@@ -124,7 +117,9 @@ public class RuVegetationPlacements {
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> featureGetter = context.lookup(Registries.CONFIGURED_FEATURE);
         //1.19.4 stuff
-        final Holder<ConfiguredFeature<?, ?>> WATER_CATTAIL = featureGetter.getOrThrow(RuVegetationFeatures.WATER_CATTAIL);
+        final Holder<ConfiguredFeature<?, ?>> RED_CHERRY_FLOWERS = featureGetter.getOrThrow(RuVegetationFeatures.RED_CHERRY_FLOWERS);
+        final Holder<ConfiguredFeature<?, ?>> PINK_CHERRY_FLOWERS = featureGetter.getOrThrow(RuVegetationFeatures.PINK_CHERRY_FLOWERS);
+        final Holder<ConfiguredFeature<?, ?>> WHITE_CHERRY_FLOWERS = featureGetter.getOrThrow(RuVegetationFeatures.WHITE_CHERRY_FLOWERS);
         //TALL_SAPLINGS
         final Holder<ConfiguredFeature<?, ?>> TALL_ACACIA_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_ACACIA_SAPLING);
         final Holder<ConfiguredFeature<?, ?>> TALL_BAOBAB_SAPLING = featureGetter.getOrThrow(RuVegetationFeatures.TALL_BAOBAB_SAPLING);
@@ -212,7 +207,9 @@ public class RuVegetationPlacements {
         final Holder<ConfiguredFeature<?, ?>> GIANT_SCULK_WILLOW = featureGetter.getOrThrow(RuVegetationFeatures.GIANT_SCULK_WILLOW);
 
         //1.19.4 stuff
-        register(context, RuVegetationPlacements.WATER_CATTAIL, WATER_CATTAIL, CountPlacement.of(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
+        register(context, RuVegetationPlacements.RED_CHERRY_FLOWERS, RED_CHERRY_FLOWERS, CountPlacement.of(15), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
+        register(context, RuVegetationPlacements.PINK_CHERRY_FLOWERS, PINK_CHERRY_FLOWERS, CountPlacement.of(15), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
+        register(context, RuVegetationPlacements.WHITE_CHERRY_FLOWERS, WHITE_CHERRY_FLOWERS, CountPlacement.of(15), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
         //TALL_SAPLINGS
         register(context, RuVegetationPlacements.TALL_ACACIA_SAPLING, TALL_ACACIA_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());
         register(context, RuVegetationPlacements.TALL_BAOBAB_SAPLING, TALL_BAOBAB_SAPLING, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome());

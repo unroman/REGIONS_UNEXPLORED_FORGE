@@ -22,8 +22,7 @@ public class RuSurfaceRuleData
     private static final SurfaceRules.RuleSource PACKED_ICE = makeStateRule(Blocks.PACKED_ICE);
     private static final SurfaceRules.RuleSource SAND = makeStateRule(Blocks.SAND);
     private static final SurfaceRules.RuleSource STONE = makeStateRule(Blocks.STONE);
-    private static final SurfaceRules.RuleSource GRANITE = makeStateRule(Blocks.GRANITE);
-    private static final SurfaceRules.RuleSource CALCITE = makeStateRule(Blocks.CALCITE);
+    private static final SurfaceRules.RuleSource HYACINTH_STONE = makeStateRule(RegionsUnexploredBlocks.HYACINTH_STONE.get());
     private static final SurfaceRules.RuleSource SANDSTONE = makeStateRule(Blocks.SANDSTONE);
     private static final SurfaceRules.RuleSource GRASS_BLOCK = makeStateRule(Blocks.GRASS_BLOCK);
     private static final SurfaceRules.RuleSource PODZOL = makeStateRule(Blocks.PODZOL);
@@ -62,6 +61,12 @@ public class RuSurfaceRuleData
         SurfaceRules.ConditionSource y63 = SurfaceRules.yBlockCheck(VerticalAnchor.absolute(63), 0);
         if(RegionsUnexploredCommonConfigs.TOGGLE_CUSTOM_DIRTS.get()){
             return SurfaceRules.sequence(
+                    SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR),SurfaceRules.sequence(
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.HYACINTH_DEEPS),
+                                    SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, RuleWeight.getPercent(30)), HYACINTH_STONE), GRAVEL)),
+
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ROCKY_REEF), SurfaceRules.sequence(SAND))
+                    ))),
                     SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR),SurfaceRules.ifTrue(SurfaceRules.waterBlockCheck(-1, 0),SurfaceRules.sequence(
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ICY_DESERT, RuBiomes.ICY_HEIGHTS, RuBiomes.SPIRES, RuBiomes.FROZEN_FOREST), SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.POWDER_SNOW, 0.45D, 0.58D), POWDER_SNOW)),
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.FROZEN_FOREST),SNOW_BLOCK),
@@ -120,6 +125,7 @@ public class RuSurfaceRuleData
                             //WILLOW_FOREST
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.WILLOW_FOREST),
                                     SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(65), 0)), STONE)),
+
 
                             //DRY_BUSHLAND
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.DRY_BUSHLAND),
@@ -388,8 +394,8 @@ public class RuSurfaceRuleData
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.MAPLE_FOREST),
                                     SurfaceRules.ifTrue(shieldNoise(1.65D), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),STONE))),
 
-                            //ICY_DESERT_BASE
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ICY_DESERT),
+                            //STONE_BASE
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ICY_DESERT, RuBiomes.HYACINTH_DEEPS),
                                     SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),STONE)),
 
                             //DEFAULT

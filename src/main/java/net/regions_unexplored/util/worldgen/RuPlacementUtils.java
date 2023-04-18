@@ -14,6 +14,7 @@ public class RuPlacementUtils {
         RuBiomePlacements.bootstrap(context);
         RuNetherBiomePlacements.bootstrap(context);
         RuVegetationPlacements.bootstrap(context);
+        RuAquaticPlacements.bootstrap(context);
     }
 
     public static ResourceKey<PlacedFeature> createKey(String name) {

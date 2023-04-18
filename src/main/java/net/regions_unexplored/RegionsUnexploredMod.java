@@ -1,482 +1,118 @@
 package net.regions_unexplored;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.block.entity.RegionsUnexploredBlockEntities;
+import net.regions_unexplored.client.particle.RegionsUnexploredParticleTypes;
 import net.regions_unexplored.config.RegionsUnexploredPrimaryRegionConfig;
 import net.regions_unexplored.config.RegionsUnexploredSecondaryRegionConfig;
-import net.regions_unexplored.world.level.block.state.properties.RuWoodTypes;
-import net.regions_unexplored.data.worldgen.RuNetherSurfaceRuleData;
-import net.regions_unexplored.data.worldgen.RuSurfaceRuleData;
+import net.regions_unexplored.data.worldgen.biome.RegionsUnexploredBiomes;
+import net.regions_unexplored.data.worldgen.features.RegionsUnexploredFeatures;
 import net.regions_unexplored.entity.RegionsUnexploredEntities;
+import net.regions_unexplored.init.WoodTypeCompat;
 import net.regions_unexplored.init.PottedPlantCompat;
-import net.regions_unexplored.client.particle.RegionsUnexploredParticleTypes;
 import net.regions_unexplored.config.RegionsUnexploredCommonConfigs;
-import net.regions_unexplored.data.worldgen.biome.RuBiomeRegistry;
-import net.regions_unexplored.data.worldgen.features.RuFeatureRegistry;
 import net.regions_unexplored.init.BlockFeatureCompat;
 import net.regions_unexplored.item.RegionsUnexploredItems;
 import net.regions_unexplored.world.features.treedecorators.*;
 import org.slf4j.Logger;
-import terrablender.api.SurfaceRuleManager;
 
 import java.util.List;
 
 @Mod(RegionsUnexploredMod.MOD_ID)
 public class RegionsUnexploredMod {
+
     public static final String MOD_ID = "regions_unexplored";
+
+    //create registry
+    public static final DeferredRegister<Biome> BIOME_REGISTRY = DeferredRegister.create(Registries.BIOME, MOD_ID);
+    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, RegionsUnexploredMod.MOD_ID);
+    public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registries.CONFIGURED_FEATURE, MOD_ID);
+    public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registries.PLACED_FEATURE, MOD_ID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, RegionsUnexploredMod.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, RegionsUnexploredMod.MOD_ID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, RegionsUnexploredMod.MOD_ID);
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, RegionsUnexploredMod.MOD_ID);
+    public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, RegionsUnexploredMod.MOD_ID);
+
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static final DeferredRegister<Biome> BIOME_REGISTRY = DeferredRegister.create(Registries.BIOME, MOD_ID);
-    public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURE_REGISTRY = DeferredRegister.create(Registries.CONFIGURED_FEATURE, MOD_ID);
-    public static final DeferredRegister<PlacedFeature> PLACED_FEATURE_REGISTRY = DeferredRegister.create(Registries.PLACED_FEATURE, MOD_ID);
-
     public RegionsUnexploredMod() {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerMainTab);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerNatureTab);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerNetherTab);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, RegionsUnexploredCommonConfigs.SPEC, "regions_unexplored/regions_unexplored-common.toml");
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, RegionsUnexploredPrimaryRegionConfig.SPEC, "regions_unexplored/regions_unexplored-primary-region.toml");
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, RegionsUnexploredSecondaryRegionConfig.SPEC, "regions_unexplored/regions_unexplored-secondary-region.toml");
-
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        //register decorators before anything
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("bamboo_leave_decorator", BambooLeaveDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("cypress_trunk_decorator", CypressTrunkDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("birch_stem_decorator", BirchStemDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("blackwood_bioshroom", BlackwoodBioshroom.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("blackwood_branch_decorator", BlackwoodBranchDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("dead_branch_decorator", DeadBranchDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("dead_pine_branch_decorator", DeadPineBranchDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("dead_placer", DeadPlacer.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("dead_stem_decorator", DeadStemDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("eucalyptus_leave_decorator", EucalyptusLeaveDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("eucalyptus_trunk_decorator", EucalyptusTrunkDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("giant_cypress_leave_decorator", GiantCypressLeaveDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("giant_cypress_trunk_decorator", GiantCypressTrunkDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("giant_redwood_branch_decorator", GiantRedwoodBranchDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("maple_placer", MaplePlacer.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("oak_placer", OakPlacer.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("palm_leaves_placer", PalmLeavesPlacer.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("pine_branch_decorator", PineBranchDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("pine_trunk_decorator", PineTrunkDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("redwood_branch_decorator", RedwoodBranchDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("redwood_leave_decorator", RedwoodLeaveDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("redwood_trunk_decorator", RedwoodTrunkDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("saguaro_cactus_limbs", SaguaroCactusLimbs.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("silver_birch_placer", SilverBirchPlacer.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("spanish_moss_decorator", SpanishMossDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("silver_birch_trunk_decorator", SilverBirchTrunkDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("small_yellow_bioshroom_caps", SmallYellowBioshroomCaps.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("medium_yellow_bioshroom_caps", MediumYellowBioshroomCaps.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("big_yellow_bioshroom_caps", BigYellowBioshroomCaps.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("willow_palm_placer", WillowPalmPlacer.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("willow_placer", WillowPlacer.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("willow_trunk_decorator", WillowTrunkDecorator.tdt);
 
+        //add listeners
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerTabs);
+
+        //add registries to IEventBus
         BIOME_REGISTRY.register(bus);
-        CONFIGURED_FEATURE_REGISTRY.register(bus);
-        PLACED_FEATURE_REGISTRY.register(bus);
-        RegionsUnexploredBlockEntities.BLOCK_ENTITIES.register(bus);
-        RegionsUnexploredEntities.ENTITIES.register(bus);
+        FEATURES.register(bus);
+        CONFIGURED_FEATURES.register(bus);
+        PLACED_FEATURES.register(bus);
+        BLOCKS.register(bus);
+        ITEMS.register(bus);
+        BLOCK_ENTITIES.register(bus);
+        ENTITIES.register(bus);
+        PARTICLES.register(bus);
 
-        RegionsUnexploredItems.register(bus);
-        RegionsUnexploredBlocks.register(bus);
+        //initialize elements, doing config and decorators before all
+        registerConfig();
+        registerDecorators();
 
-        RuFeatureRegistry.REGISTRY.register(bus);
-        RegionsUnexploredParticleTypes.REGISTRY.register(bus);
-
-
-        MinecraftForge.EVENT_BUS.register(this);
-        RuBiomeRegistry.setup();
+        RegionsUnexploredBlocks.addBlocks();
+        RegionsUnexploredBlockEntities.addBlockEntities();
+        RegionsUnexploredItems.addItems();
+        RegionsUnexploredEntities.addEntities();
+        RegionsUnexploredFeatures.addFeatures();
+        RegionsUnexploredBiomes.addBiomes();
+        RegionsUnexploredParticleTypes.addParticles();
     }
 
-    private void clientSetup(final FMLClientSetupEvent event) {
-        WoodType.register(RuWoodTypes.BAOBAB);
-        WoodType.register(RuWoodTypes.BLACKWOOD);
-        WoodType.register(RuWoodTypes.CHERRY);
-        WoodType.register(RuWoodTypes.CYPRESS);
-        WoodType.register(RuWoodTypes.DEAD);
-        WoodType.register(RuWoodTypes.EUCALYPTUS);
-        WoodType.register(RuWoodTypes.JOSHUA);
-        WoodType.register(RuWoodTypes.LARCH);
-        WoodType.register(RuWoodTypes.MAPLE);
-        WoodType.register(RuWoodTypes.MAUVE);
-        WoodType.register(RuWoodTypes.PALM);
-        WoodType.register(RuWoodTypes.PINE);
-        WoodType.register(RuWoodTypes.REDWOOD);
-        WoodType.register(RuWoodTypes.SCULKWOOD);
-        WoodType.register(RuWoodTypes.WILLOW);
-        BlockEntityRenderers.register(RegionsUnexploredBlockEntities.SIGN_BLOCK_ENTITIES.get(), SignRenderer::new);
-    }
-
+    //set up non-client side features
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            RuBiomeRegistry.setupBiomePlacement();
-            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, RegionsUnexploredMod.MOD_ID, RuSurfaceRuleData.makeRules());
-            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.NETHER, RegionsUnexploredMod.MOD_ID, RuNetherSurfaceRuleData.makeRules());
+            RegionsUnexploredBiomes.setupTerrablender();
             BlockFeatureCompat.setup();
             PottedPlantCompat.setup();
-            Sheets.addWoodType(RuWoodTypes.BAOBAB);
-            Sheets.addWoodType(RuWoodTypes.BLACKWOOD);
-            Sheets.addWoodType(RuWoodTypes.CHERRY);
-            Sheets.addWoodType(RuWoodTypes.CYPRESS);
-            Sheets.addWoodType(RuWoodTypes.DEAD);
-            Sheets.addWoodType(RuWoodTypes.EUCALYPTUS);
-            Sheets.addWoodType(RuWoodTypes.JOSHUA);
-            Sheets.addWoodType(RuWoodTypes.LARCH);
-            Sheets.addWoodType(RuWoodTypes.MAPLE);
-            Sheets.addWoodType(RuWoodTypes.MAUVE);
-            Sheets.addWoodType(RuWoodTypes.PALM);
-            Sheets.addWoodType(RuWoodTypes.PINE);
-            Sheets.addWoodType(RuWoodTypes.REDWOOD);
-            Sheets.addWoodType(RuWoodTypes.SCULKWOOD);
-            Sheets.addWoodType(RuWoodTypes.WILLOW);
+            WoodTypeCompat.setup();
         });
     }
 
-    private void registerMainTab(CreativeModeTabEvent.Register event) {
-        List<RegistryObject<Block>> buildingBlocks = List.of(
-                RegionsUnexploredBlocks.CHALK,
-                RegionsUnexploredBlocks.CHALK_STAIRS,
-                RegionsUnexploredBlocks.CHALK_SLAB,
-                RegionsUnexploredBlocks.POLISHED_CHALK,
-                RegionsUnexploredBlocks.POLISHED_CHALK_STAIRS,
-                RegionsUnexploredBlocks.POLISHED_CHALK_SLAB,
-                RegionsUnexploredBlocks.CHALK_BRICKS,
-                RegionsUnexploredBlocks.CHALK_BRICK_STAIRS,
-                RegionsUnexploredBlocks.CHALK_BRICK_SLAB,
-                RegionsUnexploredBlocks.CHALK_PILLAR,
-                RegionsUnexploredBlocks.PRISMAGLASS,
-                RegionsUnexploredBlocks.ALPHA_LOG,
-                RegionsUnexploredBlocks.ALPHA_PLANKS,
-                RegionsUnexploredBlocks.ALPHA_STAIRS,
-                RegionsUnexploredBlocks.ALPHA_SLAB,
-                RegionsUnexploredBlocks.BAMBOO_LOG,
-                RegionsUnexploredBlocks.STRIPPED_BAMBOO_LOG,
-                RegionsUnexploredBlocks.BAOBAB_LOG,
-                RegionsUnexploredBlocks.BAOBAB_WOOD,
-                RegionsUnexploredBlocks.STRIPPED_BAOBAB_LOG,
-                RegionsUnexploredBlocks.STRIPPED_BAOBAB_WOOD,
-                RegionsUnexploredBlocks.BAOBAB_PLANKS,
-                RegionsUnexploredBlocks.BAOBAB_STAIRS,
-                RegionsUnexploredBlocks.BAOBAB_SLAB,
-                RegionsUnexploredBlocks.BAOBAB_FENCE,
-                RegionsUnexploredBlocks.BAOBAB_FENCE_GATE,
-                RegionsUnexploredBlocks.BAOBAB_DOOR,
-                RegionsUnexploredBlocks.BAOBAB_TRAPDOOR,
-                RegionsUnexploredBlocks.BAOBAB_SIGN,
-                RegionsUnexploredBlocks.BAOBAB_PRESSURE_PLATE,
-                RegionsUnexploredBlocks.BAOBAB_BUTTON,
-                RegionsUnexploredBlocks.BLACKWOOD_LOG,
-                RegionsUnexploredBlocks.BLACKWOOD_WOOD,
-                RegionsUnexploredBlocks.STRIPPED_BLACKWOOD_LOG,
-                RegionsUnexploredBlocks.STRIPPED_BLACKWOOD_WOOD,
-                RegionsUnexploredBlocks.BLACKWOOD_PLANKS,
-                RegionsUnexploredBlocks.BLACKWOOD_STAIRS,
-                RegionsUnexploredBlocks.BLACKWOOD_SLAB,
-                RegionsUnexploredBlocks.BLACKWOOD_FENCE,
-                RegionsUnexploredBlocks.BLACKWOOD_FENCE_GATE,
-                RegionsUnexploredBlocks.BLACKWOOD_DOOR,
-                RegionsUnexploredBlocks.BLACKWOOD_TRAPDOOR,
-                RegionsUnexploredBlocks.BLACKWOOD_SIGN,
-                RegionsUnexploredBlocks.BLACKWOOD_PRESSURE_PLATE,
-                RegionsUnexploredBlocks.BLACKWOOD_BUTTON,
-                RegionsUnexploredBlocks.CHERRY_LOG,
-                RegionsUnexploredBlocks.CHERRY_WOOD,
-                RegionsUnexploredBlocks.STRIPPED_CHERRY_LOG,
-                RegionsUnexploredBlocks.STRIPPED_CHERRY_WOOD,
-                RegionsUnexploredBlocks.CHERRY_PLANKS,
-                RegionsUnexploredBlocks.CHERRY_STAIRS,
-                RegionsUnexploredBlocks.CHERRY_SLAB,
-                RegionsUnexploredBlocks.CHERRY_FENCE,
-                RegionsUnexploredBlocks.CHERRY_FENCE_GATE,
-                RegionsUnexploredBlocks.CHERRY_DOOR,
-                RegionsUnexploredBlocks.CHERRY_TRAPDOOR,
-                RegionsUnexploredBlocks.CHERRY_SIGN,
-                RegionsUnexploredBlocks.CHERRY_PRESSURE_PLATE,
-                RegionsUnexploredBlocks.CHERRY_BUTTON,
-                RegionsUnexploredBlocks.CYPRESS_LOG,
-                RegionsUnexploredBlocks.CYPRESS_WOOD,
-                RegionsUnexploredBlocks.STRIPPED_CYPRESS_LOG,
-                RegionsUnexploredBlocks.STRIPPED_CYPRESS_WOOD,
-                RegionsUnexploredBlocks.CYPRESS_PLANKS,
-                RegionsUnexploredBlocks.CYPRESS_STAIRS,
-                RegionsUnexploredBlocks.CYPRESS_SLAB,
-                RegionsUnexploredBlocks.CYPRESS_FENCE,
-                RegionsUnexploredBlocks.CYPRESS_FENCE_GATE,
-                RegionsUnexploredBlocks.CYPRESS_DOOR,
-                RegionsUnexploredBlocks.CYPRESS_TRAPDOOR,
-                RegionsUnexploredBlocks.CYPRESS_SIGN,
-                RegionsUnexploredBlocks.CYPRESS_PRESSURE_PLATE,
-                RegionsUnexploredBlocks.CYPRESS_BUTTON,
-                RegionsUnexploredBlocks.DEAD_LOG,
-                RegionsUnexploredBlocks.DEAD_WOOD,
-                RegionsUnexploredBlocks.STRIPPED_DEAD_LOG,
-                RegionsUnexploredBlocks.STRIPPED_DEAD_WOOD,
-                RegionsUnexploredBlocks.DEAD_PLANKS,
-                RegionsUnexploredBlocks.DEAD_STAIRS,
-                RegionsUnexploredBlocks.DEAD_SLAB,
-                RegionsUnexploredBlocks.DEAD_FENCE,
-                RegionsUnexploredBlocks.DEAD_FENCE_GATE,
-                RegionsUnexploredBlocks.DEAD_DOOR,
-                RegionsUnexploredBlocks.DEAD_TRAPDOOR,
-                RegionsUnexploredBlocks.DEAD_SIGN,
-                RegionsUnexploredBlocks.DEAD_PRESSURE_PLATE,
-                RegionsUnexploredBlocks.DEAD_BUTTON,
-                RegionsUnexploredBlocks.EUCALYPTUS_LOG,
-                RegionsUnexploredBlocks.EUCALYPTUS_WOOD,
-                RegionsUnexploredBlocks.STRIPPED_EUCALYPTUS_LOG,
-                RegionsUnexploredBlocks.STRIPPED_EUCALYPTUS_WOOD,
-                RegionsUnexploredBlocks.EUCALYPTUS_PLANKS,
-                RegionsUnexploredBlocks.EUCALYPTUS_STAIRS,
-                RegionsUnexploredBlocks.EUCALYPTUS_SLAB,
-                RegionsUnexploredBlocks.EUCALYPTUS_FENCE,
-                RegionsUnexploredBlocks.EUCALYPTUS_FENCE_GATE,
-                RegionsUnexploredBlocks.EUCALYPTUS_DOOR,
-                RegionsUnexploredBlocks.EUCALYPTUS_TRAPDOOR,
-                RegionsUnexploredBlocks.EUCALYPTUS_SIGN,
-                RegionsUnexploredBlocks.EUCALYPTUS_PRESSURE_PLATE,
-                RegionsUnexploredBlocks.EUCALYPTUS_BUTTON,
-                RegionsUnexploredBlocks.JOSHUA_LOG,
-                RegionsUnexploredBlocks.JOSHUA_WOOD,
-                RegionsUnexploredBlocks.STRIPPED_JOSHUA_LOG,
-                RegionsUnexploredBlocks.STRIPPED_JOSHUA_WOOD,
-                RegionsUnexploredBlocks.JOSHUA_PLANKS,
-                RegionsUnexploredBlocks.JOSHUA_STAIRS,
-                RegionsUnexploredBlocks.JOSHUA_SLAB,
-                RegionsUnexploredBlocks.JOSHUA_FENCE,
-                RegionsUnexploredBlocks.JOSHUA_FENCE_GATE,
-                RegionsUnexploredBlocks.JOSHUA_DOOR,
-                RegionsUnexploredBlocks.JOSHUA_TRAPDOOR,
-                RegionsUnexploredBlocks.JOSHUA_SIGN,
-                RegionsUnexploredBlocks.JOSHUA_PRESSURE_PLATE,
-                RegionsUnexploredBlocks.JOSHUA_BUTTON,
-                RegionsUnexploredBlocks.LARCH_LOG,
-                RegionsUnexploredBlocks.LARCH_WOOD,
-                RegionsUnexploredBlocks.STRIPPED_LARCH_LOG,
-                RegionsUnexploredBlocks.STRIPPED_LARCH_WOOD,
-                RegionsUnexploredBlocks.LARCH_PLANKS,
-                RegionsUnexploredBlocks.LARCH_STAIRS,
-                RegionsUnexploredBlocks.LARCH_SLAB,
-                RegionsUnexploredBlocks.LARCH_FENCE,
-                RegionsUnexploredBlocks.LARCH_FENCE_GATE,
-                RegionsUnexploredBlocks.LARCH_DOOR,
-                RegionsUnexploredBlocks.LARCH_TRAPDOOR,
-                RegionsUnexploredBlocks.LARCH_SIGN,
-                RegionsUnexploredBlocks.LARCH_PRESSURE_PLATE,
-                RegionsUnexploredBlocks.LARCH_BUTTON,
-                RegionsUnexploredBlocks.MAPLE_LOG,
-                RegionsUnexploredBlocks.MAPLE_WOOD,
-                RegionsUnexploredBlocks.STRIPPED_MAPLE_LOG,
-                RegionsUnexploredBlocks.STRIPPED_MAPLE_WOOD,
-                RegionsUnexploredBlocks.MAPLE_PLANKS,
-                RegionsUnexploredBlocks.MAPLE_STAIRS,
-                RegionsUnexploredBlocks.MAPLE_SLAB,
-                RegionsUnexploredBlocks.MAPLE_FENCE,
-                RegionsUnexploredBlocks.MAPLE_FENCE_GATE,
-                RegionsUnexploredBlocks.MAPLE_DOOR,
-                RegionsUnexploredBlocks.MAPLE_TRAPDOOR,
-                RegionsUnexploredBlocks.MAPLE_SIGN,
-                RegionsUnexploredBlocks.MAPLE_PRESSURE_PLATE,
-                RegionsUnexploredBlocks.MAPLE_BUTTON,
-                RegionsUnexploredBlocks.MAUVE_LOG,
-                RegionsUnexploredBlocks.MAUVE_WOOD,
-                RegionsUnexploredBlocks.STRIPPED_MAUVE_LOG,
-                RegionsUnexploredBlocks.STRIPPED_MAUVE_WOOD,
-                RegionsUnexploredBlocks.MAUVE_PLANKS,
-                RegionsUnexploredBlocks.MAUVE_STAIRS,
-                RegionsUnexploredBlocks.MAUVE_SLAB,
-                RegionsUnexploredBlocks.MAUVE_FENCE,
-                RegionsUnexploredBlocks.MAUVE_FENCE_GATE,
-                RegionsUnexploredBlocks.MAUVE_DOOR,
-                RegionsUnexploredBlocks.MAUVE_TRAPDOOR,
-                RegionsUnexploredBlocks.MAUVE_SIGN,
-                RegionsUnexploredBlocks.MAUVE_PRESSURE_PLATE,
-                RegionsUnexploredBlocks.MAUVE_BUTTON,
-                RegionsUnexploredBlocks.PALM_LOG,
-                RegionsUnexploredBlocks.PALM_WOOD,
-                RegionsUnexploredBlocks.STRIPPED_PALM_LOG,
-                RegionsUnexploredBlocks.STRIPPED_PALM_WOOD,
-                RegionsUnexploredBlocks.PALM_PLANKS,
-                RegionsUnexploredBlocks.PALM_STAIRS,
-                RegionsUnexploredBlocks.PALM_SLAB,
-                RegionsUnexploredBlocks.PALM_FENCE,
-                RegionsUnexploredBlocks.PALM_FENCE_GATE,
-                RegionsUnexploredBlocks.PALM_DOOR,
-                RegionsUnexploredBlocks.PALM_TRAPDOOR,
-                RegionsUnexploredBlocks.PALM_SIGN,
-                RegionsUnexploredBlocks.PALM_PRESSURE_PLATE,
-                RegionsUnexploredBlocks.PALM_BUTTON,
-                RegionsUnexploredBlocks.PINE_LOG,
-                RegionsUnexploredBlocks.PINE_WOOD,
-                RegionsUnexploredBlocks.STRIPPED_PINE_LOG,
-                RegionsUnexploredBlocks.STRIPPED_PINE_WOOD,
-                RegionsUnexploredBlocks.PINE_PLANKS,
-                RegionsUnexploredBlocks.PINE_STAIRS,
-                RegionsUnexploredBlocks.PINE_SLAB,
-                RegionsUnexploredBlocks.PINE_FENCE,
-                RegionsUnexploredBlocks.PINE_FENCE_GATE,
-                RegionsUnexploredBlocks.PINE_DOOR,
-                RegionsUnexploredBlocks.PINE_TRAPDOOR,
-                RegionsUnexploredBlocks.PINE_SIGN,
-                RegionsUnexploredBlocks.PINE_PRESSURE_PLATE,
-                RegionsUnexploredBlocks.PINE_BUTTON,
-                RegionsUnexploredBlocks.REDWOOD_LOG,
-                RegionsUnexploredBlocks.REDWOOD_WOOD,
-                RegionsUnexploredBlocks.STRIPPED_REDWOOD_LOG,
-                RegionsUnexploredBlocks.STRIPPED_REDWOOD_WOOD,
-                RegionsUnexploredBlocks.REDWOOD_PLANKS,
-                RegionsUnexploredBlocks.REDWOOD_STAIRS,
-                RegionsUnexploredBlocks.REDWOOD_SLAB,
-                RegionsUnexploredBlocks.REDWOOD_FENCE,
-                RegionsUnexploredBlocks.REDWOOD_FENCE_GATE,
-                RegionsUnexploredBlocks.REDWOOD_DOOR,
-                RegionsUnexploredBlocks.REDWOOD_TRAPDOOR,
-                RegionsUnexploredBlocks.REDWOOD_SIGN,
-                RegionsUnexploredBlocks.REDWOOD_PRESSURE_PLATE,
-                RegionsUnexploredBlocks.REDWOOD_BUTTON,
-                RegionsUnexploredBlocks.SCULKWOOD_LOG,
-                RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK,
-                RegionsUnexploredBlocks.SCULKWOOD_LOG_TRANSITION,
-                RegionsUnexploredBlocks.SCULKWOOD_PLANKS,
-                RegionsUnexploredBlocks.SCULKWOOD_STAIRS,
-                RegionsUnexploredBlocks.SCULKWOOD_SLAB,
-                RegionsUnexploredBlocks.SCULKWOOD_FENCE,
-                RegionsUnexploredBlocks.SCULKWOOD_FENCE_GATE,
-                RegionsUnexploredBlocks.SCULKWOOD_DOOR,
-                RegionsUnexploredBlocks.SCULKWOOD_TRAPDOOR,
-                RegionsUnexploredBlocks.SCULKWOOD_SIGN,
-                RegionsUnexploredBlocks.SCULKWOOD_PRESSURE_PLATE,
-                RegionsUnexploredBlocks.SCULKWOOD_BUTTON,
-                RegionsUnexploredBlocks.WILLOW_LOG,
-                RegionsUnexploredBlocks.WILLOW_WOOD,
-                RegionsUnexploredBlocks.STRIPPED_WILLOW_LOG,
-                RegionsUnexploredBlocks.STRIPPED_WILLOW_WOOD,
-                RegionsUnexploredBlocks.STRIPPED_WILLOW_WOOD,
-                RegionsUnexploredBlocks.WILLOW_PLANKS,
-                RegionsUnexploredBlocks.WILLOW_STAIRS,
-                RegionsUnexploredBlocks.WILLOW_SLAB,
-                RegionsUnexploredBlocks.WILLOW_FENCE,
-                RegionsUnexploredBlocks.WILLOW_FENCE_GATE,
-                RegionsUnexploredBlocks.WILLOW_DOOR,
-                RegionsUnexploredBlocks.WILLOW_TRAPDOOR,
-                RegionsUnexploredBlocks.WILLOW_SIGN,
-                RegionsUnexploredBlocks.WILLOW_PRESSURE_PLATE,
-                RegionsUnexploredBlocks.WILLOW_BUTTON,
-                RegionsUnexploredBlocks.RED_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.RED_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.RED_PAINTED_SLAB,
-                RegionsUnexploredBlocks.ORANGE_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.ORANGE_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.ORANGE_PAINTED_SLAB,
-                RegionsUnexploredBlocks.YELLOW_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.YELLOW_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.YELLOW_PAINTED_SLAB,
-                RegionsUnexploredBlocks.LIME_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.LIME_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.LIME_PAINTED_SLAB,
-                RegionsUnexploredBlocks.GREEN_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.GREEN_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.GREEN_PAINTED_SLAB,
-                RegionsUnexploredBlocks.CYAN_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.CYAN_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.CYAN_PAINTED_SLAB,
-                RegionsUnexploredBlocks.LIGHT_BLUE_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.LIGHT_BLUE_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.LIGHT_BLUE_PAINTED_SLAB,
-                RegionsUnexploredBlocks.BLUE_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.BLUE_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.BLUE_PAINTED_SLAB,
-                RegionsUnexploredBlocks.PURPLE_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.PURPLE_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.PURPLE_PAINTED_SLAB,
-                RegionsUnexploredBlocks.MAGENTA_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.MAGENTA_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.MAGENTA_PAINTED_SLAB,
-                RegionsUnexploredBlocks.PINK_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.PINK_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.PINK_PAINTED_SLAB,
-                RegionsUnexploredBlocks.BROWN_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.BROWN_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.BROWN_PAINTED_SLAB,
-                RegionsUnexploredBlocks.WHITE_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.WHITE_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.WHITE_PAINTED_SLAB,
-                RegionsUnexploredBlocks.LIGHT_GRAY_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.LIGHT_GRAY_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.LIGHT_GRAY_PAINTED_SLAB,
-                RegionsUnexploredBlocks.GRAY_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.GRAY_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.GRAY_PAINTED_SLAB,
-                RegionsUnexploredBlocks.BLACK_PAINTED_PLANKS,
-                RegionsUnexploredBlocks.BLACK_PAINTED_STAIRS,
-                RegionsUnexploredBlocks.BLACK_PAINTED_SLAB
-        );
+    //set up client side features
+    private void clientSetup(final FMLClientSetupEvent event) {
+        WoodTypeCompat.addWoodTypes();
+        BlockEntityRenderers.register(RegionsUnexploredBlockEntities.SIGN_BLOCK_ENTITIES.get(), SignRenderer::new);
+    }
 
-        List<RegistryObject<Item>> itemStacks = List.of(
-                RegionsUnexploredItems.BAOBAB_BOAT,
-                RegionsUnexploredItems.BAOBAB_CHEST_BOAT,
-                RegionsUnexploredItems.BLACKWOOD_BOAT,
-                RegionsUnexploredItems.BLACKWOOD_CHEST_BOAT,
-                RegionsUnexploredItems.CHERRY_BOAT,
-                RegionsUnexploredItems.CHERRY_CHEST_BOAT,
-                RegionsUnexploredItems.CYPRESS_BOAT,
-                RegionsUnexploredItems.CYPRESS_CHEST_BOAT,
-                RegionsUnexploredItems.DEAD_BOAT,
-                RegionsUnexploredItems.DEAD_CHEST_BOAT,
-                RegionsUnexploredItems.EUCALYPTUS_BOAT,
-                RegionsUnexploredItems.EUCALYPTUS_CHEST_BOAT,
-                RegionsUnexploredItems.JOSHUA_BOAT,
-                RegionsUnexploredItems.JOSHUA_CHEST_BOAT,
-                RegionsUnexploredItems.LARCH_BOAT,
-                RegionsUnexploredItems.LARCH_CHEST_BOAT,
-                RegionsUnexploredItems.MAPLE_BOAT,
-                RegionsUnexploredItems.MAPLE_CHEST_BOAT,
-                RegionsUnexploredItems.MAUVE_BOAT,
-                RegionsUnexploredItems.MAUVE_CHEST_BOAT,
-                RegionsUnexploredItems.PALM_BOAT,
-                RegionsUnexploredItems.PALM_CHEST_BOAT,
-                RegionsUnexploredItems.PINE_BOAT,
-                RegionsUnexploredItems.PINE_CHEST_BOAT,
-                RegionsUnexploredItems.REDWOOD_BOAT,
-                RegionsUnexploredItems.REDWOOD_CHEST_BOAT,
-                RegionsUnexploredItems.SCULKWOOD_BOAT,
-                RegionsUnexploredItems.SCULKWOOD_CHEST_BOAT,
-                RegionsUnexploredItems.WILLOW_BOAT,
-                RegionsUnexploredItems.WILLOW_CHEST_BOAT
-        );
-
+    //register tabs
+    private void registerTabs(CreativeModeTabEvent.Register event) {
         event.registerCreativeModeTab(new ResourceLocation(RegionsUnexploredMod.MOD_ID, "main"), builder -> {
             builder.icon(() -> new ItemStack(RegionsUnexploredBlocks.RED_PAINTED_PLANKS.get())).title(Component.translatable("itemGroup.regions_unexplored_main")).displayItems((featureFlags, output) -> {
 
@@ -788,11 +424,6 @@ public class RegionsUnexploredMod {
             });
         });
 
-
-    }
-
-    private void registerNatureTab(CreativeModeTabEvent.Register event) {
-
         List<RegistryObject<Block>> naturalBlocks = List.of(
                 RegionsUnexploredBlocks.FOREST_GRASS_BLOCK,
                 RegionsUnexploredBlocks.FOREST_DIRT_PATH,
@@ -948,6 +579,9 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.FROZEN_GRASS,
                 RegionsUnexploredBlocks.DEAD_STEPPE_SHRUB,
                 RegionsUnexploredBlocks.SMALL_DESERT_SHRUB,
+                RegionsUnexploredBlocks.RED_CHERRY_FLOWERS,
+                RegionsUnexploredBlocks.PINK_CHERRY_FLOWERS,
+                RegionsUnexploredBlocks.WHITE_CHERRY_FLOWERS,
                 RegionsUnexploredBlocks.BLUE_LUPINE,
                 RegionsUnexploredBlocks.PINK_LUPINE,
                 RegionsUnexploredBlocks.PURPLE_LUPINE,
@@ -1007,7 +641,12 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.TALL_REDWOOD_SAPLING,
                 RegionsUnexploredBlocks.TALL_SILVER_BIRCH_SAPLING,
                 RegionsUnexploredBlocks.TALL_SPRUCE_SAPLING,
-                RegionsUnexploredBlocks.TALL_WILLOW_SAPLING
+                RegionsUnexploredBlocks.TALL_WILLOW_SAPLING,
+                RegionsUnexploredBlocks.HYACINTH_STONE,
+                RegionsUnexploredBlocks.HYACINTH_BLOOM,
+                RegionsUnexploredBlocks.HYACINTH_FLOWERS,
+                RegionsUnexploredBlocks.HYACINTH_SEAGRASS,
+                RegionsUnexploredBlocks.TALL_HYACINTH_STOCK
         );
         event.registerCreativeModeTab(new ResourceLocation(RegionsUnexploredMod.MOD_ID, "natural"), builder -> {
             builder.icon(() -> new ItemStack(RegionsUnexploredBlocks.FOREST_GRASS_BLOCK.get())).title(Component.translatable("itemGroup.regions_unexplored_natural")).displayItems((featureFlags, output) -> {
@@ -1018,11 +657,6 @@ public class RegionsUnexploredMod {
 
             });
         });
-
-
-    }
-
-    private void registerNetherTab(CreativeModeTabEvent.Register event) {
 
         List<RegistryObject<Block>> netherBlocks = List.of(
 
@@ -1082,21 +716,47 @@ public class RegionsUnexploredMod {
 
     }
 
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event)
-    {
-        LOGGER.info("HELLO from server starting");
+    //config method
+    private void registerConfig(){
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, RegionsUnexploredCommonConfigs.SPEC, "regions_unexplored/regions_unexplored-common.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, RegionsUnexploredPrimaryRegionConfig.SPEC, "regions_unexplored/regions_unexplored-primary-region.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, RegionsUnexploredSecondaryRegionConfig.SPEC, "regions_unexplored/regions_unexplored-secondary-region.toml");
     }
 
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-        }
+    //decorator method
+    private void registerDecorators(){
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("bamboo_leave_decorator", BambooLeaveDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("cypress_trunk_decorator", CypressTrunkDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("birch_stem_decorator", BirchStemDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("blackwood_bioshroom", BlackwoodBioshroom.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("blackwood_branch_decorator", BlackwoodBranchDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("dead_branch_decorator", DeadBranchDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("dead_pine_branch_decorator", DeadPineBranchDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("dead_placer", DeadPlacer.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("dead_stem_decorator", DeadStemDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("eucalyptus_leave_decorator", EucalyptusLeaveDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("eucalyptus_trunk_decorator", EucalyptusTrunkDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("giant_cypress_leave_decorator", GiantCypressLeaveDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("giant_cypress_trunk_decorator", GiantCypressTrunkDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("giant_redwood_branch_decorator", GiantRedwoodBranchDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("maple_placer", MaplePlacer.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("oak_placer", OakPlacer.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("palm_leaves_placer", PalmLeavesPlacer.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("pine_branch_decorator", PineBranchDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("pine_trunk_decorator", PineTrunkDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("redwood_branch_decorator", RedwoodBranchDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("redwood_leave_decorator", RedwoodLeaveDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("redwood_trunk_decorator", RedwoodTrunkDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("saguaro_cactus_limbs", SaguaroCactusLimbs.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("silver_birch_placer", SilverBirchPlacer.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("spanish_moss_decorator", SpanishMossDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("silver_birch_trunk_decorator", SilverBirchTrunkDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("small_yellow_bioshroom_caps", SmallYellowBioshroomCaps.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("medium_yellow_bioshroom_caps", MediumYellowBioshroomCaps.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("big_yellow_bioshroom_caps", BigYellowBioshroomCaps.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("willow_palm_placer", WillowPalmPlacer.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("willow_placer", WillowPlacer.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register("willow_trunk_decorator", WillowTrunkDecorator.tdt);
     }
+
 }

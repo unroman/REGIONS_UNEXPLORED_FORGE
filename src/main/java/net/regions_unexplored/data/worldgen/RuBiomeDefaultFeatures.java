@@ -3,6 +3,7 @@ package net.regions_unexplored.data.worldgen;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.regions_unexplored.data.worldgen.placement.RuAquaticPlacements;
 import net.regions_unexplored.data.worldgen.placement.RuBiomePlacements;
 import net.regions_unexplored.data.worldgen.placement.RuPlacements;
 import net.regions_unexplored.data.worldgen.structures.MeadowRock;
@@ -103,7 +104,7 @@ public class RuBiomeDefaultFeatures {
 
     public static void addRiverCattail(BiomeGenerationSettings.Builder p_194721_) {
             p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.CATTAIL_RIVER);
-        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WATER_CATTAIL);
+        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.WATER_CATTAIL);
     }
 
     public static void addGrasslandTallGrass(BiomeGenerationSettings.Builder p_194721_) {

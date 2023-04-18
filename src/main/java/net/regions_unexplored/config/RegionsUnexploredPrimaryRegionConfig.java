@@ -526,8 +526,8 @@ public class RegionsUnexploredPrimaryRegionConfig {
         RVR_HOT_ARID = BUILDER.define("hot_arid", "regions_unexplored:muddy_river");
         RVR_HOT_DRY = BUILDER.define("hot_dry", "regions_unexplored:muddy_river");
         RVR_HOT_NEUTRAL = BUILDER.define("hot_neutral", "regions_unexplored:muddy_river");
-        RVR_HOT_WET = BUILDER.define("hot_wet", "regions_unexplored:muddy_river");
-        RVR_HOT_HUMID = BUILDER.define("hot_humid", "regions_unexplored:muddy_river");
+        RVR_HOT_WET = BUILDER.define("hot_wet", "regions_unexplored:tropics");
+        RVR_HOT_HUMID = BUILDER.define("hot_humid", "regions_unexplored:tropics");
         BUILDER.pop();
         BUILDER.push("-----------------RIVER_BIOMES_VARIANT--------------------");
         BUILDER.comment("icy_biomes");
@@ -558,8 +558,8 @@ public class RegionsUnexploredPrimaryRegionConfig {
         RVR_VAR_HOT_ARID = BUILDER.define("hot_arid", "regions_unexplored:muddy_river");
         RVR_VAR_HOT_DRY = BUILDER.define("hot_dry", "regions_unexplored:muddy_river");
         RVR_VAR_HOT_NEUTRAL = BUILDER.define("hot_neutral", "regions_unexplored:muddy_river");
-        RVR_VAR_HOT_WET = BUILDER.define("hot_wet", "regions_unexplored:muddy_river");
-        RVR_VAR_HOT_HUMID = BUILDER.define("hot_humid", "regions_unexplored:muddy_river");
+        RVR_VAR_HOT_WET = BUILDER.define("hot_wet", "regions_unexplored:tropics");
+        RVR_VAR_HOT_HUMID = BUILDER.define("hot_humid", "regions_unexplored:tropics");
         BUILDER.pop();
 
         BUILDER.push("-----------------SWAMP_BIOMES--------------------");
@@ -588,16 +588,16 @@ public class RegionsUnexploredPrimaryRegionConfig {
         SMP_WARM_WET = BUILDER.define("warm_wet", "regions_unexplored:giant_bayou");
         SMP_WARM_HUMID = BUILDER.define("warm_humid", "regions_unexplored:giant_bayou");
         BUILDER.comment("hot_biomes");
-        SMP_HOT_ARID = BUILDER.define("hot_arid", "regions_unexplored:tropics");
-        SMP_HOT_DRY = BUILDER.define("hot_dry", "regions_unexplored:tropics");
-        SMP_HOT_NEUTRAL = BUILDER.define("hot_neutral", "regions_unexplored:tropics");
+        SMP_HOT_ARID = BUILDER.define("hot_arid", "regions_unexplored:rocky_reef");
+        SMP_HOT_DRY = BUILDER.define("hot_dry", "regions_unexplored:rocky_reef");
+        SMP_HOT_NEUTRAL = BUILDER.define("hot_neutral", "regions_unexplored:rocky_reef");
         SMP_HOT_WET = BUILDER.define("hot_wet", "regions_unexplored:fungal_fen");
         SMP_HOT_HUMID = BUILDER.define("hot_humid", "regions_unexplored:fungal_fen");
         BUILDER.pop();
 
         BUILDER.push("-----------------OCEAN_BIOMES--------------------");
         BUILDER.comment("deep_oceans");
-        OCA_DEP_ICY = BUILDER.define("deep_icy", "minecraft:deep_frozen_ocean");
+        OCA_DEP_ICY = BUILDER.define("deep_icy", "regions_unexplored:hyacinth_deeps");
         OCA_DEP_COOL = BUILDER.define("deep_cool", "minecraft:deep_cold_ocean");
         OCA_DEP_NEUTRAL = BUILDER.define("deep_neutral", "minecraft:deep_ocean");
         OCA_DEP_WARM = BUILDER.define("deep_warm", "minecraft:deep_lukewarm_ocean");
@@ -607,7 +607,7 @@ public class RegionsUnexploredPrimaryRegionConfig {
         OCA_COOL = BUILDER.define("cool", "minecraft:cold_ocean");
         OCA_NEUTRAL = BUILDER.define("neutral", "minecraft:ocean");
         OCA_WARM = BUILDER.define("warm", "minecraft:lukewarm_ocean");
-        OCA_HOT = BUILDER.define("hot", "minecraft:warm_ocean");
+        OCA_HOT = BUILDER.define("hot", "regions_unexplored:rocky_reef");
         BUILDER.pop();
 
         BUILDER.push("-----------------SHORE_BIOMES--------------------");
@@ -616,7 +616,7 @@ public class RegionsUnexploredPrimaryRegionConfig {
         COOL_BEACH = BUILDER.define("cold_beach_biome", "regions_unexplored:gravel_beach");
         NEUTRAL_BEACH = BUILDER.define("neutral_beach_biome", "regions_unexplored:grassy_beach");
         WARM_BEACH = BUILDER.define("warm_beach_biome", "regions_unexplored:grassy_beach");
-        HOT_BEACH = BUILDER.define("hot_beach_biome", "minecraft:beach");
+        HOT_BEACH = BUILDER.define("hot_beach_biome", "regions_unexplored:tropics");
         BUILDER.comment("stone_beach_biomes");
         COLD_STONE_BEACH = BUILDER.define("cold_stone_beach_biome", "minecraft:stony_shore");
         HOT_STONE_BEACH = BUILDER.define("hot_stone_beach_biome", "regions_unexplored:chalk_cliffs");

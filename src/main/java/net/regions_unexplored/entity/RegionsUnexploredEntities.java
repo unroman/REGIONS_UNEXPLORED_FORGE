@@ -11,20 +11,11 @@ import net.regions_unexplored.entity.custom.RuBoat;
 import net.regions_unexplored.entity.custom.RuChestBoat;
 
 public class RegionsUnexploredEntities {
-    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, RegionsUnexploredMod.MOD_ID);
+    public static RegistryObject<EntityType<?>> BOAT;
+    public static RegistryObject<EntityType<?>> CHEST_BOAT;
 
-
-    public static RegistryObject<EntityType<?>> BOAT = ENTITIES.register("boat", () ->
-            EntityType.Builder.<RuBoat>of(RuBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F)
-                    .clientTrackingRange(10).build(RegionsUnexploredMod.MOD_ID + ":boat"));
-
-
-    public static RegistryObject<EntityType<?>> CHEST_BOAT = ENTITIES.register("chest_boat", () ->
-            EntityType.Builder.<RuChestBoat>of(RuChestBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F)
-                    .clientTrackingRange(10).build(RegionsUnexploredMod.MOD_ID + ":chest_boat"));
-
-
-    public static void register(IEventBus bus) {
-        ENTITIES.register(bus);
+    public static void addEntities() {
+        BOAT = RegionsUnexploredMod.ENTITIES.register("boat", () -> EntityType.Builder.<RuBoat>of(RuBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F).clientTrackingRange(10).build(RegionsUnexploredMod.MOD_ID + ":boat"));
+        CHEST_BOAT = RegionsUnexploredMod.ENTITIES.register("chest_boat", () -> EntityType.Builder.<RuChestBoat>of(RuChestBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F).clientTrackingRange(10).build(RegionsUnexploredMod.MOD_ID + ":chest_boat"));
     }
 }
