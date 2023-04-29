@@ -80,6 +80,7 @@
       "minecraft:spring_lava"
     ],
     [
+      "regions_unexplored:redwoods_ultra_redwood",
       "regions_unexplored:redwoods_giant_redwood",
       "regions_unexplored:redwoods_redwood",
       "regions_unexplored:redwoods_bush",

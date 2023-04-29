@@ -443,6 +443,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.MOSSY_STONE,
                 RegionsUnexploredBlocks.CHALK,
                 RegionsUnexploredBlocks.ASH,
+                RegionsUnexploredBlocks.ASHEN_DIRT,
                 RegionsUnexploredBlocks.ASH_VENT,
                 RegionsUnexploredBlocks.VOLCANIC_ASH,
                 RegionsUnexploredBlocks.RAW_REDSTONE_BLOCK,

@@ -675,6 +675,11 @@ public class RegionsUnexploredBlocks {
     public static RegistryObject<Block> HYACINTH_SEAGRASS;
     public static RegistryObject<Block> HYACINTH_STONE;
     public static RegistryObject<Block> TALL_HYACINTH_STOCK;
+    //SMOULDERING_WOODLAND
+    public static RegistryObject<Block> ASHEN_DIRT;
+    public static RegistryObject<Block> ASHEN_SHRUB;
+    public static RegistryObject<Block> ASHEN_LOG;
+    public static RegistryObject<Block> ASHEN_LEAVES;
 
     /*-----------------PLACERS-----------------*/
     public static RegistryObject<Block> DIRT_PLACEMENT;
@@ -1327,6 +1332,11 @@ public class RegionsUnexploredBlocks {
         HYACINTH_SEAGRASS = registerDefaultBlock("hyacinth_seagrass", () -> new SeagrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_WATER_PLANT).noCollission().instabreak().sound(SoundType.WET_GRASS)));
         HYACINTH_STONE = registerDefaultBlock("hyacinth_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).sound(SoundType.STONE).strength(1.5f, 6f).requiresCorrectToolForDrops()));
         TALL_HYACINTH_STOCK = registerDefaultBlock("tall_hyacinth_stock", () -> new TallHyacinthStockBlock(BlockBehaviour.Properties.of(Material.WATER_PLANT).noCollission().instabreak().sound(SoundType.WET_GRASS).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 12)));
+        //SMOULDERING_WOODLAND_BLOCKS
+        ASHEN_DIRT = registerDefaultBlock("ashen_dirt", () -> new AshenDirtBlock(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.COLOR_GRAY).strength(0.5F).sound(SoundType.GRAVEL).randomTicks().lightLevel((bs) -> AshenDirtBlock.isSmouldering(bs) ? 7 : 0)));
+        ASHEN_SHRUB = registerDefaultBlock("ashen_shrub", () -> new AshenShrubBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.ROOTED_DIRT).offsetType(BlockBehaviour.OffsetType.XZ)));
+        ASHEN_LOG = registerDefaultBlock("ashen_log", () -> log(MaterialColor.COLOR_LIGHT_GRAY, MaterialColor.COLOR_GRAY));
+        ASHEN_LEAVES = registerDefaultBlock("ashen_leaves", () -> appleLeaves(MaterialColor.COLOR_LIGHT_GRAY));
 
         /*-----------------PLACERS-----------------*/
         DIRT_PLACEMENT = RegionsUnexploredMod.BLOCKS.register("dirt_placement", () -> new DirtPlacementBlock());

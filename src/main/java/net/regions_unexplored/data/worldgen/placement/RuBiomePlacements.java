@@ -316,11 +316,13 @@ public class RuBiomePlacements {
     public static final ResourceKey<PlacedFeature> ORCHARD_DAISY = RuPlacementUtils.createKey("orchard_daisy");
     public static final ResourceKey<PlacedFeature> ORCHARD_GRASS = RuPlacementUtils.createKey("orchard_grass");
 
+    public static final ResourceKey<PlacedFeature> REDWOODS_ULTRA_REDWOOD = RuPlacementUtils.createKey("redwoods_ultra_redwood");
     public static final ResourceKey<PlacedFeature> REDWOODS_GIANT_REDWOOD = RuPlacementUtils.createKey("redwoods_giant_redwood");
     public static final ResourceKey<PlacedFeature> REDWOODS_REDWOOD = RuPlacementUtils.createKey("redwoods_redwood");
     public static final ResourceKey<PlacedFeature> REDWOODS_BUSH = RuPlacementUtils.createKey("redwoods_bush");
     public static final ResourceKey<PlacedFeature> REDWOODS_GRASS = RuPlacementUtils.createKey("redwoods_grass");
 
+    public static final ResourceKey<PlacedFeature> SPARSE_REDWOODS_GIANT_REDWOOD = RuPlacementUtils.createKey("sparse_redwoods_giant_redwood");
     public static final ResourceKey<PlacedFeature> SPARSE_REDWOODS_REDWOOD = RuPlacementUtils.createKey("sparse_redwoods_redwood");
     public static final ResourceKey<PlacedFeature> SPARSE_REDWOODS_BUSH = RuPlacementUtils.createKey("sparse_redwoods_bush");
     public static final ResourceKey<PlacedFeature> SPARSE_REDWOODS_GRASS = RuPlacementUtils.createKey("sparse_redwoods_grass");
@@ -777,6 +779,7 @@ public class RuBiomePlacements {
         final Holder<ConfiguredFeature<?, ?>> ORCHARD_DAISY = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_DAISY);
         final Holder<ConfiguredFeature<?, ?>> ORCHARD_GRASS = featureGetter.getOrThrow(VegetationFeatures.PATCH_GRASS);
 
+        final Holder<ConfiguredFeature<?, ?>> REDWOODS_ULTRA_REDWOOD = featureGetter.getOrThrow(RuTreeFeatures.ULTRA_REDWOOD_TREE);
         final Holder<ConfiguredFeature<?, ?>> REDWOODS_GIANT_REDWOOD = featureGetter.getOrThrow(RuTreeFeatures.REDWOODS_GIANT_REDWOOD);
         final Holder<ConfiguredFeature<?, ?>> REDWOODS_REDWOOD = featureGetter.getOrThrow(RuTreeFeatures.REDWOODS_REDWOOD);
         final Holder<ConfiguredFeature<?, ?>> REDWOODS_BUSH = featureGetter.getOrThrow(RuTreeFeatures.OAK_BUSH);
@@ -1237,11 +1240,14 @@ public class RuBiomePlacements {
         register(context, RuBiomePlacements.ORCHARD_DAISY, ORCHARD_DAISY, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         register(context, RuBiomePlacements.ORCHARD_GRASS, ORCHARD_GRASS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
 
+
+        register(context, RuBiomePlacements.REDWOODS_ULTRA_REDWOOD, REDWOODS_ULTRA_REDWOOD, List.of(NoiseBasedCountPlacement.of(1, 80.0D, 0.3D), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.REDWOODS_GIANT_REDWOOD, REDWOODS_GIANT_REDWOOD, List.of(CountPlacement.of(12), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.REDWOODS_REDWOOD, REDWOODS_REDWOOD, List.of(CountPlacement.of(2), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.REDWOODS_BUSH, REDWOODS_BUSH, List.of(CountPlacement.of(8), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.REDWOODS_GRASS, REDWOODS_GRASS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 15), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
 
+        register(context, RuBiomePlacements.SPARSE_REDWOODS_GIANT_REDWOOD, REDWOODS_GIANT_REDWOOD, List.of(NoiseBasedCountPlacement.of(1, 80.0D, 0.3D), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.SPARSE_REDWOODS_REDWOOD, SPARSE_REDWOODS_REDWOOD, List.of(CountPlacement.of(4), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.SPARSE_REDWOODS_BUSH, SPARSE_REDWOODS_BUSH, List.of(CountPlacement.of(8), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.SPARSE_REDWOODS_GRASS, SPARSE_REDWOODS_GRASS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 15), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));

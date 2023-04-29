@@ -31,11 +31,6 @@ public abstract class AbstractUltraTreeGrower extends AbstractMegaTreeGrower {
         }
 
         @Nullable
-        protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredUltraFeature(ServerLevel level, ChunkGenerator chunkGenerator, BlockPos pos, BlockState state, RandomSource random, ResourceKey<ConfiguredFeature<?, ?>> featureKey) {
-            return level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE).getHolder(featureKey).orElse(null);
-        }
-
-        @Nullable
         protected abstract ResourceKey<ConfiguredFeature<?, ?>> getConfiguredUltraFeature(RandomSource random);
 
         public boolean placeUltra(ServerLevel level, ChunkGenerator generator, BlockPos pos, BlockState state, RandomSource random, int X, int Z) {
@@ -45,8 +40,9 @@ public abstract class AbstractUltraTreeGrower extends AbstractMegaTreeGrower {
             } else {
                 Holder<ConfiguredFeature<?, ?>> holder = level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE).getHolder(resourcekey).orElse((Holder.Reference<ConfiguredFeature<?, ?>>)null);
                 var event = net.minecraftforge.event.ForgeEventFactory.blockGrowFeature(level, random, pos, holder);
-
-                if (event.getResult().equals(net.minecraftforge.eventbus.api.Event.Result.DENY) || event.getFeature() == null) {
+                holder = event.getFeature();
+                if (event.getResult() == net.minecraftforge.eventbus.api.Event.Result.DENY) return false;
+                if (holder == null) {
                     return false;
                 } else {
                     ConfiguredFeature<?, ?> configuredfeature = event.getFeature().value();

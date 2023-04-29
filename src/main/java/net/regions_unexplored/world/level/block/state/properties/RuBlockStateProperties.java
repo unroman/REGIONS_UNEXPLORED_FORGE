@@ -4,6 +4,7 @@ import net.minecraft.world.level.block.state.properties.*;
 
 public class RuBlockStateProperties {
     public static final BooleanProperty HAS_GRAVITY = BooleanProperty.create("has_gravity");
+    public static final BooleanProperty SMOULDERING = BooleanProperty.create("smouldering");
     public static final BooleanProperty LEAVES = BooleanProperty.create("leaves");
     public static final BooleanProperty NATURAL = BooleanProperty.create("natural");
     public static final BooleanProperty IS_EVEN = BooleanProperty.create("is_even");

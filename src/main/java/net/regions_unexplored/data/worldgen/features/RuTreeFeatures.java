@@ -128,7 +128,8 @@ public class RuTreeFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SILVER_BIRCH = RuFeatureUtils.createKey("silver_birch");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> REDWOOD_TREE = RuFeatureUtils.createKey("redwood_tree");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_REDWOOD_TREE = RuFeatureUtils.createKey("giant_redwood");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_REDWOOD_TREE = RuFeatureUtils.createKey("giant_redwood_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ULTRA_REDWOOD_TREE = RuFeatureUtils.createKey("ultra_redwood_tree");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> WILLOW_TREE = RuFeatureUtils.createKey("willow_tree");
 
@@ -314,6 +315,7 @@ public class RuTreeFeatures {
 
         register(treeBootstrap, REDWOOD_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState()), new StraightTrunkPlacer(19, 5, 3), BlockStateProvider.simple(RegionsUnexploredBlocks.REDWOOD_LEAVES.get().defaultBlockState()), new MegaPineFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0), UniformInt.of(13, 17)), new TwoLayersFeatureSize(1, 1, 2)).decorators(ImmutableList.of(RedwoodBranchDecorator.INSTANCE)).build());
         register(treeBootstrap, GIANT_REDWOOD_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState()), new GiantTrunkPlacer(24, 2, 10), BlockStateProvider.simple(RegionsUnexploredBlocks.REDWOOD_LEAVES.get().defaultBlockState()), new MegaPineFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0), UniformInt.of(13, 17)), new TwoLayersFeatureSize(1, 1, 2)).decorators(ImmutableList.of(RedwoodLeaveDecorator.INSTANCE, GiantRedwoodBranchDecorator.INSTANCE)).forceDirt().build());
+        register(treeBootstrap, ULTRA_REDWOOD_TREE, RegionsUnexploredFeatures.ULTRA_REDWOOD_TREE.get(), new RuTreeConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.REDWOOD_LEAVES.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.REDWOOD_BRANCH.get().defaultBlockState()), 45, 9));
 
         register(treeBootstrap, WILLOW_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RegionsUnexploredBlocks.WILLOW_LOG.get().defaultBlockState()), new StraightTrunkPlacer(8, 2, 0),BlockStateProvider.simple(RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).decorators(ImmutableList.of(new LeaveVineDecorator(0.25f), WillowTrunkDecorator.INSTANCE)).build());
 

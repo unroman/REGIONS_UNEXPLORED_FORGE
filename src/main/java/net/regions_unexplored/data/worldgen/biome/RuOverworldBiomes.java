@@ -1317,6 +1317,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.REDWOODS_ULTRA_REDWOOD);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.REDWOODS_GIANT_REDWOOD);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.REDWOODS_REDWOOD);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.REDWOODS_BUSH);
@@ -1348,6 +1349,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SPARSE_REDWOODS_GIANT_REDWOOD);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SPARSE_REDWOODS_REDWOOD);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SPARSE_REDWOODS_BUSH);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SPARSE_REDWOODS_GRASS);
@@ -1905,8 +1907,8 @@ public class RuOverworldBiomes {
                 .downfall(0.95f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome smoulderingWoodland(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(-6384241).waterColor(-10073800).waterFogColor(-11585236).skyColor(-5400196)
-                .foliageColorOverride(-7901343).grassColorOverride(-6391454).ambientParticle(new AmbientParticleSettings(ParticleTypes.ASH, 0.05F)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(-6384241).waterColor(-10073800).waterFogColor(-11585236).skyColor(11644572)
+                .foliageColorOverride(15326658).grassColorOverride(12434605).ambientParticle(new AmbientParticleSettings(ParticleTypes.ASH, 0.05F)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 100, 4, 4));

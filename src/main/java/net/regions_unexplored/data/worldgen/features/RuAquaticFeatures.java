@@ -48,12 +48,12 @@ public class RuAquaticFeatures {
         HolderGetter<ConfiguredFeature<?, ?>> holderGetter = context.lookup(Registries.CONFIGURED_FEATURE);
 
         register(context, WATER_CATTAIL, RegionsUnexploredFeatures.WATER_CATTAIL.get(), FeatureConfiguration.NONE);
-
+        //HYACINTH
         register(context, TALL_HYACINTH_STOCK, RegionsUnexploredFeatures.TALL_HYACINTH_STOCK.get(), new HyacinthStockConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_HYACINTH_STOCK.get()), 1, 14));
         register(context, HYACINTH_PLANTS, RegionsUnexploredFeatures.HYACINTH_PLANTS.get(), new ProbabilityFeatureConfiguration(0.1F));
         register(context, HYACINTH_FLOWERS, Feature.MULTIFACE_GROWTH, new MultifaceGrowthConfiguration((MultifaceBlock)RegionsUnexploredBlocks.HYACINTH_FLOWERS.get(), 20, true, true, true, 1.0F, HolderSet.direct(Block::builtInRegistryHolder, Blocks.STONE, Blocks.PRISMARINE, Blocks.PRISMARINE_BRICKS, RegionsUnexploredBlocks.HYACINTH_STONE.get())));
         register(context, HYACINTH_ROCKS, RegionsUnexploredFeatures.OCEAN_ROCK.get(), new SeaRockConfiguration(Blocks.STONE.defaultBlockState(), RegionsUnexploredBlocks.HYACINTH_STONE.get().defaultBlockState()));
-
+        //ROCKY_REEF
         register(context, MOSSY_SEA_ROCKS, RegionsUnexploredFeatures.ROCK_PILLAR.get(), FeatureConfiguration.NONE);
         register(context, RED_CHERRY_FLOWERS_AQUATIC, RegionsUnexploredFeatures.AIR_MULTIFACE_GROWTH.get(), new MultifaceGrowthConfiguration((MultifaceBlock)RegionsUnexploredBlocks.RED_CHERRY_FLOWERS.get(), 20, true, true, true, 1.0F, HolderSet.direct(Block::builtInRegistryHolder, Blocks.STONE, RegionsUnexploredBlocks.STONE_GRASS_BLOCK.get())));
         register(context, PINK_CHERRY_FLOWERS_AQUATIC, RegionsUnexploredFeatures.AIR_MULTIFACE_GROWTH.get(), new MultifaceGrowthConfiguration((MultifaceBlock)RegionsUnexploredBlocks.PINK_CHERRY_FLOWERS.get(), 20, true, true, true, 1.0F, HolderSet.direct(Block::builtInRegistryHolder, Blocks.STONE, RegionsUnexploredBlocks.STONE_GRASS_BLOCK.get())));

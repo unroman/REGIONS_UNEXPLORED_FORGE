@@ -34,6 +34,7 @@ public class RuSurfaceRuleData
     private static final SurfaceRules.RuleSource MOSSY_STONE = makeStateRule(RegionsUnexploredBlocks.MOSSY_STONE.get());
     private static final SurfaceRules.RuleSource VANILLA_MUD = makeStateRule(Blocks.MUD);
     private static final SurfaceRules.RuleSource ASH = makeStateRule(RegionsUnexploredBlocks.ASH.get());
+    private static final SurfaceRules.RuleSource ASHEN_DIRT = makeStateRule(RegionsUnexploredBlocks.ASHEN_DIRT.get());
     private static final SurfaceRules.RuleSource VIRIDESCENT_NYLIUM = makeStateRule(RegionsUnexploredBlocks.VIRIDESCENT_NYLIUM.get());
     private static final SurfaceRules.RuleSource DEEPSLATE_VIRIDESCENT_NYLIUM = makeStateRule(RegionsUnexploredBlocks.DEEPSLATE_VIRIDESCENT_NYLIUM.get());
     private static final SurfaceRules.RuleSource PRISMOSS = makeStateRule(RegionsUnexploredBlocks.PRISMOSS.get());
@@ -92,7 +93,7 @@ public class RuSurfaceRuleData
 
                             //SMOULDERING_WOODLAND
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.SMOULDERING_WOODLAND),
-                                    SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.25D), FOREST_GRASS_BLOCK),SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, -0.25D), FOREST_COARSE_DIRT), ASH)),
+                                    SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, -0.25D), ASHEN_DIRT), ASH)),
 
                             //FUNGAL_FEN
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.FUNGAL_FEN),

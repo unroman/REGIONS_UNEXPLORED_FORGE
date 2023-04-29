@@ -18,17 +18,37 @@
     "thickness=middle,vertical_direction=up": {
       "model": "regions_unexplored:block/pointed_redstone_up_middle"
     },
-    "thickness=tip,vertical_direction=down": {
-      "model": "regions_unexplored:block/pointed_redstone_down_tip"
-    },
-    "thickness=tip,vertical_direction=up": {
-      "model": "regions_unexplored:block/pointed_redstone_up_tip"
-    },
-    "thickness=tip_merge,vertical_direction=down": {
-      "model": "regions_unexplored:block/pointed_redstone_down_tip_merge"
-    },
-    "thickness=tip_merge,vertical_direction=up": {
-      "model": "regions_unexplored:block/pointed_redstone_up_tip_merge"
-    }
+    "thickness=tip,vertical_direction=down": [
+      {
+        "model": "regions_unexplored:block/pointed_redstone_down_tip"
+      },
+      {
+        "model": "regions_unexplored:block/pointed_redstone_down_tip_2"
+      }
+    ],
+    "thickness=tip,vertical_direction=up": [
+      {
+        "model": "regions_unexplored:block/pointed_redstone_up_tip"
+      },
+      {
+        "model": "regions_unexplored:block/pointed_redstone_up_tip_2"
+      }
+    ],
+    "thickness=tip_merge,vertical_direction=down": [
+      {
+        "model": "regions_unexplored:block/pointed_redstone_down_tip_merge"
+      },
+      {
+        "model": "regions_unexplored:block/pointed_redstone_down_tip_merge_2"
+      }
+    ],
+    "thickness=tip_merge,vertical_direction=up": [
+      {
+        "model": "regions_unexplored:block/pointed_redstone_up_tip_merge"
+      },
+      {
+        "model": "regions_unexplored:block/pointed_redstone_up_tip_merge_2"
+      }
+    ]
   }
 }

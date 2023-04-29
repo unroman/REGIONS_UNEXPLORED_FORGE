@@ -23,6 +23,7 @@ import net.regions_unexplored.data.worldgen.features.treefeature.NetherWillowFea
 import net.regions_unexplored.data.worldgen.features.treefeature.SculkWillowFeature;
 import net.regions_unexplored.data.worldgen.structures.MeadowRock;
 import net.regions_unexplored.data.worldgen.structures.Spires;
+import org.apache.http.cookie.SM;
 
 public class RegionsUnexploredFeatures {
 
@@ -34,6 +35,7 @@ public class RegionsUnexploredFeatures {
 
     public static RegistryObject<Feature> MAPLE_TREE;
     public static RegistryObject<Feature> SAKURA_TREE;
+    public static RegistryObject<Feature> ULTRA_REDWOOD_TREE;
 
     public static RegistryObject<Feature> TALL_SAPLING;
     //LEGACY
@@ -62,6 +64,7 @@ public class RegionsUnexploredFeatures {
     public static RegistryObject<Feature> TALL_HYACINTH_STOCK;
     public static RegistryObject<Feature> HYACINTH_PLANTS;
     public static RegistryObject<Feature> OCEAN_ROCK;
+    public static RegistryObject<Feature> SMOULDERING_DIRT;
 
     public static void addFeatures() {
         SPIRE_FEATURE = RegionsUnexploredMod.FEATURES.register("spire_feature", () -> new Spires());
@@ -72,6 +75,7 @@ public class RegionsUnexploredFeatures {
 
         MAPLE_TREE = RegionsUnexploredMod.FEATURES.register("maple_tree", () -> new MapleTreeFeature(RuTreeConfiguration.CODEC));
         SAKURA_TREE = RegionsUnexploredMod.FEATURES.register("sakura_tree", () -> new SakuraTreeFeature(RuTreeConfiguration.CODEC));
+        ULTRA_REDWOOD_TREE = RegionsUnexploredMod.FEATURES.register("ultra_redwood_tree", () -> new UltraRedwoodTreeFeature(RuTreeConfiguration.CODEC));
 
         TALL_SAPLING = RegionsUnexploredMod.FEATURES.register("tall_sapling", () -> new TallSaplingFeature(TallSaplingConfiguration.CODEC));
         //LEGACY
@@ -100,5 +104,6 @@ public class RegionsUnexploredFeatures {
         TALL_HYACINTH_STOCK = RegionsUnexploredMod.FEATURES.register("tall_hyacinth_stock", () -> new HyacinthStockFeature(HyacinthStockConfiguration.CODEC));
         HYACINTH_PLANTS = RegionsUnexploredMod.FEATURES.register("hyacinth_plants", () -> new HyacinthPlantsFeature(ProbabilityFeatureConfiguration.CODEC));
         OCEAN_ROCK = RegionsUnexploredMod.FEATURES.register("ocean_rock", () -> new SeaRockFeature(SeaRockConfiguration.CODEC));
+        SMOULDERING_DIRT = RegionsUnexploredMod.FEATURES.register("smouldering_dirt", () -> new SmoulderingAshenDirtFeature(NoneFeatureConfiguration.CODEC));
     }
 }

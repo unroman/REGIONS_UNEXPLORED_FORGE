@@ -392,7 +392,7 @@ public class RegionsUnexploredPrimaryRegionConfig {
         PLT_WARM_ARID = BUILDER.define("warm_arid", "regions_unexplored:deciduous_forest");
         PLT_WARM_DRY = BUILDER.define("warm_dry", "regions_unexplored:deciduous_forest");
         PLT_WARM_NEUTRAL = BUILDER.define("warm_neutral", "regions_unexplored:deciduous_forest");
-        PLT_WARM_WET = BUILDER.define("warm_wet", "regions_unexplored:deciduous_forest");
+        PLT_WARM_WET = BUILDER.define("warm_wet", "regions_unexplored:redwoods");
         PLT_WARM_HUMID = BUILDER.define("warm_humid", "regions_unexplored:redwoods");
         BUILDER.comment("hot_biomes");
         PLT_HOT_ARID = BUILDER.define("hot_arid", "regions_unexplored:steppe");
