@@ -48,6 +48,9 @@ import java.util.OptionalInt;
 
 
 public class RuTreeFeatures {
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ASHEN_TREE = RuFeatureUtils.createKey("ashen_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ASHEN_PINE_TREE = RuFeatureUtils.createKey("ashen_pine_tree");
+
     public static final ResourceKey<ConfiguredFeature<?, ?>> ALPHA_OAK_TREE = RuFeatureUtils.createKey("alpha_oak_tree");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> BAMBOO_TREE = RuFeatureUtils.createKey("bamboo_tree");
@@ -234,6 +237,9 @@ public class RuTreeFeatures {
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> treeBootstrap) {
         HolderGetter<Block> holderGetter = treeBootstrap.lookup(Registries.BLOCK);
+        register(treeBootstrap, ASHEN_TREE, RegionsUnexploredFeatures.ASHEN_TREE.get(), new RuTreeConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.ASHEN_LOG.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.ASHEN_LEAVES.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.DEAD_BRANCH.get().defaultBlockState()), 12, 5));
+        register(treeBootstrap, ASHEN_PINE_TREE, RegionsUnexploredFeatures.ASHEN_TREE.get(), new RuTreeConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.ASHEN_LOG.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.PINE_LEAVES.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.DEAD_BRANCH.get().defaultBlockState()), 12, 7));
+
         register(treeBootstrap, ALPHA_OAK_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RegionsUnexploredBlocks.ALPHA_LOG.get().defaultBlockState()), new StraightTrunkPlacer(4, 2, 0),BlockStateProvider.simple(RegionsUnexploredBlocks.ALPHA_LEAVES.get().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build());
 
         register(treeBootstrap, BAMBOO_TREE, Feature.TREE,new TreeConfiguration.TreeConfigurationBuilder(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.BAMBOO_LOG.get().defaultBlockState(), 3).add(RegionsUnexploredBlocks.BAMBOO_LOG.get().defaultBlockState().setValue(BambooLogBlock.LEAVES, true), 1)),new StraightTrunkPlacer(12, 9, 0),new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState(), 5).add(RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState(), 1)),new RandomSpreadFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), ConstantInt.of(5), 150), new TwoLayersFeatureSize(1, 0, 1)).decorators(ImmutableList.of(BambooLeaveDecorator.INSTANCE)).ignoreVines().dirt(BlockStateProvider.simple(Blocks.PODZOL)).build());

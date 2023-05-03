@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "regions_unexplored:block/sculk_tendril",
-    "particle": "regions_unexplored:block/sculk_grass_block"
-  },
-  "render_type": "cutout"
-}

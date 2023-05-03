@@ -46,9 +46,7 @@
       "minecraft:monster_room",
       "minecraft:monster_room_deep"
     ],
-    [
-      "regions_unexplored:ash_vent_surface"
-    ],
+    [],
     [],
     [
       "minecraft:ore_dirt",
@@ -83,16 +81,13 @@
       "minecraft:spring_lava"
     ],
     [
-      "regions_unexplored:smouldering_woodland_oak",
-      "regions_unexplored:smouldering_woodland_dead_pine",
+      "regions_unexplored:smouldering_dirt",
       "regions_unexplored:smouldering_woodland_pine",
-      "regions_unexplored:smouldering_woodland_dorcel",
+      "regions_unexplored:smouldering_woodland_dead_pine",
       "regions_unexplored:smouldering_woodland_trillium",
-      "regions_unexplored:smouldering_woodland_dead_steppe_shrub",
-      "regions_unexplored:smouldering_woodland_desert_shrub",
-      "regions_unexplored:tall_dead_sapling_mix",
+      "regions_unexplored:ashen_grass",
+      "regions_unexplored:ashen_shrub",
       "minecraft:glow_lichen",
-      "regions_unexplored:medium_grass_placed",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",

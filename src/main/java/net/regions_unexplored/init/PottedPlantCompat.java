@@ -30,7 +30,7 @@ public class PottedPlantCompat {
         ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(RegionsUnexploredBlocks.BLUE_BIOSHROOM.getId(), RegionsUnexploredBlocks.POTTED_BLUE_BIOSHROOM);
         ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(RegionsUnexploredBlocks.PINK_BIOSHROOM.getId(), RegionsUnexploredBlocks.POTTED_PINK_BIOSHROOM);
         ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(RegionsUnexploredBlocks.YELLOW_BIOSHROOM.getId(), RegionsUnexploredBlocks.POTTED_YELLOW_BIOSHROOM);
-        ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(RegionsUnexploredBlocks.SCULKWOOD_SAPLING.getId(), RegionsUnexploredBlocks.POTTED_SCULKWOOD_SAPLING);
+        ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(RegionsUnexploredBlocks.BRIMWOOD_SAPLING.getId(), RegionsUnexploredBlocks.POTTED_BRIMWOOD_SAPLING);
         ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(RegionsUnexploredBlocks.ALPHA_SAPLING.getId(), RegionsUnexploredBlocks.POTTED_ALPHA_SAPLING);
         ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(RegionsUnexploredBlocks.APPLE_OAK_SAPLING.getId(), RegionsUnexploredBlocks.POTTED_APPLE_OAK_SAPLING);
         ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(RegionsUnexploredBlocks.FLOWERING_SAPLING.getId(), RegionsUnexploredBlocks.POTTED_FLOWERING_SAPLING);

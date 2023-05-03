@@ -17,6 +17,6 @@ public class RuWoodTypes {
     public static WoodType PALM = WoodType.register(new WoodType(RegionsUnexploredMod.MOD_ID + ":palm", RuBlockSetType.PALM));
     public static WoodType PINE = WoodType.register(new WoodType(RegionsUnexploredMod.MOD_ID + ":pine", RuBlockSetType.PINE));
     public static WoodType REDWOOD = WoodType.register(new WoodType(RegionsUnexploredMod.MOD_ID + ":redwood", RuBlockSetType.REDWOOD));
-    public static WoodType SCULKWOOD = WoodType.register(new WoodType(RegionsUnexploredMod.MOD_ID + ":sculkwood", RuBlockSetType.SCULKWOOD));
+    public static WoodType BRIMWOOD = WoodType.register(new WoodType(RegionsUnexploredMod.MOD_ID + ":brimwood", RuBlockSetType.BRIMWOOD));
     public static WoodType WILLOW = WoodType.register(new WoodType(RegionsUnexploredMod.MOD_ID + ":willow", RuBlockSetType.WILLOW));
 }

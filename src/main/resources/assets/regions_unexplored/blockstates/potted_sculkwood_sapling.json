@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:block/potted_sculkwood_sapling"
+      "model": "regions_unexplored:block/potted_brimwood_sapling"
     }
   }
 }

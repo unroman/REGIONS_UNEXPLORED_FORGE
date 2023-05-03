@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "#minecraft:dirt",
-    "#minecraft:nylium",
-    "minecraft:sculk",
-    "minecraft:sculk_catalyst"
-  ]
-}

@@ -1,8 +1,6 @@
 package net.regions_unexplored.data.worldgen.features;
 
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.MultifaceGrowthFeature;
-import net.minecraft.world.level.levelgen.feature.SeagrassFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraftforge.registries.RegistryObject;
 import net.regions_unexplored.RegionsUnexploredMod;
@@ -17,13 +15,13 @@ import net.regions_unexplored.data.worldgen.features.feature.configuration.SeaRo
 import net.regions_unexplored.data.worldgen.features.feature.redstonefeatures.*;
 import net.regions_unexplored.data.worldgen.features.feature.tree.*;
 import net.regions_unexplored.data.worldgen.features.feature.tree.config.RuTreeConfiguration;
+import net.regions_unexplored.data.worldgen.features.feature.tree.config.SmallBushConfiguration;
 import net.regions_unexplored.data.worldgen.features.feature.tree.config.TallSaplingConfiguration;
-import net.regions_unexplored.data.worldgen.features.treefeature.GiantSculkWillowFeature;
+import net.regions_unexplored.data.worldgen.features.treefeature.TallBrimWillowFeature;
 import net.regions_unexplored.data.worldgen.features.treefeature.NetherWillowFeature;
-import net.regions_unexplored.data.worldgen.features.treefeature.SculkWillowFeature;
+import net.regions_unexplored.data.worldgen.features.treefeature.BrimWillowFeature;
 import net.regions_unexplored.data.worldgen.structures.MeadowRock;
 import net.regions_unexplored.data.worldgen.structures.Spires;
-import org.apache.http.cookie.SM;
 
 public class RegionsUnexploredFeatures {
 
@@ -43,8 +41,8 @@ public class RegionsUnexploredFeatures {
     public static RegistryObject<Feature> LARGE_JOSHUA_TREE;
     public static RegistryObject<Feature> MEDIUM_JOSHUA_TREE;
     public static RegistryObject<Feature> GIANT_PINK_BIOSHROOM;
-    public static RegistryObject<Feature> SCULK_WILLOW;
-    public static RegistryObject<Feature> GIANT_SCULK_WILLOW;
+    public static RegistryObject<Feature> BRIM_WILLOW;
+    public static RegistryObject<Feature> TALL_BRIM_WILLOW;
     public static RegistryObject<Feature> NETHER_MEADOW_ROCK;
     public static RegistryObject<Feature> GLISTERING_IVY;
     public static RegistryObject<Feature> HANGING_EARLIGHT;
@@ -65,6 +63,8 @@ public class RegionsUnexploredFeatures {
     public static RegistryObject<Feature> HYACINTH_PLANTS;
     public static RegistryObject<Feature> OCEAN_ROCK;
     public static RegistryObject<Feature> SMOULDERING_DIRT;
+    public static RegistryObject<Feature> ASHEN_TREE;
+    public static RegistryObject<Feature> SMALL_BUSH;
 
     public static void addFeatures() {
         SPIRE_FEATURE = RegionsUnexploredMod.FEATURES.register("spire_feature", () -> new Spires());
@@ -83,8 +83,8 @@ public class RegionsUnexploredFeatures {
         LARGE_JOSHUA_TREE = RegionsUnexploredMod.FEATURES.register("large_joshua_tree", () -> new LargeJoshuaTreeFeature(NoneFeatureConfiguration.CODEC));
         MEDIUM_JOSHUA_TREE = RegionsUnexploredMod.FEATURES.register("medium_joshua_tree", () -> new MediumJoshuaTreeFeature(NoneFeatureConfiguration.CODEC));
         GIANT_PINK_BIOSHROOM = RegionsUnexploredMod.FEATURES.register("giant_pink_bioshroom", () -> new PinkBioshroomFeature(NoneFeatureConfiguration.CODEC));
-        SCULK_WILLOW = RegionsUnexploredMod.FEATURES.register("sculk_willow", () -> new SculkWillowFeature(NoneFeatureConfiguration.CODEC));
-        GIANT_SCULK_WILLOW = RegionsUnexploredMod.FEATURES.register("giant_sculk_willow", () -> new GiantSculkWillowFeature(NoneFeatureConfiguration.CODEC));
+        BRIM_WILLOW = RegionsUnexploredMod.FEATURES.register("brim_willow", () -> new BrimWillowFeature(NoneFeatureConfiguration.CODEC));
+        TALL_BRIM_WILLOW = RegionsUnexploredMod.FEATURES.register("tall_brim_willow", () -> new TallBrimWillowFeature(NoneFeatureConfiguration.CODEC));
         NETHER_MEADOW_ROCK = RegionsUnexploredMod.FEATURES.register("nether_meadow_rock", () -> new NetherBlockBlobFeature(BlockStateConfiguration.CODEC));
         GLISTERING_IVY = RegionsUnexploredMod.FEATURES.register("glistering_ivy", () -> new GlisteringIvyFeature(NoneFeatureConfiguration.CODEC));
         HANGING_EARLIGHT = RegionsUnexploredMod.FEATURES.register("hanging_earlight", () -> new HangingEarlightFeature(NoneFeatureConfiguration.CODEC));
@@ -105,5 +105,7 @@ public class RegionsUnexploredFeatures {
         HYACINTH_PLANTS = RegionsUnexploredMod.FEATURES.register("hyacinth_plants", () -> new HyacinthPlantsFeature(ProbabilityFeatureConfiguration.CODEC));
         OCEAN_ROCK = RegionsUnexploredMod.FEATURES.register("ocean_rock", () -> new SeaRockFeature(SeaRockConfiguration.CODEC));
         SMOULDERING_DIRT = RegionsUnexploredMod.FEATURES.register("smouldering_dirt", () -> new SmoulderingAshenDirtFeature(NoneFeatureConfiguration.CODEC));
+        ASHEN_TREE = RegionsUnexploredMod.FEATURES.register("ashen_tree", () -> new AshenTreeFeature(RuTreeConfiguration.CODEC));
+        SMALL_BUSH = RegionsUnexploredMod.FEATURES.register("small_bush", () -> new SmallBushFeature(SmallBushConfiguration.CODEC));
     }
 }

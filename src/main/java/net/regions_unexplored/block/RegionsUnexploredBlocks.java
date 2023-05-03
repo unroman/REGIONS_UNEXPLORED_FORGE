@@ -15,8 +15,6 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.RegistryObject;
 import net.regions_unexplored.RegionsUnexploredMod;
 import net.regions_unexplored.world.level.block.*;
@@ -119,7 +117,7 @@ public class RegionsUnexploredBlocks {
     public static RegistryObject<Block> REDWOOD_SAPLING;
     public static RegistryObject<Block> RED_CHERRY_SAPLING;
     public static RegistryObject<Block> RED_MAPLE_SAPLING;
-    public static RegistryObject<Block> SCULKWOOD_SAPLING;
+    public static RegistryObject<Block> BRIMWOOD_SAPLING;
     public static RegistryObject<Block> SILVER_BIRCH_SAPLING;
     public static RegistryObject<Block> WHITE_CHERRY_SAPLING;
     public static RegistryObject<Block> WILLOW_SAPLING;
@@ -213,7 +211,7 @@ public class RegionsUnexploredBlocks {
     public static RegistryObject<Block> POTTED_REDWOOD_SAPLING;
     public static RegistryObject<Block> POTTED_RED_CHERRY_SAPLING;
     public static RegistryObject<Block> POTTED_RED_MAPLE_SAPLING;
-    public static RegistryObject<Block> POTTED_SCULKWOOD_SAPLING;
+    public static RegistryObject<Block> POTTED_BRIMWOOD_SAPLING;
     public static RegistryObject<Block> POTTED_SILVER_BIRCH_SAPLING;
     public static RegistryObject<Block> POTTED_WHITE_CHERRY_SAPLING;
     public static RegistryObject<Block> POTTED_WILLOW_SAPLING;
@@ -270,7 +268,7 @@ public class RegionsUnexploredBlocks {
     public static RegistryObject<Block> REDWOOD_LEAVES;
     public static RegistryObject<Block> RED_CHERRY_LEAVES;
     public static RegistryObject<Block> RED_MAPLE_LEAVES;
-    public static RegistryObject<Block> SCULKWOOD_LEAVES;
+    public static RegistryObject<Block> BRIMWOOD_LEAVES;
     public static RegistryObject<Block> SILVER_BIRCH_LEAVES;
     public static RegistryObject<Block> WHITE_CHERRY_LEAVES;
     public static RegistryObject<Block> WILLOW_LEAVES;
@@ -556,20 +554,20 @@ public class RegionsUnexploredBlocks {
     public static RegistryObject<Block> REDWOOD_SIGN;
     public static RegistryObject<Block> REDWOOD_WALL_SIGN;
     //SCULKWOOD_BLOCKS
-    public static RegistryObject<Block> SCULKWOOD_LOG;
-    public static RegistryObject<Block> SCULKWOOD_LOG_DARK;
-    public static RegistryObject<Block> SCULKWOOD_LOG_TRANSITION;
-    public static RegistryObject<Block> SCULKWOOD_PLANKS;
-    public static RegistryObject<Block> SCULKWOOD_STAIRS;
-    public static RegistryObject<Block> SCULKWOOD_SLAB;
-    public static RegistryObject<Block> SCULKWOOD_FENCE;
-    public static RegistryObject<Block> SCULKWOOD_DOOR;
-    public static RegistryObject<Block> SCULKWOOD_FENCE_GATE;
-    public static RegistryObject<Block> SCULKWOOD_TRAPDOOR;
-    public static RegistryObject<Block> SCULKWOOD_PRESSURE_PLATE;
-    public static RegistryObject<Block> SCULKWOOD_BUTTON;
-    public static RegistryObject<Block> SCULKWOOD_SIGN;
-    public static RegistryObject<Block> SCULKWOOD_WALL_SIGN;
+    public static RegistryObject<Block> BRIMWOOD_LOG;
+    public static RegistryObject<Block> BRIMWOOD_LOG_MAGMA;
+    public static RegistryObject<Block> BRIMWOOD_LOG_TRANSITION;
+    public static RegistryObject<Block> BRIMWOOD_PLANKS;
+    public static RegistryObject<Block> BRIMWOOD_STAIRS;
+    public static RegistryObject<Block> BRIMWOOD_SLAB;
+    public static RegistryObject<Block> BRIMWOOD_FENCE;
+    public static RegistryObject<Block> BRIMWOOD_DOOR;
+    public static RegistryObject<Block> BRIMWOOD_FENCE_GATE;
+    public static RegistryObject<Block> BRIMWOOD_TRAPDOOR;
+    public static RegistryObject<Block> BRIMWOOD_PRESSURE_PLATE;
+    public static RegistryObject<Block> BRIMWOOD_BUTTON;
+    public static RegistryObject<Block> BRIMWOOD_SIGN;
+    public static RegistryObject<Block> BRIMWOOD_WALL_SIGN;
     //WILLOW_BLOCKS
     public static RegistryObject<Block> WILLOW_LOG;
     public static RegistryObject<Block> STRIPPED_WILLOW_LOG;
@@ -664,9 +662,8 @@ public class RegionsUnexploredBlocks {
     public static RegistryObject<Block> HANGING_EARLIGHT;
     public static RegistryObject<Block> HANGING_EARLIGHT_PLANT;
     //SCULK_BLOCKS
-    public static RegistryObject<Block> SCULK_GRASS_BLOCK;
-    public static RegistryObject<Block> SCULK_SPROUT;
-    public static RegistryObject<Block> SCULK_TENDRIL;
+    public static RegistryObject<Block> BRIMSPROUT_NYLIUM;
+    public static RegistryObject<Block> BRIMSPROUT;
 
     /*-----------------OCEAN_BLOCKS-----------------*/
     //HYACINTH_BLOCKS
@@ -680,6 +677,7 @@ public class RegionsUnexploredBlocks {
     public static RegistryObject<Block> ASHEN_SHRUB;
     public static RegistryObject<Block> ASHEN_LOG;
     public static RegistryObject<Block> ASHEN_LEAVES;
+    public static RegistryObject<Block> ASHEN_GRASS;
 
     /*-----------------PLACERS-----------------*/
     public static RegistryObject<Block> DIRT_PLACEMENT;
@@ -775,7 +773,7 @@ public class RegionsUnexploredBlocks {
         REDWOOD_SAPLING = registerDefaultBlock("redwood_sapling", () -> new RuSaplingBlock(new RedwoodTreeGrower()));
         RED_CHERRY_SAPLING = registerDefaultBlock("red_cherry_sapling", () -> new RuSaplingBlock(new RedCherryTreeGrower()));
         RED_MAPLE_SAPLING = registerDefaultBlock("red_maple_sapling", () -> new RuSaplingBlock(new RedMapleTreeGrower()));
-        SCULKWOOD_SAPLING = registerDefaultBlock("sculkwood_sapling", () -> new SculkSaplingBlock(new SculkwoodGrower()));
+        BRIMWOOD_SAPLING = registerDefaultBlock("brimwood_sapling", () -> new BrimSaplingBlock(new BrimwoodGrower()));
         SILVER_BIRCH_SAPLING = registerDefaultBlock("silver_birch_sapling", () -> new RuSaplingBlock(new SilverBirchTreeGrower()));
         WHITE_CHERRY_SAPLING = registerDefaultBlock("white_cherry_sapling", () -> new RuSaplingBlock(new WhiteCherryTreeGrower()));
         WILLOW_SAPLING = registerDefaultBlock("willow_sapling", () -> new RuSaplingBlock(new WillowTreeGrower()));
@@ -869,7 +867,7 @@ public class RegionsUnexploredBlocks {
         POTTED_REDWOOD_SAPLING = RegionsUnexploredMod.BLOCKS.register("potted_redwood_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, RegionsUnexploredBlocks.REDWOOD_SAPLING, BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.STONE)));
         POTTED_RED_CHERRY_SAPLING = RegionsUnexploredMod.BLOCKS.register("potted_red_cherry_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, RegionsUnexploredBlocks.RED_CHERRY_SAPLING, BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.STONE)));
         POTTED_RED_MAPLE_SAPLING = RegionsUnexploredMod.BLOCKS.register("potted_red_maple_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, RegionsUnexploredBlocks.RED_MAPLE_SAPLING, BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.STONE)));
-        POTTED_SCULKWOOD_SAPLING = RegionsUnexploredMod.BLOCKS.register("potted_sculkwood_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, RegionsUnexploredBlocks.SCULKWOOD_SAPLING, BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.STONE)));
+        POTTED_BRIMWOOD_SAPLING = RegionsUnexploredMod.BLOCKS.register("potted_brimwood_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, RegionsUnexploredBlocks.BRIMWOOD_SAPLING, BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.STONE)));
         POTTED_SILVER_BIRCH_SAPLING = RegionsUnexploredMod.BLOCKS.register("potted_silver_birch_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, RegionsUnexploredBlocks.SILVER_BIRCH_SAPLING, BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.STONE)));
         POTTED_WHITE_CHERRY_SAPLING = RegionsUnexploredMod.BLOCKS.register("potted_white_cherry_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, RegionsUnexploredBlocks.WHITE_CHERRY_SAPLING, BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.STONE)));
         POTTED_WILLOW_SAPLING = RegionsUnexploredMod.BLOCKS.register("potted_willow_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, RegionsUnexploredBlocks.WILLOW_SAPLING, BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.STONE)));
@@ -926,7 +924,7 @@ public class RegionsUnexploredBlocks {
         REDWOOD_LEAVES = registerDefaultBlock("redwood_leaves", () -> leaves(MaterialColor.PLANT));
         RED_CHERRY_LEAVES = registerDefaultBlock("red_cherry_leaves", () -> cherryLeaves(MaterialColor.COLOR_RED));
         RED_MAPLE_LEAVES = registerDefaultBlock("red_maple_leaves", () -> leaves(MaterialColor.COLOR_RED));
-        SCULKWOOD_LEAVES = registerDefaultBlock("sculkwood_leaves", () -> sculkLeaves(MaterialColor.COLOR_BLUE));
+        BRIMWOOD_LEAVES = registerDefaultBlock("brimwood_leaves", () -> sculkLeaves(MaterialColor.COLOR_BLUE));
         SILVER_BIRCH_LEAVES = registerDefaultBlock("silver_birch_leaves", () -> leaves(MaterialColor.COLOR_YELLOW));
         WHITE_CHERRY_LEAVES = registerDefaultBlock("white_cherry_leaves", () -> cherryLeaves(MaterialColor.TERRACOTTA_WHITE));
         WILLOW_LEAVES = registerDefaultBlock("willow_leaves", () -> leaves(MaterialColor.PLANT));
@@ -989,10 +987,10 @@ public class RegionsUnexploredBlocks {
         MOSSY_STONE = registerDefaultBlock("mossy_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).sound(SoundType.STONE).strength(1.5f, 6f).requiresCorrectToolForDrops()));
 
         /*-----------------OTHER_BLOCKS-----------------*/
-        ASH = registerDefaultBlock("ash", () -> new AshBlock(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.COLOR_GRAY).strength(0.5F).sound(SoundType.GRAVEL).randomTicks().speedFactor(0.7f)));
+        ASH = registerDefaultBlock("ash", () -> new AshBlock(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.COLOR_GRAY).strength(0.5F).sound(SoundType.GRAVEL).randomTicks()));
         ASH_VENT = registerDefaultBlock("ash_vent", () -> new AshVentBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).strength(1.6F).sound(SoundType.BASALT).randomTicks().requiresCorrectToolForDrops()));
         QUICKSAND = registerDefaultBlock("quicksand", () -> new QuicksandBlock(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.SAND).strength(0.5F).sound(SoundType.GRAVEL).requiresCorrectToolForDrops().randomTicks().noCollission().isSuffocating(RegionsUnexploredBlocks::always).isViewBlocking(RegionsUnexploredBlocks::always).isValidSpawn(RegionsUnexploredBlocks::never)));
-        VOLCANIC_ASH = registerDefaultBlock("volcanic_ash", () -> new AshBlock(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.COLOR_BLACK).strength(0.5F).sound(SoundType.GRAVEL).randomTicks().speedFactor(0.7f)));
+        VOLCANIC_ASH = registerDefaultBlock("volcanic_ash", () -> new AshBlock(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.COLOR_BLACK).strength(0.5F).sound(SoundType.GRAVEL).randomTicks()));
 
         /*-----------------WOOD_TYPES-----------------*/
         //SILVER_BIRCH
@@ -1211,21 +1209,20 @@ public class RegionsUnexploredBlocks {
         REDWOOD_BUTTON = registerDefaultBlock("redwood_button", () -> new ButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOD), RuBlockSetType.REDWOOD, 30, true));
         REDWOOD_SIGN = RegionsUnexploredMod.BLOCKS.register("redwood_sign", () -> new RuStandingSignBlock(BlockBehaviour.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), RuWoodTypes.REDWOOD));
         REDWOOD_WALL_SIGN = RegionsUnexploredMod.BLOCKS.register("redwood_wall_sign", () -> new RuWallSignBlock(BlockBehaviour.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD).dropsLike(REDWOOD_SIGN.get()), RuWoodTypes.REDWOOD));
-        //SCULKWOOD_BLOCKS
-        SCULKWOOD_LOG = registerDefaultBlock("sculkwood_log", () -> log(MaterialColor.SAND, MaterialColor.SAND));
-        SCULKWOOD_LOG_DARK = registerDefaultBlock("sculkwood_log_dark", () -> log(MaterialColor.COLOR_CYAN, MaterialColor.COLOR_CYAN));
-        SCULKWOOD_LOG_TRANSITION = registerDefaultBlock("sculkwood_log_transition", () -> log(MaterialColor.COLOR_CYAN, MaterialColor.SAND));
-        SCULKWOOD_PLANKS = registerDefaultBlock("sculkwood_planks", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.SAND).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-        SCULKWOOD_STAIRS = registerDefaultBlock("sculkwood_stairs", () -> woodStairs(MaterialColor.SAND));
-        SCULKWOOD_SLAB = registerDefaultBlock("sculkwood_slab", () -> woodSlab(MaterialColor.SAND));
-        SCULKWOOD_FENCE = registerDefaultBlock("sculkwood_fence", () -> woodFence(MaterialColor.SAND));
-        SCULKWOOD_DOOR = registerDefaultBlock("sculkwood_door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.SAND).strength(3.0F).sound(SoundType.WOOD).noOcclusion(), RuBlockSetType.SCULKWOOD));
-        SCULKWOOD_FENCE_GATE = registerDefaultBlock("sculkwood_fence_gate", () -> woodFenceGate(MaterialColor.SAND, RuWoodTypes.SCULKWOOD));
-        SCULKWOOD_TRAPDOOR = registerDefaultBlock("sculkwood_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.SAND).strength(3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(RegionsUnexploredBlocks::never), RuBlockSetType.SCULKWOOD));
-        SCULKWOOD_PRESSURE_PLATE = registerDefaultBlock("sculkwood_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).noCollission().strength(0.5F).sound(SoundType.WOOD), RuBlockSetType.SCULKWOOD));
-        SCULKWOOD_BUTTON = registerDefaultBlock("sculkwood_button", () -> new ButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOD), RuBlockSetType.SCULKWOOD, 30, true));
-        SCULKWOOD_SIGN = RegionsUnexploredMod.BLOCKS.register("sculkwood_sign", () -> new RuStandingSignBlock(BlockBehaviour.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), RuWoodTypes.SCULKWOOD));
-        SCULKWOOD_WALL_SIGN = RegionsUnexploredMod.BLOCKS.register("sculkwood_wall_sign", () -> new RuWallSignBlock(BlockBehaviour.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD).dropsLike(SCULKWOOD_SIGN.get()), RuWoodTypes.SCULKWOOD));
+        //BRIMWOOD_BLOCKS
+        BRIMWOOD_LOG = registerDefaultBlock("brimwood_log", () -> log(MaterialColor.COLOR_BROWN, MaterialColor.COLOR_BROWN));
+        BRIMWOOD_LOG_MAGMA = registerDefaultBlock("brimwood_log_magma", () -> new MagmaLogBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_BROWN).strength(2.0F).sound(SoundType.WOOD).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 12)));
+        BRIMWOOD_PLANKS = registerDefaultBlock("brimwood_planks", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_ORANGE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+        BRIMWOOD_STAIRS = registerDefaultBlock("brimwood_stairs", () -> woodStairs(MaterialColor.COLOR_ORANGE));
+        BRIMWOOD_SLAB = registerDefaultBlock("brimwood_slab", () -> woodSlab(MaterialColor.COLOR_ORANGE));
+        BRIMWOOD_FENCE = registerDefaultBlock("brimwood_fence", () -> woodFence(MaterialColor.COLOR_ORANGE));
+        BRIMWOOD_DOOR = registerDefaultBlock("brimwood_door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_ORANGE).strength(3.0F).sound(SoundType.WOOD).noOcclusion(), RuBlockSetType.BRIMWOOD));
+        BRIMWOOD_FENCE_GATE = registerDefaultBlock("brimwood_fence_gate", () -> woodFenceGate(MaterialColor.COLOR_ORANGE, RuWoodTypes.BRIMWOOD));
+        BRIMWOOD_TRAPDOOR = registerDefaultBlock("brimwood_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_ORANGE).strength(3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(RegionsUnexploredBlocks::never), RuBlockSetType.BRIMWOOD));
+        BRIMWOOD_PRESSURE_PLATE = registerDefaultBlock("brimwood_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_ORANGE).noCollission().strength(0.5F).sound(SoundType.WOOD), RuBlockSetType.BRIMWOOD));
+        BRIMWOOD_BUTTON = registerDefaultBlock("brimwood_button", () -> new ButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOD), RuBlockSetType.BRIMWOOD, 30, true));
+        BRIMWOOD_SIGN = RegionsUnexploredMod.BLOCKS.register("brimwood_sign", () -> new RuStandingSignBlock(BlockBehaviour.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), RuWoodTypes.BRIMWOOD));
+        BRIMWOOD_WALL_SIGN = RegionsUnexploredMod.BLOCKS.register("brimwood_wall_sign", () -> new RuWallSignBlock(BlockBehaviour.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD).dropsLike(BRIMWOOD_SIGN.get()), RuWoodTypes.BRIMWOOD));
         //WILLOW_BLOCKS
         WILLOW_LOG = registerDefaultBlock("willow_log", () -> log(MaterialColor.WOOD, MaterialColor.WOOD));
         STRIPPED_WILLOW_LOG = registerDefaultBlock("stripped_willow_log", () -> log(MaterialColor.WOOD, MaterialColor.WOOD));
@@ -1320,9 +1317,8 @@ public class RegionsUnexploredBlocks {
         HANGING_EARLIGHT = registerDefaultBlock("hanging_earlight", () -> new HangingEarlightBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_BLUE).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 14)));
         HANGING_EARLIGHT_PLANT = RegionsUnexploredMod.BLOCKS.register("hanging_earlight_plant", () -> new HangingEarlightPlantBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_BLUE).noCollission().instabreak().sound(SoundType.WEEPING_VINES)));
         //SCULK_BLOCKS
-        SCULK_GRASS_BLOCK = registerDefaultBlock("sculk_grass_block", () -> new RuNyliumBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLUE).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.SCULK_SENSOR)));
-        SCULK_SPROUT = registerDefaultBlock("sculk_sprout", () -> new SculkPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.SCULK).offsetType(BlockBehaviour.OffsetType.XYZ)));
-        SCULK_TENDRIL = registerDefaultBlock("sculk_tendril", () -> new SculkPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.SCULK_SENSOR).offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 13)));
+        BRIMSPROUT_NYLIUM = registerDefaultBlock("brimsprout_nylium", () -> new RuNyliumBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_RED).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.SCULK_SENSOR)));
+        BRIMSPROUT = registerDefaultBlock("brimsprout", () -> new BrimPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.SCULK).offsetType(BlockBehaviour.OffsetType.XYZ)));
 
         /*-----------------OCEAN_BLOCKS-----------------*/
         //HYACINTH_BLOCKS
@@ -1334,9 +1330,10 @@ public class RegionsUnexploredBlocks {
         TALL_HYACINTH_STOCK = registerDefaultBlock("tall_hyacinth_stock", () -> new TallHyacinthStockBlock(BlockBehaviour.Properties.of(Material.WATER_PLANT).noCollission().instabreak().sound(SoundType.WET_GRASS).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 12)));
         //SMOULDERING_WOODLAND_BLOCKS
         ASHEN_DIRT = registerDefaultBlock("ashen_dirt", () -> new AshenDirtBlock(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.COLOR_GRAY).strength(0.5F).sound(SoundType.GRAVEL).randomTicks().lightLevel((bs) -> AshenDirtBlock.isSmouldering(bs) ? 7 : 0)));
-        ASHEN_SHRUB = registerDefaultBlock("ashen_shrub", () -> new AshenShrubBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.ROOTED_DIRT).offsetType(BlockBehaviour.OffsetType.XZ)));
+        ASHEN_SHRUB = registerDefaultBlock("ashen_shrub", () -> new AshenShrubBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.ROOTED_DIRT).offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true)));
         ASHEN_LOG = registerDefaultBlock("ashen_log", () -> log(MaterialColor.COLOR_LIGHT_GRAY, MaterialColor.COLOR_GRAY));
         ASHEN_LEAVES = registerDefaultBlock("ashen_leaves", () -> appleLeaves(MaterialColor.COLOR_LIGHT_GRAY));
+        ASHEN_GRASS = registerDefaultBlock("ashen_grass", () -> new AshenTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XYZ).hasPostProcess((bs, br, bp) -> AshenTallGrassBlock.isSmouldering(bs) ? true : false).emissiveRendering((bs, br, bp) -> AshenTallGrassBlock.isSmouldering(bs) ? true : false).lightLevel((bs) -> AshenTallGrassBlock.isSmouldering(bs) ? 5 : 0)));
 
         /*-----------------PLACERS-----------------*/
         DIRT_PLACEMENT = RegionsUnexploredMod.BLOCKS.register("dirt_placement", () -> new DirtPlacementBlock());

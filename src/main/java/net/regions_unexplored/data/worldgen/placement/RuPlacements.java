@@ -74,6 +74,7 @@ public class RuPlacements {
     public static final ResourceKey<PlacedFeature>  TOP_DRIPSTONE = RuPlacementUtils.createKey("top_dripstone");
     public static final ResourceKey<PlacedFeature>  MINERAL_VINES = RuPlacementUtils.createKey("mineral_vines");
     public static final ResourceKey<PlacedFeature>  ROCK_PILLAR = RuPlacementUtils.createKey("rock_pillar");
+    public static final ResourceKey<PlacedFeature>  SMOULDERING_DIRT = RuPlacementUtils.createKey("smouldering_dirt");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> featureGetter = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -116,6 +117,7 @@ public class RuPlacements {
         final Holder<ConfiguredFeature<?, ?>>  TOP_DRIPSTONE = featureGetter.getOrThrow(RuFeatures.TOP_DRIPSTONE);
         final Holder<ConfiguredFeature<?, ?>>  MINERAL_VINES = featureGetter.getOrThrow(CaveFeatures.CAVE_VINE);
         final Holder<ConfiguredFeature<?, ?>>  ROCK_PILLAR = featureGetter.getOrThrow(RuFeatures.ROCK_PILLAR);
+        final Holder<ConfiguredFeature<?, ?>>  SMOULDERING_DIRT = featureGetter.getOrThrow(RuFeatures.SMOULDERING_DIRT);
 
 
         register(context, RuPlacements.RU_CLAY, RU_CLAY, InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)), BiomeFilter.biome());
@@ -158,6 +160,7 @@ public class RuPlacements {
         register(context, RuPlacements.MINERAL_VINES, MINERAL_VINES, CountPlacement.of(155), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.hasSturdyFace(Direction.DOWN), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(-1)), BiomeFilter.biome());
 
         register(context, RuPlacements.ROCK_PILLAR, ROCK_PILLAR, CountOnEveryLayerPlacement.of(1),  BiomeFilter.biome());
+        register(context, RuPlacements.SMOULDERING_DIRT, SMOULDERING_DIRT, CountPlacement.of(25), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,  BiomeFilter.biome());
     }
     private static List<PlacementModifier> orePlacement(PlacementModifier p_195347_, PlacementModifier p_195348_) {
         return List.of(p_195347_, InSquarePlacement.spread(), p_195348_, BiomeFilter.biome());

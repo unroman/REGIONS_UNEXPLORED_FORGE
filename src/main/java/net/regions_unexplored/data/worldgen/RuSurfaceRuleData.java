@@ -34,6 +34,7 @@ public class RuSurfaceRuleData
     private static final SurfaceRules.RuleSource MOSSY_STONE = makeStateRule(RegionsUnexploredBlocks.MOSSY_STONE.get());
     private static final SurfaceRules.RuleSource VANILLA_MUD = makeStateRule(Blocks.MUD);
     private static final SurfaceRules.RuleSource ASH = makeStateRule(RegionsUnexploredBlocks.ASH.get());
+    private static final SurfaceRules.RuleSource ASH_VENT = makeStateRule(RegionsUnexploredBlocks.ASH_VENT.get());
     private static final SurfaceRules.RuleSource ASHEN_DIRT = makeStateRule(RegionsUnexploredBlocks.ASHEN_DIRT.get());
     private static final SurfaceRules.RuleSource VIRIDESCENT_NYLIUM = makeStateRule(RegionsUnexploredBlocks.VIRIDESCENT_NYLIUM.get());
     private static final SurfaceRules.RuleSource DEEPSLATE_VIRIDESCENT_NYLIUM = makeStateRule(RegionsUnexploredBlocks.DEEPSLATE_VIRIDESCENT_NYLIUM.get());
@@ -93,7 +94,7 @@ public class RuSurfaceRuleData
 
                             //SMOULDERING_WOODLAND
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.SMOULDERING_WOODLAND),
-                                    SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, -0.25D), ASHEN_DIRT), ASH)),
+                                    SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, -0.25D), ASHEN_DIRT), SurfaceRules.ifTrue(SurfaceRules.noiseCondition(RuNoises.WEIGHTED, RuleWeight.getPercent(4)), ASH_VENT), ASH)),
 
                             //FUNGAL_FEN
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.FUNGAL_FEN),
@@ -214,9 +215,17 @@ public class RuSurfaceRuleData
                             //ARID_MOUNTAINS
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ARID_MOUNTAINS), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 30, CaveSurface.FLOOR), TERRACOTTA)),
 
-                            //CANADIAN/MAPLE_FOREST_BASE
+                            //MAPLE_FOREST_BASE
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.MAPLE_FOREST),
                                     SurfaceRules.ifTrue(shieldNoise(1.65D), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),STONE))),
+
+                            //STONE_BASE
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ICY_DESERT, RuBiomes.HYACINTH_DEEPS),
+                                    SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),STONE)),
+
+                            //ASHEN_BASE
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ICY_DESERT, RuBiomes.SMOULDERING_WOODLAND),
+                                    SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),ASHEN_DIRT)),
 
                             //ICY_DESERT_BASE
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ICY_DESERT),
@@ -224,7 +233,7 @@ public class RuSurfaceRuleData
 
                             //DEFAULT
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.MOUNTAINS), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),STONE)),
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.BLACKWOOD_FOREST, RuBiomes.SMOULDERING_WOODLAND, RuBiomes.BOREAL_FOREST, RuBiomes.COLD_BOREAL_FOREST, RuBiomes.GOLDEN_BOREAL_FOREST), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),FOREST_DIRT)),
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.BLACKWOOD_FOREST, RuBiomes.BOREAL_FOREST, RuBiomes.COLD_BOREAL_FOREST, RuBiomes.GOLDEN_BOREAL_FOREST), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),FOREST_DIRT)),
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.TROPICS, RuBiomes.DRY_BUSHLAND, RuBiomes.JOSHUA_DESERT, RuBiomes.BARLEY_FIELDS, RuBiomes.PRAIRIE, RuBiomes.ORCHARD, RuBiomes.STEPPE), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),PLAINS_DIRT)),
                             SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR),SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.waterBlockCheck(-1, 0),GRASS_BLOCK), DIRT)),SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),DIRT))
                     )),
@@ -271,7 +280,7 @@ public class RuSurfaceRuleData
 
                             //SMOULDERING_WOODLAND
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.SMOULDERING_WOODLAND),
-                                    SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.25D), GRASS_BLOCK),SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, -0.25D), COARSE_DIRT), ASH)),
+                                    SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, -0.25D), ASHEN_DIRT), SurfaceRules.ifTrue(SurfaceRules.noiseCondition(RuNoises.WEIGHTED, RuleWeight.getPercent(4)), ASH_VENT), ASH)),
 
                             //FUNGAL_FEN
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.FUNGAL_FEN),
@@ -399,9 +408,13 @@ public class RuSurfaceRuleData
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ICY_DESERT, RuBiomes.HYACINTH_DEEPS),
                                     SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),STONE)),
 
+                            //ASHEN_BASE
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.ICY_DESERT, RuBiomes.SMOULDERING_WOODLAND),
+                                    SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),ASHEN_DIRT)),
+
                             //DEFAULT
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.MOUNTAINS), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),STONE)),
-                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.BLACKWOOD_FOREST, RuBiomes.SMOULDERING_WOODLAND, RuBiomes.BOREAL_FOREST, RuBiomes.COLD_BOREAL_FOREST, RuBiomes.GOLDEN_BOREAL_FOREST), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),DIRT)),
+                            SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.BLACKWOOD_FOREST, RuBiomes.BOREAL_FOREST, RuBiomes.COLD_BOREAL_FOREST, RuBiomes.GOLDEN_BOREAL_FOREST), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),DIRT)),
                             SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.TROPICS, RuBiomes.DRY_BUSHLAND, RuBiomes.JOSHUA_DESERT, RuBiomes.BARLEY_FIELDS, RuBiomes.PRAIRIE, RuBiomes.ORCHARD, RuBiomes.STEPPE), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),DIRT)),
                             SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR),SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.waterBlockCheck(-1, 0),GRASS_BLOCK), DIRT)),SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),DIRT))
                     )),

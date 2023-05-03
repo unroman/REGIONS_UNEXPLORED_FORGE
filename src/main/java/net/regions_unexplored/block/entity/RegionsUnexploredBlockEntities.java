@@ -27,7 +27,7 @@ public class RegionsUnexploredBlockEntities {
                         RegionsUnexploredBlocks.PALM_WALL_SIGN.get(), RegionsUnexploredBlocks.PALM_SIGN.get(),
                         RegionsUnexploredBlocks.PINE_WALL_SIGN.get(), RegionsUnexploredBlocks.PINE_SIGN.get(),
                         RegionsUnexploredBlocks.REDWOOD_WALL_SIGN.get(), RegionsUnexploredBlocks.REDWOOD_SIGN.get(),
-                        RegionsUnexploredBlocks.SCULKWOOD_WALL_SIGN.get(), RegionsUnexploredBlocks.SCULKWOOD_SIGN.get(),
+                        RegionsUnexploredBlocks.BRIMWOOD_WALL_SIGN.get(), RegionsUnexploredBlocks.BRIMWOOD_SIGN.get(),
                         RegionsUnexploredBlocks.WILLOW_WALL_SIGN.get(), RegionsUnexploredBlocks.WILLOW_SIGN.get()
                 ).build(null));
     }

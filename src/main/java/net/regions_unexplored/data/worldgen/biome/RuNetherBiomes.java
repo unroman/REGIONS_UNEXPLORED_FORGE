@@ -118,22 +118,24 @@ public class RuNetherBiomes {
     }
 
     public static Biome corruptedHolt(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverHolder) {
-        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(338482).waterColor(37525).waterFogColor(338482)
-                .skyColor(calculateSkyColor(2.0f)).foliageColorOverride(217444).grassColorOverride(217444).ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.03F))
+        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(3479565).waterColor(3479565).waterFogColor(3479565)
+                .skyColor(calculateSkyColor(2.0f)).foliageColorOverride(7295817).grassColorOverride(7295817).ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.03F))
                 .ambientLoopSound(SoundEvents.AMBIENT_BASALT_DELTAS_LOOP).ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 6000, 8, 2.0D))
                 .ambientAdditionsSound(new AmbientAdditionsSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, 0.0111D)).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_CRIMSON_FOREST)).build();
 
-        MobSpawnSettings.Builder spawnBuilder = (new MobSpawnSettings.Builder());
+        MobSpawnSettings spawnBuilder = (new MobSpawnSettings.Builder())
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIFIED_PIGLIN, 1, 2, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.HOGLIN, 9, 3, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 5, 3, 4))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.STRIDER, 60, 1, 2)).build();
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverHolder);
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.NETHER_CAVE);
 
-        BiomeDefaultFeatures.addSculk(biomeBuilder);
-
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuVegetationPlacements.SCULK_WILLOW);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuVegetationPlacements.GIANT_SCULK_WILLOW);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherBiomePlacements.SCULK_SPROUT);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherBiomePlacements.SCULK_TENDRIL);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuVegetationPlacements.BRIM_WILLOW);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuVegetationPlacements.TALL_BRIM_WILLOW);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherBiomePlacements.BRIMSPROUT);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherBiomePlacements.BRIM_FLAMES);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.BLACKSTONE_BLOBS);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
@@ -145,7 +147,7 @@ public class RuNetherBiomes {
         BiomeDefaultFeatures.addNetherDefaultOres(biomeBuilder);
 
         return new Biome.BiomeBuilder().temperature(2.0f)
-                .downfall(0.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
+                .downfall(0.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder).generationSettings(biomeBuilder.build()).build();
     }
 
     public static Biome blackstoneBasin(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverHolder) {

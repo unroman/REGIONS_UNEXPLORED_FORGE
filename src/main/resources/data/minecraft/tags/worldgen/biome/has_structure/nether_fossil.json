@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "regions_unexplored:smouldering_woodland",
     "regions_unexplored:glistering_meadow"
   ]
 }

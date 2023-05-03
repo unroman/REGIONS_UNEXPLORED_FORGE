@@ -925,8 +925,8 @@ public class RuBiomePlacements {
         final Holder<ConfiguredFeature<?, ?>> SMOULDERING_WOODLAND_BASALT = featureGetter.getOrThrow(NetherFeatures.SMALL_BASALT_COLUMNS);
         final Holder<ConfiguredFeature<?, ?>> SMOULDERING_WOODLAND_VENT = featureGetter.getOrThrow(RuFeatures.ASH_VENT_PATCH);
         final Holder<ConfiguredFeature<?, ?>> SMOULDERING_WOODLAND_OAK = featureGetter.getOrThrow(RuTreeFeatures.DEAD_TREE);
-        final Holder<ConfiguredFeature<?, ?>> SMOULDERING_WOODLAND_DEAD_PINE = featureGetter.getOrThrow(RuTreeFeatures.DEAD_PINE_TREE);
-        final Holder<ConfiguredFeature<?, ?>> SMOULDERING_WOODLAND_PINE = featureGetter.getOrThrow(RuTreeFeatures.PINE_TREE);
+        final Holder<ConfiguredFeature<?, ?>> SMOULDERING_WOODLAND_DEAD_PINE = featureGetter.getOrThrow(RuTreeFeatures.ASHEN_TREE);
+        final Holder<ConfiguredFeature<?, ?>> SMOULDERING_WOODLAND_PINE = featureGetter.getOrThrow(RuTreeFeatures.ASHEN_PINE_TREE);
         final Holder<ConfiguredFeature<?, ?>> SMOULDERING_WOODLAND_DORCEL = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_DORCEL);
         final Holder<ConfiguredFeature<?, ?>> SMOULDERING_WOODLAND_TRILLIUM = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_WILTING_TRILLIUM);
         final Holder<ConfiguredFeature<?, ?>> SMOULDERING_WOODLAND_DEAD_STEPPE_SHRUB = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_DEAD_STEPPE_SHRUB);
@@ -1386,8 +1386,8 @@ public class RuBiomePlacements {
         register(context, RuBiomePlacements.SPIRES_SNOWY_GRASS, SPIRES_SNOWY_GRASS,   List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
 
         register(context, RuBiomePlacements.SMOULDERING_WOODLAND_OAK, SMOULDERING_WOODLAND_OAK,   List.of(CountPlacement.of(3), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
-        register(context, RuBiomePlacements.SMOULDERING_WOODLAND_DEAD_PINE, SMOULDERING_WOODLAND_DEAD_PINE, List.of(CountPlacement.of(16), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING),BiomeFilter.biome()));
-        register(context, RuBiomePlacements.SMOULDERING_WOODLAND_PINE, SMOULDERING_WOODLAND_PINE,   List.of(CountPlacement.of(2), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
+        register(context, RuBiomePlacements.SMOULDERING_WOODLAND_DEAD_PINE, SMOULDERING_WOODLAND_DEAD_PINE, List.of(CountPlacement.of(8), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING),BiomeFilter.biome()));
+        register(context, RuBiomePlacements.SMOULDERING_WOODLAND_PINE, SMOULDERING_WOODLAND_PINE,   List.of(CountPlacement.of(10), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuBiomePlacements.SMOULDERING_WOODLAND_DORCEL, SMOULDERING_WOODLAND_DORCEL,   List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         register(context, RuBiomePlacements.SMOULDERING_WOODLAND_TRILLIUM, SMOULDERING_WOODLAND_TRILLIUM,   List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
         register(context, RuBiomePlacements.SMOULDERING_WOODLAND_DEAD_STEPPE_SHRUB, SMOULDERING_WOODLAND_DEAD_STEPPE_SHRUB,   List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RegionsUnexploredBlocks.GRASS_PLACEMENT.get()), BiomeFilter.biome()));

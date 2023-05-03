@@ -85,6 +85,7 @@ public class RuFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> MAGMA_DELTA = RuFeatureUtils.createKey("magma_delta");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OBSIDIAN_SPIRE = RuFeatureUtils.createKey("obsidian_spire");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ROCK_PILLAR = RuFeatureUtils.createKey("rock_pillar");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SMOULDERING_DIRT = RuFeatureUtils.createKey("smouldering_dirt");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest sandTest = new TagMatchTest(RegionsUnexploredTags.SANDS);
@@ -136,6 +137,7 @@ public class RuFeatures {
         register(context, MAGMA_DELTA, Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(Blocks.MAGMA_BLOCK.defaultBlockState(), Blocks.OBSIDIAN.defaultBlockState(), UniformInt.of(7, 8), UniformInt.of(0, 2)));
         register(context, OBSIDIAN_SPIRE, RegionsUnexploredFeatures.OBSIDIAN_SPIRE.get(), FeatureConfiguration.NONE);
         register(context, ROCK_PILLAR, RegionsUnexploredFeatures.ROCK_PILLAR.get(), FeatureConfiguration.NONE);
+        register(context, SMOULDERING_DIRT, RegionsUnexploredFeatures.SMOULDERING_DIRT.get(), FeatureConfiguration.NONE);
     }
 
     private static RandomPatchConfiguration grassPatch(BlockStateProvider stateProvider, int i) {

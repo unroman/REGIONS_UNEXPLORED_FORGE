@@ -129,8 +129,11 @@ public class RegionPrimaryBiomeBuilder {
     }
 
     private void addOffCoastBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> builder) {
-        this.addSurfaceBiome(builder, this.FULL_RANGE, this.FULL_RANGE, this.mushroomFieldsContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F,
-                CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.ISLAND_BIOME.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.ISLAND_BIOME.get()) :Biomes.MUSHROOM_FIELDS);
+        this.addSurfaceBiome(builder, this.temperatures[0], this.FULL_RANGE, this.mushroomFieldsContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.ICY_ISLAND.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.ICY_ISLAND.get()) :Biomes.MUSHROOM_FIELDS);
+        this.addSurfaceBiome(builder, this.temperatures[1], this.FULL_RANGE, this.mushroomFieldsContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.COOL_ISLAND.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.COOL_ISLAND.get()) :Biomes.MUSHROOM_FIELDS);
+        this.addSurfaceBiome(builder, this.temperatures[2], this.FULL_RANGE, this.mushroomFieldsContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.NEUTRAL_ISLAND.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.NEUTRAL_ISLAND.get()) :Biomes.MUSHROOM_FIELDS);
+        this.addSurfaceBiome(builder, this.temperatures[3], this.FULL_RANGE, this.mushroomFieldsContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.WARM_ISLAND.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.WARM_ISLAND.get()) :Biomes.MUSHROOM_FIELDS);
+        this.addSurfaceBiome(builder, this.temperatures[4], this.FULL_RANGE, this.mushroomFieldsContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_ISLAND.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_ISLAND.get()) :Biomes.MUSHROOM_FIELDS);
 
         for(int i = 0; i < this.temperatures.length; ++i) {
             Climate.Parameter climate$parameter = this.temperatures[i];

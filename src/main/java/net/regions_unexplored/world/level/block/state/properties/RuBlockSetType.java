@@ -24,7 +24,7 @@ public record RuBlockSetType(String name, SoundType soundType, SoundEvent doorCl
     public static final BlockSetType PALM = register(new BlockSetType(RegionsUnexploredMod.MOD_ID + ":palm"));
     public static final BlockSetType PINE = register(new BlockSetType(RegionsUnexploredMod.MOD_ID + ":pine"));
     public static final BlockSetType REDWOOD = register(new BlockSetType(RegionsUnexploredMod.MOD_ID + ":redwood"));
-    public static final BlockSetType SCULKWOOD = register(new BlockSetType(RegionsUnexploredMod.MOD_ID + ":sculkwood"));
+    public static final BlockSetType BRIMWOOD = register(new BlockSetType(RegionsUnexploredMod.MOD_ID + ":brimwood"));
     public static final BlockSetType WILLOW = register(new BlockSetType(RegionsUnexploredMod.MOD_ID + ":willow"));
     
     private static BlockSetType register(BlockSetType p_273033_) {

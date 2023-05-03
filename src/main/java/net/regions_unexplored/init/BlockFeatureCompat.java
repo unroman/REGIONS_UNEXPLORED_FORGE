@@ -2,6 +2,7 @@ package net.regions_unexplored.init;
 
 import com.google.common.collect.Maps;
 import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.FlintAndSteelItem;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -54,7 +55,7 @@ public class BlockFeatureCompat {
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.DEAD_PINE_LEAVES.get());
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.REDWOOD_SAPLING.get());
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.REDWOOD_LEAVES.get());
-        registerCompostableItems(0.3F, RegionsUnexploredBlocks.SCULKWOOD_LEAVES.get());
+        registerCompostableItems(0.3F, RegionsUnexploredBlocks.BRIMWOOD_LEAVES.get());
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.WILLOW_SAPLING.get());
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.WILLOW_LEAVES.get());
         registerCompostableItems(0.3F, RegionsUnexploredBlocks.CACTUS_FLOWER.get());
@@ -163,8 +164,8 @@ public class BlockFeatureCompat {
         registerCompostableItems(0.3f, RegionsUnexploredBlocks.GLISTERING_IVY.get());
         registerCompostableItems(0.3f, RegionsUnexploredBlocks.GLISTER_SPIRE.get());
         registerCompostableItems(0.2f, RegionsUnexploredBlocks.COBALT_ROOTS.get());
-        registerCompostableItems(0.3f, RegionsUnexploredBlocks.SCULKWOOD_SAPLING.get());
-        registerCompostableItems(0.1f, RegionsUnexploredBlocks.SCULK_SPROUT.get());
+        registerCompostableItems(0.3f, RegionsUnexploredBlocks.BRIMWOOD_SAPLING.get());
+        registerCompostableItems(0.1f, RegionsUnexploredBlocks.BRIMSPROUT.get());
 
         registerFlammableBlock(RegionsUnexploredBlocks.SILVER_BIRCH_LEAVES.get(), 30, 60);
         registerFlammableBlock(RegionsUnexploredBlocks.SILVER_BIRCH_LOG_BASE.get(), 5, 5);
@@ -528,8 +529,7 @@ public class BlockFeatureCompat {
 
         registerStrippableBlock(RegionsUnexploredBlocks.SILVER_BIRCH_LOG_BASE.get(), Blocks.STRIPPED_BIRCH_LOG);
 
-        registerStrippableBlock(RegionsUnexploredBlocks.SCULKWOOD_LOG_TRANSITION.get(), RegionsUnexploredBlocks.SCULKWOOD_LOG.get());
-        registerStrippableBlock(RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK.get(), RegionsUnexploredBlocks.SCULKWOOD_LOG.get());
+        registerStrippableBlock(RegionsUnexploredBlocks.BRIMWOOD_LOG_MAGMA.get(), RegionsUnexploredBlocks.BRIMWOOD_LOG.get());
 
         registerStrippableBlock(RegionsUnexploredBlocks.BAMBOO_LOG_LEAVES.get(), RegionsUnexploredBlocks.BAMBOO_LOG.get());
         //ShovelBlocks

@@ -24,9 +24,10 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStatePr
 import net.minecraft.world.level.levelgen.placement.*;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.data.worldgen.features.feature.bioshroom.GiantBioshroomConfiguration;
-import net.regions_unexplored.data.worldgen.features.feature.configuration.HyacinthStockConfiguration;
+import net.regions_unexplored.data.worldgen.features.feature.tree.config.SmallBushConfiguration;
 import net.regions_unexplored.data.worldgen.features.feature.tree.config.TallSaplingConfiguration;
 import net.regions_unexplored.util.worldgen.RuFeatureUtils;
+import net.regions_unexplored.world.level.block.grass.AshenTallGrassBlock;
 
 public class RuVegetationFeatures {
     public static final PlacementModifier WATERSIDE = HeightRangePlacement.uniform(VerticalAnchor.absolute(59), VerticalAnchor.absolute(60));
@@ -40,6 +41,7 @@ public class RuVegetationFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PINK_CHERRY_FLOWERS = RuFeatureUtils.createKey("pink_cherry_flowers");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WHITE_CHERRY_FLOWERS = RuFeatureUtils.createKey("white_cherry_flowers");
     //TALL_SAPLINGS
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ASHEN_SHRUB = RuFeatureUtils.createKey("ashen_shrub");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_ACACIA_SAPLING = RuFeatureUtils.createKey("tall_acacia_sapling");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_BAOBAB_SAPLING = RuFeatureUtils.createKey("tall_baobab_sapling");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_BIRCH_SAPLING = RuFeatureUtils.createKey("tall_birch_sapling");
@@ -187,10 +189,13 @@ public class RuVegetationFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERGROWN_VINE = RuFeatureUtils.createKey("overgrown_vine");
     public static final ResourceKey<ConfiguredFeature<?, ?>> NETHER_WILLOW = RuFeatureUtils.createKey("nether_willow");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_WILLOW = RuFeatureUtils.createKey("sculk_willow");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_SCULK_WILLOW = RuFeatureUtils.createKey("giant_sculk_willow");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_SCULK_SPROUT = RuFeatureUtils.createKey("patch_sculk_sprout");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_SCULK_TENDRIL = RuFeatureUtils.createKey("patch_sculk_tendril");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BRIM_WILLOW = RuFeatureUtils.createKey("brim_willow");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_BRIM_WILLOW = RuFeatureUtils.createKey("tall_brim_willow");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_BRIMSPROUT = RuFeatureUtils.createKey("patch_brimsprout");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_BRIM_FLAMES = RuFeatureUtils.createKey("patch_brim_flames");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ASHEN_GRASS = RuFeatureUtils.createKey("ashen_grass");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ASHEN_BUSH = RuFeatureUtils.createKey("ashen_bush");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         WeightedStateProvider leaveProvider = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.AZALEA_LEAVES.defaultBlockState().setValue(LeavesBlock.PERSISTENT, true), 4).add(Blocks.FLOWERING_AZALEA_LEAVES.defaultBlockState().setValue(LeavesBlock.PERSISTENT, true), 1));
@@ -203,6 +208,7 @@ public class RuVegetationFeatures {
         register(context, PINK_CHERRY_FLOWERS, RegionsUnexploredFeatures.AIR_MULTIFACE_GROWTH.get(), new MultifaceGrowthConfiguration((MultifaceBlock)RegionsUnexploredBlocks.PINK_CHERRY_FLOWERS.get(), 20, true, false, false, 1.0F, HolderSet.direct(Block::builtInRegistryHolder, Blocks.GRASS_BLOCK, RegionsUnexploredBlocks.FOREST_GRASS_BLOCK.get(), RegionsUnexploredBlocks.PLAINS_GRASS_BLOCK.get())));
         register(context, WHITE_CHERRY_FLOWERS, RegionsUnexploredFeatures.AIR_MULTIFACE_GROWTH.get(), new MultifaceGrowthConfiguration((MultifaceBlock)RegionsUnexploredBlocks.WHITE_CHERRY_FLOWERS.get(), 20, true, false, false, 1.0F, HolderSet.direct(Block::builtInRegistryHolder, Blocks.GRASS_BLOCK, RegionsUnexploredBlocks.FOREST_GRASS_BLOCK.get(), RegionsUnexploredBlocks.PLAINS_GRASS_BLOCK.get())));
         //TALL_SAPLINGS
+        register(context, ASHEN_SHRUB, RegionsUnexploredFeatures.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.ASHEN_SHRUB.get().defaultBlockState())));
         register(context, TALL_ACACIA_SAPLING, RegionsUnexploredFeatures.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_ACACIA_SAPLING.get().defaultBlockState())));
         register(context, TALL_BAOBAB_SAPLING, RegionsUnexploredFeatures.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_BAOBAB_SAPLING.get().defaultBlockState())));
         register(context, TALL_BIRCH_SAPLING, RegionsUnexploredFeatures.TALL_SAPLING.get(), new TallSaplingConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.TALL_BIRCH_SAPLING.get().defaultBlockState())));
@@ -347,12 +353,14 @@ public class RuVegetationFeatures {
         register(context, PATCH_COBALT_ROOTS, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.COBALT_ROOTS.get().defaultBlockState()), 32));
 
         register(context, NETHER_WILLOW, RegionsUnexploredFeatures.NETHER_WILLOW.get(), FeatureConfiguration.NONE);
-        register(context, SCULK_WILLOW, RegionsUnexploredFeatures.SCULK_WILLOW.get(), FeatureConfiguration.NONE);
-        register(context, GIANT_SCULK_WILLOW, RegionsUnexploredFeatures.GIANT_SCULK_WILLOW.get(), FeatureConfiguration.NONE);
+        register(context, BRIM_WILLOW, RegionsUnexploredFeatures.BRIM_WILLOW.get(), FeatureConfiguration.NONE);
+        register(context, TALL_BRIM_WILLOW, RegionsUnexploredFeatures.TALL_BRIM_WILLOW.get(), FeatureConfiguration.NONE);
 
-        register(context, PATCH_SCULK_SPROUT, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.SCULK_SPROUT.get().defaultBlockState()), 32));
-        register(context, PATCH_SCULK_TENDRIL, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.SCULK_TENDRIL.get().defaultBlockState()), 12));
+        register(context, PATCH_BRIMSPROUT, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.BRIMSPROUT.get().defaultBlockState()), 32));
+        register(context, PATCH_BRIM_FLAMES, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(Blocks.FIRE.defaultBlockState()), 12));
 
+        register(context, ASHEN_GRASS, Feature.RANDOM_PATCH, grassPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.ASHEN_GRASS.get().defaultBlockState(), 4).add(RegionsUnexploredBlocks.ASHEN_GRASS.get().defaultBlockState().setValue(AshenTallGrassBlock.SMOULDERING, true), 1)), 32));
+        register(context, ASHEN_BUSH, RegionsUnexploredFeatures.SMALL_BUSH.get(), new SmallBushConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.ASHEN_LEAVES.get().defaultBlockState().setValue(LeavesBlock.PERSISTENT, true))));
         //BONEMEALS
         WeightedStateProvider mycotoxicWeights = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.MYCOTOXIC_GRASS.get().defaultBlockState(), 87).add(RegionsUnexploredBlocks.YELLOW_BIOSHROOM.get().defaultBlockState(), 11));
         WeightedStateProvider glisteringWeights = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.GLISTERING_SPROUT.get().defaultBlockState(), 100).add(RegionsUnexploredBlocks.PINK_BIOSHROOM.get().defaultBlockState(), 1));

@@ -6,7 +6,6 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.entity.vehicle.ChestBoat;
@@ -47,7 +46,7 @@ public class RuChestBoat extends ChestBoat
             case PALM -> RegionsUnexploredItems.PALM_CHEST_BOAT.get();
             case PINE -> RegionsUnexploredItems.PINE_CHEST_BOAT.get();
             case REDWOOD -> RegionsUnexploredItems.REDWOOD_CHEST_BOAT.get();
-            case SCULKWOOD -> RegionsUnexploredItems.SCULKWOOD_CHEST_BOAT.get();
+            case SCULKWOOD -> RegionsUnexploredItems.BRIMWOOD_CHEST_BOAT.get();
             case WILLOW -> RegionsUnexploredItems.WILLOW_CHEST_BOAT.get();
         };
     }

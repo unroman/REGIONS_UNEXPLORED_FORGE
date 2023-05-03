@@ -171,15 +171,14 @@ public class FurnaceBurnTimes {
                         item == RegionsUnexploredBlocks.CHERRY_FENCE_GATE.get().asItem()||
                         item == RegionsUnexploredBlocks.CHERRY_TRAPDOOR.get().asItem()||
                         //Cherry
-                        item == RegionsUnexploredBlocks.SCULKWOOD_LOG.get().asItem()||
-                        item == RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK.get().asItem()||
-                        item == RegionsUnexploredBlocks.SCULKWOOD_LOG_TRANSITION.get().asItem()||
-                        item == RegionsUnexploredBlocks.SCULKWOOD_PLANKS.get().asItem()||
-                        item == RegionsUnexploredBlocks.SCULKWOOD_STAIRS.get().asItem()||
-                        item == RegionsUnexploredBlocks.SCULKWOOD_PRESSURE_PLATE.get().asItem()||
-                        item == RegionsUnexploredBlocks.SCULKWOOD_FENCE.get().asItem()||
-                        item == RegionsUnexploredBlocks.SCULKWOOD_FENCE_GATE.get().asItem()||
-                        item == RegionsUnexploredBlocks.SCULKWOOD_TRAPDOOR.get().asItem()||
+                        item == RegionsUnexploredBlocks.BRIMWOOD_LOG.get().asItem()||
+                        item == RegionsUnexploredBlocks.BRIMWOOD_LOG_MAGMA.get().asItem()||
+                        item == RegionsUnexploredBlocks.BRIMWOOD_PLANKS.get().asItem()||
+                        item == RegionsUnexploredBlocks.BRIMWOOD_STAIRS.get().asItem()||
+                        item == RegionsUnexploredBlocks.BRIMWOOD_PRESSURE_PLATE.get().asItem()||
+                        item == RegionsUnexploredBlocks.BRIMWOOD_FENCE.get().asItem()||
+                        item == RegionsUnexploredBlocks.BRIMWOOD_FENCE_GATE.get().asItem()||
+                        item == RegionsUnexploredBlocks.BRIMWOOD_TRAPDOOR.get().asItem()||
                         //Painted Planks
                         item == RegionsUnexploredBlocks.WHITE_PAINTED_PLANKS.get().asItem()||
                         item == RegionsUnexploredBlocks.LIGHT_GRAY_PAINTED_PLANKS.get().asItem()||
@@ -233,7 +232,7 @@ public class FurnaceBurnTimes {
                         item == RegionsUnexploredBlocks.BAOBAB_DOOR.get().asItem()||
                         item == RegionsUnexploredBlocks.PALM_DOOR.get().asItem()||
                         item == RegionsUnexploredBlocks.CHERRY_DOOR.get().asItem()||
-                        item == RegionsUnexploredBlocks.SCULKWOOD_DOOR.get().asItem()||
+                        item == RegionsUnexploredBlocks.BRIMWOOD_DOOR.get().asItem()||
                         item == RegionsUnexploredBlocks.BAMBOO_LOG.get().asItem()||
                         item == RegionsUnexploredBlocks.BAMBOO_LOG_LEAVES.get().asItem()
         ) {
@@ -255,7 +254,7 @@ public class FurnaceBurnTimes {
                         item == RegionsUnexploredBlocks.BAOBAB_SLAB.get().asItem()||
                         item == RegionsUnexploredBlocks.PALM_SLAB.get().asItem()||
                         item == RegionsUnexploredBlocks.CHERRY_SLAB.get().asItem()||
-                        item == RegionsUnexploredBlocks.SCULKWOOD_SLAB.get().asItem()||
+                        item == RegionsUnexploredBlocks.BRIMWOOD_SLAB.get().asItem()||
                         item == RegionsUnexploredBlocks.WHITE_PAINTED_SLAB.get().asItem()||
                         item == RegionsUnexploredBlocks.LIGHT_GRAY_PAINTED_SLAB.get().asItem()||
                         item == RegionsUnexploredBlocks.GRAY_PAINTED_SLAB.get().asItem()||
@@ -301,10 +300,10 @@ public class FurnaceBurnTimes {
                         item == RegionsUnexploredBlocks.BAMBOO_SAPLING.get().asItem()||
                         item == RegionsUnexploredBlocks.APPLE_OAK_SAPLING.get().asItem()||
                         item == RegionsUnexploredBlocks.FLOWERING_SAPLING.get().asItem()||
-                        item == RegionsUnexploredBlocks.SCULKWOOD_SAPLING.get().asItem()||
+                        item == RegionsUnexploredBlocks.BRIMWOOD_SAPLING.get().asItem()||
 
                         item == RegionsUnexploredBlocks.LARCH_BUTTON.get().asItem()||
-                        item == RegionsUnexploredBlocks.SCULKWOOD_BUTTON.get().asItem()||
+                        item == RegionsUnexploredBlocks.BRIMWOOD_BUTTON.get().asItem()||
                         item == RegionsUnexploredBlocks.CYPRESS_BUTTON.get().asItem()||
                         item == RegionsUnexploredBlocks.MAPLE_BUTTON.get().asItem()||
                         item == RegionsUnexploredBlocks.DEAD_BUTTON.get().asItem()||

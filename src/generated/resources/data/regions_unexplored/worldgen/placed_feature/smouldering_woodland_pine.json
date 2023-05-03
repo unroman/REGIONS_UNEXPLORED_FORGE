@@ -1,9 +1,9 @@
 {
-  "feature": "regions_unexplored:pine_tree",
+  "feature": "regions_unexplored:ashen_pine_tree",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 2
+      "count": 10
     },
     {
       "type": "minecraft:in_square"

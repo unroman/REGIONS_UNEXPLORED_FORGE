@@ -1,6 +1,5 @@
 package net.regions_unexplored.data.tags;
 
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -9,7 +8,7 @@ import net.minecraft.tags.TagKey;
 public final class RegionsUnexploredTags {
    public static final TagKey<Block> SNOW_GRASS_CAN_SURVIVE_ON = create("snow_grass_can_survive_on");
    public static final TagKey<Block> SANDY_GRASS_CAN_SURVIVE_ON = create("sandy_grass_can_survive_on");
-   public static final TagKey<Block> SCULK_PLANT_CAN_SURVIVE_ON = create("sculk_plant_can_survive_on");
+   public static final TagKey<Block> BRIM_PLANT_CAN_SURVIVE_ON = create("brim_plant_can_survive_on");
    public static final TagKey<Block> STONE_GRASS_CAN_SURVIVE_ON = create("stone_grass_can_survive_on");
    public static final TagKey<Block> CATTAIL_CAN_SURVIVE_ON = create("cattail_can_survive_on");
    public static final TagKey<Block> TALL_SAPLING_CAN_SURVIVE_ON = create("tall_sapling_can_survive_on");
@@ -36,7 +35,7 @@ public final class RegionsUnexploredTags {
    public static final TagKey<Block> PALM_LOGS = create("palm_logs");
    public static final TagKey<Block> PINE_LOGS = create("pine_logs");
    public static final TagKey<Block> REDWOOD_LOGS = create("redwood_logs");
-   public static final TagKey<Block> SCULKWOOD_LOGS = create("sculkwood_logs");
+   public static final TagKey<Block> BRIMWOOD_LOGS = create("brimwood_logs");
    public static final TagKey<Block> WILLOW_LOGS = create("willow_logs");
 
    private RegionsUnexploredTags() {

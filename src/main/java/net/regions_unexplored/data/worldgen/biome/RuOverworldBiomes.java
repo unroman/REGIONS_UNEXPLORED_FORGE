@@ -1916,19 +1916,14 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.caveSpawns(spawnBuilder);
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
 
-
-        biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, RuPlacements.ASH_VENT_SURFACE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SMOULDERING_WOODLAND_OAK);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SMOULDERING_WOODLAND_DEAD_PINE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuPlacements.SMOULDERING_DIRT);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SMOULDERING_WOODLAND_PINE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SMOULDERING_WOODLAND_DORCEL);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SMOULDERING_WOODLAND_DEAD_PINE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SMOULDERING_WOODLAND_TRILLIUM);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SMOULDERING_WOODLAND_DEAD_STEPPE_SHRUB);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SMOULDERING_WOODLAND_DESERT_SHRUB);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TALL_DEAD_SAPLING_MIX);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.ASHEN_GRASS);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.ASHEN_SHRUB);
 
         globalOverworldGeneration(biomeBuilder);
-        RuBiomeDefaultFeatures.mediumGrass(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);

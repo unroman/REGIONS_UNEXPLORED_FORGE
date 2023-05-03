@@ -6,7 +6,6 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.Item;
@@ -48,7 +47,7 @@ public class RuBoat extends Boat {
             case PALM -> RegionsUnexploredItems.PALM_BOAT.get();
             case PINE -> RegionsUnexploredItems.PINE_BOAT.get();
             case REDWOOD -> RegionsUnexploredItems.REDWOOD_BOAT.get();
-            case SCULKWOOD -> RegionsUnexploredItems.SCULKWOOD_BOAT.get();
+            case SCULKWOOD -> RegionsUnexploredItems.BRIMWOOD_BOAT.get();
             case WILLOW -> RegionsUnexploredItems.WILLOW_BOAT.get();
         };
     }
@@ -138,7 +137,7 @@ public class RuBoat extends Boat {
         PALM("palm", RegionsUnexploredBlocks.PALM_PLANKS.get()),
         PINE("pine", RegionsUnexploredBlocks.PINE_PLANKS.get()),
         REDWOOD("redwood", RegionsUnexploredBlocks.REDWOOD_PLANKS.get()),
-        SCULKWOOD("sculkwood", RegionsUnexploredBlocks.SCULKWOOD_PLANKS.get()),
+        SCULKWOOD("sculkwood", RegionsUnexploredBlocks.BRIMWOOD_PLANKS.get()),
         WILLOW("willow", RegionsUnexploredBlocks.WILLOW_PLANKS.get());
 
         private final String name;

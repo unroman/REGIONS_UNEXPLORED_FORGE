@@ -22,7 +22,7 @@ public class RegionsUnexploredItems {
     public static RegistryObject<Item> PALM_SIGN;
     public static RegistryObject<Item> PINE_SIGN;
     public static RegistryObject<Item> REDWOOD_SIGN;
-    public static RegistryObject<Item> SCULKWOOD_SIGN;
+    public static RegistryObject<Item> BRIMWOOD_SIGN;
     public static RegistryObject<Item> WILLOW_SIGN;
 
     public static RegistryObject<Item> BAOBAB_BOAT;
@@ -51,8 +51,8 @@ public class RegionsUnexploredItems {
     public static RegistryObject<Item> PINE_CHEST_BOAT;
     public static RegistryObject<Item> REDWOOD_BOAT;
     public static RegistryObject<Item> REDWOOD_CHEST_BOAT;
-    public static RegistryObject<Item> SCULKWOOD_BOAT;
-    public static RegistryObject<Item> SCULKWOOD_CHEST_BOAT;
+    public static RegistryObject<Item> BRIMWOOD_BOAT;
+    public static RegistryObject<Item> BRIMWOOD_CHEST_BOAT;
     public static RegistryObject<Item> WILLOW_BOAT;
     public static RegistryObject<Item> WILLOW_CHEST_BOAT;
     
@@ -70,7 +70,7 @@ public class RegionsUnexploredItems {
     PALM_SIGN = RegionsUnexploredMod.ITEMS.register("palm_sign", () -> new SignItem(new Item.Properties().stacksTo(16), RegionsUnexploredBlocks.PALM_SIGN.get(), RegionsUnexploredBlocks.PALM_WALL_SIGN.get()));
     PINE_SIGN = RegionsUnexploredMod.ITEMS.register("pine_sign", () -> new SignItem(new Item.Properties().stacksTo(16), RegionsUnexploredBlocks.PINE_SIGN.get(), RegionsUnexploredBlocks.PINE_WALL_SIGN.get()));
     REDWOOD_SIGN = RegionsUnexploredMod.ITEMS.register("redwood_sign", () -> new SignItem(new Item.Properties().stacksTo(16), RegionsUnexploredBlocks.REDWOOD_SIGN.get(), RegionsUnexploredBlocks.REDWOOD_WALL_SIGN.get()));
-    SCULKWOOD_SIGN = RegionsUnexploredMod.ITEMS.register("sculkwood_sign", () -> new SignItem(new Item.Properties().stacksTo(16), RegionsUnexploredBlocks.SCULKWOOD_SIGN.get(), RegionsUnexploredBlocks.SCULKWOOD_WALL_SIGN.get()));
+    BRIMWOOD_SIGN = RegionsUnexploredMod.ITEMS.register("brimwood_sign", () -> new SignItem(new Item.Properties().stacksTo(16), RegionsUnexploredBlocks.BRIMWOOD_SIGN.get(), RegionsUnexploredBlocks.BRIMWOOD_WALL_SIGN.get()));
     WILLOW_SIGN = RegionsUnexploredMod.ITEMS.register("willow_sign", () -> new SignItem(new Item.Properties().stacksTo(16), RegionsUnexploredBlocks.WILLOW_SIGN.get(), RegionsUnexploredBlocks.WILLOW_WALL_SIGN.get()));
 
     BAOBAB_BOAT = RegionsUnexploredMod.ITEMS.register("baobab_boat", () -> new RuBoatItem(false, RuBoat.ModelType.BAOBAB, (new Item.Properties()).stacksTo(1)));
@@ -99,8 +99,8 @@ public class RegionsUnexploredItems {
     PINE_CHEST_BOAT = RegionsUnexploredMod.ITEMS.register("pine_chest_boat", () -> new RuBoatItem(true, RuBoat.ModelType.PINE, (new Item.Properties()).stacksTo(1)));
     REDWOOD_BOAT = RegionsUnexploredMod.ITEMS.register("redwood_boat", () -> new RuBoatItem(false, RuBoat.ModelType.REDWOOD, (new Item.Properties()).stacksTo(1)));
     REDWOOD_CHEST_BOAT = RegionsUnexploredMod.ITEMS.register("redwood_chest_boat", () -> new RuBoatItem(true, RuBoat.ModelType.REDWOOD, (new Item.Properties()).stacksTo(1)));
-    SCULKWOOD_BOAT = RegionsUnexploredMod.ITEMS.register("sculkwood_boat", () -> new RuBoatItem(false, RuBoat.ModelType.SCULKWOOD, (new Item.Properties()).stacksTo(1)));
-    SCULKWOOD_CHEST_BOAT = RegionsUnexploredMod.ITEMS.register("sculkwood_chest_boat", () -> new RuBoatItem(true, RuBoat.ModelType.SCULKWOOD, (new Item.Properties()).stacksTo(1)));
+    BRIMWOOD_BOAT = RegionsUnexploredMod.ITEMS.register("brimwood_boat", () -> new RuBoatItem(false, RuBoat.ModelType.SCULKWOOD, (new Item.Properties()).stacksTo(1)));
+    BRIMWOOD_CHEST_BOAT = RegionsUnexploredMod.ITEMS.register("brimwood_chest_boat", () -> new RuBoatItem(true, RuBoat.ModelType.SCULKWOOD, (new Item.Properties()).stacksTo(1)));
     WILLOW_BOAT = RegionsUnexploredMod.ITEMS.register("willow_boat", () -> new RuBoatItem(false, RuBoat.ModelType.WILLOW, (new Item.Properties()).stacksTo(1)));
     WILLOW_CHEST_BOAT = RegionsUnexploredMod.ITEMS.register("willow_chest_boat", () -> new RuBoatItem(true, RuBoat.ModelType.WILLOW, (new Item.Properties()).stacksTo(1)));
     }

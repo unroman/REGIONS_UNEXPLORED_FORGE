@@ -296,17 +296,21 @@ public class RegionsUnexploredSecondaryRegionConfig {
     public static final ForgeConfigSpec.ConfigValue<String> CAVE_6;
     public static final ForgeConfigSpec.ConfigValue<String> CAVE_7;
     public static final ForgeConfigSpec.ConfigValue<String> CAVE_8;
+    //ISLAND_BIOMES
+    public static final ForgeConfigSpec.ConfigValue<String> ICY_ISLAND;
+    public static final ForgeConfigSpec.ConfigValue<String> COOL_ISLAND;
+    public static final ForgeConfigSpec.ConfigValue<String> NEUTRAL_ISLAND;
+    public static final ForgeConfigSpec.ConfigValue<String> WARM_ISLAND;
+    public static final ForgeConfigSpec.ConfigValue<String> HOT_ISLAND;
     //SHATTERED_CLIFFS_BIOME
     public static final ForgeConfigSpec.ConfigValue<String> SHA_CLI;
-    //ISLAND_BIOME
-    public static final ForgeConfigSpec.ConfigValue<String> ISLAND_BIOME;
 
     static {
         BUILDER.comment("Config for Regions Unexplored primary region!");
-
+        BUILDER.comment("NOTICE: Make sure 'enable_custom_regions' is enabled in Common configs or this config will have no effect on generation!");
         BUILDER.push("-----------------MIDDLE_BIOMES--------------------");
         BUILDER.comment("icy_biomes");
-        MID_ICY_ARID = BUILDER.define("icy_arid", "regions_unexplored:alpha_grove");
+        MID_ICY_ARID = BUILDER.define("icy_arid", "regions_unexplored:icy_desert");
         MID_ICY_DRY = BUILDER.define("icy_dry", "regions_unexplored:frozen_tundra");
         MID_ICY_NEUTRAL = BUILDER.define("icy_neutral", "regions_unexplored:frozen_forest");
         MID_ICY_WET = BUILDER.define("icy_wet", "regions_unexplored:cold_boreal_forest");
@@ -397,13 +401,13 @@ public class RegionsUnexploredSecondaryRegionConfig {
         BUILDER.comment("hot_biomes");
         PLT_HOT_ARID = BUILDER.define("hot_arid", "regions_unexplored:steppe");
         PLT_HOT_DRY = BUILDER.define("hot_dry", "regions_unexplored:steppe");
-        PLT_HOT_NEUTRAL = BUILDER.define("hot_neutral", "regions_unexplored:eucalyptus_forest");
+        PLT_HOT_NEUTRAL = BUILDER.define("hot_neutral", "regions_unexplored:steppe");
         PLT_HOT_WET = BUILDER.define("hot_wet", "regions_unexplored:eucalyptus_forest");
         PLT_HOT_HUMID = BUILDER.define("hot_humid", "regions_unexplored:eucalyptus_forest");
         BUILDER.pop();
         BUILDER.push("-----------------PLATEAU_BIOMES_VARIANT--------------------");
         BUILDER.comment("icy_biomes");
-        PLT_VAR_ICY_ARID = BUILDER.define("icy_arid", "regions_unexplored:alpha_grove");
+        PLT_VAR_ICY_ARID = BUILDER.define("icy_arid", "regions_unexplored:icy_heights");
         PLT_VAR_ICY_DRY = BUILDER.define("icy_dry", "regions_unexplored:icy_heights");
         PLT_VAR_ICY_NEUTRAL = BUILDER.define("icy_neutral", "regions_unexplored:icy_heights");
         PLT_VAR_ICY_WET = BUILDER.define("icy_wet", "regions_unexplored:icy_heights");
@@ -429,7 +433,7 @@ public class RegionsUnexploredSecondaryRegionConfig {
         BUILDER.comment("hot_biomes");
         PLT_VAR_HOT_ARID = BUILDER.define("hot_arid", "regions_unexplored:steppe");
         PLT_VAR_HOT_DRY = BUILDER.define("hot_dry", "regions_unexplored:steppe");
-        PLT_VAR_HOT_NEUTRAL = BUILDER.define("hot_neutral", "regions_unexplored:eucalyptus_forest");
+        PLT_VAR_HOT_NEUTRAL = BUILDER.define("hot_neutral", "regions_unexplored:steppe");
         PLT_VAR_HOT_WET = BUILDER.define("hot_wet", "regions_unexplored:eucalyptus_forest");
         PLT_VAR_HOT_HUMID = BUILDER.define("hot_humid", "regions_unexplored:eucalyptus_forest");
         BUILDER.pop();
@@ -526,8 +530,8 @@ public class RegionsUnexploredSecondaryRegionConfig {
         RVR_HOT_ARID = BUILDER.define("hot_arid", "regions_unexplored:muddy_river");
         RVR_HOT_DRY = BUILDER.define("hot_dry", "regions_unexplored:muddy_river");
         RVR_HOT_NEUTRAL = BUILDER.define("hot_neutral", "regions_unexplored:muddy_river");
-        RVR_HOT_WET = BUILDER.define("hot_wet", "regions_unexplored:tropics");
-        RVR_HOT_HUMID = BUILDER.define("hot_humid", "regions_unexplored:tropics");
+        RVR_HOT_WET = BUILDER.define("hot_wet", "regions_unexplored:muddy_river");
+        RVR_HOT_HUMID = BUILDER.define("hot_humid", "regions_unexplored:muddy_river");
         BUILDER.pop();
         BUILDER.push("-----------------RIVER_BIOMES_VARIANT--------------------");
         BUILDER.comment("icy_biomes");
@@ -558,8 +562,8 @@ public class RegionsUnexploredSecondaryRegionConfig {
         RVR_VAR_HOT_ARID = BUILDER.define("hot_arid", "regions_unexplored:muddy_river");
         RVR_VAR_HOT_DRY = BUILDER.define("hot_dry", "regions_unexplored:muddy_river");
         RVR_VAR_HOT_NEUTRAL = BUILDER.define("hot_neutral", "regions_unexplored:muddy_river");
-        RVR_VAR_HOT_WET = BUILDER.define("hot_wet", "regions_unexplored:tropics");
-        RVR_VAR_HOT_HUMID = BUILDER.define("hot_humid", "regions_unexplored:tropics");
+        RVR_VAR_HOT_WET = BUILDER.define("hot_wet", "regions_unexplored:muddy_river");
+        RVR_VAR_HOT_HUMID = BUILDER.define("hot_humid", "regions_unexplored:muddy_river");
         BUILDER.pop();
 
         BUILDER.push("-----------------SWAMP_BIOMES--------------------");
@@ -588,9 +592,9 @@ public class RegionsUnexploredSecondaryRegionConfig {
         SMP_WARM_WET = BUILDER.define("warm_wet", "regions_unexplored:giant_bayou");
         SMP_WARM_HUMID = BUILDER.define("warm_humid", "regions_unexplored:giant_bayou");
         BUILDER.comment("hot_biomes");
-        SMP_HOT_ARID = BUILDER.define("hot_arid", "regions_unexplored:rocky_reef");
-        SMP_HOT_DRY = BUILDER.define("hot_dry", "regions_unexplored:rocky_reef");
-        SMP_HOT_NEUTRAL = BUILDER.define("hot_neutral", "regions_unexplored:rocky_reef");
+        SMP_HOT_ARID = BUILDER.define("hot_arid", "regions_unexplored:fungal_fen");
+        SMP_HOT_DRY = BUILDER.define("hot_dry", "regions_unexplored:fungal_fen");
+        SMP_HOT_NEUTRAL = BUILDER.define("hot_neutral", "regions_unexplored:fungal_fen");
         SMP_HOT_WET = BUILDER.define("hot_wet", "regions_unexplored:fungal_fen");
         SMP_HOT_HUMID = BUILDER.define("hot_humid", "regions_unexplored:fungal_fen");
         BUILDER.pop();
@@ -633,9 +637,16 @@ public class RegionsUnexploredSecondaryRegionConfig {
         CAVE_8 = BUILDER.define("cave_8_biome", "regions_unexplored:scorching_caves");
         BUILDER.pop();
 
+        BUILDER.push("-----------------ISLAND_BIOMES--------------------");
+        ICY_ISLAND = BUILDER.define("icy_island_biome", "regions_unexplored:alpha_grove");
+        COOL_ISLAND = BUILDER.define("cool_island_biome", "regions_unexplored:smouldering_woodland");
+        NEUTRAL_ISLAND = BUILDER.define("neutral_island_biome", "regions_unexplored:smouldering_woodland");
+        WARM_ISLAND = BUILDER.define("warm_island_biome", "regions_unexplored:tropics");
+        HOT_ISLAND = BUILDER.define("hot_island_biome", "regions_unexplored:tropics");
+        BUILDER.pop();
+
         BUILDER.push("-----------------OTHER_BIOMES--------------------");
         SHA_CLI = BUILDER.define("shattered_cliff_biome", "regions_unexplored:towering_cliffs");
-        ISLAND_BIOME = BUILDER.define("island_biome", "regions_unexplored:smouldering_woodland");
         BUILDER.pop();
 
         SPEC = BUILDER.build();

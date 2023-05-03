@@ -4,7 +4,7 @@
     "#regions_unexplored:branches",
     "#regions_unexplored:bamboo_logs",
     "#regions_unexplored:baobab_logs",
-    "#regions_unexplored:sculkwood_logs",
+    "#regions_unexplored:brimwood_logs",
     "#regions_unexplored:blackwood_logs",
     "#regions_unexplored:cherry_logs",
     "#regions_unexplored:cypress_logs",
@@ -18,6 +18,7 @@
     "#regions_unexplored:pine_logs",
     "#regions_unexplored:redwood_logs",
     "#regions_unexplored:willow_logs",
-    "regions_unexplored:alpha_log"
+    "regions_unexplored:alpha_log",
+    "regions_unexplored:ashen_log"
   ]
 }

@@ -19,7 +19,7 @@ public class WoodTypeCompat {
         Sheets.addWoodType(RuWoodTypes.PALM);
         Sheets.addWoodType(RuWoodTypes.PINE);
         Sheets.addWoodType(RuWoodTypes.REDWOOD);
-        Sheets.addWoodType(RuWoodTypes.SCULKWOOD);
+        Sheets.addWoodType(RuWoodTypes.BRIMWOOD);
         Sheets.addWoodType(RuWoodTypes.WILLOW);
     }
     public static void addWoodTypes(){
@@ -36,7 +36,7 @@ public class WoodTypeCompat {
         WoodType.register(RuWoodTypes.PALM);
         WoodType.register(RuWoodTypes.PINE);
         WoodType.register(RuWoodTypes.REDWOOD);
-        WoodType.register(RuWoodTypes.SCULKWOOD);
+        WoodType.register(RuWoodTypes.BRIMWOOD);
         WoodType.register(RuWoodTypes.WILLOW);
     }
 }

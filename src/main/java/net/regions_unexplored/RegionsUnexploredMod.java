@@ -341,21 +341,20 @@ public class RegionsUnexploredMod {
                 output.accept(new ItemStack(RegionsUnexploredBlocks.REDWOOD_BUTTON.get()));
                 output.accept(new ItemStack(RegionsUnexploredItems.REDWOOD_BOAT.get()));
                 output.accept(new ItemStack(RegionsUnexploredItems.REDWOOD_CHEST_BOAT.get()));
-                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_LOG.get()));
-                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK.get()));
-                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_LOG_TRANSITION.get()));
-                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_PLANKS.get()));
-                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_STAIRS.get()));
-                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_SLAB.get()));
-                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_FENCE.get()));
-                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_FENCE_GATE.get()));
-                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_DOOR.get()));
-                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_TRAPDOOR.get()));
-                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_SIGN.get()));
-                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_PRESSURE_PLATE.get()));
-                output.accept(new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_BUTTON.get()));
-                output.accept(new ItemStack(RegionsUnexploredItems.SCULKWOOD_BOAT.get()));
-                output.accept(new ItemStack(RegionsUnexploredItems.SCULKWOOD_CHEST_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BRIMWOOD_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BRIMWOOD_LOG_MAGMA.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BRIMWOOD_PLANKS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BRIMWOOD_STAIRS.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BRIMWOOD_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BRIMWOOD_FENCE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BRIMWOOD_FENCE_GATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BRIMWOOD_DOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BRIMWOOD_TRAPDOOR.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BRIMWOOD_SIGN.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BRIMWOOD_PRESSURE_PLATE.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.BRIMWOOD_BUTTON.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.BRIMWOOD_BOAT.get()));
+                output.accept(new ItemStack(RegionsUnexploredItems.BRIMWOOD_CHEST_BOAT.get()));
                 output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_LOG.get()));
                 output.accept(new ItemStack(RegionsUnexploredBlocks.WILLOW_WOOD.get()));
                 output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_WILLOW_LOG.get()));
@@ -497,9 +496,8 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.PINE_LOG,
                 RegionsUnexploredBlocks.PINE_LOG_TRANSITION,
                 RegionsUnexploredBlocks.REDWOOD_LOG,
-                RegionsUnexploredBlocks.SCULKWOOD_LOG,
-                RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK,
-                RegionsUnexploredBlocks.SCULKWOOD_LOG_TRANSITION,
+                RegionsUnexploredBlocks.BRIMWOOD_LOG,
+                RegionsUnexploredBlocks.BRIMWOOD_LOG_MAGMA,
                 RegionsUnexploredBlocks.WILLOW_LOG,
                 RegionsUnexploredBlocks.ALPHA_LEAVES,
                 RegionsUnexploredBlocks.APPLE_OAK_LEAVES,
@@ -526,7 +524,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.PALM_LEAVES,
                 RegionsUnexploredBlocks.PINE_LEAVES,
                 RegionsUnexploredBlocks.REDWOOD_LEAVES,
-                RegionsUnexploredBlocks.SCULKWOOD_LEAVES,
+                RegionsUnexploredBlocks.BRIMWOOD_LEAVES,
                 RegionsUnexploredBlocks.WILLOW_LEAVES,
                 RegionsUnexploredBlocks.BLUE_BIOSHROOM_BLOCK,
                 RegionsUnexploredBlocks.GLOWING_BLUE_BIOSHROOM_BLOCK,
@@ -561,7 +559,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.PALM_SAPLING,
                 RegionsUnexploredBlocks.PINE_SAPLING,
                 RegionsUnexploredBlocks.REDWOOD_SAPLING,
-                RegionsUnexploredBlocks.SCULKWOOD_SAPLING,
+                RegionsUnexploredBlocks.BRIMWOOD_SAPLING,
                 RegionsUnexploredBlocks.WILLOW_SAPLING,
                 RegionsUnexploredBlocks.BLUE_BIOSHROOM,
                 RegionsUnexploredBlocks.TALL_BLUE_BIOSHROOM,
@@ -647,7 +645,11 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.HYACINTH_BLOOM,
                 RegionsUnexploredBlocks.HYACINTH_FLOWERS,
                 RegionsUnexploredBlocks.HYACINTH_SEAGRASS,
-                RegionsUnexploredBlocks.TALL_HYACINTH_STOCK
+                RegionsUnexploredBlocks.TALL_HYACINTH_STOCK,
+                RegionsUnexploredBlocks.ASHEN_DIRT,
+                RegionsUnexploredBlocks.ASHEN_SHRUB,
+                RegionsUnexploredBlocks.ASHEN_LEAVES,
+                RegionsUnexploredBlocks.ASHEN_LOG
         );
         event.registerCreativeModeTab(new ResourceLocation(RegionsUnexploredMod.MOD_ID, "natural"), builder -> {
             builder.icon(() -> new ItemStack(RegionsUnexploredBlocks.FOREST_GRASS_BLOCK.get())).title(Component.translatable("itemGroup.regions_unexplored_natural")).displayItems((featureFlags, output) -> {
@@ -685,23 +687,21 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.COBALT_ROOTS,
                 RegionsUnexploredBlocks.COBALT_EARLIGHT,
                 RegionsUnexploredBlocks.HANGING_EARLIGHT,
-                RegionsUnexploredBlocks.SCULK_GRASS_BLOCK,
-                RegionsUnexploredBlocks.SCULKWOOD_LOG,
-                RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK,
-                RegionsUnexploredBlocks.SCULKWOOD_LOG_TRANSITION,
-                RegionsUnexploredBlocks.SCULKWOOD_LEAVES,
-                RegionsUnexploredBlocks.SCULKWOOD_SAPLING,
-                RegionsUnexploredBlocks.SCULKWOOD_PLANKS,
-                RegionsUnexploredBlocks.SCULKWOOD_STAIRS,
-                RegionsUnexploredBlocks.SCULKWOOD_SLAB,
-                RegionsUnexploredBlocks.SCULKWOOD_FENCE,
-                RegionsUnexploredBlocks.SCULKWOOD_FENCE_GATE,
-                RegionsUnexploredBlocks.SCULKWOOD_DOOR,
-                RegionsUnexploredBlocks.SCULKWOOD_TRAPDOOR,
-                RegionsUnexploredBlocks.SCULKWOOD_PRESSURE_PLATE,
-                RegionsUnexploredBlocks.SCULKWOOD_BUTTON,
-                RegionsUnexploredBlocks.SCULK_SPROUT,
-                RegionsUnexploredBlocks.SCULK_TENDRIL
+                RegionsUnexploredBlocks.BRIMSPROUT_NYLIUM,
+                RegionsUnexploredBlocks.BRIMWOOD_LOG,
+                RegionsUnexploredBlocks.BRIMWOOD_LOG_MAGMA,
+                RegionsUnexploredBlocks.BRIMWOOD_LEAVES,
+                RegionsUnexploredBlocks.BRIMWOOD_SAPLING,
+                RegionsUnexploredBlocks.BRIMWOOD_PLANKS,
+                RegionsUnexploredBlocks.BRIMWOOD_STAIRS,
+                RegionsUnexploredBlocks.BRIMWOOD_SLAB,
+                RegionsUnexploredBlocks.BRIMWOOD_FENCE,
+                RegionsUnexploredBlocks.BRIMWOOD_FENCE_GATE,
+                RegionsUnexploredBlocks.BRIMWOOD_DOOR,
+                RegionsUnexploredBlocks.BRIMWOOD_TRAPDOOR,
+                RegionsUnexploredBlocks.BRIMWOOD_PRESSURE_PLATE,
+                RegionsUnexploredBlocks.BRIMWOOD_BUTTON,
+                RegionsUnexploredBlocks.BRIMSPROUT
         );
 
         event.registerCreativeModeTab(new ResourceLocation(RegionsUnexploredMod.MOD_ID, "nether"), builder -> {

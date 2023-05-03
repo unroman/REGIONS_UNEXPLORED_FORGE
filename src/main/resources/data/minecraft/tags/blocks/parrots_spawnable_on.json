@@ -11,6 +11,7 @@
     "regions_unexplored:flowering_leaves",
     "regions_unexplored:silver_birch_leaves",
     "regions_unexplored:bamboo_leaves",
+    "regions_unexplored:ashen_leaves",
     "regions_unexplored:baobab_leaves",
     "regions_unexplored:blackwood_leaves",
     "regions_unexplored:cherry_leaves",
@@ -33,6 +34,6 @@
     "regions_unexplored:redwood_leaves",
     "regions_unexplored:willow_leaves",
     "regions_unexplored:alpha_leaves",
-    "regions_unexplored:sculkwood_leaves"
+    "regions_unexplored:brimwood_leaves"
   ]
 }

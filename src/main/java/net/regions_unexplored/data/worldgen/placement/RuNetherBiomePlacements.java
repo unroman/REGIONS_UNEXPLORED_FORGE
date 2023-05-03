@@ -1,7 +1,5 @@
 package net.regions_unexplored.data.worldgen.placement;
 
-import com.google.common.io.CountingOutputStream;
-import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -43,8 +41,8 @@ public class RuNetherBiomePlacements {
 
     public static final ResourceKey<PlacedFeature> NETHER_WILLOW = RuPlacementUtils.createKey("nether_willow");
 
-    public static final ResourceKey<PlacedFeature> SCULK_SPROUT = RuPlacementUtils.createKey("sculk_sprout");
-    public static final ResourceKey<PlacedFeature> SCULK_TENDRIL = RuPlacementUtils.createKey("sculk_tendril");
+    public static final ResourceKey<PlacedFeature> BRIMSPROUT = RuPlacementUtils.createKey("brimsprout");
+    public static final ResourceKey<PlacedFeature> BRIM_FLAMES = RuPlacementUtils.createKey("brim_flames");
     ///---------------------------------------------------------------------------------------------------------------------------------------------------------------\\\
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> featureGetter = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -72,8 +70,8 @@ public class RuNetherBiomePlacements {
 
         final Holder<ConfiguredFeature<?, ?>> NETHER_WILLOW = featureGetter.getOrThrow(RuVegetationFeatures.NETHER_WILLOW);
 
-        final Holder<ConfiguredFeature<?, ?>> SCULK_SPROUT = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_SCULK_SPROUT);
-        final Holder<ConfiguredFeature<?, ?>> SCULK_TENDRIL = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_SCULK_TENDRIL);
+        final Holder<ConfiguredFeature<?, ?>> BRIMSPROUT = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_BRIMSPROUT);
+        final Holder<ConfiguredFeature<?, ?>> BRIM_FLAMES = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_BRIM_FLAMES);
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         register(context, RuNetherBiomePlacements.MYCOTOXIC_UNDERGROWTH_GRASS, MYCOTOXIC_UNDERGROWTH_GRASS, List.of(CountOnEveryLayerPlacement.of(30), BiomeFilter.biome()));
@@ -98,8 +96,8 @@ public class RuNetherBiomePlacements {
         register(context, RuNetherBiomePlacements.OBSIDIAN_SPIRE, OBSIDIAN_SPIRE, CountPlacement.of(155), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome());
 
         register(context, RuNetherBiomePlacements.NETHER_WILLOW, NETHER_WILLOW, CountOnEveryLayerPlacement.of(155), PlacementUtils.FULL_RANGE, BiomeFilter.biome());
-        register(context, RuNetherBiomePlacements.SCULK_SPROUT, SCULK_SPROUT, List.of(CountOnEveryLayerPlacement.of(30), BiomeFilter.biome()));
-        register(context, RuNetherBiomePlacements.SCULK_TENDRIL, SCULK_TENDRIL, List.of(CountOnEveryLayerPlacement.of(5), BiomeFilter.biome()));
+        register(context, RuNetherBiomePlacements.BRIMSPROUT, BRIMSPROUT, List.of(CountOnEveryLayerPlacement.of(30), BiomeFilter.biome()));
+        register(context, RuNetherBiomePlacements.BRIM_FLAMES, BRIM_FLAMES, List.of(CountOnEveryLayerPlacement.of(5), PlacementUtils.filteredByBlockSurvival(RegionsUnexploredBlocks.BRIMSPROUT.get()), BiomeFilter.biome()));
     }
 
     protected static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> feature, PlacementModifier... placement) {

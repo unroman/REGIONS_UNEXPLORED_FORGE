@@ -9,9 +9,9 @@
       "tick_chance": 0.0111
     },
     "ambient_sound": "minecraft:ambient.basalt_deltas.loop",
-    "fog_color": 338482,
-    "foliage_color": 217444,
-    "grass_color": 217444,
+    "fog_color": 3479565,
+    "foliage_color": 7295817,
+    "grass_color": 7295817,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -31,8 +31,8 @@
       "probability": 0.03
     },
     "sky_color": 7254527,
-    "water_color": 37525,
-    "water_fog_color": 338482
+    "water_color": 3479565,
+    "water_fog_color": 3479565
   },
   "features": [
     [],
@@ -43,12 +43,10 @@
     [],
     [],
     [
-      "minecraft:sculk_vein",
-      "minecraft:sculk_patch_deep_dark",
-      "regions_unexplored:sculk_willow",
-      "regions_unexplored:giant_sculk_willow",
-      "regions_unexplored:sculk_sprout",
-      "regions_unexplored:sculk_tendril",
+      "regions_unexplored:brim_willow",
+      "regions_unexplored:tall_brim_willow",
+      "regions_unexplored:brimsprout",
+      "regions_unexplored:brim_flames",
       "minecraft:spring_open",
       "minecraft:blackstone_blobs",
       "minecraft:patch_fire",
@@ -70,9 +68,35 @@
   "spawners": {
     "ambient": [],
     "axolotls": [],
-    "creature": [],
+    "creature": [
+      {
+        "type": "minecraft:strider",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 60
+      }
+    ],
     "misc": [],
-    "monster": [],
+    "monster": [
+      {
+        "type": "minecraft:zombified_piglin",
+        "maxCount": 4,
+        "minCount": 2,
+        "weight": 1
+      },
+      {
+        "type": "minecraft:hoglin",
+        "maxCount": 4,
+        "minCount": 3,
+        "weight": 9
+      },
+      {
+        "type": "minecraft:piglin",
+        "maxCount": 4,
+        "minCount": 3,
+        "weight": 5
+      }
+    ],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []

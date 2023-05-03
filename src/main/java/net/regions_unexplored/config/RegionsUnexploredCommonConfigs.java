@@ -13,6 +13,8 @@ public class RegionsUnexploredCommonConfigs {
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> TOGGLE_CUSTOM_DIRTS;
 
+    public static final ForgeConfigSpec.ConfigValue<Boolean> TOGGLE_CUSTOM_REGIONS;
+
     public static final ForgeConfigSpec.ConfigValue<Integer> REGION_PRIMARY_WEIGHT;
     public static final ForgeConfigSpec.ConfigValue<Integer> REGION_SECONDARY_WEIGHT;
     public static final ForgeConfigSpec.ConfigValue<Integer> REGION_NETHER_WEIGHT;
@@ -91,9 +93,11 @@ public class RegionsUnexploredCommonConfigs {
     static {
         BUILDER.comment("Config for Regions Unexplored!");
 
+        BUILDER.push("region_configs");
 
 
-        BUILDER.push("region_weights");
+        TOGGLE_CUSTOM_REGIONS = BUILDER.comment("Enable this before changing the other region config files. If disabled, RU will use builtin biome placement.")
+                .define("toggle_custom_regions", false);
 
         REGION_PRIMARY_WEIGHT = BUILDER.comment("Sets Terrablender region weight for the primary region.")
                 .defineInRange("primary_region_weight", 11, 0, 2147483646);
