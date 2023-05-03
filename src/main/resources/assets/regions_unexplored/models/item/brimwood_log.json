@@ -1,5 +1,5 @@
 {
-  "parent": "regions_unexplored:block/sculkwood_planks",
+  "parent": "regions_unexplored:block/brimwood_log",
   "display": {
     "thirdperson": {
       "rotation": [
