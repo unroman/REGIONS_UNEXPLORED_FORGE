@@ -308,6 +308,7 @@ public class RegionsUnexploredSecondaryRegionConfig {
     static {
         BUILDER.comment("Config for Regions Unexplored primary region!");
         BUILDER.comment("NOTICE: Make sure 'enable_custom_regions' is enabled in Common configs or this config will have no effect on generation!");
+        BUILDER.comment("If you have custom regions enabled: to get future update biomes to spawn, you will either need to delete the config and let it regen, or add the new biomes manually.");
         BUILDER.push("-----------------MIDDLE_BIOMES--------------------");
         BUILDER.comment("icy_biomes");
         MID_ICY_ARID = BUILDER.define("icy_arid", "regions_unexplored:icy_desert");

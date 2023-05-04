@@ -15,6 +15,7 @@
     "regions_unexplored:alpha_grass_block",
     "regions_unexplored:ash",
     "regions_unexplored:volcanic_ash",
-    "regions_unexplored:quicksand"
+    "regions_unexplored:quicksand",
+    "regions_unexplored:ashen_dirt"
   ]
 }

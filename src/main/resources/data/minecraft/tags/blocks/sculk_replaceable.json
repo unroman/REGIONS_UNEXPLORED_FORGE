@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "regions_unexplored:forest_dirt",
+    "regions_unexplored:ashen_dirt",
     "regions_unexplored:plains_dirt",
     "regions_unexplored:forest_coarse_dirt",
     "regions_unexplored:forest_grass_block",

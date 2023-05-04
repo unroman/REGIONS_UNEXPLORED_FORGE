@@ -527,6 +527,9 @@ public class BlockFeatureCompat {
         registerStrippableBlock(RegionsUnexploredBlocks.WILLOW_LOG.get(), RegionsUnexploredBlocks.STRIPPED_WILLOW_LOG.get());
         registerStrippableBlock(RegionsUnexploredBlocks.WILLOW_WOOD.get(), RegionsUnexploredBlocks.STRIPPED_WILLOW_WOOD.get());
 
+        registerStrippableBlock(RegionsUnexploredBlocks.ASHEN_LOG.get(), RegionsUnexploredBlocks.STRIPPED_DEAD_LOG.get());
+        registerStrippableBlock(RegionsUnexploredBlocks.ASHEN_WOOD.get(), RegionsUnexploredBlocks.STRIPPED_DEAD_WOOD.get());
+
         registerStrippableBlock(RegionsUnexploredBlocks.SILVER_BIRCH_LOG_BASE.get(), Blocks.STRIPPED_BIRCH_LOG);
 
         registerStrippableBlock(RegionsUnexploredBlocks.BRIMWOOD_LOG_MAGMA.get(), RegionsUnexploredBlocks.BRIMWOOD_LOG.get());

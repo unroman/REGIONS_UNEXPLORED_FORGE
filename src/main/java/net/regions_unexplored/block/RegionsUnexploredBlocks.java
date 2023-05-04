@@ -676,6 +676,7 @@ public class RegionsUnexploredBlocks {
     public static RegistryObject<Block> ASHEN_DIRT;
     public static RegistryObject<Block> ASHEN_SHRUB;
     public static RegistryObject<Block> ASHEN_LOG;
+    public static RegistryObject<Block> ASHEN_WOOD;
     public static RegistryObject<Block> ASHEN_LEAVES;
     public static RegistryObject<Block> ASHEN_GRASS;
 
@@ -1332,6 +1333,7 @@ public class RegionsUnexploredBlocks {
         ASHEN_DIRT = registerDefaultBlock("ashen_dirt", () -> new AshenDirtBlock(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.COLOR_GRAY).strength(0.5F).sound(SoundType.GRAVEL).randomTicks().lightLevel((bs) -> AshenDirtBlock.isSmouldering(bs) ? 7 : 0)));
         ASHEN_SHRUB = registerDefaultBlock("ashen_shrub", () -> new AshenShrubBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.ROOTED_DIRT).offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true)));
         ASHEN_LOG = registerDefaultBlock("ashen_log", () -> log(MaterialColor.COLOR_LIGHT_GRAY, MaterialColor.COLOR_GRAY));
+        ASHEN_WOOD = registerDefaultBlock("ashen_wood", () -> log(MaterialColor.COLOR_LIGHT_GRAY, MaterialColor.COLOR_LIGHT_GRAY));
         ASHEN_LEAVES = registerDefaultBlock("ashen_leaves", () -> appleLeaves(MaterialColor.COLOR_LIGHT_GRAY));
         ASHEN_GRASS = registerDefaultBlock("ashen_grass", () -> new AshenTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XYZ).hasPostProcess((bs, br, bp) -> AshenTallGrassBlock.isSmouldering(bs) ? true : false).emissiveRendering((bs, br, bp) -> AshenTallGrassBlock.isSmouldering(bs) ? true : false).lightLevel((bs) -> AshenTallGrassBlock.isSmouldering(bs) ? 5 : 0)));
 

@@ -131,6 +131,8 @@ public class RegionsUnexploredMod {
                 output.accept(new ItemStack(RegionsUnexploredBlocks.ALPHA_PLANKS.get()));
                 output.accept(new ItemStack(RegionsUnexploredBlocks.ALPHA_STAIRS.get()));
                 output.accept(new ItemStack(RegionsUnexploredBlocks.ALPHA_SLAB.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.ASHEN_LOG.get()));
+                output.accept(new ItemStack(RegionsUnexploredBlocks.ASHEN_WOOD.get()));
                 output.accept(new ItemStack(RegionsUnexploredBlocks.BAMBOO_LOG.get()));
                 output.accept(new ItemStack(RegionsUnexploredBlocks.STRIPPED_BAMBOO_LOG.get()));
                 output.accept(new ItemStack(RegionsUnexploredBlocks.BAOBAB_LOG.get()));
@@ -440,6 +442,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.CHALK_GRASS_BLOCK,
                 RegionsUnexploredBlocks.QUICKSAND,
                 RegionsUnexploredBlocks.MOSSY_STONE,
+                RegionsUnexploredBlocks.HYACINTH_STONE,
                 RegionsUnexploredBlocks.CHALK,
                 RegionsUnexploredBlocks.ASH,
                 RegionsUnexploredBlocks.ASHEN_DIRT,
@@ -481,6 +484,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.WILLOW_BRANCH,
                 RegionsUnexploredBlocks.BAMBOO_LOG,
                 RegionsUnexploredBlocks.ALPHA_LOG,
+                RegionsUnexploredBlocks.ASHEN_LOG,
                 RegionsUnexploredBlocks.BAOBAB_LOG,
                 RegionsUnexploredBlocks.SILVER_BIRCH_LOG_BASE,
                 RegionsUnexploredBlocks.BLACKWOOD_LOG,
@@ -500,6 +504,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.BRIMWOOD_LOG_MAGMA,
                 RegionsUnexploredBlocks.WILLOW_LOG,
                 RegionsUnexploredBlocks.ALPHA_LEAVES,
+                RegionsUnexploredBlocks.ASHEN_LEAVES,
                 RegionsUnexploredBlocks.APPLE_OAK_LEAVES,
                 RegionsUnexploredBlocks.BAMBOO_LEAVES,
                 RegionsUnexploredBlocks.SILVER_BIRCH_LEAVES,
@@ -576,11 +581,13 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.STONE_BUD,
                 RegionsUnexploredBlocks.SANDY_GRASS,
                 RegionsUnexploredBlocks.FROZEN_GRASS,
+                RegionsUnexploredBlocks.ASHEN_GRASS,
                 RegionsUnexploredBlocks.DEAD_STEPPE_SHRUB,
                 RegionsUnexploredBlocks.SMALL_DESERT_SHRUB,
                 RegionsUnexploredBlocks.RED_CHERRY_FLOWERS,
                 RegionsUnexploredBlocks.PINK_CHERRY_FLOWERS,
                 RegionsUnexploredBlocks.WHITE_CHERRY_FLOWERS,
+                RegionsUnexploredBlocks.HYACINTH_FLOWERS,
                 RegionsUnexploredBlocks.BLUE_LUPINE,
                 RegionsUnexploredBlocks.PINK_LUPINE,
                 RegionsUnexploredBlocks.PURPLE_LUPINE,
@@ -611,6 +618,10 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.CATTAIL,
                 RegionsUnexploredBlocks.TASSEL,
                 RegionsUnexploredBlocks.TSUBAKI,
+                RegionsUnexploredBlocks.HYACINTH_BLOOM,
+                RegionsUnexploredBlocks.HYACINTH_SEAGRASS,
+                RegionsUnexploredBlocks.TALL_HYACINTH_STOCK,
+                RegionsUnexploredBlocks.ASHEN_SHRUB,
                 RegionsUnexploredBlocks.TALL_ACACIA_SAPLING,
                 RegionsUnexploredBlocks.TALL_BAOBAB_SAPLING,
                 RegionsUnexploredBlocks.TALL_BIRCH_SAPLING,
@@ -640,16 +651,7 @@ public class RegionsUnexploredMod {
                 RegionsUnexploredBlocks.TALL_REDWOOD_SAPLING,
                 RegionsUnexploredBlocks.TALL_SILVER_BIRCH_SAPLING,
                 RegionsUnexploredBlocks.TALL_SPRUCE_SAPLING,
-                RegionsUnexploredBlocks.TALL_WILLOW_SAPLING,
-                RegionsUnexploredBlocks.HYACINTH_STONE,
-                RegionsUnexploredBlocks.HYACINTH_BLOOM,
-                RegionsUnexploredBlocks.HYACINTH_FLOWERS,
-                RegionsUnexploredBlocks.HYACINTH_SEAGRASS,
-                RegionsUnexploredBlocks.TALL_HYACINTH_STOCK,
-                RegionsUnexploredBlocks.ASHEN_DIRT,
-                RegionsUnexploredBlocks.ASHEN_SHRUB,
-                RegionsUnexploredBlocks.ASHEN_LEAVES,
-                RegionsUnexploredBlocks.ASHEN_LOG
+                RegionsUnexploredBlocks.TALL_WILLOW_SAPLING
         );
         event.registerCreativeModeTab(new ResourceLocation(RegionsUnexploredMod.MOD_ID, "natural"), builder -> {
             builder.icon(() -> new ItemStack(RegionsUnexploredBlocks.FOREST_GRASS_BLOCK.get())).title(Component.translatable("itemGroup.regions_unexplored_natural")).displayItems((featureFlags, output) -> {

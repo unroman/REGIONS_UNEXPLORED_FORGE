@@ -3,6 +3,8 @@
     "regions_unexplored:dead_log",
     "regions_unexplored:stripped_dead_log",
     "regions_unexplored:dead_wood",
-    "regions_unexplored:stripped_dead_wood"
+    "regions_unexplored:stripped_dead_wood",
+    "regions_unexplored:ashen_log",
+    "regions_unexplored:ashen_wood"
   ]
 }

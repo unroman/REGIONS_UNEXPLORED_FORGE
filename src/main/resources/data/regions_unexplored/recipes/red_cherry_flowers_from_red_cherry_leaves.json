@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "flowers",
+  "key": {
+    "#": {
+      "item": "regions_unexplored:red_cherry_leaves"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 3,
+    "item": "regions_unexplored:red_cherry_flowers"
+  }
+}

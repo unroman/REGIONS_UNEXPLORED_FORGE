@@ -1,14 +1,11 @@
 package net.regions_unexplored.world.level.biome;
 
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
-import net.regions_unexplored.config.RegionsUnexploredPrimaryRegionConfig;
-import net.regions_unexplored.util.worldgen.CheckBiomeConfig;
+import net.regions_unexplored.util.worldgen.RegionUtil;
 import net.regions_unexplored.util.worldgen.VanillaFallbackBiome;
 
 import java.util.function.Consumer;
@@ -54,73 +51,15 @@ public class RegionPrimaryBiomeBuilder {
     private final Climate.Parameter midInlandContinentalness = Climate.Parameter.span(0.03F, 0.3F);
     private final Climate.Parameter farInlandContinentalness = Climate.Parameter.span(0.3F, 1.0F);
 
-    private final ResourceKey<Biome>[][] MIDDLE_BIOMES = new ResourceKey[][]{
-            //-----------ARID,DRY,NEUTRAL,WET,HUMID
-            /*ICY*/     {getBiome(RegionsUnexploredPrimaryRegionConfig.MID_ICY_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_ICY_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_ICY_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_ICY_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_ICY_HUMID.get())},
-            /*COOL*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.MID_COOL_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_COOL_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_COOL_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_COOL_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_COOL_HUMID.get())},
-            /*NEUTRAL*/ {getBiome(RegionsUnexploredPrimaryRegionConfig.MID_NEUTRAL_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_NEUTRAL_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_NEUTRAL_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_NEUTRAL_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_NEUTRAL_HUMID.get())},
-            /*WARM*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.MID_WARM_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_WARM_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_WARM_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_WARM_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_WARM_HUMID.get())},
-            /*HOT*/     {getBiome(RegionsUnexploredPrimaryRegionConfig.MID_HOT_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_HOT_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_HOT_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_HOT_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_HOT_HUMID.get())}};
-
-    private final ResourceKey<Biome>[][] MIDDLE_BIOMES_VARIANT = new ResourceKey[][]{
-            //-----------ARID,DRY,NEUTRAL,WET,HUMID
-            /*ICY*/     {getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_ICY_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_ICY_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_ICY_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_ICY_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_ICY_HUMID.get())},
-            /*COOL*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_COOL_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_COOL_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_COOL_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_COOL_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_COOL_HUMID.get())},
-            /*NEUTRAL*/ {getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_NEUTRAL_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_NEUTRAL_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_NEUTRAL_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_NEUTRAL_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_NEUTRAL_HUMID.get())},
-            /*WARM*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_WARM_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_WARM_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_WARM_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_WARM_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_WARM_HUMID.get())},
-            /*HOT*/     {getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_HOT_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_HOT_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_HOT_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_HOT_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.MID_VAR_HOT_HUMID.get())}};
-
-    private final ResourceKey<Biome>[][] PLATEAU_BIOMES = new ResourceKey[][]{
-            //-----------ARID,DRY,NEUTRAL,WET,HUMID
-            /*ICY*/     {getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_ICY_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_ICY_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_ICY_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_ICY_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_ICY_HUMID.get())},
-            /*COOL*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_COOL_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_COOL_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_COOL_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_COOL_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_COOL_HUMID.get())},
-            /*NEUTRAL*/ {getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_NEUTRAL_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_NEUTRAL_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_NEUTRAL_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_NEUTRAL_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_NEUTRAL_HUMID.get())},
-            /*WARM*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_WARM_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_WARM_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_WARM_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_WARM_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_WARM_HUMID.get())},
-            /*HOT*/     {getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_HOT_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_HOT_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_HOT_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_HOT_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_HOT_HUMID.get())}};
-
-    private final ResourceKey<Biome>[][] PLATEAU_BIOMES_VARIANT = new ResourceKey[][]{
-            //-----------ARID,DRY,NEUTRAL,WET,HUMID
-            /*ICY*/     {getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_ICY_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_ICY_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_ICY_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_ICY_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_ICY_HUMID.get())},
-            /*COOL*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_COOL_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_COOL_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_COOL_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_COOL_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_COOL_HUMID.get())},
-            /*NEUTRAL*/ {getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_NEUTRAL_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_NEUTRAL_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_NEUTRAL_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_NEUTRAL_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_NEUTRAL_HUMID.get())},
-            /*WARM*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_WARM_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_WARM_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_WARM_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_WARM_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_WARM_HUMID.get())},
-            /*HOT*/     {getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_HOT_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_HOT_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_HOT_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_HOT_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.PLT_VAR_HOT_HUMID.get())}};
-
-    private final ResourceKey<Biome>[][] SHATTERED_BIOMES = new ResourceKey[][]{
-            //-----------ARID,DRY,NEUTRAL,WET,HUMID
-            /*ICY*/     {getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_ICY_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_ICY_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_ICY_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_ICY_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_ICY_HUMID.get())},
-            /*COOL*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_COOL_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_COOL_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_COOL_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_COOL_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_COOL_HUMID.get())},
-            /*NEUTRAL*/ {getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_NEUTRAL_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_NEUTRAL_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_NEUTRAL_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_NEUTRAL_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_NEUTRAL_HUMID.get())},
-            /*WARM*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_WARM_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_WARM_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_WARM_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_WARM_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_WARM_HUMID.get())},
-            /*HOT*/     {getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_HOT_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_HOT_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_HOT_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_HOT_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SHT_HOT_HUMID.get())}};
-
-    private final ResourceKey<Biome>[][] RIVER_BIOMES = new ResourceKey[][]{
-            //-----------ARID,DRY,NEUTRAL,WET,HUMID
-            /*ICY*/     {getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_ICY_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_ICY_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_ICY_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_ICY_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_ICY_HUMID.get())},
-            /*COOL*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_COOL_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_COOL_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_COOL_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_COOL_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_COOL_HUMID.get())},
-            /*NEUTRAL*/ {getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_NEUTRAL_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_NEUTRAL_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_NEUTRAL_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_NEUTRAL_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_NEUTRAL_HUMID.get())},
-            /*WARM*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_WARM_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_WARM_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_WARM_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_WARM_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_WARM_HUMID.get())},
-            /*HOT*/     {getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_HOT_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_HOT_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_HOT_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_HOT_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_HOT_HUMID.get())}};
-
-    private final ResourceKey<Biome>[][] RIVER_BIOMES_VARIANT = new ResourceKey[][]{
-            //-----------ARID,DRY,NEUTRAL,WET,HUMID
-            /*ICY*/     {getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_ICY_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_ICY_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_ICY_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_ICY_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_ICY_HUMID.get())},
-            /*COOL*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_COOL_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_COOL_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_COOL_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_COOL_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_COOL_HUMID.get())},
-            /*NEUTRAL*/ {getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_NEUTRAL_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_NEUTRAL_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_NEUTRAL_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_NEUTRAL_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_NEUTRAL_HUMID.get())},
-            /*WARM*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_WARM_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_WARM_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_WARM_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_WARM_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_WARM_HUMID.get())},
-            /*HOT*/     {getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_HOT_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_HOT_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_HOT_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_HOT_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.RVR_VAR_HOT_HUMID.get())}};
-
-    private final ResourceKey<Biome>[][] SWAMP_BIOMES = new ResourceKey[][]{
-            //-----------ARID,DRY,NEUTRAL,WET,HUMID
-            /*ICY*/     {getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_ICY_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_ICY_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_ICY_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_ICY_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_ICY_HUMID.get())},
-            /*COOL*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_COOL_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_COOL_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_COOL_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_COOL_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_COOL_HUMID.get())},
-            /*NEUTRAL*/ {getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_NEUTRAL_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_NEUTRAL_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_NEUTRAL_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_NEUTRAL_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_NEUTRAL_HUMID.get())},
-            /*WARM*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_WARM_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_WARM_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_WARM_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_WARM_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_WARM_HUMID.get())},
-            /*HOT*/     {getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_HOT_ARID.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_HOT_DRY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_HOT_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_HOT_WET.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.SMP_HOT_HUMID.get())}};
-
-    private final ResourceKey<Biome>[][] OCEANS = new ResourceKey[][]{
-            /*DEEP*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.OCA_DEP_ICY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.OCA_DEP_COOL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.OCA_DEP_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.OCA_DEP_WARM.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.OCA_DEP_HOT.get())},
-            /*NORM*/    {getBiome(RegionsUnexploredPrimaryRegionConfig.OCA_ICY.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.OCA_COOL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.OCA_NEUTRAL.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.OCA_WARM.get()), getBiome(RegionsUnexploredPrimaryRegionConfig.OCA_HOT.get())}};
+    private final ResourceKey<Biome>[][] MIDDLE_BIOMES = RegionUtil.getPrimaryMiddleBiome();
+    private final ResourceKey<Biome>[][] MIDDLE_BIOMES_VARIANT = RegionUtil.getPrimaryMiddleBiomeVariant();
+    private final ResourceKey<Biome>[][] PLATEAU_BIOMES = RegionUtil.getPrimaryPlateauBiome();
+    private final ResourceKey<Biome>[][] PLATEAU_BIOMES_VARIANT = RegionUtil.getPrimaryPlateauBiomeVariant();
+    private final ResourceKey<Biome>[][] SHATTERED_BIOMES = RegionUtil.getPrimaryShatteredBiome();
+    private final ResourceKey<Biome>[][] RIVER_BIOMES = RegionUtil.getPrimaryRiverBiome();
+    private final ResourceKey<Biome>[][] RIVER_BIOMES_VARIANT = RegionUtil.getPrimaryRiverBiomeVariant();
+    private final ResourceKey<Biome>[][] SWAMP_BIOMES = RegionUtil.getPrimarySwampBiome();
+    private final ResourceKey<Biome>[][] OCEANS = RegionUtil.getPrimaryOceanBiome();
 
     protected void addBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> builder) {
             this.addOffCoastBiomes(builder);
@@ -129,16 +68,16 @@ public class RegionPrimaryBiomeBuilder {
     }
 
     private void addOffCoastBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> builder) {
-        this.addSurfaceBiome(builder, this.temperatures[0], this.FULL_RANGE, this.mushroomFieldsContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.ICY_ISLAND.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.ICY_ISLAND.get()) :Biomes.MUSHROOM_FIELDS);
-        this.addSurfaceBiome(builder, this.temperatures[1], this.FULL_RANGE, this.mushroomFieldsContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.COOL_ISLAND.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.COOL_ISLAND.get()) :Biomes.MUSHROOM_FIELDS);
-        this.addSurfaceBiome(builder, this.temperatures[2], this.FULL_RANGE, this.mushroomFieldsContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.NEUTRAL_ISLAND.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.NEUTRAL_ISLAND.get()) :Biomes.MUSHROOM_FIELDS);
-        this.addSurfaceBiome(builder, this.temperatures[3], this.FULL_RANGE, this.mushroomFieldsContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.WARM_ISLAND.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.WARM_ISLAND.get()) :Biomes.MUSHROOM_FIELDS);
-        this.addSurfaceBiome(builder, this.temperatures[4], this.FULL_RANGE, this.mushroomFieldsContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_ISLAND.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_ISLAND.get()) :Biomes.MUSHROOM_FIELDS);
+        this.addSurfaceBiome(builder, this.temperatures[0], this.FULL_RANGE, this.mushroomFieldsContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryIslandBiome(0)) ? RegionUtil.getPrimaryIslandBiome(0) :Biomes.MUSHROOM_FIELDS);
+        this.addSurfaceBiome(builder, this.temperatures[1], this.FULL_RANGE, this.mushroomFieldsContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryIslandBiome(1)) ? RegionUtil.getPrimaryIslandBiome(1) :Biomes.MUSHROOM_FIELDS);
+        this.addSurfaceBiome(builder, this.temperatures[2], this.FULL_RANGE, this.mushroomFieldsContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryIslandBiome(2)) ? RegionUtil.getPrimaryIslandBiome(2) :Biomes.MUSHROOM_FIELDS);
+        this.addSurfaceBiome(builder, this.temperatures[3], this.FULL_RANGE, this.mushroomFieldsContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryIslandBiome(3)) ? RegionUtil.getPrimaryIslandBiome(3) :Biomes.MUSHROOM_FIELDS);
+        this.addSurfaceBiome(builder, this.temperatures[4], this.FULL_RANGE, this.mushroomFieldsContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryIslandBiome(4)) ? RegionUtil.getPrimaryIslandBiome(4) :Biomes.MUSHROOM_FIELDS);
 
         for(int i = 0; i < this.temperatures.length; ++i) {
             Climate.Parameter climate$parameter = this.temperatures[i];
-            this.addSurfaceBiome(builder, climate$parameter, this.FULL_RANGE, this.deepOceanContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, CheckBiomeConfig.isBiomeEnabled(this.OCEANS[0][i]) ? this.OCEANS[0][i] : VanillaFallbackBiome.VANILLA_OCEANS[0][i]);
-            this.addSurfaceBiome(builder, climate$parameter, this.FULL_RANGE, this.oceanContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, CheckBiomeConfig.isBiomeEnabled(this.OCEANS[1][i]) ? this.OCEANS[1][i] : VanillaFallbackBiome.VANILLA_OCEANS[0][i]);
+            this.addSurfaceBiome(builder, climate$parameter, this.FULL_RANGE, this.deepOceanContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, RegionUtil.isBiomeEnabled(this.OCEANS[0][i]) ? this.OCEANS[0][i] : VanillaFallbackBiome.VANILLA_OCEANS[0][i]);
+            this.addSurfaceBiome(builder, climate$parameter, this.FULL_RANGE, this.oceanContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, RegionUtil.isBiomeEnabled(this.OCEANS[1][i]) ? this.OCEANS[1][i] : VanillaFallbackBiome.VANILLA_OCEANS[0][i]);
         }
 
     }
@@ -219,8 +158,8 @@ public class RegionPrimaryBiomeBuilder {
     }
 
     private void addMidSlice(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> builder, Climate.Parameter weirdness) {
-        ResourceKey<Biome> stoneBeachCold = CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.COLD_STONE_BEACH.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.COLD_STONE_BEACH.get()) : Biomes.STONY_SHORE;
-        ResourceKey<Biome> stoneBeachHot = CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_STONE_BEACH.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_STONE_BEACH.get()) : Biomes.STONY_SHORE;
+        ResourceKey<Biome> stoneBeachCold = RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryStoneShoreBiome(true)) ? RegionUtil.getPrimaryStoneShoreBiome(true) : Biomes.STONY_SHORE;
+        ResourceKey<Biome> stoneBeachHot = RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryStoneShoreBiome(false)) ? RegionUtil.getPrimaryStoneShoreBiome(false) : Biomes.STONY_SHORE;
         this.addSurfaceBiome(builder, Climate.Parameter.span(this.temperatures[0], this.temperatures[2]), this.FULL_RANGE, this.coastContinentalness, Climate.Parameter.span(this.erosions[0], this.erosions[2]), weirdness, 0.0F, stoneBeachCold);
         this.addSurfaceBiome(builder, Climate.Parameter.span(this.temperatures[3], this.temperatures[4]), this.FULL_RANGE, this.coastContinentalness, Climate.Parameter.span(this.erosions[0], this.erosions[2]), weirdness, 0.0F, stoneBeachHot);
 
@@ -268,8 +207,8 @@ public class RegionPrimaryBiomeBuilder {
     }
 
     private void addLowSlice(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> builder, Climate.Parameter weirdness) {
-        ResourceKey<Biome> stoneBeachCold = CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.COLD_STONE_BEACH.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.COLD_STONE_BEACH.get()) : Biomes.STONY_SHORE;
-        ResourceKey<Biome> stoneBeachHot = CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_STONE_BEACH.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_STONE_BEACH.get()) : Biomes.STONY_SHORE;
+        ResourceKey<Biome> stoneBeachCold = RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryStoneShoreBiome(true)) ? RegionUtil.getPrimaryStoneShoreBiome(true) : Biomes.STONY_SHORE;
+        ResourceKey<Biome> stoneBeachHot = RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryStoneShoreBiome(false)) ? RegionUtil.getPrimaryStoneShoreBiome(false) : Biomes.STONY_SHORE;
         this.addSurfaceBiome(builder, Climate.Parameter.span(this.temperatures[0], this.temperatures[2]), this.FULL_RANGE, this.coastContinentalness, Climate.Parameter.span(this.erosions[0], this.erosions[2]), weirdness, 0.0F, stoneBeachCold);
         this.addSurfaceBiome(builder, Climate.Parameter.span(this.temperatures[3], this.temperatures[4]), this.FULL_RANGE, this.coastContinentalness, Climate.Parameter.span(this.erosions[0], this.erosions[2]), weirdness, 0.0F, stoneBeachHot);
         for(int i = 0; i < this.temperatures.length; ++i) {
@@ -300,8 +239,8 @@ public class RegionPrimaryBiomeBuilder {
     }
 
     private void addValleys(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> builder, Climate.Parameter weirdness) {
-        ResourceKey<Biome> stoneBeachCold = CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.COLD_STONE_BEACH.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.COLD_STONE_BEACH.get()) : Biomes.STONY_SHORE;
-        ResourceKey<Biome> stoneBeachHot = CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_STONE_BEACH.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_STONE_BEACH.get()) : Biomes.STONY_SHORE;
+        ResourceKey<Biome> stoneBeachCold = RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryStoneShoreBiome(true)) ? RegionUtil.getPrimaryStoneShoreBiome(true) : Biomes.STONY_SHORE;
+        ResourceKey<Biome> stoneBeachHot = RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryStoneShoreBiome(false)) ? RegionUtil.getPrimaryStoneShoreBiome(false) : Biomes.STONY_SHORE;
         for(int i = 0; i < this.temperatures.length; ++i) {
             Climate.Parameter temperature = this.temperatures[i];
 
@@ -324,25 +263,25 @@ public class RegionPrimaryBiomeBuilder {
     }
 
     private void addUndergroundBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> builder) {
-        this.addUndergroundBiome(builder, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(-1.0F, -0.79F), this.FULL_RANGE, Climate.Parameter.span(-1.0F, 0.0F), 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_2.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_2.get()) : Biomes.LUSH_CAVES);
-        this.addUndergroundBiome(builder, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(-1.0F, -0.79F), this.FULL_RANGE, Climate.Parameter.span(0.0F, 1.0F), 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_7.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_7.get()) : Biomes.DRIPSTONE_CAVES);
+        this.addUndergroundBiome(builder, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(-1.0F, -0.79F), this.FULL_RANGE, Climate.Parameter.span(-1.0F, 0.0F), 0.0F, RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryCaveBiome(2)) ? RegionUtil.getPrimaryCaveBiome(2) : Biomes.LUSH_CAVES);
+        this.addUndergroundBiome(builder, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(-1.0F, -0.79F), this.FULL_RANGE, Climate.Parameter.span(0.0F, 1.0F), 0.0F, RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryCaveBiome(7)) ? RegionUtil.getPrimaryCaveBiome(7) : Biomes.DRIPSTONE_CAVES);
 
-        this.addUndergroundBiome(builder, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(0.775F, 1.0F), this.FULL_RANGE, Climate.Parameter.span(-1.0F, 0.0F), 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_6.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_6.get()) : Biomes.DRIPSTONE_CAVES);
-        this.addUndergroundBiome(builder, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(0.775F, 1.0F), this.FULL_RANGE, Climate.Parameter.span(0.0F, 1.0F), 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_7.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_7.get()) : Biomes.DRIPSTONE_CAVES);
+        this.addUndergroundBiome(builder, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(0.775F, 1.0F), this.FULL_RANGE, Climate.Parameter.span(-1.0F, 0.0F), 0.0F, RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryCaveBiome(6)) ? RegionUtil.getPrimaryCaveBiome(6) : Biomes.DRIPSTONE_CAVES);
+        this.addUndergroundBiome(builder, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(0.775F, 1.0F), this.FULL_RANGE, Climate.Parameter.span(0.0F, 1.0F), 0.0F, RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryCaveBiome(7)) ? RegionUtil.getPrimaryCaveBiome(7) : Biomes.DRIPSTONE_CAVES);
 
-        this.addUndergroundBiome(builder, this.FULL_RANGE, Climate.Parameter.span(-1.0F, -0.69F), this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(-1.0F, 0.0F), 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_1.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_1.get()) : Biomes.LUSH_CAVES);
-        this.addUndergroundBiome(builder, this.FULL_RANGE, Climate.Parameter.span(-1.0F, -0.69F), this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(0.0F, 1.0F), 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_5.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_5.get()) :  Biomes.LUSH_CAVES);
+        this.addUndergroundBiome(builder, this.FULL_RANGE, Climate.Parameter.span(-1.0F, -0.69F), this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(-1.0F, 0.0F), 0.0F, RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryCaveBiome(1)) ? RegionUtil.getPrimaryCaveBiome(1) : Biomes.LUSH_CAVES);
+        this.addUndergroundBiome(builder, this.FULL_RANGE, Climate.Parameter.span(-1.0F, -0.69F), this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(0.0F, 1.0F), 0.0F, RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryCaveBiome(5)) ? RegionUtil.getPrimaryCaveBiome(5) :  Biomes.LUSH_CAVES);
 
-        this.addUndergroundBiome(builder, this.FULL_RANGE, Climate.Parameter.span(0.65F, 1.0F), this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(-1.0F, 0.0F), 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_4.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_4.get()) : Biomes.LUSH_CAVES);
-        this.addUndergroundBiome(builder, this.FULL_RANGE, Climate.Parameter.span(0.65F, 1.0F), this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(0.0F, 1.0F), 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_5.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_5.get()) : Biomes.LUSH_CAVES);
+        this.addUndergroundBiome(builder, this.FULL_RANGE, Climate.Parameter.span(0.65F, 1.0F), this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(-1.0F, 0.0F), 0.0F, RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryCaveBiome(4)) ? RegionUtil.getPrimaryCaveBiome(4) : Biomes.LUSH_CAVES);
+        this.addUndergroundBiome(builder, this.FULL_RANGE, Climate.Parameter.span(0.65F, 1.0F), this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(0.0F, 1.0F), 0.0F, RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryCaveBiome(5)) ? RegionUtil.getPrimaryCaveBiome(5) : Biomes.LUSH_CAVES);
 
-        this.addBottomBiome(builder, this.FULL_RANGE, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(this.erosions[0], this.erosions[1]), this.FULL_RANGE, 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_3.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_3.get()) : Biomes.DEEP_DARK);
-        this.addBottomBiome(builder, this.FULL_RANGE, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(this.erosions[2], this.erosions[3]), this.FULL_RANGE, 0.0F, CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_8.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.CAVE_8.get()) : Biomes.DEEP_DARK);
+        this.addBottomBiome(builder, this.FULL_RANGE, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(this.erosions[0], this.erosions[1]), this.FULL_RANGE, 0.0F, RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryCaveBiome(3)) ? RegionUtil.getPrimaryCaveBiome(3) : Biomes.DEEP_DARK);
+        this.addBottomBiome(builder, this.FULL_RANGE, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(this.erosions[2], this.erosions[3]), this.FULL_RANGE, 0.0F, RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryCaveBiome(8)) ? RegionUtil.getPrimaryCaveBiome(8) : Biomes.DEEP_DARK);
     }
 
     private ResourceKey<Biome> pickMiddleBiome(int temperature, int humidity, Climate.Parameter weirdness) {
         if (weirdness.max() < 0L) {
-            if(CheckBiomeConfig.isBiomeEnabled(this.MIDDLE_BIOMES[temperature][humidity])){
+            if(RegionUtil.isBiomeEnabled(this.MIDDLE_BIOMES[temperature][humidity])){
                 return this.MIDDLE_BIOMES[temperature][humidity];
             }
             else{
@@ -350,7 +289,7 @@ public class RegionPrimaryBiomeBuilder {
             }
         } else {
             if(this.MIDDLE_BIOMES_VARIANT[temperature][humidity]==null){
-                if(CheckBiomeConfig.isBiomeEnabled(this.MIDDLE_BIOMES[temperature][humidity])){
+                if(RegionUtil.isBiomeEnabled(this.MIDDLE_BIOMES[temperature][humidity])){
                     return this.MIDDLE_BIOMES[temperature][humidity];
                 }
                 else{
@@ -358,7 +297,7 @@ public class RegionPrimaryBiomeBuilder {
                 }
             }
             else{
-                if(CheckBiomeConfig.isBiomeEnabled(this.MIDDLE_BIOMES_VARIANT[temperature][humidity])){
+                if(RegionUtil.isBiomeEnabled(this.MIDDLE_BIOMES_VARIANT[temperature][humidity])){
                     return this.MIDDLE_BIOMES_VARIANT[temperature][humidity];
                 }
                 else{
@@ -373,7 +312,7 @@ public class RegionPrimaryBiomeBuilder {
     }
 
     private ResourceKey<Biome> maybePickToweringCliffsBiome(int temperature, int humidity, Climate.Parameter weirdness, ResourceKey<Biome> fallbackBiome) {
-        ResourceKey<Biome> resourceKey = CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.SHA_CLI.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.SHA_CLI.get()) : Biomes.WINDSWEPT_SAVANNA;
+        ResourceKey<Biome> resourceKey = RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryShatteredCliffBiome()) ? RegionUtil.getPrimaryShatteredCliffBiome() : Biomes.WINDSWEPT_SAVANNA;
         return temperature > 1 && humidity < 4 && weirdness.max() >= 0L ? resourceKey : fallbackBiome;
     }
 
@@ -384,25 +323,25 @@ public class RegionPrimaryBiomeBuilder {
 
     private ResourceKey<Biome> pickBeachBiome(int temperature) {
         if (temperature == 0) {
-            return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.ICY_BEACH.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.ICY_BEACH.get()) : Biomes.SNOWY_BEACH;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryBeachBiome(temperature)) ? RegionUtil.getPrimaryBeachBiome(temperature) : Biomes.SNOWY_BEACH;
         }
         else if (temperature == 1) {
-            return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.COOL_BEACH.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.COOL_BEACH.get()) : Biomes.BEACH;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryBeachBiome(temperature)) ? RegionUtil.getPrimaryBeachBiome(temperature) : Biomes.BEACH;
         }
         else if (temperature == 2) {
-            return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.NEUTRAL_BEACH.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.NEUTRAL_BEACH.get()) : Biomes.BEACH;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryBeachBiome(temperature)) ? RegionUtil.getPrimaryBeachBiome(temperature) : Biomes.BEACH;
         }
         else if (temperature == 3) {
-            return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.WARM_BEACH.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.WARM_BEACH.get()) : Biomes.BEACH;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryBeachBiome(temperature)) ? RegionUtil.getPrimaryBeachBiome(temperature) : Biomes.BEACH;
         }
         else{
-            return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_BEACH.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_BEACH.get()) : Biomes.BEACH;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryBeachBiome(temperature)) ? RegionUtil.getPrimaryBeachBiome(temperature) : Biomes.BEACH;
         }
     }
 
     private ResourceKey<Biome> pickPlateauBiome(int temperature, int humidity, Climate.Parameter weirdness) {
         if (weirdness.max() < 0L) {
-            if(CheckBiomeConfig.isBiomeEnabled(this.PLATEAU_BIOMES[temperature][humidity])){
+            if(RegionUtil.isBiomeEnabled(this.PLATEAU_BIOMES[temperature][humidity])){
                 return this.PLATEAU_BIOMES[temperature][humidity];
             }
             else{
@@ -410,7 +349,7 @@ public class RegionPrimaryBiomeBuilder {
             }
         } else {
             if(this.PLATEAU_BIOMES_VARIANT[temperature][humidity]==null){
-                if(CheckBiomeConfig.isBiomeEnabled(this.PLATEAU_BIOMES[temperature][humidity])){
+                if(RegionUtil.isBiomeEnabled(this.PLATEAU_BIOMES[temperature][humidity])){
                     return this.PLATEAU_BIOMES[temperature][humidity];
                 }
                 else{
@@ -418,7 +357,7 @@ public class RegionPrimaryBiomeBuilder {
                 }
             }
             else{
-                if(CheckBiomeConfig.isBiomeEnabled(this.PLATEAU_BIOMES_VARIANT[temperature][humidity])){
+                if(RegionUtil.isBiomeEnabled(this.PLATEAU_BIOMES_VARIANT[temperature][humidity])){
                     return this.PLATEAU_BIOMES_VARIANT[temperature][humidity];
                 }
                 else{
@@ -431,42 +370,42 @@ public class RegionPrimaryBiomeBuilder {
     private ResourceKey<Biome> pickPeakBiome(int temperature, int humidity, Climate.Parameter weirdness) {
         if (temperature == 0) {
             if(weirdness.max() < 0L) {
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.ICY_PEAK.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.ICY_PEAK.get()) : Biomes.JAGGED_PEAKS;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryPeakBiome(temperature)) ? RegionUtil.getPrimaryPeakBiome(temperature) : Biomes.JAGGED_PEAKS;
             }
             else{
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.ICY_PEAK_VAR.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.ICY_PEAK_VAR.get()) : Biomes.FROZEN_PEAKS;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryPeakBiomeVariant(temperature)) ? RegionUtil.getPrimaryPeakBiomeVariant(temperature) : Biomes.FROZEN_PEAKS;
             }
         }
         else if (temperature == 1) {
             if(weirdness.max() < 0L) {
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.COOL_PEAK.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.COOL_PEAK.get()) : Biomes.JAGGED_PEAKS;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryPeakBiome(temperature)) ? RegionUtil.getPrimaryPeakBiome(temperature) : Biomes.JAGGED_PEAKS;
             }
             else{
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.COOL_PEAK_VAR.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.COOL_PEAK_VAR.get()) : Biomes.FROZEN_PEAKS;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryPeakBiomeVariant(temperature)) ? RegionUtil.getPrimaryPeakBiomeVariant(temperature) : Biomes.FROZEN_PEAKS;
             }
         }
         else if (temperature == 2) {
             if(weirdness.max() < 0L) {
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.NEUTRAL_PEAK.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.NEUTRAL_PEAK.get()) : Biomes.JAGGED_PEAKS;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryPeakBiome(temperature)) ? RegionUtil.getPrimaryPeakBiome(temperature) : Biomes.JAGGED_PEAKS;
             }
             else{
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.NEUTRAL_PEAK_VAR.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.NEUTRAL_PEAK_VAR.get()) : Biomes.FROZEN_PEAKS;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryPeakBiomeVariant(temperature)) ? RegionUtil.getPrimaryPeakBiomeVariant(temperature) : Biomes.FROZEN_PEAKS;
             }
         }
         else if (temperature == 3) {
             if(weirdness.max() < 0L) {
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.WARM_PEAK.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.WARM_PEAK.get()) : Biomes.STONY_PEAKS;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryPeakBiome(temperature)) ? RegionUtil.getPrimaryPeakBiome(temperature) : Biomes.STONY_PEAKS;
             }
             else{
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.WARM_PEAK_VAR.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.WARM_PEAK_VAR.get()) : Biomes.STONY_PEAKS;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryPeakBiomeVariant(temperature)) ? RegionUtil.getPrimaryPeakBiomeVariant(temperature) : Biomes.STONY_PEAKS;
             }
         }
         else{
             if(weirdness.max() < 0L) {
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_PEAK.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_PEAK.get()) : Biomes.BADLANDS;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryPeakBiome(temperature)) ? RegionUtil.getPrimaryPeakBiome(temperature) : Biomes.BADLANDS;
             }
             else{
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_PEAK_VAR.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_PEAK_VAR.get()) : Biomes.WOODED_BADLANDS;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimaryPeakBiomeVariant(temperature)) ? RegionUtil.getPrimaryPeakBiomeVariant(temperature) : Biomes.WOODED_BADLANDS;
             }
         }
     }
@@ -474,63 +413,54 @@ public class RegionPrimaryBiomeBuilder {
     private ResourceKey<Biome> pickSlopeBiome(int temperature, int humidity, Climate.Parameter weirdness) {
         if (temperature == 0) {
             if(weirdness.max() < 0L) {
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.ICY_SLOPE.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.ICY_SLOPE.get()) : Biomes.SNOWY_SLOPES;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimarySlopeBiome(temperature)) ? RegionUtil.getPrimarySlopeBiome(temperature) : Biomes.SNOWY_SLOPES;
             }
             else{
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.ICY_SLOPE_VAR.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.ICY_SLOPE_VAR.get()) : Biomes.GROVE;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimarySlopeBiomeVariant(temperature)) ? RegionUtil.getPrimarySlopeBiomeVariant(temperature) : Biomes.GROVE;
             }
         }
         else if (temperature == 1) {
-            if(humidity<2){
-                return pickPlateauBiome(temperature, humidity, weirdness);
-            }
             if(weirdness.max() < 0L) {
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.COOL_SLOPE.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.COOL_SLOPE.get()) : Biomes.GROVE;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimarySlopeBiome(temperature)) ? RegionUtil.getPrimarySlopeBiome(temperature) : Biomes.GROVE;
             }
             else{
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.COOL_SLOPE_VAR.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.COOL_SLOPE_VAR.get()) : Biomes.SNOWY_SLOPES;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimarySlopeBiomeVariant(temperature)) ? RegionUtil.getPrimarySlopeBiomeVariant(temperature) : Biomes.SNOWY_SLOPES;
             }
         }
         else if (temperature == 2) {
             if(weirdness.max() < 0L) {
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.NEUTRAL_SLOPE.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.NEUTRAL_SLOPE.get()) : Biomes.GROVE;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimarySlopeBiome(temperature)) ? RegionUtil.getPrimarySlopeBiome(temperature) : Biomes.GROVE;
             }
             else{
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.NEUTRAL_SLOPE_VAR.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.NEUTRAL_SLOPE_VAR.get()) : Biomes.SNOWY_SLOPES;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimarySlopeBiomeVariant(temperature)) ? RegionUtil.getPrimarySlopeBiomeVariant(temperature) : Biomes.SNOWY_SLOPES;
             }
         }
         else if (temperature == 3) {
-            if(humidity>2){
-                return pickMiddleBiome(temperature, humidity, weirdness);
-            }
             if(weirdness.max() < 0L) {
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.WARM_SLOPE.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.WARM_SLOPE.get()) : Biomes.STONY_PEAKS;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimarySlopeBiome(temperature)) ? RegionUtil.getPrimarySlopeBiome(temperature) : Biomes.STONY_PEAKS;
             }
             else{
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.WARM_SLOPE_VAR.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.WARM_SLOPE_VAR.get()) : Biomes.STONY_PEAKS;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimarySlopeBiomeVariant(temperature)) ? RegionUtil.getPrimarySlopeBiomeVariant(temperature) : Biomes.STONY_PEAKS;
             }
         }
         else{
-            if(humidity<2){
-                return pickPlateauBiome(temperature, humidity, weirdness);
-            }
             if(weirdness.max() < 0L) {
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_SLOPE.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_SLOPE.get()) : Biomes.SAVANNA;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimarySlopeBiome(temperature)) ? RegionUtil.getPrimarySlopeBiome(temperature) : Biomes.SAVANNA;
             }
             else{
-                return CheckBiomeConfig.isBiomeEnabled(getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_SLOPE_VAR.get())) ? getBiome(RegionsUnexploredPrimaryRegionConfig.HOT_SLOPE_VAR.get()) : Biomes.SAVANNA;
+                return RegionUtil.isBiomeEnabled(RegionUtil.getPrimarySlopeBiomeVariant(temperature)) ? RegionUtil.getPrimarySlopeBiomeVariant(temperature) : Biomes.SAVANNA;
             }
         }
     }
 
     private ResourceKey<Biome> pickShatteredBiome(int temperature, int humidity, Climate.Parameter weirdness) {
-        ResourceKey<Biome> resourceKey = CheckBiomeConfig.isBiomeEnabled(this.SHATTERED_BIOMES[temperature][humidity]) ? this.SHATTERED_BIOMES[temperature][humidity] : VanillaFallbackBiome.VANILLA_SHATTERED_BIOMES[temperature][humidity];
+        ResourceKey<Biome> resourceKey = RegionUtil.isBiomeEnabled(this.SHATTERED_BIOMES[temperature][humidity]) ? this.SHATTERED_BIOMES[temperature][humidity] : VanillaFallbackBiome.VANILLA_SHATTERED_BIOMES[temperature][humidity];
         return resourceKey == null ? this.pickMiddleBiome(temperature, humidity, weirdness) : resourceKey;
     }
 
     private ResourceKey<Biome> pickRiverBiome(int temperature, int humidity, Climate.Parameter weirdness) {
         if (weirdness.max() < 0L) {
-            if(CheckBiomeConfig.isBiomeEnabled(this.RIVER_BIOMES[temperature][humidity])){
+            if(RegionUtil.isBiomeEnabled(this.RIVER_BIOMES[temperature][humidity])){
                 return this.RIVER_BIOMES[temperature][humidity];
             }
             else{
@@ -538,7 +468,7 @@ public class RegionPrimaryBiomeBuilder {
             }
         } else {
             if(this.RIVER_BIOMES_VARIANT[temperature][humidity]==null){
-                if(CheckBiomeConfig.isBiomeEnabled(this.RIVER_BIOMES[temperature][humidity])){
+                if(RegionUtil.isBiomeEnabled(this.RIVER_BIOMES[temperature][humidity])){
                     return this.RIVER_BIOMES[temperature][humidity];
                 }
                 else{
@@ -546,7 +476,7 @@ public class RegionPrimaryBiomeBuilder {
                 }
             }
             else{
-                if(CheckBiomeConfig.isBiomeEnabled(this.RIVER_BIOMES_VARIANT[temperature][humidity])){
+                if(RegionUtil.isBiomeEnabled(this.RIVER_BIOMES_VARIANT[temperature][humidity])){
                     return this.RIVER_BIOMES_VARIANT[temperature][humidity];
                 }
                 else{
@@ -557,7 +487,7 @@ public class RegionPrimaryBiomeBuilder {
     }
 
     private ResourceKey<Biome> pickSwampBiome(int temperature, int humidity) {
-        if(CheckBiomeConfig.isBiomeEnabled(this.SWAMP_BIOMES[temperature][humidity])){
+        if(RegionUtil.isBiomeEnabled(this.SWAMP_BIOMES[temperature][humidity])){
             return this.SWAMP_BIOMES[temperature][humidity];
         }
         else{
@@ -576,9 +506,5 @@ public class RegionPrimaryBiomeBuilder {
 
     private void addBottomBiome(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> builder, Climate.Parameter temperature, Climate.Parameter humidity, Climate.Parameter continentalness, Climate.Parameter erosion, Climate.Parameter weirdness, float offset, ResourceKey<Biome> biome) {
         builder.accept(Pair.of(Climate.parameters(temperature, humidity, continentalness, erosion, Climate.Parameter.point(1.1F), weirdness, offset), biome));
-    }
-
-    public static ResourceKey<Biome> getBiome(String id){
-        return ResourceKey.create(Registries.BIOME, new ResourceLocation(id));
     }
 }
