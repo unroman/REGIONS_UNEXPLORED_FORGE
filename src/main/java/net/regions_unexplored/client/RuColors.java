@@ -157,7 +157,7 @@ public class RuColors {
     }
 
     public static int getRainbowColor(BlockAndTintGetter world, BlockPos pos) {
-        Color rainbow = Color.getHSBColor(((float)pos.getX() + (float)pos.getZ()) / 50.0F, 1.0F, 1.0F);
+        Color rainbow = Color.getHSBColor(((float)pos.getX() + (float)pos.getZ()) / 50.0F, 0.9F, 1.0F);
         return rainbow.getRGB();
     }
 
