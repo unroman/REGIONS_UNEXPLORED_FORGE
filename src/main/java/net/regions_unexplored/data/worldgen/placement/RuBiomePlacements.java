@@ -922,8 +922,6 @@ public class RuBiomePlacements {
 
         final Holder<ConfiguredFeature<?, ?>> SPIRES_SNOWY_GRASS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_SNOWY_GRASS);
 
-        final Holder<ConfiguredFeature<?, ?>> SMOULDERING_WOODLAND_BASALT = featureGetter.getOrThrow(NetherFeatures.SMALL_BASALT_COLUMNS);
-        final Holder<ConfiguredFeature<?, ?>> SMOULDERING_WOODLAND_VENT = featureGetter.getOrThrow(RuFeatures.ASH_VENT_PATCH);
         final Holder<ConfiguredFeature<?, ?>> SMOULDERING_WOODLAND_OAK = featureGetter.getOrThrow(RuTreeFeatures.DEAD_TREE);
         final Holder<ConfiguredFeature<?, ?>> SMOULDERING_WOODLAND_DEAD_PINE = featureGetter.getOrThrow(RuTreeFeatures.ASHEN_TREE);
         final Holder<ConfiguredFeature<?, ?>> SMOULDERING_WOODLAND_PINE = featureGetter.getOrThrow(RuTreeFeatures.ASHEN_PINE_TREE);

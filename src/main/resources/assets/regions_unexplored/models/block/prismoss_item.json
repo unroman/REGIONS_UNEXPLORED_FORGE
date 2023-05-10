@@ -3,10 +3,10 @@
   "textures": {
     "down": "minecraft:block/stone",
     "up": "regions_unexplored:item/prismoss_top",
-    "north": "regions_unexplored:item/prismoss_side_2",
+    "north": "regions_unexplored:item/prismoss_side",
     "east": "regions_unexplored:item/prismoss_side",
-    "south": "regions_unexplored:item/prismoss_side_2",
-    "west": "regions_unexplored:item/prismoss_side_3",
+    "south": "regions_unexplored:item/prismoss_side",
+    "west": "regions_unexplored:item/prismoss_side",
     "particle": "minecraft:block/stone"
   }
 }
