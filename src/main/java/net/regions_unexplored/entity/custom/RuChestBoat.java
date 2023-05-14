@@ -46,7 +46,7 @@ public class RuChestBoat extends ChestBoat
             case PALM -> RegionsUnexploredItems.PALM_CHEST_BOAT.get();
             case PINE -> RegionsUnexploredItems.PINE_CHEST_BOAT.get();
             case REDWOOD -> RegionsUnexploredItems.REDWOOD_CHEST_BOAT.get();
-            case SCULKWOOD -> RegionsUnexploredItems.BRIMWOOD_CHEST_BOAT.get();
+            case BRIMWOOD -> RegionsUnexploredItems.BRIMWOOD_CHEST_BOAT.get();
             case WILLOW -> RegionsUnexploredItems.WILLOW_CHEST_BOAT.get();
         };
     }

@@ -20,7 +20,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'idea'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '0.4.1'
+version = '05.13_01'
 group = 'net.regions_unexplored'
 archivesBaseName = 'regions_unexplored'
 

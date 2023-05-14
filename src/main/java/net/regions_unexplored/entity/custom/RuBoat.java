@@ -47,7 +47,7 @@ public class RuBoat extends Boat {
             case PALM -> RegionsUnexploredItems.PALM_BOAT.get();
             case PINE -> RegionsUnexploredItems.PINE_BOAT.get();
             case REDWOOD -> RegionsUnexploredItems.REDWOOD_BOAT.get();
-            case SCULKWOOD -> RegionsUnexploredItems.BRIMWOOD_BOAT.get();
+            case BRIMWOOD -> RegionsUnexploredItems.BRIMWOOD_BOAT.get();
             case WILLOW -> RegionsUnexploredItems.WILLOW_BOAT.get();
         };
     }
@@ -137,7 +137,7 @@ public class RuBoat extends Boat {
         PALM("palm", RegionsUnexploredBlocks.PALM_PLANKS.get()),
         PINE("pine", RegionsUnexploredBlocks.PINE_PLANKS.get()),
         REDWOOD("redwood", RegionsUnexploredBlocks.REDWOOD_PLANKS.get()),
-        SCULKWOOD("sculkwood", RegionsUnexploredBlocks.BRIMWOOD_PLANKS.get()),
+        BRIMWOOD("brimwood", RegionsUnexploredBlocks.BRIMWOOD_PLANKS.get()),
         WILLOW("willow", RegionsUnexploredBlocks.WILLOW_PLANKS.get());
 
         private final String name;

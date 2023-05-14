@@ -99,8 +99,8 @@ public class RegionsUnexploredItems {
     PINE_CHEST_BOAT = RegionsUnexploredMod.ITEMS.register("pine_chest_boat", () -> new RuBoatItem(true, RuBoat.ModelType.PINE, (new Item.Properties()).stacksTo(1)));
     REDWOOD_BOAT = RegionsUnexploredMod.ITEMS.register("redwood_boat", () -> new RuBoatItem(false, RuBoat.ModelType.REDWOOD, (new Item.Properties()).stacksTo(1)));
     REDWOOD_CHEST_BOAT = RegionsUnexploredMod.ITEMS.register("redwood_chest_boat", () -> new RuBoatItem(true, RuBoat.ModelType.REDWOOD, (new Item.Properties()).stacksTo(1)));
-    BRIMWOOD_BOAT = RegionsUnexploredMod.ITEMS.register("brimwood_boat", () -> new RuBoatItem(false, RuBoat.ModelType.SCULKWOOD, (new Item.Properties()).stacksTo(1)));
-    BRIMWOOD_CHEST_BOAT = RegionsUnexploredMod.ITEMS.register("brimwood_chest_boat", () -> new RuBoatItem(true, RuBoat.ModelType.SCULKWOOD, (new Item.Properties()).stacksTo(1)));
+    BRIMWOOD_BOAT = RegionsUnexploredMod.ITEMS.register("brimwood_boat", () -> new RuBoatItem(false, RuBoat.ModelType.BRIMWOOD, (new Item.Properties()).stacksTo(1)));
+    BRIMWOOD_CHEST_BOAT = RegionsUnexploredMod.ITEMS.register("brimwood_chest_boat", () -> new RuBoatItem(true, RuBoat.ModelType.BRIMWOOD, (new Item.Properties()).stacksTo(1)));
     WILLOW_BOAT = RegionsUnexploredMod.ITEMS.register("willow_boat", () -> new RuBoatItem(false, RuBoat.ModelType.WILLOW, (new Item.Properties()).stacksTo(1)));
     WILLOW_CHEST_BOAT = RegionsUnexploredMod.ITEMS.register("willow_chest_boat", () -> new RuBoatItem(true, RuBoat.ModelType.WILLOW, (new Item.Properties()).stacksTo(1)));
     }
