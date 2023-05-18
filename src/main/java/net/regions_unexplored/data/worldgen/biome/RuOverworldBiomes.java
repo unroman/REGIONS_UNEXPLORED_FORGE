@@ -468,7 +468,9 @@ public class RuOverworldBiomes {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(-5322337).waterColor(-13668958).waterFogColor(-12557181)
                 .skyColor(-5322337).foliageColorOverride(-12430037).grassColorOverride(-12687577)
-                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.005F)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.005F))
+                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
 
         MobSpawnSettings.Builder spawnBuilder = (new MobSpawnSettings.Builder()).addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 5, 1, 5));
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 8, 4, 4));
@@ -1178,10 +1180,10 @@ public class RuOverworldBiomes {
     public static Biome alphaGrove(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder()
                 .fogColor(12638463)
-                .waterColor(-14919459)
-                .waterFogColor(-12292142)
+                .waterColor(1857757)
+                .waterFogColor(4485074)
                 .skyColor(7972607)
-                .foliageColorOverride(-10749125)
+                .foliageColorOverride(6028091)
                 .grassColorOverride(-7876009)
                 .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
@@ -1811,7 +1813,8 @@ public class RuOverworldBiomes {
     }
     public static Biome dryBushland(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-5060484).grassColorOverride(-3552115).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-5060484).grassColorOverride(-3552115).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.desertSpawns(spawnBuilder);

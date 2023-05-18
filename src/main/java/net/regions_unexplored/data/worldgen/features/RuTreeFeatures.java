@@ -34,7 +34,8 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorato
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.*;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
-import net.regions_unexplored.data.worldgen.features.feature.tree.config.RuTreeConfiguration;
+import net.regions_unexplored.data.worldgen.features.feature.configuration.RuTreeConfiguration;
+import net.regions_unexplored.world.features.foliageplacers.WillowFoliagePlacer;
 import net.regions_unexplored.world.features.treedecorators.BambooLeaveDecorator;
 import net.regions_unexplored.util.worldgen.RuFeatureUtils;
 import net.regions_unexplored.world.features.treedecorators.*;
@@ -323,7 +324,8 @@ public class RuTreeFeatures {
         register(treeBootstrap, GIANT_REDWOOD_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState()), new GiantTrunkPlacer(24, 2, 10), BlockStateProvider.simple(RegionsUnexploredBlocks.REDWOOD_LEAVES.get().defaultBlockState()), new MegaPineFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0), UniformInt.of(13, 17)), new TwoLayersFeatureSize(1, 1, 2)).decorators(ImmutableList.of(RedwoodLeaveDecorator.INSTANCE, GiantRedwoodBranchDecorator.INSTANCE)).forceDirt().build());
         register(treeBootstrap, ULTRA_REDWOOD_TREE, RegionsUnexploredFeatures.ULTRA_REDWOOD_TREE.get(), new RuTreeConfiguration(BlockStateProvider.simple(RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.REDWOOD_LEAVES.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.REDWOOD_BRANCH.get().defaultBlockState()), 45, 9));
 
-        register(treeBootstrap, WILLOW_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RegionsUnexploredBlocks.WILLOW_LOG.get().defaultBlockState()), new StraightTrunkPlacer(8, 2, 0),BlockStateProvider.simple(RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).decorators(ImmutableList.of(new LeaveVineDecorator(0.25f), WillowTrunkDecorator.INSTANCE)).build());
+        register(treeBootstrap, WILLOW_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RegionsUnexploredBlocks.WILLOW_LOG.get().defaultBlockState()), new FancyTrunkPlacer(9, 6, 0), BlockStateProvider.simple(RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState()), new WillowFoliagePlacer(ConstantInt.of(4), ConstantInt.of(0), ConstantInt.of(5), 0.25F, 0.5F, 0.16666667F, 0.33333334F), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines().build());
+        //register(treeBootstrap, WILLOW_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RegionsUnexploredBlocks.WILLOW_LOG.get().defaultBlockState()), new StraightTrunkPlacer(8, 2, 0),BlockStateProvider.simple(RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).decorators(ImmutableList.of(new LeaveVineDecorator(0.25f), WillowTrunkDecorator.INSTANCE)).build());
 
         //BIOME_TREES
         register(treeBootstrap, ACACIA_OAK_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.ACACIA_LOG.defaultBlockState()), new StraightTrunkPlacer(5, 2, 0),BlockStateProvider.simple(Blocks.ACACIA_LEAVES.defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build());

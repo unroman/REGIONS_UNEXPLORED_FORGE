@@ -49,7 +49,7 @@ public class PointedRedstoneUtils {
         }
     }
 
-    protected static boolean isEmptyOrWater(LevelAccessor level, BlockPos pos) {
+    public static boolean isEmptyOrWater(LevelAccessor level, BlockPos pos) {
         return level.isStateAtPosition(pos, PointedRedstoneUtils::isEmptyOrWater);
     }
 

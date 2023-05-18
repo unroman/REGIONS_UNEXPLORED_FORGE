@@ -7,7 +7,7 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.regions_unexplored.data.worldgen.features.feature.tree.config.TallSaplingConfiguration;
+import net.regions_unexplored.data.worldgen.features.feature.configuration.TallSaplingConfiguration;
 import net.regions_unexplored.world.level.block.grass.DoubleTallSaplingBlock;
 
 public class TallSaplingFeature extends Feature<TallSaplingConfiguration> {

@@ -1,5 +1,5 @@
 {
-  "parent": "regions_unexplored:block/silver_birch_leaves",
+  "parent": "regions_unexplored:block/silver_birch_leaves_item",
   "display": {
     "thirdperson": {
       "rotation": [

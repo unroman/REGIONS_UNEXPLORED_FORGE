@@ -151,33 +151,23 @@ public class RuColors {
         );
     }
 
-    /*@SubscribeEvent
+    @SubscribeEvent
     public static void aspenColorLoad(RegisterColorHandlersEvent.Block event) {
         event.getBlockColors().register((bs, world, pos, index) -> {
             return world != null && pos != null ? getAspenColor(world, pos) : FoliageColor.getDefaultColor();
         }, RegionsUnexploredBlocks.SILVER_BIRCH_LEAVES.get());
     }
-    @SubscribeEvent
-    public static void aspenColorLoads(RegisterColorHandlersEvent.Block event) {
-        event.getBlockColors().register((bs, world, pos, index) -> {
-            return world != null && pos != null ? getAspenColor(world, pos) : FoliageColor.getDefaultColor();
-        }, RegionsUnexploredBlocks.SILVER_BIRCH_LEAVES.get());
-    }*/
+
+    public static int getAspenColor(BlockAndTintGetter world, BlockPos pos) {
+        Color aspen = Color.getHSBColor(((Mth.sin(((float)pos.getX()/10) + Mth.sin(((float)pos.getZ() + (float)pos.getX()) / 50) * 3)) / 75)+0.15F, 0.9F, 1.0F);
+        return aspen.getRGB();
+    }
 
     public static int getRainbowColor(BlockAndTintGetter world, BlockPos pos) {
         Color rainbow = Color.getHSBColor(((float)pos.getX() + (float)pos.getZ()) / 50.0F, 0.9F, 1.0F);
         return rainbow.getRGB();
     }
-/*
-    public static int getAspenColor(BlockAndTintGetter world, BlockPos pos) {
-        float noise = ((Mth.cos(((float)pos.getZ()-25F)*25F)+Mth.sin(((float)pos.getX()-25F)*25F))/200F);
-        Color aspen = Color.getHSBColor(((((Mth.cos((float)pos.getZ()*25F)+Mth.sin((float)pos.getX()*25F))+Mth.sin((float)pos.getX()/5+(float)pos.getZ()/4)) / 150.0F)+0.15F)-noise, 0.9F, 1.0F);
-        return aspen.getRGB();
-    }
-    public static int getAspenColor2(BlockAndTintGetter world, BlockPos pos) {
-        Color rainbow = Color.getHSBColor((((Mth.cos((float)pos.getZ()*25F)+Mth.sin((float)pos.getX()*25F)) / 150.0F)+0.15F), 0.9F, 1.0F);
-        return rainbow.getRGB();
-    }*/
+
     public static int getRainbowGlassColor(BlockAndTintGetter world, BlockPos pos) {
         Color rainbow = Color.getHSBColor(((float)pos.getX() + (float)pos.getY() + (float)pos.getZ()) / 35.0F, 1.0F, 1.0F);
         return rainbow.getRGB();

@@ -1,4 +1,4 @@
-package net.regions_unexplored.data.worldgen.features.feature.tree.config;
+package net.regions_unexplored.data.worldgen.features.feature.configuration;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

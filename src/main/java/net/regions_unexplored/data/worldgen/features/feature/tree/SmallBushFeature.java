@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.regions_unexplored.data.tags.RegionsUnexploredTags;
-import net.regions_unexplored.data.worldgen.features.feature.tree.config.SmallBushConfiguration;
+import net.regions_unexplored.data.worldgen.features.feature.configuration.SmallBushConfiguration;
 
 import java.util.Random;
 

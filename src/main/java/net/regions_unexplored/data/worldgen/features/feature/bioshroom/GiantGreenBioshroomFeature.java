@@ -13,6 +13,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.data.tags.RegionsUnexploredTags;
+import net.regions_unexplored.data.worldgen.features.feature.configuration.GiantBioshroomConfiguration;
 
 import java.util.Random;
 

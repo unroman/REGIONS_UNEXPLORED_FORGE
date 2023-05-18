@@ -40,6 +40,7 @@ import net.regions_unexplored.init.PottedPlantCompat;
 import net.regions_unexplored.config.RegionsUnexploredCommonConfigs;
 import net.regions_unexplored.init.BlockFeatureCompat;
 import net.regions_unexplored.item.RegionsUnexploredItems;
+import net.regions_unexplored.world.features.foliageplacers.WillowFoliagePlacer;
 import net.regions_unexplored.world.features.treedecorators.*;
 import org.slf4j.Logger;
 
@@ -728,6 +729,7 @@ public class RegionsUnexploredMod {
 
     //decorator method
     private void registerDecorators(){
+        ForgeRegistries.FOLIAGE_PLACER_TYPES.register("willow_foliage_place", WillowFoliagePlacer.fpt);
         ForgeRegistries.TREE_DECORATOR_TYPES.register("bamboo_leave_decorator", BambooLeaveDecorator.tdt);
         ForgeRegistries.TREE_DECORATOR_TYPES.register("cypress_trunk_decorator", CypressTrunkDecorator.tdt);
         ForgeRegistries.TREE_DECORATOR_TYPES.register("birch_stem_decorator", BirchStemDecorator.tdt);

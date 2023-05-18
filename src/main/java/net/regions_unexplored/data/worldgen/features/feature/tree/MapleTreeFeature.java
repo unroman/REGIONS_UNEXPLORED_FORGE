@@ -13,15 +13,13 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.BeehiveBlock;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
-import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.data.tags.RegionsUnexploredTags;
-import net.regions_unexplored.data.worldgen.features.feature.tree.config.RuTreeConfiguration;
+import net.regions_unexplored.data.worldgen.features.feature.configuration.RuTreeConfiguration;
 import net.regions_unexplored.world.level.block.BranchBlock;
 
 import java.util.Random;

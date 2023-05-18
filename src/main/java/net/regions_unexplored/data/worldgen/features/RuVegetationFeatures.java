@@ -23,9 +23,9 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
-import net.regions_unexplored.data.worldgen.features.feature.bioshroom.GiantBioshroomConfiguration;
-import net.regions_unexplored.data.worldgen.features.feature.tree.config.SmallBushConfiguration;
-import net.regions_unexplored.data.worldgen.features.feature.tree.config.TallSaplingConfiguration;
+import net.regions_unexplored.data.worldgen.features.feature.configuration.GiantBioshroomConfiguration;
+import net.regions_unexplored.data.worldgen.features.feature.configuration.SmallBushConfiguration;
+import net.regions_unexplored.data.worldgen.features.feature.configuration.TallSaplingConfiguration;
 import net.regions_unexplored.util.worldgen.RuFeatureUtils;
 import net.regions_unexplored.world.level.block.grass.AshenTallGrassBlock;
 

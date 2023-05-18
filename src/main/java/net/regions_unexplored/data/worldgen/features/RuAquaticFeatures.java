@@ -22,7 +22,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlac
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.data.worldgen.features.feature.configuration.HyacinthStockConfiguration;
 import net.regions_unexplored.data.worldgen.features.feature.configuration.SeaRockConfiguration;
-import net.regions_unexplored.data.worldgen.features.feature.tree.config.RuTreeConfiguration;
+import net.regions_unexplored.data.worldgen.features.feature.configuration.RuTreeConfiguration;
 import net.regions_unexplored.util.worldgen.RuFeatureUtils;
 import net.regions_unexplored.world.features.treedecorators.PalmLeavesPlacer;
 
